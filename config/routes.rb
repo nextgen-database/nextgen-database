@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
 	#
+    # Use the following resource to sort out routes
+    # https://dhampik.com/blog/rails-routes-tricks-with-locales
+    #
 	#
-	# https://dhampik.com/blog/rails-routes-tricks-with-locales
-
+	# TODO: Figure out how to translate home and about page names
+	#
 
 	scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
 		root to: redirect("/%{locale}/home", status: 302)
@@ -27,9 +30,6 @@ Rails.application.routes.draw do
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-    # Use the following resource to sort out routes
-    # https://dhampik.com/blog/rails-routes-tricks-with-locales
-    #
 
 
 
