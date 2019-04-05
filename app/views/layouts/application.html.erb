@@ -1,18 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>NextgenDatabase</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<!doctype html>
+<html lang="en">
+	<head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	    <!-- Required meta tags -->
+	    <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <body>
+		<%= csrf_meta_tags %>
+    	<%= csp_meta_tag %>
 
-    <h1>HEllo</h1>
+    	<title>NextgenDatabase</title>
 
-    <%= yield %>
-  </body>
+		<!-- Required CSS files -->
+    	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+	</head>
+
+	<body>
+
+    	<div class="container">
+
+			<h1>Hello, world!</h1>
+
+
+	    	<%= yield %>
+
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+	</body>
 </html>
