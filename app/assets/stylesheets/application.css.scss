@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+
+@import "base/mixins.scss";
+@import "base/globals.scss";
+@import "styles/home.scss";
