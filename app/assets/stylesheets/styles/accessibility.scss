@@ -1,0 +1,41 @@
+/*
+	NEXTGEN DATABASE
+  	@title: Accessibility Additions to NextGen Database Project
+ */
+
+
+// Skip Navigation
+
+.global-accessibility  {
+
+	background: green;
+
+	nav {
+		background: blue;
+
+		ul {
+			list-style-type: none;
+			left: 0;
+			position: absolute;
+			text-align: center;
+			top: 10px;
+			width: 100%;
+			z-index: 3;
+
+			li {
+
+				a {
+
+					color: $link-color;
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+

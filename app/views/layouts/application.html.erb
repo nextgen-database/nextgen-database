@@ -18,17 +18,26 @@
 
 	<body>
 
-    	<div class="container">
 
-			<h1>Hello, world!</h1>
+		<%= render 'partials/accessibility' %>
+
+		<%= render 'partials/navigation' %>
+
+		<div class="container">
+			<main property="mainContentOfPage">
+
+				<h1>Hello, world!</h1>
 
 
-	    	<%= yield %>
+				<%= yield %>
 
+
+			</main>
 		</div>
 
-		<!-- Optional JavaScript -->
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<%= render 'partials/footer' %>
+
+		<!-- JavaScript -->
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 	</body>

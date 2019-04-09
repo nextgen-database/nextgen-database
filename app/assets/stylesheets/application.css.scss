@@ -11,10 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap.min.css
- *= require_tree .
- *= require_self
  */
 
-@import "base/mixins.scss";
-@import "base/globals.scss";
-@import "styles/home.scss";
+@import "base/globals";
+@import "base/mixins";
+
+@import "styles/accessibility";
+@import "styles/footer";
+@import "styles/home";
+
