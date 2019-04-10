@@ -30,4 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  skipnav:
+    main: "Skip to main content in French"
+    footer: "Skip to page footer in French"
+
   hello: "French for Hello world"
