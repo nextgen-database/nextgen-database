@@ -10,18 +10,23 @@
 				<!-- Language Toggle -->
 				<section>
 					<div class="container">
-						<h2 class="sr-only">Language selection</h2>
+						<h2 class="sr-only"><%= t('header.lang-selection') %></h2>
 						<div class="row text-right">
 							<div class="col-md-12">
 								<ul class="list-inline">
 									<li class="list-inline-item">
-										<a lang="fr" href="/fr.html">Fran&ccedil;ais</a>
+										<% if I18n.locale == I18n.default_locale %>
+											<%= link_to "Français", { :locale=>'fr' } %>
+										<% else %>
+											<%= link_to "English", { :locale=>'en' } %>
+										<%end%>
 									</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</section>
+
 
 
 				<!-- Navigation Menu -->

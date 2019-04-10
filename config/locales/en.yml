@@ -38,6 +38,9 @@ en:
     main: "Skip to main content"
     footer: "Skip to footer content"
 
+  header:
+    lang-selection: "Language selection"
+
   footer:
     heading: "NextGen Database Footer Information"
 

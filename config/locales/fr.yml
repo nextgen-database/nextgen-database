@@ -38,6 +38,8 @@ fr:
     main: "Skip to main content in French"
     footer: "Skip to page footer in French"
 
+  header:
+    lang-selection: "Language selection in French"
 
   footer:
     heading: "NextGen Database Footer Information in French"
