@@ -30,5 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  main: "Skip to main content"
+
+  application:
+    title: "NextGen Database"
+
+  skipnav:
+    main: "Skip to main content"
+    footer: "Skip to footer content"
+
+  footer:
+    heading: "NextGen Database Footer Information"
+
   hello: "Hello world"
