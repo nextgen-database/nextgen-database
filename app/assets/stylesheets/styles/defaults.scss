@@ -1,0 +1,37 @@
+/*
+	NEXTGEN DATABASE
+  	@title: Default Behaviors
+ */
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext");
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext");
+
+// Baseline fonts
+@mixin default-font-family {
+	font-family: "Noto sans", sans-serif;
+}
+
+@mixin default-alternative-font-family {
+	font-family: Lato, sans-serif;
+}
+
+
+//
+// Apply baseline font styling
+// For the font smooth, read the justification here: http://wet-boew.github.io/themes-dist/GCWeb/gcweb-theme/index.html#antialiasing
+//
+
+html {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@include default-alternative-font-family;
+}
+
+body {
+	@include default-font-family;
+}
