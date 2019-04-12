@@ -8,18 +8,18 @@
 // Fonts need to be optimised using the following:
 // https://www.zachleat.com/web/comprehensive-webfonts/
 //
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext");
+//@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext");
 
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext");
+//@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext");
 
 // Baseline fonts
-@mixin default-font-family {
-	font-family: "Noto sans", sans-serif;
-}
+//@mixin default-font-family {
+//	font-family: "Noto sans", sans-serif;
+//}
 
-@mixin default-alternative-font-family {
-	font-family: Lato, sans-serif;
-}
+//@mixin default-alternative-font-family {
+//	font-family: Lato, sans-serif;
+//}
 
 
 //
@@ -33,9 +33,21 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	@include default-alternative-font-family;
+//	@include default-alternative-font-family;
 }
 
 body {
-	@include default-font-family;
+//	@include default-font-family;
+}
+
+
+
+a {
+	color: $link-color;
+	text-decoration: underline;
+
+}
+
+a:hover {
+	color: $link-hover-color;
 }
