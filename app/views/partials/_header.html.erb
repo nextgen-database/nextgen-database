@@ -3,6 +3,49 @@
 	Add document structure
 	Add custom navigation system
 -->
+		<div class="global-header">
+			<header role="banner">
+
+				<!-- language toggle -->
+				<div class="container">
+					<h2 class="sr-only"><%= t('header.lang-selection') %></h2>
+						<div class="row text-right">
+							<div class="col-md-12">
+								<ul class="list-inline">
+									<li class="list-inline-item">
+										<% if I18n.locale == I18n.default_locale %>
+											<%= link_to "Français", { :locale=>'fr' } %>
+										<% else %>
+											<%= link_to "English", { :locale=>'en' } %>
+										<%end%>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Brand Logo -->
+				<div class="container">
+					<img class="img-fluid" src="https://dummyimage.com/600x80/000/fff" alt="">
+				</div>
+
+				<!-- Nav bar -->
+				<div class="container-fluid  bg-dark">
+				<div class="container">
+					<div class="row justify-content-end">
+						<div class="col-1">
+							<p>Hello</p>
+						</div>
+					</div>
+				</div>
+				</div>
+
+
+			</header>
+		</div>
+
+
 
 		<div class="global-header">
 			<header role="banner">
