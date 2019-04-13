@@ -38,6 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
 //	@include default-font-family;
+	font-size: $base-font-size;
 }
 
 
@@ -46,6 +47,10 @@ a {
 	color: $link-color;
 	text-decoration: underline;
 
+}
+
+a.btn {
+	text-decoration: none;
 }
 
 a:hover {
