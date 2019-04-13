@@ -25,6 +25,10 @@
 
 			border-bottom: $gh-header-border-width solid $gh-header-border-color;
 
+			a.navbar-brand {
+				font-weight: 700;
+			}
+
 			ul {
 				// Override margin and padding from list inline styles
 				margin: 0;
@@ -34,6 +38,8 @@
 			a {
 				text-decoration: none;
 			}
+
+
 
 			// md and above
 			@media screen and (min-width: $break-md) {
