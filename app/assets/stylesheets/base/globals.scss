@@ -27,7 +27,7 @@ $link-visited-color: #7834bc !default;
 $content-bg: null !default;
 $main-bg: rgb(247, 245, 245) !default;
 $header-nav-bg: #fff;
-$footer-bg: null !default;
+$footer-bg: rgb(223, 194, 194) !default;
 $footer-nav-bg: green !default;
 $footer-brand-bg: white !default;
 
@@ -41,3 +41,7 @@ $ga-sn-focus: white;
 // Header
 $gh-header-border-color: black;
 $gh-header-border-width: 2px;
+
+
+// Footer
+$footer-about-li-horizontal-spacing: 50px;

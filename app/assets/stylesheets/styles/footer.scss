@@ -8,13 +8,48 @@
 	background-color: $footer-bg;
 	margin: 0px 0px 0px 0px;
 
+	h2 {
+		@include accessible-invisible;
+	}
+
+
+	// sm only
+	@media screen and (max-width: $break-md) {
+
+		// Add padding in small view
+		padding: 1.5rem 0px 1.5rem 0px;
+
+		// Remove the padding on all of the nav link so they aling properly
+		ul.nav li a.nav-link {
+			padding-left: 0px;
+		}
+
+		// Add a margin to the brand image logo
+		img {
+			margin-top: 1.5rem;
+		}
+
+	}
+
+	// md and above
+	@media screen and (min-width: $break-md) {
+
+		line-height: 5rem;
+
+		// Remove the padding on the first nav link so it aling properly
+		ul.nav li:first-child a.nav-link {
+			padding-left: 0px;
+		}
+
+	}
+
+
+
 	.footer-nav {
 		background-color: $footer-nav-bg;
 		padding: 3rem 0px 3rem 0px;
 
-		h2 {
-			@include accessible-invisible;
-		}
+
 
 	}
 
