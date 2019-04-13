@@ -42,13 +42,23 @@
 							<h2><%= t('footer.heading') %></h2>
 							<ul class="nav flex-column flex-md-row">
 								<li class="nav-item">
-									<a class="nav-link" href="#">About the database</a>
+									<a class="nav-link" href="#"><%= t('footer.links.about') %></a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Terms and conditions</a>
+									<a class="nav-link" href="#"><%= t('footer.links.tc') %></a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#">Privacy</a>
+									<a class="nav-link" href="#"><%= t('footer.links.privacy') %></a>
+								</li>
+								<li class="nav-item">
+									<h2 class="sr-only"><%= t('footer.lang-selection') %></h2>
+									<% if I18n.locale == I18n.default_locale %>
+										<%= link_to "Français", { :locale=>'fr' }, { :class=>"nav-link" } %>
+									<% else %>
+										<%= link_to "English", { :locale=>'en'}, {
+										:class=>"nav-link"
+										} %>
+									<%end%>
 								</li>
 							</ul>
 						</div>
@@ -61,21 +71,3 @@
 		</div>
 		<!-- End Footer Section -->
 
-			<!-- language toggle
-				<div class="container">
-					<h2 class="sr-only"><%= t('header.lang-selection') %></h2>
-						<div class="row text-right">
-							<div class="col-md-12">
-								<ul class="list-inline">
-									<li class="list-inline-item">
-										<% if I18n.locale == I18n.default_locale %>
-											<%= link_to "Français", { :locale=>'fr' } %>
-										<% else %>
-											<%= link_to "English", { :locale=>'en' } %>
-										<%end%>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</section> -->

@@ -38,10 +38,15 @@ en:
     main: "Skip to main content"
     footer: "Skip to footer content"
 
-  header:
-    lang-selection: "Language selection"
+# header:
 
   footer:
     heading: "NextGen Database Footer Information"
+    lang-selection: "Language selection"
+    links:
+      about: "About"
+      tc: "Terms and Conditions"
+      privacy: "Privacy"
+
 
   hello: "Hello world"
