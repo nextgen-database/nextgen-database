@@ -8,18 +8,42 @@
 
 	header {
 		background-color: #fff;
-		border-bottom-style: solid;
 
-		border-bottom-color: $gh-header-border-color;
-		border-bottom-width: $gh-header-border-width;
+		//border-bottom-style: solid;
+
+		//border-bottom-color: $gh-header-border-color;
+		//border-bottom-width: $gh-header-border-width;
 
 		.header-language-toggle {
-
 			padding: 1rem 0 0 0;
+		}
+
+		.navbar {
+			//border-top: 2px solid black;
+			background-color: $header-nav-bg !important;
+			padding: 1.5rem 0 1.5rem 0;
+
+			border-bottom: $gh-header-border-width solid $gh-header-border-color;
+
+			ul {
+				// Override margin and padding from list inline styles
+				margin: 0;
+				padding: 0;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			// md and above
+			@media screen and (min-width: $break-md) {
+
+				//border-bottom: 50px solid black;
+
+			}
 
 
 		}
-
 
 	}
 
