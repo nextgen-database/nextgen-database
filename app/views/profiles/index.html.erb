@@ -13,6 +13,12 @@
         <p class = "card-text">
           <%= item.lastname %>
         </p>
+
+		<% item.sectors.each do |sector| %>
+			<%= sector.english %>
+			<%= sector.french %>
+		<% end %>
+
       </div>
     </div>
   <% end %>
