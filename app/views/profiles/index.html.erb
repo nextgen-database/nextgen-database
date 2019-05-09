@@ -1,0 +1,18 @@
+<h1>Profiles</h1>
+<p>Find me in app/views/profiles/index.html.erb</p>
+
+<% if (@profiles.length <= 0) %>
+    <p>Sorry no items :-( </p>
+  <% end %>
+
+  <% @profiles.each do |item| %>
+    <div class = "card card-item">
+      <div class = "card-body">
+        <h5 class = "card-title"><%= item.firstname %></h5>
+        <h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %> in stock</h6>
+        <p class = "card-text">
+          <%= item.lastname %>
+        </p>
+      </div>
+    </div>
+  <% end %>
