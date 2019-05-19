@@ -9,7 +9,8 @@ gem 'rails', '~> 5.2.3'
 gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-
+# Devise for user / admin authentication
+gem 'devise'
 # Use jQuery because Bootstrap requires it
 gem 'jquery-rails'
 # Ensure that sprockets-rails is at least v2.3.2.
