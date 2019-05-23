@@ -12,10 +12,10 @@ class Admin::SectorsController < ApplicationController
 		@sector = Sector.new
 	end
 
-	# Edit function to update the sector into the DB
 	def edit
 		#@sector = Sector.find(params[:id])
 	end
+
 
 	# Create function to save the sector into the DB
 	def create
@@ -30,6 +30,8 @@ class Admin::SectorsController < ApplicationController
       		render :new
     	end
 	end
+
+	# Edit function to update the sector into the DB
 
 	# Update action updates the post with the new information
 	def update

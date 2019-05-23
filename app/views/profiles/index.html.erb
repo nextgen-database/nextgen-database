@@ -9,14 +9,22 @@
     <div class = "card card-item">
       <div class = "card-body">
         <h5 class = "card-title"><%= item.firstname %></h5>
-        <h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %> in stock</h6>
+        <h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %></h6>
         <p class = "card-text">
           <%= item.lastname %>
         </p>
 
+		<h6>Sectors:</h6>
+		<% if (item.sectors.length <= 0) %>
+			<p>Sorry no sectors :-( </p>
+		<% end %>
 		<% item.sectors.each do |sector| %>
-			<%= sector.english %>
-			<%= sector.french %>
+			<% if I18n.locale == :en %>
+  				<%= sector.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= sector.french %>
+			<% end %>
+
 		<% end %>
 
       </div>

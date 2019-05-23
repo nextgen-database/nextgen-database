@@ -2,13 +2,25 @@
 <p>Find me in app/views/profiles/new.html.erb</p>
 
 
-<%= form_for @profile, url: {action: "create"}, html: {class: ""} do |profile| %>
+<%= form_for @profile do |p| %>
 
-	<%= profile.text_area :firstname %>
+	<%= label_tag(:firstname, "First Name:") %>
+	<%= p.text_area :firstname %>
 
-	<%= profile.text_area :middlename %>
+	<%= label_tag(:middlename, "Middle Name:") %>
+	<%= p.text_area :middlename %>
 
-	<%= profile.text_area :lastname %>
+	<%= label_tag(:lastname, "Last Name:") %>
+	<%= p.text_area :lastname %>
 
-  	<%= profile.submit "Create" %>
+	<%= label_tag(:sector_ids, "Sectors:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= p.collection_check_boxes :sector_ids, Sector.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= p.collection_check_boxes :sector_ids, Sector.all, :id, :french %>
+	<% end %>
+
+  	<%= p.submit "Create" %>
+
 <% end %>
