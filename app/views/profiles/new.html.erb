@@ -13,12 +13,28 @@
 	<%= label_tag(:lastname, "Last Name:") %>
 	<%= p.text_area :lastname %>
 
+
+	<%#
+		Add Sectors
+	#%>
 	<%= label_tag(:sector_ids, "Sectors:") %>
 
 	<% if I18n.locale == :en %>
   		<%= p.collection_check_boxes :sector_ids, Sector.all, :id, :english %>
 	<% elsif I18n.locale == :fr %>
 		<%= p.collection_check_boxes :sector_ids, Sector.all, :id, :french %>
+	<% end %>
+
+
+	<%#
+		Add Demographics
+	#%>
+	<%= label_tag(:demographic_ids, "Demographics:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= p.collection_check_boxes :demographic_ids, Demographic.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= p.collection_check_boxes :demographic_ids, Demographic.all, :id, :french %>
 	<% end %>
 
   	<%= p.submit "Create" %>
