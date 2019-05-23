@@ -1,0 +1,9 @@
+
+<%= form_for [:admin, @demographic] do |f| %>
+  <%#= render 'shared/error_messages', object: f.object #%>
+  <div class="field">
+    <%= f.text_area :english, placeholder: "English" %>
+	<%= f.text_area :french, placeholder: "French" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

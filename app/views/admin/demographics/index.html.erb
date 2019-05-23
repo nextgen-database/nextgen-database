@@ -1,0 +1,35 @@
+<h1>Admin::Demographics#index</h1>
+
+<%#
+    Loop through all of the Demographics
+#%>
+
+<%= link_to 'New', new_admin_demographic_path(), { :class=>"btn btn-primary" } %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">English</th>
+			<th scope="col">French</th>
+			<th scope="col">Actions</th>
+	<thead>
+	<tbody>
+		<% @demographics.each_with_index do |demographic,index| %>
+			<tr>
+				<td><%= index + 1 %></td>
+				<td><%= demographic.english %></td>
+				<td><%= demographic.french %></td>
+				<td>
+					Actions To Do
+
+					<%#= link_to 'edit', edit_resource_path(sector) %>
+
+					<%= link_to 'Edit', edit_admin_demographic_path(demographic) %>
+
+					<%= link_to 'Delete', admin_demographic_path(demographic), method: :delete, data: {confirm: "Are you sure?"} %></td>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
