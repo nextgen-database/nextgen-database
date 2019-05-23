@@ -14,15 +14,37 @@
           <%= item.lastname %>
         </p>
 
+		<%#
+			View Sectors
+		#%>
 		<h6>Sectors:</h6>
 		<% if (item.sectors.length <= 0) %>
 			<p>Sorry no sectors :-( </p>
 		<% end %>
+
 		<% item.sectors.each do |sector| %>
 			<% if I18n.locale == :en %>
   				<%= sector.english %>
 			<% elsif I18n.locale == :fr %>
 				<%= sector.french %>
+			<% end %>
+
+		<% end %>
+
+
+		<%#
+			View Demographics
+		#%>
+		<h6>Demographics:</h6>
+		<% if (item.demographics.length <= 0) %>
+			<p>Sorry no demographics listed here :-( </p>
+		<% end %>
+
+		<% item.demographics.each do |demographic| %>
+			<% if I18n.locale == :en %>
+  				<%= demographic.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= demographic.french %>
 			<% end %>
 
 		<% end %>
