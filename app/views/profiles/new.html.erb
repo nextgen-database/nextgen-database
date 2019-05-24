@@ -37,6 +37,17 @@
 		<%= p.collection_check_boxes :demographic_ids, Demographic.all, :id, :french %>
 	<% end %>
 
+	<%#
+		Add Development Actors
+	#%>
+	<%= label_tag(:development_actor_ids, "Development Actors:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= p.collection_check_boxes :development_actor_ids, DevelopmentActor.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= p.collection_check_boxes :development_actor_ids, DevelopmentActor.all, :id, :french %>
+	<% end %>
+
   	<%= p.submit "Create" %>
 
 <% end %>
