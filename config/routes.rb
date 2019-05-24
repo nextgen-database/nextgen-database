@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 			get '', to: 'dashboard#index', as: '/'
 			resources :sectors
 			resources :demographics
+			resources :development_actors
 		end
 
 
