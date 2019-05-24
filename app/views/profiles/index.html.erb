@@ -49,6 +49,24 @@
 
 		<% end %>
 
+		<%#
+			View Development Actors
+		#%>
+		<h6>Development Actors:</h6>
+		<% if (item.development_actors.length <= 0) %>
+			<p>Sorry no Development Actors listed here :-( </p>
+		<% end %>
+
+		<% item.development_actors.each do |demographic| %>
+			<% if I18n.locale == :en %>
+  				<%= demographic.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= demographic.french %>
+			<% end %>
+
+		<% end %>
+
+
       </div>
     </div>
   <% end %>
