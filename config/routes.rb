@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 			resources :sectors
 			resources :demographics
 			resources :development_actors
+			resources :research_methods
 		end
 
 

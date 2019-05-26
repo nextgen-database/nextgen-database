@@ -66,6 +66,22 @@
 
 		<% end %>
 
+		<%#
+			Research Methods
+		#%>
+		<h6>Research Methods:</h6>
+		<% if (item.research_methods.length <= 0) %>
+			<p>Sorry no Research Methods listed here :-( </p>
+		<% end %>
+
+		<% item.research_methods.each do |research_method| %>
+			<% if I18n.locale == :en %>
+  				<%= research_method.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= research_method.french %>
+			<% end %>
+
+		<% end %>
 
       </div>
     </div>

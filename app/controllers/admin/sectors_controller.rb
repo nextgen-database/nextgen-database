@@ -12,6 +12,7 @@ class Admin::SectorsController < ApplicationController
 		@sector = Sector.new
 	end
 
+	# Edit function to update the sector into the DB
 	def edit
 		#@sector = Sector.find(params[:id])
 	end
@@ -31,7 +32,6 @@ class Admin::SectorsController < ApplicationController
     	end
 	end
 
-	# Edit function to update the sector into the DB
 
 	# Update action updates the post with the new information
 	def update
@@ -43,6 +43,7 @@ class Admin::SectorsController < ApplicationController
 		  render :edit
 		end
 	  end
+
 
 	# Destroy function to remove the sector from the DB
 	def destroy

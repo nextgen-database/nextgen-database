@@ -40,7 +40,8 @@ class ProfilesController < ApplicationController
 				:lastname,
 				sector_ids:[],
 				demographic_ids:[],
-				development_actor_ids:[], )
+				development_actor_ids:[],
+				research_method_ids:[] )
 		end
 
 end

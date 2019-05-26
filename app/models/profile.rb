@@ -11,4 +11,7 @@ class Profile < ApplicationRecord
 	has_many :profile_development_actors
 	has_many :development_actors, through: :profile_development_actors
 
+	has_many :profile_research_methods
+	has_many :research_methods, through: :profile_research_methods
+
 end

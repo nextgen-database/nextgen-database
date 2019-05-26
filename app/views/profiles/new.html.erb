@@ -48,6 +48,17 @@
 		<%= p.collection_check_boxes :development_actor_ids, DevelopmentActor.all, :id, :french %>
 	<% end %>
 
+	<%#
+		Add Research Methods
+	#%>
+	<%= label_tag(:research_method_ids, "Research Methods:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= p.collection_check_boxes :research_method_ids, ResearchMethod.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= p.collection_check_boxes :research_method_ids, ResearchMethod.all, :id, :french %>
+	<% end %>
+
   	<%= p.submit "Create" %>
 
 <% end %>
