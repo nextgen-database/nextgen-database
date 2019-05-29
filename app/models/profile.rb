@@ -14,4 +14,6 @@ class Profile < ApplicationRecord
 	has_many :profile_research_methods
 	has_many :research_methods, through: :profile_research_methods
 
+	has_many :affiliations
+
 end
