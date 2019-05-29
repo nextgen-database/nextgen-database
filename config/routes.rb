@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 			resources :development_actors
 			resources :research_methods
 			resources :organisations
+			resources :titles
 		end
 
 
