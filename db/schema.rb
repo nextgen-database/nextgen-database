@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_153424) do
+ActiveRecord::Schema.define(version: 2019_05_29_160217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affiliation_positions", force: :cascade do |t|
+    t.bigint "affiliation_id"
+    t.bigint "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["affiliation_id"], name: "index_affiliation_positions_on_affiliation_id"
+    t.index ["position_id"], name: "index_affiliation_positions_on_position_id"
+  end
+
+  create_table "affiliations", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "organisation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organisation_id"], name: "index_affiliations_on_organisation_id"
+    t.index ["profile_id"], name: "index_affiliations_on_profile_id"
+  end
 
   create_table "demographics", force: :cascade do |t|
     t.string "english"
@@ -117,5 +135,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_153424) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "affiliations", "organisations"
+  add_foreign_key "affiliations", "profiles"
   add_foreign_key "positions", "titles"
 end
