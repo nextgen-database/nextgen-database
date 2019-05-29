@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_152247) do
+ActiveRecord::Schema.define(version: 2019_05_29_153424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_05_29_152247) do
     t.string "french", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "department_en"
+    t.string "department_fr"
+    t.string "faculty_en"
+    t.string "faculty_fr"
+    t.bigint "title_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title_id"], name: "index_positions_on_title_id"
   end
 
   create_table "profile_demographics", force: :cascade do |t|
@@ -106,4 +117,5 @@ ActiveRecord::Schema.define(version: 2019_05_29_152247) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "positions", "titles"
 end

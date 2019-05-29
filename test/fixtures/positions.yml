@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  department_en: MyString
+  department_fr: MyString
+  faculty_en: MyString
+  faculty_fr: MyString
+  title: one
+
+two:
+  department_en: MyString
+  department_fr: MyString
+  faculty_en: MyString
+  faculty_fr: MyString
+  title: two
