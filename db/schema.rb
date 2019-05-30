@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_30_035101) do
+ActiveRecord::Schema.define(version: 2019_05_30_040802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,9 +125,9 @@ ActiveRecord::Schema.define(version: 2019_05_30_035101) do
   end
 
   create_table "sustainable_development_goals", force: :cascade do |t|
-    t.integer "goal", limit: 2, null: false
-    t.string "short_description_en", null: false
-    t.string "short_description_fr", null: false
+    t.integer "code", limit: 2, null: false
+    t.string "title_en", null: false
+    t.string "title_fr", null: false
     t.string "description_en", null: false
     t.string "description_fr", null: false
     t.datetime "created_at", null: false
