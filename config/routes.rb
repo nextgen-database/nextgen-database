@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 			resources :research_methods
 			resources :organisations
 			resources :titles
+			resources :sustainable_development_goals
 		end
 
 

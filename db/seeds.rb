@@ -23,7 +23,7 @@ profiles = Profile.create([
 ])
 =end
 
-sustainabledevelopmentgoals = SustainableDevelopmentGoals.create([
+sustainabledevelopmentgoals = SustainableDevelopmentGoal.create([
 	{
 		code: '1',
 		title_en: 'End poverty in all its forms everywhere',

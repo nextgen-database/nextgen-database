@@ -1,0 +1,46 @@
+<h1>Admin::Sustainable Development Goals#index</h1>
+
+<%#
+    Link to create a new Position Title
+#%>
+
+<%= link_to 'New', new_admin_sustainable_development_goal_path(), { :class=>"btn btn-primary" } %>
+
+
+<%#
+    Loop through all of the Titles (position titles)
+
+	TO DO: Sort the data
+#%>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Code</th>
+			<th scope="col">Title (English)</th>
+			<th scope="col">Description (English)</th>
+			<th scope="col">Title (French)</th>
+			<th scope="col">Description (French)</th>
+			<th scope="col">Actions</th>
+	<thead>
+	<tbody>
+		<% @sustainable_development_goals.each_with_index do |sdg,index| %>
+			<tr>
+				<td><%= sdg.code %></td>
+				<td><%= sdg.title_en %></td>
+				<td><%= sdg.title_fr %></td>
+				<td><%= sdg.description_en %></td>
+				<td><%= sdg.description_fr %></td>
+
+				<td>
+					Actions To Do
+
+					<%#= link_to 'edit', edit_resource_path(sector) %>
+
+					<%= link_to 'Edit', edit_admin_sustainable_development_goal_path(sdg) %>
+
+					<%= link_to 'Delete', admin_sustainable_development_goal_path(sdg), method: :delete, data: {confirm: "Are you sure?"} %></td>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

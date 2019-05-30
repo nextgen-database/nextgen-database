@@ -1,0 +1,11 @@
+<%= form_for [:admin, @sustainable_development_goal] do |f| %>
+  <%#= render 'shared/error_messages', object: f.object #%>
+  <div class="field">
+    <%= f.text_area :code, placeholder: "Code" %>
+	<%= f.text_area :title_en, placeholder: "English Title" %>
+	<%= f.text_area :description_en, placeholder: "English Description" %>
+	<%= f.text_area :title_fr, placeholder: "French Title" %>
+	<%= f.text_area :description_fr, placeholder: "French Description" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
