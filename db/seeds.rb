@@ -19,3 +19,4 @@ profiles = Profile.create([
     lastname: '3.00'
   }
 ])
+
