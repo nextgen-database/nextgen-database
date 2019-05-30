@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_160217) do
+ActiveRecord::Schema.define(version: 2019_05_30_035101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(version: 2019_05_29_160217) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_sustainable_development_goals", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.bigint "sustainable_development_goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "idx_psdg_profile"
+    t.index ["sustainable_development_goal_id"], name: "idx_psdg_sdg"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "firstname"
     t.string "middlename"
@@ -111,6 +120,16 @@ ActiveRecord::Schema.define(version: 2019_05_29_160217) do
   create_table "sectors", force: :cascade do |t|
     t.string "english", null: false
     t.string "french", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sustainable_development_goals", force: :cascade do |t|
+    t.integer "goal", limit: 2, null: false
+    t.string "short_description_en", null: false
+    t.string "short_description_fr", null: false
+    t.string "description_en", null: false
+    t.string "description_fr", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -138,4 +157,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_160217) do
   add_foreign_key "affiliations", "organisations"
   add_foreign_key "affiliations", "profiles"
   add_foreign_key "positions", "titles"
+  add_foreign_key "profile_sustainable_development_goals", "profiles"
+  add_foreign_key "profile_sustainable_development_goals", "sustainable_development_goals"
 end
