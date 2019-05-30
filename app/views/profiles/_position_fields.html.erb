@@ -1,0 +1,31 @@
+<div class='nested-fields'>
+
+	<%= label_tag(:title_ids, "Position Title:") %>
+
+	<% if I18n.locale == :en %>
+		<%= f.collection_select :title_id, Title.all ,:id,:english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_select :title_id, Title.all ,:id,:french %>
+	<% end %>
+
+	<br />
+
+	<%= label_tag(:department_en, "Department Name (English):") %>
+	<%= f.text_area :department_en %>
+
+	<%= label_tag(:department_fr, "Department Name (French):") %>
+	<%= f.text_area :department_fr %>
+
+	<br />
+
+	<%= label_tag(:faculty_en, "Faculty Name (English):") %>
+	<%= f.text_area :faculty_en %>
+
+	<%= label_tag(:faculty_fr, "Faculty Name (French):") %>
+	<%= f.text_area :faculty_fr %>
+
+	<br />
+
+    <%= link_to_remove_association "Remove position", f %>
+
+</div>

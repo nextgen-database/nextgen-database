@@ -14,6 +14,9 @@ class Profile < ApplicationRecord
 	has_many :profile_research_methods
 	has_many :research_methods, through: :profile_research_methods
 
-	has_many :affiliations
+	has_many :affiliations, inverse_of: :profile
+
+	# This is for the cocoon gem and nested forms
+	accepts_nested_attributes_for :affiliations, reject_if: :all_blank, allow_destroy: true
 
 end

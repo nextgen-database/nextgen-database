@@ -1,0 +1,25 @@
+<div class='nested-fields'>
+
+	<%= label_tag(:organisation_ids, "Affiliation Organisations:") %>
+
+	<% if I18n.locale == :en %>
+		<%= f.collection_select :organisation_id, Organisation.all ,:id,:english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_select :organisation_id, Organisation.all ,:id,:french %>
+	<% end %>
+
+	<div id='positions'>
+    	<%= f.fields_for :affiliation_positions do |position| %>
+      		<%= render 'position_fields', :f => position %>
+    	<% end %>
+
+		<div class='links'>
+      		<%= link_to_add_association 'add position', f, :positions %>
+    	</div>
+  	</div>
+
+	<br />
+
+    <%= link_to_remove_association "remove affiliation", f %>
+
+</div>

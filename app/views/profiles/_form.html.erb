@@ -1,0 +1,76 @@
+
+<%= form_for @profile do |f| %>
+
+	<%= label_tag(:firstname, "First Name:") %>
+	<%= f.text_area :firstname %>
+
+	<%= label_tag(:middlename, "Middle Name:") %>
+	<%= f.text_area :middlename %>
+
+	<%= label_tag(:lastname, "Last Name:") %>
+	<%= f.text_area :lastname %>
+
+
+	<%#
+		Add Sectors
+	#%>
+	<%= label_tag(:sector_ids, "Sectors:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :sector_ids, Sector.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :sector_ids, Sector.all, :id, :french %>
+	<% end %>
+
+
+	<%#
+		Add Demographics
+	#%>
+	<%= label_tag(:demographic_ids, "Demographics:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :demographic_ids, Demographic.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :demographic_ids, Demographic.all, :id, :french %>
+	<% end %>
+
+	<%#
+		Add Development Actors
+	#%>
+	<%= label_tag(:development_actor_ids, "Development Actors:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :development_actor_ids, DevelopmentActor.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :development_actor_ids, DevelopmentActor.all, :id, :french %>
+	<% end %>
+
+	<%#
+		Add Research Methods
+	#%>
+	<%= label_tag(:research_method_ids, "Research Methods:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :research_method_ids, ResearchMethod.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :research_method_ids, ResearchMethod.all, :id, :french %>
+	<% end %>
+
+	<br />
+
+	<h3>Affiliations</h3>
+
+	<div id='affiliations'>
+    	<%= f.fields_for :affiliations do |affiliation| %>
+      		<%= render 'affiliation_fields', :f => affiliation %>
+    	<% end %>
+
+		<div class='links'>
+      		<%= link_to_add_association 'add affiliation', f, :affiliations %>
+    	</div>
+  	</div>
+
+
+  	<%= f.submit "Create" %>
+
+<% end %>

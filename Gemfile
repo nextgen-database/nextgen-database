@@ -15,7 +15,8 @@ gem 'devise'
 gem 'jquery-rails'
 # Ensure that sprockets-rails is at least v2.3.2.
 gem 'sprockets-rails', '~> 3.2.1'
-
+# Use cocoon to manage nested forms
+gem "cocoon"
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

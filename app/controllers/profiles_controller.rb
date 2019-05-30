@@ -41,7 +41,11 @@ class ProfilesController < ApplicationController
 				sector_ids:[],
 				demographic_ids:[],
 				development_actor_ids:[],
-				research_method_ids:[] )
+				research_method_ids:[],
+				affiliations_attributes: [:id, :organisation_id, :_destroy,
+					positions_attributes: [:id, :title_id, :department_en, :department_fr, :faculty_en, :faculty_fr, :_destroy],
+					affiliation_positions: [:id, :organisation_id, :position_id, :_destroy]
+				])
 		end
 
 end
