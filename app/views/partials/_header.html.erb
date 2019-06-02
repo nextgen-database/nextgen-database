@@ -15,21 +15,25 @@
 							<%= t('application.title') %>
 						</a>
 						<ul class="list-inline">
-							<li class="list-inline-item">
-								<a class="btn btn-primary" href="#" role="button">Register</a>
-							</li>
-							<li class="list-inline-item">
-								<a class="btn btn-primary" href="#" role="button">Sign in</a>
-							</li>
+							<%#
+								If the user is signed in then show the logout button
+								If the user is not signed in then show the Register and the login button
+							%>
 							<% if user_signed_in? %>
-						<li>
-						<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-						</li>
-						<% else %>
-						<li>
-						<%= link_to('Login', new_user_session_path)  %>
-						</li>
-						<% end %>
+							<%#
+								TO DO: Add a button to the my profile page (when it's created)
+							%>
+							<li class="list-inline-item">
+								<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary" ) %>
+							</li>
+							<% else %>
+							<li class="list-inline-item">
+								<%= link_to('Sign in', new_user_session_path, :class=>"btn btn-outline-primary")  %>
+							</li>
+							<li class="list-inline-item">
+								<%= link_to('Register', new_user_registration_path, :class=>"btn btn-primary" ) %>
+							</li>
+							<% end %>
 						</ul>
 
 					</div>
