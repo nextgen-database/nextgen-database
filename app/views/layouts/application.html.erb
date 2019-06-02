@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<%# Set the HTML local to en or fr %>
+<html <% if I18n.locale == :en %>lang="en"<% elsif I18n.locale == :fr %>lang="fr"<% end %>>
 	<head>
 
 	    <!-- Required meta tags -->
@@ -9,7 +10,7 @@
 		<%= csrf_meta_tags %>
     	<%= csp_meta_tag %>
 
-    	<title>NextgenDatabase</title>
+    	<title>Nextgen Database</title>
 
 		<!-- Required CSS files -->
     	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
