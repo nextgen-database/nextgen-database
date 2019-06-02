@@ -58,6 +58,19 @@
 
 	<br />
 
+	<%#
+		Add Sustainable Development Goals
+	#%>
+	<%= label_tag(:sustainable_development_goal_ids, "Sustainable Development Goals:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :sustainable_development_goal_ids, SustainableDevelopmentGoal.all, :id, :title_en %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :sustainable_development_goal_ids, SustainableDevelopmentGoal.all, :id, :title_fr %>
+	<% end %>
+
+	<br />
+
 	<h3>Affiliations</h3>
 
 	<div id='affiliations'>

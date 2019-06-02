@@ -83,6 +83,23 @@
 
 		<% end %>
 
+		<%#
+			SDGs
+		#%>
+		<h6>SDGs:</h6>
+		<% if (item.sustainable_development_goals.length <= 0) %>
+			<p>Sorry no SDGs listed here :-( </p>
+		<% end %>
+
+		<% item.sustainable_development_goals.each do |sdg| %>
+			<% if I18n.locale == :en %>
+  				<%= sdg.title_en %>
+			<% elsif I18n.locale == :fr %>
+				<%= sdg.title_fr %>
+			<% end %>
+
+		<% end %>
+
       </div>
     </div>
   <% end %>
