@@ -82,3 +82,9 @@ a:hover {
 	background-color: darken($btn-primary-color, 15%);
 	border-color: darken($btn-primary-color, 15%);
 }
+
+// Forms
+
+.form-control {
+	border-radius: $btn-border-radius;
+}

@@ -1,13 +1,37 @@
 <!-- Start Search Section -->
-<div class="row justify-content-center">
-	<div class="col-md-7">
-		<div class="text-center">
+<section class="my-5">
+	<div class="row justify-content-center">
+		<div class="col-md-9">
+			<div class="home-search">
 
-			<h1 class="display-4 font-weight-normal">Punny hasdfasdfeadline</h1>
-			<p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+				<h2 class="display-4 font-weight-normal"><%= t('home.search.heading') %></h2>
+				<p class="lead font-weight-normal"><%= t('home.search.blurb') %></p>
 
-			<form>
-				<div class="form-row">
+				<form>
+				<div class="form-row align-items-center">
+					<div class="col-6">
+						<input type="text" class="form-control form-control-lg" placeholder="Search terms">
+					</div>
+
+					<div class="col-3 my-1">
+					<!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
+					<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
+						<option selected>All SDGs...</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+					</div>
+					<div class="col-3">
+						<button type="submit" class="btn btn-lg btn-primary mb-2 btn-block">Search</button>
+					</div>
+				</div>
+			</form>
+
+
+<!--
+				<form>
+					<div class="form-row">
 						<div class="col-9">
 							<input type="text" class="form-control form-control-lg" placeholder="First name">
 						</div>
@@ -16,8 +40,22 @@
 						</div>
 					</div>
 				</form>
+-->
+			</div>
+			<div class="text-center">
+
+
+
+
+			</div>
+		</div>
+		<div class="col-10">
+
+
+
+
 
 		</div>
 	</div>
-</div>
+</section>
 <!-- End Search Section -->

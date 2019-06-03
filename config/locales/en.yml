@@ -56,5 +56,9 @@ en:
       heading: "Copyright Notice"
       notice: "2017 - 2019 Canadian Council for International Co-operation (CCIC) | Canadian Association for the Study of International Development (CASID)"
 
+  home:
+    search:
+      heading: "Find a global development expert in Canada."
+      blurb: "Eiusmod laborum anim veniam et eu nulla dolor nostrud do irure. Excepteur velit consequat esse labore enim. Sit ullamco eiusmod voluptate eu quis in voluptate. Et commodo minim exercitation non voluptate incididunt deserunt qui proident fugiat magna sint exercitation nostrud."
 
   hello: "Hello world"
