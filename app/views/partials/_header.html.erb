@@ -3,42 +3,68 @@
 	Add document structure
 	Add custom navigation system
 -->
-		<!-- Start Global Header section -->
-		<div class="global-header">
-			<header role="banner">
+<!-- Start Header Section -->
 
-				<!-- NavBar with Brand Logo, Brand Text and Sign In and Register Buttons -->
-				<nav class="navbar navbar-light">
-					<div class="container">
-						<a class="navbar-brand" href="#">
-							<img src="https://dummyimage.com/30x30/000/fff" width="30" height="30" class="d-inline-block align-top" alt="" />
-							<%= t('application.title') %>
-						</a>
-						<ul class="list-inline">
-							<%#
-								If the user is signed in then show the logout button
-								If the user is not signed in then show the Register and the login button
-							%>
-							<% if user_signed_in? %>
-							<%#
-								TO DO: Add a button to the my profile page (when it's created)
-							%>
-							<li class="list-inline-item">
-								<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary" ) %>
-							</li>
-							<% else %>
-							<li class="list-inline-item">
-								<%= link_to('Sign in', new_user_session_path, :class=>"btn btn-outline-primary")  %>
-							</li>
-							<li class="list-inline-item">
-								<%= link_to('Register', new_user_registration_path, :class=>"btn btn-primary" ) %>
-							</li>
-							<% end %>
-						</ul>
+<!-- Start Global Header section -->
+<div class="global-header">
+	<header role="banner">
+		<div class="container">
+			<nav class="ng-navbar">
+				<a class="ng-navbar-brand" href="#">
+					<img src="<%= asset_path('brand/nextgen-database-logo.jpg') %>" width="40" class="d-inline-block align-middle" alt="" />
+					<%= t('application.title') %>
+				</a>
+				<div class="ng-navbar-links-container open">
 
-					</div>
-				</nav>
+					<ul class="ng-navbar-links-list">
+						<%#
+							Header navigation links that are hidden
+							in desktop but available in mobile
 
-			</header>
+							Home
+							About
+							Terms and Conditions
+							Privacy
+
+							--
+							Sign In
+							Register
+							--
+
+							French
+						%>
+						<li class="link-hide">
+							<%= link_to( t('navigation.links.home'), home_path ) %>
+						</li>
+						<li class="link-hide">
+							<%= link_to( t('navigation.links.about'), about_path ) %>
+						</li>
+						<li class="link-hide">
+							<%= link_to( t('navigation.links.tc'), about_path ) %>
+						</li>
+						<li class="link-hide">
+							<%= link_to( t('navigation.links.privacy'), about_path ) %>
+						</li>
+
+						<% if user_signed_in? %>
+						<%#
+							TO DO: Add a button to the my profile page (when it's created)
+						%>
+						<li>
+							<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary" ) %>
+						</li>
+						<% else %>
+						<li class="link-show-btn-outline-primary">
+							<%= link_to('Sign in', new_user_session_path)  %>
+						</li>
+						<li class="link-show-btn-primary ml-lg-2">
+							<%= link_to('Register', new_user_registration_path ) %>
+						</li>
+						<% end %>
+					</ul>
+
+				</div>
+			</nav>
 		</div>
-		<!-- End Global Header section -->
+	</header>
+</div>

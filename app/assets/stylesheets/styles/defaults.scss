@@ -60,5 +60,25 @@ a:hover {
 
 // Buttons Styles
 .btn {
-	border-radius: 100px;
+	border-radius: $btn-border-radius;
+}
+
+.btn-primary {
+	background-color: $btn-primary-color;
+	border-color: $btn-primary-color;
+}
+
+.btn-primary:hover {
+	background-color: darken($btn-primary-color, 15%);
+	border-color: darken($btn-primary-color, 15%);
+}
+
+.btn-outline-primary {
+	border-color: $btn-primary-color;
+	color: $btn-primary-color;
+}
+
+.btn-outline-primary:hover {
+	background-color: darken($btn-primary-color, 15%);
+	border-color: darken($btn-primary-color, 15%);
 }

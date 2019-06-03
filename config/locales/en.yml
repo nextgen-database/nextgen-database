@@ -38,7 +38,12 @@ en:
     main: "Skip to main content"
     footer: "Skip to footer content"
 
-# header:
+  navigation:
+    links:
+      home: "Home"
+      about: "About"
+      tc: "Terms and Conditions"
+      privacy: "Privacy"
 
   footer:
     heading: "NextGen Database Footer Information"

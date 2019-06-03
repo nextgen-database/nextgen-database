@@ -7,7 +7,7 @@
 .global-header {
 
 	header {
-		background-color: #fff;
+		background-color: $header-nav-bg !important;
 
 		//border-bottom-style: solid;
 
@@ -18,37 +18,191 @@
 			padding: 1rem 0 0 0;
 		}
 
-		.navbar {
-			//border-top: 2px solid black;
-			background-color: $header-nav-bg !important;
-			padding: 1.5rem 0 1.5rem 0;
+		.ng-navbar {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-			border-bottom: $gh-header-border-width solid $gh-header-border-color;
+			padding: 35px 0px 35px 0px;
 
-			a.navbar-brand {
-				font-weight: 700;
+			.ng-navbar-brand{
+				text-decoration: none !important;
+				color: $primary-color;
+				//color: darken($primary-color, 10%);
+				font-weight: bold;
 			}
 
-			ul {
-				// Override margin and padding from list inline styles
-				margin: 0;
-				padding: 0;
+			.ng-navbar-links-container {
+
+				.ng-navbar-links-list {
+
+					display: flex;
+					align-items: center;
+					list-style: none;
+					padding: 0px;
+					margin: 0px;
+
+					// Hide links in desktop mode
+					//  but show them in mobile menu
+					li.link-hide {
+						display: none;
+					}
+
+					li.link-show-btn-outline-primary a {
+						color: $primary-color;
+						border: 1px solid $primary-color;
+						border-radius: $btn-border-radius;
+						padding: 0.4em 18px 0.4em 18px;
+						text-decoration: none;
+
+						transition: $btn-transition;
+
+						&:hover {
+							background-color: darken($btn-primary-color, 15%);
+							border-color: darken($btn-primary-color, 15%);
+							color: #fff;
+						}
+
+						&:focus {
+							box-shadow: 0 0 0 3px lighten($btn-primary-color, 45%);
+							outline: none;
+						}
+					}
+
+					li.link-show-btn-primary a {
+						color: #fff;
+						border: 1px solid $primary-color;
+						background-color: $primary-color;
+						border-radius: $btn-border-radius;
+						padding: 0.4em 18px 0.4em 18px;
+						text-decoration: none;
+
+						transition: $btn-transition;
+
+						&:hover {
+							background-color: darken($btn-primary-color, 15%);
+							border-color: darken($btn-primary-color, 15%);
+						}
+
+						&:focus {
+							box-shadow: 0 0 0 3px lighten($btn-primary-color, 45%);
+							outline: none;
+						}
+
+					}
+
+				}
+
 			}
 
-			// Stop links in the navbar from being underlined
-			a {
-				text-decoration: none;
+			.menuOpenButtonContainer,
+			.menuCloseButton {
+					display: none;
 			}
 
-
-
-			// md and above
-			@media screen and (min-width: $break-md) {
+			// md and below
+			@media screen and (max-width: $break-lg) {
 
 				//border-bottom: 50px solid black;
+				.ng-navbar-links-container {
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					opacity: 0;
+					visibility: hidden;
+					overflow: auto;
+					z-index: 1000;
+					background-color: #fff;
+
+					.ng-navbar-links-list {
+
+						flex-direction: column;
+						align-items: right;
+						margin: 50px 0px 50px 0px;
+
+						li.link-hide {
+							display: block;
+						}
+
+
+						li {
+							width: 100%;
+							display: block;
+							margin: 0px;
+							padding: 0px;
+
+							&.link-show-btn-outline-primary a,
+							&.link-show-btn-primary a,
+							a {
+								font-weight: 700;
+								text-decoration: none;
+								display: block;
+								border-radius: 0px;
+								border: none;
+								width: 100%;
+								margin: 5px 0px 5px 0px;
+								padding: 10px 25px 10px 25px;
+								color: $primary-color;
+								background-color: #fff;
+
+								&:hover {
+									background-color: #fff;
+									color: $primary-color;
+								}
+
+								&:focus {
+									box-shadow: 0 0 0 3px lighten($btn-primary-color, 45%);
+									outline: none;
+								}
+
+							}
+
+						}
+
+					}
+
+					// Class is automatically added
+					//  when the mobile menu is open
+					&.open {
+						opacity: 1;
+						visibility: visible;
+						height: 100%;
+
+						transition: opacity .35s, visibility .35s, height .35s;
+					}
+
+				}
+
+				// Style the hamburger button
+				.menuOpenButton {
+
+					border-radius: 5px;
+					background-color: #e2eff5;
+
+					svg {
+						width: 2em;
+						height: 2em;
+
+					}
+
+					svg path {
+						fill: darken( $primary-color, 15% );
+					}
+				}
+
+				// Display the menu button (open and close)
+				//  in small and medium views only
+				.menuOpenButtonContainer,
+				.menuCloseButton {
+					display: block;
+				}
+
 
 			}
-
 
 		}
 
@@ -57,3 +211,130 @@
 
 
 }
+
+
+
+/* ==========================================================================
+   Header Logo styles (v2)
+   ========================================================================== */
+
+   .wl-menu {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 35px 0px 35px 0px;
+}
+
+.wl-menu .wl-menu-logos {
+	display: flex;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.wl-menu .wl-menu-logos li:last-child {
+	margin-left: 20px;
+}
+
+.wl-menu ul.wl-menu-nav {
+	display: flex;
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.wl-menu ul.wl-menu-nav li a {
+	color: #a1a3a3;
+	display: block;
+
+	padding: 5px 25px 5px 25px;
+	margin: 15px 10px 15px 0px;
+	border-right: 1px solid #c8d0d0;
+	text-decoration: none;
+}
+
+.wl-menu ul.wl-menu-nav li:last-child a {
+	border-right: none;
+}
+
+
+.wl-menu ul.wl-menu-nav li a.active {
+	color: #828484;
+	/*border-bottom: 2px solid #828484;*/
+}
+
+.wl-menu ul.wl-menu-nav li a:hover {
+	color: #828484;
+	transition: 0.2s ease-in;
+	text-decoration: underline;
+}
+
+.wl-menu .menuOpenButtonContainer,
+.wl-menu .wl-menu-container .menuCloseButton {
+	display: none;
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+
+	.wl-menu {
+		flex-direction: column;
+	}
+
+	.wl-menu .wl-menu-logos {
+		justify-content: space-around;
+	}
+
+	.wl-menu ul.wl-menu-nav {
+		flex-direction: column;
+		align-items: center;
+
+		margin: 50px 0px 50px 0px;
+	}
+
+	.wl-menu ul.wl-menu-nav li a {
+		border: none;
+		color: #222;
+		font-weight: 700 !important;
+		display: block;
+
+		padding: 15px 0px 15px 0px;
+		margin: 0px;
+	}
+
+
+	.wl-menu .menuOpenButtonContainer {
+		align-self: center;
+	}
+
+	.wl-menu .menuOpenButtonContainer,
+	.wl-menu .wl-menu-container .menuCloseButton {
+		display: block;
+	}
+
+	.wl-menu .wl-menu-container {
+		position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        overflow: auto;
+        z-index: 1000;
+        background-color: #c8d0d0 !important;
+	}
+
+	.wl-menu .wl-menu-container.open {
+        opacity: 1;
+        visibility: visible;
+        height: 100%;
+
+        transition: opacity .35s, visibility .35s, height .35s;
+	}
+
+	.menuCloseButton { margin-left: auto; margin-right: auto;}
+
+}
+

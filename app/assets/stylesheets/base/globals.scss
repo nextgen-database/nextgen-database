@@ -29,6 +29,7 @@ $link-visited-color: #7834bc !default;
 $content-bg: null !default;
 $main-bg: rgb(247, 245, 245) !default;
 $header-nav-bg: #fff;
+$mobile-menu-bg: #fff;
 $footer-bg: rgb(223, 194, 194) !default;
 $footer-nav-bg: green !default;
 $footer-brand-bg: white !default;
@@ -40,14 +41,23 @@ $ga-sn-color: green;
 $ga-sn-focus: white;
 
 
+// Colour Pallette
+$primary-color: #1581AF;
+
+
 // Header
 $gh-header-border-color: black;
 $gh-header-border-width: 2px;
+
+
 
 
 // Footer
 $footer-about-li-horizontal-spacing: 50px;
 
 // Buttons
+$btn-primary-color: #1581AF;
+$btn-border-radius: 100px;
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
