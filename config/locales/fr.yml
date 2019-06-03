@@ -52,5 +52,8 @@ fr:
       about: "About in French"
       tc: "Terms and Conditions in French"
       privacy: "Privacy in French"
+    copyright:
+      heading: "Copyright Notice"
+      notice: "2017 - 2019 Canadian Council for International Co-operation (CCIC) | Canadian Association for the Study of International Development (CASID)"
 
   hello: "French for Hello world"

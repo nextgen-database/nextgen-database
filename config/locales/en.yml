@@ -52,6 +52,9 @@ en:
       about: "About"
       tc: "Terms and Conditions"
       privacy: "Privacy"
+    copyright:
+      heading: "Copyright Notice"
+      notice: "2017 - 2019 Canadian Council for International Co-operation (CCIC) | Canadian Association for the Study of International Development (CASID)"
 
 
   hello: "Hello world"

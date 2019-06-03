@@ -33,40 +33,57 @@
 		<!-- Start Footer Section -->
 		<div class="global-footer">
 			<footer>
-				<div class="container">
 
-					<div class="row align-items-center">
+				<h2><%= t('footer.heading') %></h2>
 
-						<div class="col-md-10">
+				<div class="gf-nav">
+					<div class="container">
 
-							<h2><%= t('footer.heading') %></h2>
-							<ul class="nav flex-column flex-md-row">
-								<li class="nav-item">
-									<a class="nav-link" href="#"><%= t('footer.links.about') %></a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#"><%= t('footer.links.tc') %></a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#"><%= t('footer.links.privacy') %></a>
-								</li>
-								<li class="nav-item">
-									<h2 class="sr-only"><%= t('footer.lang-selection') %></h2>
-									<% if I18n.locale == I18n.default_locale %>
-										<%= link_to "Français", { :locale=>'fr' }, { :class=>"nav-link" } %>
-									<% else %>
-										<%= link_to "English", { :locale=>'en'}, {
-										:class=>"nav-link"
-										} %>
-									<%end%>
-								</li>
-							</ul>
-						</div>
-						<div class="col-md-2">
-							<img src="https://dummyimage.com/50x50/000/fff" width="50" height="50" class="float-right" alt="">
+						<div class="row justify-content-between">
+
+							<div class="col-md-6">
+
+								<h3 class="gf-nav-brand"><%= t('application.title') %> </h3>
+
+								<ul class="gf-links-list">
+									<li>
+										<%= link_to( t('navigation.links.home'), home_path ) %>
+									</li>
+									<li>
+										<%= link_to( t('navigation.links.about'), about_path ) %>
+									</li>
+									<li>
+										<%= link_to( t('navigation.links.tc'), about_path ) %>
+									</li>
+									<li>
+										<%= link_to( t('navigation.links.privacy'), about_path ) %>
+									</li>
+									<li>
+										<h3 class="sr-only"><%= t('footer.lang-selection') %></h2>
+										<% if I18n.locale == I18n.default_locale %>
+											<span class="fr"><%= link_to "Français", { :locale=>'fr' }  %></span>
+										<% else %>
+											<%= link_to "English", { :locale=>'en'} %>
+										<%end%>
+									</li>
+								</ul>
+
+							</div>
 						</div>
 					</div>
 				</div>
+
+				<div class="gf-copyright">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-12">
+								<h2><%= t('footer.copyright.heading') %></h2>
+								<p class="small">© <%= t('footer.copyright.notice') %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</footer>
 		</div>
 		<!-- End Footer Section -->

@@ -5,42 +5,16 @@
 
 
 .global-footer {
-	background-color: $footer-bg;
+
+
+	//background-color: $footer-bg;
 	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	//border-top: 2px solid $primary-color;
+	//padding: 25px 0px 25px 0px;
 
 	h2 {
 		@include accessible-invisible;
-	}
-
-
-	// sm only
-	@media screen and (max-width: $break-md) {
-
-		// Add padding in small view
-		padding: 1.5rem 0px 1.5rem 0px;
-
-		// Remove the padding on all of the nav link so they aling properly
-		ul.nav li a.nav-link {
-			padding-left: 0px;
-		}
-
-		// Add a margin to the brand image logo
-		img {
-			margin-top: 1.5rem;
-		}
-
-	}
-
-	// md and above
-	@media screen and (min-width: $break-md) {
-
-		line-height: 5rem;
-
-		// Remove the padding on the first nav link so it aling properly
-		ul.nav li:first-child a.nav-link {
-			padding-left: 0px;
-		}
-
 	}
 
 
@@ -48,8 +22,6 @@
 	.footer-nav {
 		background-color: $footer-nav-bg;
 		padding: 3rem 0px 3rem 0px;
-
-
 
 	}
 
@@ -59,6 +31,74 @@
 
 		h2 {
 			@include accessible-invisible;
+		}
+
+	}
+
+	.gf-nav {
+		margin: 0px 0px 0px 0px;
+		padding: 35px 0px 35px 0px;
+
+		// This is a copy of .ng-navbar-brand
+		.gf-nav-brand {
+			font-size: 1em;
+			margin: 0px;
+			padding: 0px;
+			text-decoration: none !important;
+			color: $primary-color;
+			//color: darken($primary-color, 10%);
+			font-weight: bold;
+		}
+
+		.gf-links-list {
+			list-style-type: none;
+			margin: 15px 0px 0px 0px;
+			padding: 0px;
+
+			li {
+				padding: 7px 0px 7px 0px;
+
+				a {
+					text-transform: uppercase;
+					text-decoration: none;
+					color: $primary-color;
+					transition: $btn-transition;
+
+					&:hover {
+						color: darken($primary-color, 15%);
+
+					}
+
+				}
+
+
+
+			}
+
+		}
+
+	}
+
+	.gf-copyright {
+		margin: 0px 0px 0px 0px;
+		padding: 2rem 0px 2rem 0px;
+		background-color: darken($primary-color, 10%);
+		color: #fff;
+
+		// Remove the margin on the paragraph to
+		//  vertically centre the copyright notice
+		p {
+			margin: 0px;
+		}
+	}
+
+
+	// sm only
+	@media screen and (max-width: $break-md) {
+
+		// Adjust padding in small view
+		.gf-copyright {
+			padding: 3rem 0px 3rem 0px;
 		}
 
 	}

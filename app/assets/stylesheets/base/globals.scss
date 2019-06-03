@@ -30,7 +30,7 @@ $content-bg: null !default;
 $main-bg: rgb(247, 245, 245) !default;
 $header-nav-bg: #fff;
 $mobile-menu-bg: #fff;
-$footer-bg: rgb(223, 194, 194) !default;
+$footer-bg: #fff !default;
 $footer-nav-bg: green !default;
 $footer-brand-bg: white !default;
 
@@ -54,6 +54,10 @@ $gh-header-border-width: 2px;
 
 // Footer
 $footer-about-li-horizontal-spacing: 50px;
+$footer-link-color: $primary-color;
+
+
+
 
 // Buttons
 $btn-primary-color: #1581AF;
