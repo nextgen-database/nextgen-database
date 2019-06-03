@@ -10,10 +10,12 @@
 	<header role="banner">
 		<div class="container">
 			<nav class="ng-navbar">
-				<a class="ng-navbar-brand" href="#">
-					<img src="<%= asset_path('brand/nextgen-database-logo.jpg') %>" width="40" class="d-inline-block align-middle" alt="" />
+
+				<%= link_to home_path , :class => 'ng-navbar-brand' do %>
+					<%= image_tag asset_path('brand/nextgen-database-logo.jpg'),  { width: "40", :class => "d-inline-block align-middle" , alt: "" } %>
 					<%= t('application.title') %>
-				</a>
+				<% end %>
+
 				<div class="ng-navbar-links-container">
 
 					<ul class="ng-navbar-links-list">
