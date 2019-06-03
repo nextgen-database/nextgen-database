@@ -59,7 +59,7 @@
 										<%= link_to( t('navigation.links.privacy'), about_path ) %>
 									</li>
 									<li>
-										<h3 class="sr-only"><%= t('footer.lang-selection') %></h2>
+										<h4 class="sr-only"><%= t('footer.lang-selection') %></h4>
 										<% if I18n.locale == I18n.default_locale %>
 											<span class="fr"><%= link_to "Français", { :locale=>'fr' }  %></span>
 										<% else %>
@@ -77,7 +77,7 @@
 					<div class="container">
 						<div class="row align-items-center">
 							<div class="col-12">
-								<h2><%= t('footer.copyright.heading') %></h2>
+								<h3 class="sr-only"><%= t('footer.copyright.heading') %></h3>
 								<p class="small">© <%= t('footer.copyright.notice') %></p>
 							</div>
 						</div>
