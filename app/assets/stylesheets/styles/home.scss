@@ -3,7 +3,7 @@
   	@title: Home Page Styles for NextGen Database Project
  */
 
-$home-section-padding: 150px 0px 150px 0px;
+$home-section-padding: 125px 0px 125px 0px;
 $home-section-bg: $main-bg;
 
 .home-search {
@@ -31,7 +31,7 @@ $home-section-bg: $main-bg;
 
 .home-partners {
 
-	background-color: #fff;
+	background-color: lighten($secondary-color, 30%);
 	padding: $home-section-padding
 
 
