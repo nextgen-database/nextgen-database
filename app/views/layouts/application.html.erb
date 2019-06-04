@@ -25,13 +25,24 @@
 		<%= render 'partials/header' %>
 
 		<div class="global-main">
-			<div class="container">
+			<%#
+			  #  If the current page is the home page
+			  #  then don't write the container div in
+			  #
+			  #%>
+			<% unless current_page?(root_path) || current_page?(home_path) %>
+  			<div class="container">
+			<% end %>
+
 				<main property="mainContentOfPage">
 
 					<%= yield %>
 
 				</main>
-			</div>
+			<% unless current_page?(root_path) || current_page?(home_path) %>
+  			</div >
+			<% end %>
+
 		</div>
 
 		<%= render 'partials/footer' %>
