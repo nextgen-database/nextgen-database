@@ -58,7 +58,8 @@ en:
 
   home:
     search:
-      heading: "Find a global development expert in Canada."
-      blurb: "Eiusmod laborum anim veniam et eu nulla dolor nostrud do irure. Excepteur velit consequat esse labore enim. Sit ullamco eiusmod voluptate eu quis in voluptate. Et commodo minim exercitation non voluptate incididunt deserunt qui proident fugiat magna sint exercitation nostrud."
+      heading: "Find a global development researcher in Canada."
+      blurb: "This is a searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to international development and humanitarian assistance. Find researchers or practitioner-researchers to collaborate with!"
+      placeholder: "Enter name, sector, organisation"
 
   hello: "Hello world"

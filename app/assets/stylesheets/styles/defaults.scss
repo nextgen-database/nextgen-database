@@ -83,6 +83,18 @@ a:hover {
 	border-color: darken($btn-primary-color, 15%);
 }
 
+.btn-success {
+	background-color: $btn-success-color;
+	border-color: $btn-success-color;
+
+	&:hover {
+		background-color: darken($btn-success-color, 15%);
+		border-color: darken($btn-success-color, 15%);
+	}
+}
+
+
+
 // Forms
 
 .form-control {

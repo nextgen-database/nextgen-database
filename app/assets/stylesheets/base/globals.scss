@@ -41,13 +41,20 @@ $ga-sn-color: green;
 $ga-sn-focus: white;
 
 
-// Colour Pallette
+// Colours
+// https://mycolor.space/?hex=%231581AF&sub=1
 $primary-color: #1581AF;
+$secondary-color: #9baebc;
+$accent-color: #a5648d;
+$accent-light-color: #baa6b1;
+
+$dark-grey: #384955;
+
 $success-color: #81AF15;
 $error-color: #AF1534;
-$warning-color: #AF9015;
+$warning-color: #eb9a28;
 $bright-color: #AF1581;
-$dark-blue-color: #1534AF;
+
 
 
 // Header
@@ -65,8 +72,10 @@ $footer-link-color: $primary-color;
 
 
 // Buttons
-$btn-primary-color: #1581AF;
+$btn-primary-color: $primary-color;
 $btn-border-radius: 100px;
+$btn-success-color: $success-color;
+
 $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
