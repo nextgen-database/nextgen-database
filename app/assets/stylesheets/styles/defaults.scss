@@ -93,6 +93,25 @@ a:hover {
 	}
 }
 
+.btn-accent {
+	background-color: $btn-accent-color;
+	border-color: $btn-accent-color;
+
+	&:hover {
+		background-color: darken($btn-accent-color, 15%);
+		border-color: darken($btn-accent-color, 15%);
+	}
+}
+
+.btn-outline-accent {
+	border-color: $btn-accent-color;
+	color: $btn-accent-color;
+
+	&:hover {
+		background-color: darken($btn-accent-color, 15%);
+		border-color: darken($btn-accent-color, 15%);
+	}
+}
 
 
 // Forms
