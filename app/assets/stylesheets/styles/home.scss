@@ -8,6 +8,7 @@ $home-section-bg: $main-bg;
 
 .home-search {
 
+	//background-color: #fff;
 	background-color:lighten(#9baebc, 20%);
 
 	padding: $home-section-padding;
@@ -21,8 +22,17 @@ $home-section-bg: $main-bg;
 
 .home-target {
 
-	background-color: $home-section-bg;
+//	background-color: $home-section-bg;
+	background-color: lighten($accent-color, 45%);
 	padding: $home-section-padding;
+
+	.home-target-title {
+		padding: 0px 0px 100px 0px;
+		text-align: center;
+		font-size: 3em;
+		color: darken($accent-color, 10%);
+	}
+
 
 	svg {
 		width: 100px;
