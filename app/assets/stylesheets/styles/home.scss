@@ -22,8 +22,17 @@ $home-section-bg: $main-bg;
 .home-target {
 
 	background-color: $home-section-bg;
-	padding: $home-section-padding
+	padding: $home-section-padding;
 
+	svg {
+		width: 100px;
+		height: auto;
+
+
+		path {
+			fill: $accent-color;
+		}
+	}
 
 }
 
