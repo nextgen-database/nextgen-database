@@ -16,30 +16,6 @@ $break-lg: 992px;
 // Extra large devices (large desktops, 1200px and up)
 $break-xl: 1200px;
 
-// Typography
-$base-font-size: 1.07rem;
-
-// Global textual link colours
-$link-color: #295376 !default;
-$link-hover-color: #0535d2 !default;
-$link-visited-color: #7834bc !default;
-
-
-// Global Background colours
-$content-bg: null !default;
-$main-bg: #faf9fe !default;
-$header-nav-bg: #fff;
-$mobile-menu-bg: #fff;
-$footer-bg: #fff !default;
-$footer-nav-bg: green !default;
-$footer-brand-bg: white !default;
-
-
-// Accessibility Skip Nav
-$ga-sn-background-color: black;
-$ga-sn-color: green;
-$ga-sn-focus: white;
-
 
 // Colours
 // https://mycolor.space/?hex=%231581AF&sub=1
@@ -81,3 +57,28 @@ $btn-accent-color: $accent-color;
 $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
+
+// Typography
+$base-font-size: 1.07rem;
+$base-font-color: $dark-grey;
+
+// Global textual link colours
+$link-color: #295376 !default;
+$link-hover-color: #0535d2 !default;
+$link-visited-color: #7834bc !default;
+
+
+// Global Background colours
+$content-bg: null !default;
+$main-bg: #faf9fe !default;
+$header-nav-bg: #fff;
+$mobile-menu-bg: #fff;
+$footer-bg: #fff !default;
+$footer-nav-bg: green !default;
+$footer-brand-bg: white !default;
+
+
+// Accessibility Skip Nav
+$ga-sn-background-color: black;
+$ga-sn-color: green;
+$ga-sn-focus: white;

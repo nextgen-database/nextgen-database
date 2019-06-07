@@ -29,20 +29,42 @@ $home-section-bg: $main-bg;
 	.home-target-title {
 		padding: 0px 0px 100px 0px;
 		text-align: center;
-		font-size: 3em;
-		color: darken($accent-color, 10%);
-	}
+		font-size: 3.5em;
+		color: darken($accent-color, 13%);
+    }
 
+    .card {
+		box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important;
+		transition: 0.1s ease-in;
 
-	svg {
-		width: 100px;
-		height: auto;
+		svg {
+			width: 100px;
+			padding-top: 25px;
+			height: auto;
 
-
-		path {
-			fill: $accent-color;
+			path {
+				fill: $accent-color;
+			}
 		}
-	}
+
+
+		.card-title {
+			padding-top: 25px;
+		}
+
+		.card-text {
+			padding-top: 25px;
+		}
+
+
+
+		&:hover {
+			transition: 0.1s ease-in;
+			box-shadow:0 1rem 3rem rgba(0,0,0,.175)!important;
+		}
+    }
+
+
 
 }
 
