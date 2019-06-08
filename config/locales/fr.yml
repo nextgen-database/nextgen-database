@@ -61,7 +61,27 @@ fr:
       heading: "Find a global development expert in Canada."
       blurb: "Il s’agit d’une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l’aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
       placeholder: "Entrez un nom, secteur, organisation"
-
+    partners:
+      ccic:
+        link: "https://ccic.ca/fr/"
+        text: "Canadian Council for International Co-operation"
+        src: "partners/ccic.jpg"
+      idrc:
+        link: "https://www.idrc.ca/fr"
+        text: "Le Centre de recherches pour le développement international"
+        src: "partners/idrc.jpg"
+      sdsn:
+        link: "https://uwaterloo.ca/sustainable-development-solutions-network-canada/"
+        text: "(en anglais seulement) Sustainable Development Solutions Network Canada"
+        src: "partners/sdsn-canada.jpg"
+      casid:
+        link: "https://casid-acedi.ca/fr"
+        text: "L'association canadienne d'études du développement international"
+        src: "partners/casid.png"
+      canada:
+        link: "https://canada.ca/fr"
+        text: "Gouvernement du Canada"
+        src: "partners/canada.png"
 
 
   hello: "French for Hello world"

@@ -61,5 +61,27 @@ en:
       heading: "Find a global development researcher in Canada."
       blurb: "This is a searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to international development and humanitarian assistance. Find researchers or practitioner-researchers to collaborate with!"
       placeholder: "Enter name, sector, organisation"
+    partners:
+      ccic:
+        link: "https://ccic.ca/"
+        text: "Canadian Council for International Co-operation"
+        src: "partners/ccic.jpg"
+      idrc:
+        link: "https://www.idrc.ca/en"
+        text: "International Development Research Centre"
+        src: "partners/idrc.jpg"
+      sdsn:
+        link: "https://uwaterloo.ca/sustainable-development-solutions-network-canada/"
+        text: "Sustainable Development Solutions Network Canada"
+        src: "partners/sdsn-canada.jpg"
+      casid:
+        link: "https://casid-acedi.ca/"
+        text: ""
+        src: "partners/casid.png"
+      canada:
+        link: "https://canada.ca/en"
+        text: "Government of Canada"
+        src: "partners/canada.png"
+
 
   hello: "Hello world"

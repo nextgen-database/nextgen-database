@@ -17,45 +17,41 @@
 
 									<li class="col-md-6 p-3 p-md-5">
 
-										<%= link_to "https://www.idrc.ca/en" , rel: "external" , target: "_blank"  do %>
-											<%= image_tag asset_path('partners/idrc.jpg'),  { :class => "img-fluid" , alt: "" } %>
-											<span class="sr-only"><abbr>IDRC</abbr> - International Development Research Centre</span>
+										<%= link_to t('home.partners.idrc.link') , rel: "external" , target: "_blank"  do %>
+											<%= image_tag asset_path(t('home.partners.idrc.src')),  { :class => "img-fluid" , alt: "" } %>
+											<span class="sr-only"><%= t('home.partners.idrc.text') %></span>
 										<% end %>
 
 									</li>
-
-
 									<li class="col-md-6 p-3 p-md-5">
 
-										<%= link_to "https://www.canada.ca/en" , rel: "external" , target: "_blank"  do %>
+										<%= link_to t('home.partners.ccic.link') , rel: "external" , target: "_blank"  do %>
 											<%= image_tag asset_path('partners/ccic.jpg'),  { rel: "external", :class => "img-fluid" , alt: "" } %>
-											<span class="sr-only">Government of Canada</span>
-										<% end %>
-
-
-									</li>
-									<li class="col-md-6 p-3 p-md-5">
-
-										<%= link_to "https://www.canada.ca/en" , rel: "external" , target: "_blank"  do %>
-											<%= image_tag asset_path('partners/sdsn-canada.jpg'),  { rel: "external", :class => "img-fluid" , alt: "" } %>
-											<span class="sr-only">Government of Canada</span>
-										<% end %>
-
-
-									</li>
-									<li class="col-md-6 p-3 p-md-5">
-
-										<%= link_to "https://www.canada.ca/en" , rel: "external" , target: "_blank"  do %>
-											<%= image_tag asset_path('partners/casid.png'),  { rel: "external", :class => "img-fluid" , alt: "" } %>
-											<span class="sr-only">Government of Canada</span>
+											<span class="sr-only"><%= t('home.partners.ccic.text') %></span>
 										<% end %>
 
 									</li>
 									<li class="col-md-6 p-3 p-md-5">
 
-										<%= link_to "https://www.canada.ca/en" , rel: "external" , target: "_blank"  do %>
-											<%= image_tag asset_path('partners/canada.png'),  { rel: "external", :class => "img-fluid" , alt: "" } %>
-											<span class="sr-only">Government of Canada</span>
+										<%= link_to t('home.partners.sdsn.link') , rel: "external" , target: "_blank"  do %>
+											<%= image_tag asset_path(t('home.partners.sdsn.src')),  { rel: "external", :class => "img-fluid" , alt: "" } %>
+											<span class="sr-only"><%= t('home.partners.sdsn.text') %></span>
+										<% end %>
+
+									</li>
+									<li class="col-md-6 p-3 p-md-5">
+
+										<%= link_to t('home.partners.casid.link') , rel: "external" , target: "_blank"  do %>
+											<%= image_tag asset_path(t('home.partners.casid.src')),  { rel: "external", :class => "img-fluid" , alt: "" } %>
+											<span class="sr-only"><%= t('home.partners.casid.text') %></span>
+										<% end %>
+
+									</li>
+									<li class="col-md-6 p-3 p-md-5">
+
+										<%= link_to t('home.partners.canada.link') , rel: "external" , target: "_blank"  do %>
+											<%= image_tag asset_path(t('home.partners.canada.src')),  { rel: "external", :class => "img-fluid" , alt: "" } %>
+											<span class="sr-only"><%= t('home.partners.canada.text') %></span>
 										<% end %>
 									</li>
 								</ul>
