@@ -82,6 +82,19 @@ en:
         link: "https://canada.ca/en"
         text: "Government of Canada"
         src: "partners/canada.png"
-
+    target:
+      heading: "Using the NextGen Database"
+      find-card:
+        title: "Find a Researcher"
+        body-text: "Nostrud tempor ea ex pariatur ipsum ipsum labore veniam enim. Sit sunt culpa consectetur nisi enim aute incididunt ad et culpa. Velit ipsum magna non ex irure ea."
+        link-text: "Search the database"
+      add-card:
+        title: "Add your name"
+        body-text: "Exercitation amet laborum Lorem dolore ex non aute in occaecat culpa eu. In ea exercitation mollit laborum voluptate magna sint consectetur elit do. Ullamco cillum fugiat velit dolore eiusmod fugiat esse eu officia pariatur dolore. Aliquip adipisicing incididunt magna excepteur quis cillum labore dolor duis."
+        link-text: "Create a profile"
+      learn-card:
+        title: "Learn more"
+        body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
+        link-text: "About the database"
 
   hello: "Hello world"
