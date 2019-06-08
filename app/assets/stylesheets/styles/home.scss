@@ -3,8 +3,16 @@
   	@title: Home Page Styles for NextGen Database Project
  */
 
-$home-section-padding: 125px 0px 125px 0px;
+$home-section-padding: 100px 0px 100px 0px;
 $home-section-bg: $main-bg;
+
+
+@mixin home-title {
+	padding: 0px 0px 100px 0px;
+	font-size: 3.0em;
+	color: darken($accent-color, 13%);
+}
+
 
 .home-search {
 
@@ -27,9 +35,8 @@ $home-section-bg: $main-bg;
 	padding: $home-section-padding;
 
 	.home-target-title {
-		padding: 0px 0px 100px 0px;
+		@include home-title();
 		text-align: center;
-		font-size: 3.5em;
 		color: darken($accent-color, 13%);
     }
 
@@ -73,7 +80,13 @@ $home-section-bg: $main-bg;
 .home-partners {
 
 	background-color: lighten($secondary-color, 30%);
-	padding: $home-section-padding
+	padding: $home-section-padding;
+
+	.home-partners-title {
+		@include home-title();
+		color: $dark-grey;
+
+	}
 
 
 }
