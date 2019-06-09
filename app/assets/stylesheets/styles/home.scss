@@ -8,9 +8,9 @@ $home-section-bg: $main-bg;
 
 
 @mixin home-title {
-	padding: 0px 0px 100px 0px;
+	padding: 0px 0px 75px 0px;
 	font-size: 3.0em;
-	color: darken($accent-color, 13%);
+
 }
 
 
@@ -94,7 +94,13 @@ $home-section-bg: $main-bg;
 
 .home-sdg-nav {
 
-	background-color: darken($primary-color, 20%);
-	padding: $home-section-padding
+	background-color: #fff;
+	padding: $home-section-padding;
+
+	.home-sdg-nav-title {
+		@include home-title();
+		padding-bottom: 10px !important;
+		color: $dark-grey;
+	}
 
 }

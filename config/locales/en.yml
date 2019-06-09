@@ -96,6 +96,9 @@ en:
       learn-card:
         title: "Learn more"
         body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
-        link-text: "About the database"
+      link-text: "About the database"
+    sdg-nav:
+      heading: "Search by Sustainable Development Goal"
+      sub-heading: "Sint in aute nulla dolor ut"
 
   hello: "Hello world"
