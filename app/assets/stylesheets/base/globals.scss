@@ -23,9 +23,7 @@ $primary-color: #1581AF;
 $secondary-color: #9baebc;
 $accent-color: #a5648d;
 $accent-light-color: #baa6b1;
-
 $dark-grey: #384955;
-
 $success-color: #81AF15;
 $error-color: #AF1534;
 $warning-color: #eb9a28;
@@ -37,6 +35,10 @@ $bright-color: #AF1581;
 $gh-header-border-color: black;
 $gh-header-border-width: 2px;
 
+
+
+// Main
+$main-section-padding: 50px 0px 50px 0px;
 
 
 
@@ -69,8 +71,8 @@ $link-visited-color: #7834bc !default;
 
 
 // Global Background colours
-$content-bg: null !default;
-$main-bg: #faf9fe !default;
+$main-home-bg: null !default;
+$main-content-bg: lighten($secondary-color, 31%) !default;
 $header-nav-bg: #fff;
 $mobile-menu-bg: #fff;
 $footer-bg: #fff !default;

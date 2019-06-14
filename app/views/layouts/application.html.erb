@@ -17,7 +17,7 @@
 
 	</head>
 
-	<body>
+	<body class="<%= current_page?(root_path) || current_page?(home_path) ? 'home' : 'page' %>">
 
 
 		<%= render 'partials/accessibility' %>

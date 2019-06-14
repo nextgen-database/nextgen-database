@@ -1,4 +1,60 @@
-<h1>Profiles</h1>
+
+
+	<h1 class="pl-3" name="cont" id="cont">Search Profiles:</h1>
+
+			<form>
+				<div class="form-row align-items-center">
+					<div class="col-6">
+						<input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
+					</div>
+
+					<div class="col-3 my-1">
+					<!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
+					<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
+						<option selected>All SDGs...</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+					</div>
+					<div class="col-3">
+						<button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
+					</div>
+				</div>
+			</form>
+
+		<hr />
+
+
+	<!-- TODO: Make the buttons block in small view
+	<div class="profile-search-box">
+		<form>
+			<div class="form-row align-items-center pt-5 pb-5">
+				<div class="col-6">
+					<input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
+				</div>
+
+				<div class="col-3 my-1">
+				<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
+					<option selected>All SDGs...</option>
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				</select>
+				</div>
+				<div class="col-3">
+					<button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
+				</div>
+			</div>
+		</form>
+	</div> -->
+
+<div class="row justify-content-center">
+	<div class="col-10">
+
+
+
+
 <p>Find me in app/views/profiles/index.html.erb</p>
 
 <% if (@profiles.length <= 0) %>
@@ -103,3 +159,9 @@
       </div>
     </div>
   <% end %>
+
+
+
+	</div>
+</div>
+

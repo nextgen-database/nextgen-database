@@ -3,7 +3,26 @@
   	@title: Global Main Container Styles for NextGen Database Project
  */
 
-.global-main {
-	background-color: $main-bg;
-	margin: 0px;
+
+.home {
+
+	.global-main {
+		background-color: $main-home-bg;
+		margin: 0px;
+	}
+}
+
+.page {
+
+	.global-main {
+		background-color: $main-content-bg;
+		margin: 0px;
+		padding: $main-section-padding;
+	}
+
+	h1 {
+		color: #000;
+		//font-size: 3.5rem;
+	}
+
 }
