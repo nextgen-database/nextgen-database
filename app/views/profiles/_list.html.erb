@@ -1,0 +1,413 @@
+<div class="profile-list-container">
+
+	<% if (@profiles.length <= 0) %>
+		<%#
+			TODO: Add cool empty list page
+		#%>
+		<p>Sorry no items :-( </p>
+	<% else %>
+
+		<ul>
+		<% @profiles.each do |profile| %>
+			<li class="profile-card">
+				<div class="profile-card-body">
+					<h2 class="profile-card-title"><%= profile.firstname %> <%= profile.middlename %> <%= profile.lastname %></h2>
+					<%#
+						Write in the affiliation
+						which consists of the title
+						an "at" and a organisation name
+					#%>
+
+					<% if (profile.affiliations.length > 0) %>
+						<p class="profile-card-subtitle">
+							<% profile.affiliations[0].positions.each do |position| %>
+									<%= position.title.english %> at
+									<%#= position.department_en %>
+									<%#= position.faculty_en %>
+							<% end %>
+							<%= profile.affiliations[0].organisation.english %>
+						</p>
+					<% end %>
+
+
+
+
+
+
+
+
+				</div>
+
+			</li>
+		<% end %>
+		</ul>
+
+	<% end %>
+
+</div>
+
+
+<ul class="list-unstyled mb-5 bg-white">
+	<li class="border-bottom">
+		<div class="p-5">
+			<h2>Dr. First Middle Last</h2>
+			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
+			<dl class="row">
+				<dt class="col-sm-3 col-lg-2">Email:</dt>
+				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
+
+				<dt class="col-sm-3 col-lg-2">Website:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">SDGs</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Sectors</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Demographics</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt class="col-sm-3 col-lg-2">Email:</dt>
+				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
+
+				<dt class="col-sm-3 col-lg-2">Website:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">SDGs</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Sectors</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Demographics</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+			</dl>
+
+
+			<div class="">
+				<ul class="list-inline">
+					<li class="list-inline-item"><a class="btn btn-outline-accent" href="#">Send Email</a></li>
+					<li class="list-inline-item"><a class="btn btn-accent" href="#">View Profile</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</li>
+
+	<li class="border-bottom">
+		<div class="p-5">
+			<h2>Dr. First Middle Last</h2>
+			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
+			<dl class="row">
+				<dt class="col-sm-3 col-lg-2">Email:</dt>
+				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
+
+				<dt class="col-sm-3 col-lg-2">Website:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">SDGs</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Sectors</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Demographics</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+			</dl>
+
+
+
+		</div>
+	</li>
+
+	<li class="border-bottom">
+		<div class="p-5">
+			<h2>Dr. First Middle Last</h2>
+			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
+			<dl class="row">
+				<dt class="col-sm-3 col-lg-2">Email:</dt>
+				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
+
+				<dt class="col-sm-3 col-lg-2">Website:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">SDGs</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Sectors</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Demographics</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+			</dl>
+
+		</div>
+	</li>
+</ul>
+
+
+<ul class="list-unstyled">
+	<li class="card card-item shadow-lg">
+		<div class = "card-body">
+			<h2>Dr. First Middle Last</h2>
+			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
+			<dl class="row">
+				<dt class="col-sm-3 col-lg-2">Email:</dt>
+				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
+
+				<dt class="col-sm-3 col-lg-2">Website:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
+				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
+
+				<dt class="col-sm-3 col-lg-2">SDGs</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Sectors</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+
+				<dt class="col-sm-3 col-lg-2">Demographics</dt>
+				<dd class="col-sm-9 col-lg-10">
+					<ul class="list-inline">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">Nulla volutpat</li>
+					</ul>
+				</dd>
+			</dl>
+
+		</div>
+	</li>
+</ul>
+
+
+<div class="">
+
+
+
+</div>
+
+
+
+
+  <% @profiles.each do |item| %>
+    <div class = "card card-item">
+      <div class = "card-body">
+        <h5 class = "card-title"><%= item.firstname %></h5>
+        <h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %></h6>
+        <p class = "card-text">
+          <%= item.lastname %>
+        </p>
+
+		<%#
+			View Sectors
+		#%>
+		<h6>Sectors:</h6>
+		<% if (item.sectors.length <= 0) %>
+			<p>Sorry no sectors :-( </p>
+		<% end %>
+
+		<% item.sectors.each do |sector| %>
+			<% if I18n.locale == :en %>
+  				<%= sector.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= sector.french %>
+			<% end %>
+
+		<% end %>
+
+
+		<%#
+			View Demographics
+		#%>
+		<h6>Demographics:</h6>
+		<% if (item.demographics.length <= 0) %>
+			<p>Sorry no demographics listed here :-( </p>
+		<% end %>
+
+		<% item.demographics.each do |demographic| %>
+			<% if I18n.locale == :en %>
+  				<%= demographic.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= demographic.french %>
+			<% end %>
+
+		<% end %>
+
+		<%#
+			View Development Actors
+		#%>
+		<h6>Development Actors:</h6>
+		<% if (item.development_actors.length <= 0) %>
+			<p>Sorry no Development Actors listed here :-( </p>
+		<% end %>
+
+		<% item.development_actors.each do |demographic| %>
+			<% if I18n.locale == :en %>
+  				<%= demographic.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= demographic.french %>
+			<% end %>
+
+		<% end %>
+
+		<%#
+			Research Methods
+		#%>
+		<h6>Research Methods:</h6>
+		<% if (item.research_methods.length <= 0) %>
+			<p>Sorry no Research Methods listed here :-( </p>
+		<% end %>
+
+		<% item.research_methods.each do |research_method| %>
+			<% if I18n.locale == :en %>
+  				<%= research_method.english %>
+			<% elsif I18n.locale == :fr %>
+				<%= research_method.french %>
+			<% end %>
+
+		<% end %>
+
+		<%#
+			SDGs
+		#%>
+		<h6>SDGs:</h6>
+		<% if (item.sustainable_development_goals.length <= 0) %>
+			<p>Sorry no SDGs listed here :-( </p>
+		<% end %>
+
+		<% item.sustainable_development_goals.each do |sdg| %>
+			<% if I18n.locale == :en %>
+  				<%= sdg.title_en %>
+			<% elsif I18n.locale == :fr %>
+				<%= sdg.title_fr %>
+			<% end %>
+
+		<% end %>
+
+      </div>
+    </div>
+  <% end %>
+
+
+
+
+
+<%#
+	Useful code snippe
+#%>
+<% if false %>
+	<% profile.affiliations.each do |affiliation| %>
+		<% if I18n.locale == :en %>
+			<%= affiliation.organisation.english %>
+				<% affiliation.positions.each do |position| %>
+					<%= position.department_en %>
+					<%= position.faculty_en %>
+					<%= position.title.english %>
+			<% end %>
+		<% elsif I18n.locale == :fr %>
+			<%= affiliation.organisation.french %>
+		<% end %>
+
+	<% end %>
+<% end %>

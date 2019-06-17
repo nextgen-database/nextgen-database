@@ -1,167 +1,27 @@
 
+<h1 name="cont" id="cont">Search Profiles:</h1>
 
-	<h1 class="pl-3" name="cont" id="cont">Search Profiles:</h1>
+<form>
+    <div class="form-row align-items-center">
+        <div class="col-6">
+            <input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
+        </div>
 
-			<form>
-				<div class="form-row align-items-center">
-					<div class="col-6">
-						<input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
-					</div>
-
-					<div class="col-3 my-1">
-					<!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
-					<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
-						<option selected>All SDGs...</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-					</select>
-					</div>
-					<div class="col-3">
-						<button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
-					</div>
-				</div>
-			</form>
-
-		<hr />
-
-
-	<!-- TODO: Make the buttons block in small view
-	<div class="profile-search-box">
-		<form>
-			<div class="form-row align-items-center pt-5 pb-5">
-				<div class="col-6">
-					<input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
-				</div>
-
-				<div class="col-3 my-1">
-				<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
-					<option selected>All SDGs...</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-				</div>
-				<div class="col-3">
-					<button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
-				</div>
-			</div>
-		</form>
-	</div> -->
-
-<div class="row justify-content-center">
-	<div class="col-10">
-
-
-
-
-<p>Find me in app/views/profiles/index.html.erb</p>
-
-<% if (@profiles.length <= 0) %>
-    <p>Sorry no items :-( </p>
-  <% end %>
-
-  <% @profiles.each do |item| %>
-    <div class = "card card-item">
-      <div class = "card-body">
-        <h5 class = "card-title"><%= item.firstname %></h5>
-        <h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %></h6>
-        <p class = "card-text">
-          <%= item.lastname %>
-        </p>
-
-		<%#
-			View Sectors
-		#%>
-		<h6>Sectors:</h6>
-		<% if (item.sectors.length <= 0) %>
-			<p>Sorry no sectors :-( </p>
-		<% end %>
-
-		<% item.sectors.each do |sector| %>
-			<% if I18n.locale == :en %>
-  				<%= sector.english %>
-			<% elsif I18n.locale == :fr %>
-				<%= sector.french %>
-			<% end %>
-
-		<% end %>
-
-
-		<%#
-			View Demographics
-		#%>
-		<h6>Demographics:</h6>
-		<% if (item.demographics.length <= 0) %>
-			<p>Sorry no demographics listed here :-( </p>
-		<% end %>
-
-		<% item.demographics.each do |demographic| %>
-			<% if I18n.locale == :en %>
-  				<%= demographic.english %>
-			<% elsif I18n.locale == :fr %>
-				<%= demographic.french %>
-			<% end %>
-
-		<% end %>
-
-		<%#
-			View Development Actors
-		#%>
-		<h6>Development Actors:</h6>
-		<% if (item.development_actors.length <= 0) %>
-			<p>Sorry no Development Actors listed here :-( </p>
-		<% end %>
-
-		<% item.development_actors.each do |demographic| %>
-			<% if I18n.locale == :en %>
-  				<%= demographic.english %>
-			<% elsif I18n.locale == :fr %>
-				<%= demographic.french %>
-			<% end %>
-
-		<% end %>
-
-		<%#
-			Research Methods
-		#%>
-		<h6>Research Methods:</h6>
-		<% if (item.research_methods.length <= 0) %>
-			<p>Sorry no Research Methods listed here :-( </p>
-		<% end %>
-
-		<% item.research_methods.each do |research_method| %>
-			<% if I18n.locale == :en %>
-  				<%= research_method.english %>
-			<% elsif I18n.locale == :fr %>
-				<%= research_method.french %>
-			<% end %>
-
-		<% end %>
-
-		<%#
-			SDGs
-		#%>
-		<h6>SDGs:</h6>
-		<% if (item.sustainable_development_goals.length <= 0) %>
-			<p>Sorry no SDGs listed here :-( </p>
-		<% end %>
-
-		<% item.sustainable_development_goals.each do |sdg| %>
-			<% if I18n.locale == :en %>
-  				<%= sdg.title_en %>
-			<% elsif I18n.locale == :fr %>
-				<%= sdg.title_fr %>
-			<% end %>
-
-		<% end %>
-
-      </div>
+        <div class="col-3 my-1">
+        <!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
+        <select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>All SDGs...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        </div>
+        <div class="col-3">
+            <button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
+        </div>
     </div>
-  <% end %>
+</form>
 
+<hr />
 
-
-	</div>
-</div>
-
+<%= render 'list' %>

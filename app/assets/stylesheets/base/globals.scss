@@ -72,7 +72,8 @@ $link-visited-color: #7834bc !default;
 
 // Global Background colours
 $main-home-bg: null !default;
-$main-content-bg: lighten($secondary-color, 31%) !default;
+$main-content-bg: lighten($secondary-color, 28%) !default;
+//$main-content-bg: #fff;
 $header-nav-bg: #fff;
 $mobile-menu-bg: #fff;
 $footer-bg: #fff !default;

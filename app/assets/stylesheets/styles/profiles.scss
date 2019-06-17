@@ -8,3 +8,30 @@
 	//background-color: #fff;
 	padding: 25px;
 }
+
+.profile-list-container {
+
+	background-color: #fff;
+
+	// List of profile results
+	ul {
+		background-color: none;
+		margin: 50px 0px 50px 0px;
+		padding: 0px 0px 0px 0px;
+		list-style: none;
+
+		// Each result
+		li {
+			background-color: #fff;
+			margin: 25px;
+			padding: 25px 25px 25px 25px;
+			border-bottom: 1px solid lighten($dark-grey, 60%);
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+
+
+	}
+}
