@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_064351) do
+ActiveRecord::Schema.define(version: 2019_06_18_154940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,11 +106,11 @@ ActiveRecord::Schema.define(version: 2019_06_17_064351) do
     t.string "firstname"
     t.string "middlename"
     t.string "lastname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "email"
     t.string "phone_number"
     t.string "website"
-	t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "research_methods", force: :cascade do |t|
@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(version: 2019_06_17_064351) do
     t.string "description_fr", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "banner_en", null: false
+    t.string "banner_fr", null: false
   end
 
   create_table "titles", force: :cascade do |t|
