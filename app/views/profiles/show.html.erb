@@ -1,0 +1,214 @@
+<%#
+	Check if the profile exists or not
+#%>
+<% if !@profile.nil? %>
+
+	<%#
+		Render the profile and title information
+	#%>
+
+	<h1 name="cont" id="cont"><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
+
+	<% if (@profile.affiliations.length > 0) %>
+		<p class="profile-card-subtitle">
+			<% @profile.affiliations[0].positions.each do |position| %>
+					<%= position.title.english %> at
+					<%#= position.department_en %>
+					<%#= position.faculty_en %>
+			<% end %>
+			<%= @profile.affiliations[0].organisation.english %>
+		</p>
+	<% end %>
+
+	<%#
+		Display Contact Information
+	#%>
+
+	<% if @profile.email.present? %>
+	<p>
+		<span class="sr-only">Email: </span>
+		<a href="mailto:<%= @profile.email %>">
+			<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+				<path d="M 17.388 4.751 H 2.613 c -0.213 0 -0.389 0.175 -0.389 0.389 v 9.72 c 0 0.216 0.175 0.389 0.389 0.389 h 14.775 c 0.214 0 0.389 -0.173 0.389 -0.389 v -9.72 C 17.776 4.926 17.602 4.751 17.388 4.751 M 16.448 5.53 L 10 11.984 L 3.552 5.53 H 16.448 Z M 3.002 6.081 l 3.921 3.925 l -3.921 3.925 V 6.081 Z M 3.56 14.471 l 3.914 -3.916 l 2.253 2.253 c 0.153 0.153 0.395 0.153 0.548 0 l 2.253 -2.253 l 3.913 3.916 H 3.56 Z M 16.999 13.931 l -3.921 -3.925 l 3.921 -3.925 V 13.931 Z" ></path>
+			</svg>
+			<%= @profile.email %>
+		</a>
+	</p>
+	<% end %>
+
+	<% if @profile.website.present? %>
+		<p>
+			<span class="sr-only">Website: </span>
+			<a href="<%= @profile.website %>">
+				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-md-none" viewBox="0 0 20 20">
+					<path fill="none" d="M 10 15.654 c -0.417 0 -0.754 0.338 -0.754 0.754 S 9.583 17.162 10 17.162 s 0.754 -0.338 0.754 -0.754 S 10.417 15.654 10 15.654 Z M 14.523 1.33 H 5.477 c -0.833 0 -1.508 0.675 -1.508 1.508 v 14.324 c 0 0.833 0.675 1.508 1.508 1.508 h 9.047 c 0.833 0 1.508 -0.675 1.508 -1.508 V 2.838 C 16.031 2.005 15.356 1.33 14.523 1.33 Z M 15.277 17.162 c 0 0.416 -0.338 0.754 -0.754 0.754 H 5.477 c -0.417 0 -0.754 -0.338 -0.754 -0.754 V 2.838 c 0 -0.417 0.337 -0.754 0.754 -0.754 h 9.047 c 0.416 0 0.754 0.337 0.754 0.754 V 17.162 Z M 13.77 2.838 H 6.23 c -0.417 0 -0.754 0.337 -0.754 0.754 v 10.555 c 0 0.416 0.337 0.754 0.754 0.754 h 7.539 c 0.416 0 0.754 -0.338 0.754 -0.754 V 3.592 C 14.523 3.175 14.186 2.838 13.77 2.838 Z M 13.77 13.77 c 0 0.208 -0.169 0.377 -0.377 0.377 H 6.607 c -0.208 0 -0.377 -0.169 -0.377 -0.377 V 3.969 c 0 -0.208 0.169 -0.377 0.377 -0.377 h 6.785 c 0.208 0 0.377 0.169 0.377 0.377 V 13.77 Z" ></path>
+				</svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-none d-md-inline" viewBox="0 0 20 20">
+					<path fill="none" d="M 17.125 1.375 H 2.875 c -0.828 0 -1.5 0.672 -1.5 1.5 v 11.25 c 0 0.828 0.672 1.5 1.5 1.5 H 7.75 v 2.25 H 6.625 c -0.207 0 -0.375 0.168 -0.375 0.375 s 0.168 0.375 0.375 0.375 h 6.75 c 0.207 0 0.375 -0.168 0.375 -0.375 s -0.168 -0.375 -0.375 -0.375 H 12.25 v -2.25 h 4.875 c 0.828 0 1.5 -0.672 1.5 -1.5 V 2.875 C 18.625 2.047 17.953 1.375 17.125 1.375 Z M 11.5 17.875 h -3 v -2.25 h 3 V 17.875 Z M 17.875 14.125 c 0 0.414 -0.336 0.75 -0.75 0.75 H 2.875 c -0.414 0 -0.75 -0.336 -0.75 -0.75 v -1.5 h 15.75 V 14.125 Z M 17.875 11.875 H 2.125 v -9 c 0 -0.414 0.336 -0.75 0.75 -0.75 h 14.25 c 0.414 0 0.75 0.336 0.75 0.75 V 11.875 Z M 10 14.125 c 0.207 0 0.375 -0.168 0.375 -0.375 S 10.207 13.375 10 13.375 s -0.375 0.168 -0.375 0.375 S 9.793 14.125 10 14.125 Z" ></path>
+				</svg>
+				<%= @profile.website %>
+			</a>
+		</p>
+	<% end %>
+
+	<% if @profile.phone_number.present? %>
+	<p>
+		<span class="sr-only">Phone Number: </span>
+		<a href="tel:<%= @profile.phone_number %>">
+			<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+				<path d="M 13.372 1.781 H 6.628 c -0.696 0 -1.265 0.569 -1.265 1.265 v 13.91 c 0 0.695 0.569 1.265 1.265 1.265 h 6.744 c 0.695 0 1.265 -0.569 1.265 -1.265 V 3.045 C 14.637 2.35 14.067 1.781 13.372 1.781 M 13.794 16.955 c 0 0.228 -0.194 0.421 -0.422 0.421 H 6.628 c -0.228 0 -0.421 -0.193 -0.421 -0.421 v -0.843 h 7.587 V 16.955 Z M 13.794 15.269 H 6.207 V 4.731 h 7.587 V 15.269 Z M 13.794 3.888 H 6.207 V 3.045 c 0 -0.228 0.194 -0.421 0.421 -0.421 h 6.744 c 0.228 0 0.422 0.194 0.422 0.421 V 3.888 Z" ></path>
+			</svg>
+			<%= @profile.phone_number %>
+		</a>
+	</p>
+	<% end %>
+
+
+	<%#
+		Display Affiliations
+	#%>
+
+	<section>
+		<h3>Affiliations</h3>
+
+
+	</section>
+
+
+	<%#
+		Display Research Information
+	#%>
+
+	<section>
+		<h3>Research</h3>
+
+		<dl>
+
+			<%#
+				View Sustainable Development Goals
+			#%>
+			<dt>SDGs:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.sustainable_development_goals.length <= 0) %>
+						<li class="list-inline-item">No SDGs listed</li>
+					<% elsif %>
+						<% @profile.sustainable_development_goals.each do |sdgs| %>
+							<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
+								<% if I18n.locale == :en %>
+									<%= sdgs.banner_en %>
+								<% elsif I18n.locale == :fr %>
+									<%= sdgs.banner_fr %>
+								<% end %>
+							<!--</span>-->(<%= sdgs.code %>)</li>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+			<%#
+				View Sectors
+			#%>
+			<dt>Sectors:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.sectors.length <= 0) %>
+						<li class="list-inline-item">No sectors listed</li>
+					<% elsif %>
+						<% @profile.sectors.each do |sector| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= sector.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= sector.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+
+			<%#
+				View Demographics
+			#%>
+			<dt>Demographics:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.demographics.length <= 0) %>
+						<li class="list-inline-item">No demographics listed</li>
+					<% elsif %>
+						<% @profile.demographics.each do |demographic| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= demographic.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= demographic.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+			<%#
+				View Development Actors
+			#%>
+			<dt>Development Actors:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.development_actors.length <= 0) %>
+						<li class="list-inline-item">No demographics listed</li>
+					<% elsif %>
+						<% @profile.development_actors.each do |development_actor| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= development_actor.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= development_actor.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+
+			<%#
+				View Research Methods
+			#%>
+			<dt>Research Methods:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.research_methods.length <= 0) %>
+						<li class="list-inline-item">No research methods listed</li>
+					<% elsif %>
+						<% @profile.research_methods.each do |research_method| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= research_method.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= research_method.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+
+
+
+
+
+		</dl>
+
+	</section>
+
+
+
+<% else %>
+
+	<%#
+		Render the error page
+	#%>
+
+	<h1 name="cont" id="cont">Whoops! Something went wrong</h1>
+
+	<p>No profile exists</p>
+
+<% end %>
+
+

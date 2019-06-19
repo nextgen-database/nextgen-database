@@ -12,7 +12,14 @@ class ProfilesController < ApplicationController
 
 	end
 
+	# Show function to display a single profile from the DB
+	def show
 
+		if Profile.exists?(params[:id])
+			@profile = Profile.find(params[:id])
+		end
+
+	end
 
 	# Create function to save the sector into the DB
 	def create
