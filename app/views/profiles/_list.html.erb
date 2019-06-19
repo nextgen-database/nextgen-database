@@ -1,4 +1,4 @@
-<div class="profile-list-container">
+<div class="profile-list-container mt-5">
 
 	<% if (@profiles.length <= 0) %>
 		<%#
@@ -7,10 +7,14 @@
 		<p>Sorry no items :-( </p>
 	<% else %>
 
-		<ul>
+		<ul class="profile-cards-list row justify-content-center">
 		<% @profiles.each do |profile| %>
-			<li class="profile-card">
+			<li class="profile-card col-12 col-sm-11">
 				<div class="profile-card-body">
+
+					<%#
+						Name heading
+					#%>
 					<h2 class="profile-card-title"><%= profile.firstname %> <%= profile.middlename %> <%= profile.lastname %></h2>
 					<%#
 						Write in the affiliation
@@ -29,88 +33,120 @@
 						</p>
 					<% end %>
 
+					<%#
+						Contact Information including email and website link
+					#%>
+					<div class="profile-card-contact-info">
+						<ul class="d-flex flex-column flex-sm-row list-unstyled">
+							<% if profile.email.present? %>
+							<li class="text-truncate">
+								<span class="sr-only">Email: </span>
+								<a href="mailto:<%= profile.email %>">
+									<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+										<path d="M 17.388 4.751 H 2.613 c -0.213 0 -0.389 0.175 -0.389 0.389 v 9.72 c 0 0.216 0.175 0.389 0.389 0.389 h 14.775 c 0.214 0 0.389 -0.173 0.389 -0.389 v -9.72 C 17.776 4.926 17.602 4.751 17.388 4.751 M 16.448 5.53 L 10 11.984 L 3.552 5.53 H 16.448 Z M 3.002 6.081 l 3.921 3.925 l -3.921 3.925 V 6.081 Z M 3.56 14.471 l 3.914 -3.916 l 2.253 2.253 c 0.153 0.153 0.395 0.153 0.548 0 l 2.253 -2.253 l 3.913 3.916 H 3.56 Z M 16.999 13.931 l -3.921 -3.925 l 3.921 -3.925 V 13.931 Z" ></path>
+									</svg>
+									<%= profile.email %>
+								</a>
+							</li>
+							<% end %>
+							<% if profile.website.present? %>
+							<li class="text-truncate">
+								<span class="sr-only">Website: </span>
+								<a href="<%= profile.website %>">
+									<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-md-none" viewBox="0 0 20 20">
+										<path fill="none" d="M 10 15.654 c -0.417 0 -0.754 0.338 -0.754 0.754 S 9.583 17.162 10 17.162 s 0.754 -0.338 0.754 -0.754 S 10.417 15.654 10 15.654 Z M 14.523 1.33 H 5.477 c -0.833 0 -1.508 0.675 -1.508 1.508 v 14.324 c 0 0.833 0.675 1.508 1.508 1.508 h 9.047 c 0.833 0 1.508 -0.675 1.508 -1.508 V 2.838 C 16.031 2.005 15.356 1.33 14.523 1.33 Z M 15.277 17.162 c 0 0.416 -0.338 0.754 -0.754 0.754 H 5.477 c -0.417 0 -0.754 -0.338 -0.754 -0.754 V 2.838 c 0 -0.417 0.337 -0.754 0.754 -0.754 h 9.047 c 0.416 0 0.754 0.337 0.754 0.754 V 17.162 Z M 13.77 2.838 H 6.23 c -0.417 0 -0.754 0.337 -0.754 0.754 v 10.555 c 0 0.416 0.337 0.754 0.754 0.754 h 7.539 c 0.416 0 0.754 -0.338 0.754 -0.754 V 3.592 C 14.523 3.175 14.186 2.838 13.77 2.838 Z M 13.77 13.77 c 0 0.208 -0.169 0.377 -0.377 0.377 H 6.607 c -0.208 0 -0.377 -0.169 -0.377 -0.377 V 3.969 c 0 -0.208 0.169 -0.377 0.377 -0.377 h 6.785 c 0.208 0 0.377 0.169 0.377 0.377 V 13.77 Z" ></path>
+									</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-none d-md-inline" viewBox="0 0 20 20">
+										<path fill="none" d="M 17.125 1.375 H 2.875 c -0.828 0 -1.5 0.672 -1.5 1.5 v 11.25 c 0 0.828 0.672 1.5 1.5 1.5 H 7.75 v 2.25 H 6.625 c -0.207 0 -0.375 0.168 -0.375 0.375 s 0.168 0.375 0.375 0.375 h 6.75 c 0.207 0 0.375 -0.168 0.375 -0.375 s -0.168 -0.375 -0.375 -0.375 H 12.25 v -2.25 h 4.875 c 0.828 0 1.5 -0.672 1.5 -1.5 V 2.875 C 18.625 2.047 17.953 1.375 17.125 1.375 Z M 11.5 17.875 h -3 v -2.25 h 3 V 17.875 Z M 17.875 14.125 c 0 0.414 -0.336 0.75 -0.75 0.75 H 2.875 c -0.414 0 -0.75 -0.336 -0.75 -0.75 v -1.5 h 15.75 V 14.125 Z M 17.875 11.875 H 2.125 v -9 c 0 -0.414 0.336 -0.75 0.75 -0.75 h 14.25 c 0.414 0 0.75 0.336 0.75 0.75 V 11.875 Z M 10 14.125 c 0.207 0 0.375 -0.168 0.375 -0.375 S 10.207 13.375 10 13.375 s -0.375 0.168 -0.375 0.375 S 9.793 14.125 10 14.125 Z" ></path>
+									</svg>
+									<%= profile.website %>
+								</a>
+							</li>
+							<% end %>
+						</ul>
+					</div>
 
-					<dl class="row">
+					<%#
+						Profile Information including SDGs, Sectors, and Demographics
+					#%>
+					<div class="profile-card-research-info">
+						<dl>
 
-						<%#
-							Profile Tombstone Information
-						#%>
-						<dt class="col-sm-3 col-lg-2">Email:</dt>
-						<dd class="col-sm-9 col-lg-10"><%= profile.email %></dd>
-
-						<dt class="col-sm-3 col-lg-2">Website:</dt>
-						<dd class="col-sm-9 col-lg-10"><a href="#"><%= profile.website %></a></dd>
-
-						<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-						<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890"><%= profile.phone_number %></a></dd>
-
-						<%#
-							View Sectors
-						#%>
-						<dt class="col-sm-3 col-lg-2">Sectors:</dt>
-						<dd class="col-sm-9 col-lg-10">
-							<ul class="list-inline">
-								<% if (profile.sectors.length <= 0) %>
-									<li class="list-inline-item">Nope</li>
-								<% elsif %>
-									<% profile.sectors.each do |sector| %>
-										<% if I18n.locale == :en %>
-											<li class="list-inline-item"><%= sector.english %></li>
-										<% elsif I18n.locale == :fr %>
-											<li class="list-inline-item"><%= sector.french %></li>
+							<%#
+								View Sustainable Development Goals
+							#%>
+							<dt>SDGs:</dt>
+							<dd>
+								<ul class="list-inline">
+									<% if (profile.sustainable_development_goals.length <= 0) %>
+										<li class="list-inline-item">No SDGs listed</li>
+									<% elsif %>
+										<% profile.sustainable_development_goals.each do |sdgs| %>
+											<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
+												<% if I18n.locale == :en %>
+													<%= sdgs.banner_en %>
+												<% elsif I18n.locale == :fr %>
+													<%= sdgs.banner_fr %>
+												<% end %>
+											<!--</span>-->(<%= sdgs.code %>)</li>
 										<% end %>
 									<% end %>
-								<% end %>
-							</ul>
-						</dd>
+								</ul>
+							</dd>
 
 
-						<%#
-							View Sustainable Development Goals
-						#%>
-						<dt class="col-sm-3 col-lg-2">SDGs:</dt>
-						<dd class="col-sm-9 col-lg-10">
-							<ul class="list-inline">
-								<% if (profile.sustainable_development_goals.length <= 0) %>
-									<li class="list-inline-item">Nope</li>
-								<% elsif %>
-									<% profile.sustainable_development_goals.each do |sdgs| %>
-										<% if I18n.locale == :en %>
-											<li class="list-inline-item"><%= sdgs.title_en %> (<%= sdgs.code %>)</li>
-										<% elsif I18n.locale == :fr %>
-											<li class="list-inline-item"><%= sdgs.title_fr %> (<%= sdgs.code %>)</li>
+							<%#
+								View Sectors
+							#%>
+							<dt>Sectors:</dt>
+							<dd>
+								<ul class="list-inline">
+									<% if (profile.sectors.length <= 0) %>
+										<li class="list-inline-item">No sectors listed</li>
+									<% elsif %>
+										<% profile.sectors.each do |sector| %>
+											<% if I18n.locale == :en %>
+												<li class="list-inline-item"><%= sector.english %></li>
+											<% elsif I18n.locale == :fr %>
+												<li class="list-inline-item"><%= sector.french %></li>
+											<% end %>
 										<% end %>
 									<% end %>
-								<% end %>
-							</ul>
-						</dd>
+								</ul>
+							</dd>
 
-						<%#
-							View Demographics
-						#%>
-						<dt class="col-sm-3 col-lg-2">Demographics:</dt>
-						<dd class="col-sm-9 col-lg-10">
-							<ul class="list-inline">
-								<% if (profile.demographics.length <= 0) %>
-									<li class="list-inline-item">Nope</li>
-								<% elsif %>
-									<% profile.demographics.each do |demographic| %>
-										<% if I18n.locale == :en %>
-											<li class="list-inline-item"><%= demographic.english %></li>
-										<% elsif I18n.locale == :fr %>
-											<li class="list-inline-item"><%= demographic.french %></li>
+
+							<%#
+								View Demographics
+							#%>
+							<dt>Demographics:</dt>
+							<dd>
+								<ul class="list-inline">
+									<% if (profile.demographics.length <= 0) %>
+										<li class="list-inline-item">No demographics listed</li>
+									<% elsif %>
+										<% profile.demographics.each do |demographic| %>
+											<% if I18n.locale == :en %>
+												<li class="list-inline-item"><%= demographic.english %></li>
+											<% elsif I18n.locale == :fr %>
+												<li class="list-inline-item"><%= demographic.french %></li>
+											<% end %>
 										<% end %>
 									<% end %>
-								<% end %>
-							</ul>
-						</dd>
+								</ul>
+							</dd>
 
-					</dl>
+						</dl>
+					</div>
 
+					<!--
+						TODO: In small view these buttons need to be moved to the right closer to the thumb
+					-->
 					<div class="">
 						<ul class="list-inline">
-							<li class="list-inline-item"><a class="btn btn-outline-accent" href="#">Send Email</a></li>
 							<li class="list-inline-item"><a class="btn btn-accent" href="#">View Profile</a></li>
+							<li class="list-inline-item"><a class="btn btn-outline-accent" href="#">Send Email</a></li>
+
 						</ul>
 					</div>
 
@@ -123,232 +159,6 @@
 
 </div>
 
-
-<ul class="list-unstyled mb-5 bg-white">
-	<li class="border-bottom">
-		<div class="p-5">
-			<h2>Dr. First Middle Last</h2>
-			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
-			<dl class="row">
-				<dt class="col-sm-3 col-lg-2">Email:</dt>
-				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
-
-				<dt class="col-sm-3 col-lg-2">Website:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">SDGs</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Sectors</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Demographics</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-			</dl>
-
-			<dl>
-				<dt class="col-sm-3 col-lg-2">Email:</dt>
-				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
-
-				<dt class="col-sm-3 col-lg-2">Website:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">SDGs</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Sectors</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Demographics</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-			</dl>
-
-
-			<div class="">
-				<ul class="list-inline">
-					<li class="list-inline-item"><a class="btn btn-outline-accent" href="#">Send Email</a></li>
-					<li class="list-inline-item"><a class="btn btn-accent" href="#">View Profile</a></li>
-				</ul>
-			</div>
-
-		</div>
-	</li>
-
-	<li class="border-bottom">
-		<div class="p-5">
-			<h2>Dr. First Middle Last</h2>
-			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
-			<dl class="row">
-				<dt class="col-sm-3 col-lg-2">Email:</dt>
-				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
-
-				<dt class="col-sm-3 col-lg-2">Website:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">SDGs</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Sectors</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-
-			</dl>
-
-
-
-		</div>
-	</li>
-
-	<li class="border-bottom">
-		<div class="p-5">
-			<h2>Dr. First Middle Last</h2>
-			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
-			<dl class="row">
-				<dt class="col-sm-3 col-lg-2">Email:</dt>
-				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
-
-				<dt class="col-sm-3 col-lg-2">Website:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">SDGs</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Sectors</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Demographics</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-			</dl>
-
-		</div>
-	</li>
-</ul>
-
-
-<ul class="list-unstyled">
-	<li class="card card-item shadow-lg">
-		<div class = "card-body">
-			<h2>Dr. First Middle Last</h2>
-			<h3>Assistant Professor at Wilfred Laurier University (Ontario)</h3>
-			<dl class="row">
-				<dt class="col-sm-3 col-lg-2">Email:</dt>
-				<dd class="col-sm-9 col-lg-10">a@b.com</dd>
-
-				<dt class="col-sm-3 col-lg-2">Website:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="#">https://www.google.ca</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">Phone number:</dt>
-				<dd class="col-sm-9 col-lg-10"><a href="tel:+16132634890">+16132634890</a></dd>
-
-				<dt class="col-sm-3 col-lg-2">SDGs</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Sectors</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-
-				<dt class="col-sm-3 col-lg-2">Demographics</dt>
-				<dd class="col-sm-9 col-lg-10">
-					<ul class="list-inline">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
-						<li class="list-inline-item">Nulla volutpat</li>
-					</ul>
-				</dd>
-			</dl>
-
-		</div>
-	</li>
-</ul>
 
 
 
