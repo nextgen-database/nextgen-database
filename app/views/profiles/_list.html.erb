@@ -145,8 +145,9 @@
 					<div class="">
 						<ul class="list-inline">
 							<li class="list-inline-item"><a class="btn btn-accent" href="#">View Profile</a></li>
-							<li class="list-inline-item"><a class="btn btn-outline-accent" href="#">Send Email</a></li>
-
+							<% if profile.email.present? %>
+							<li class="list-inline-item"><a class="btn btn-outline-accent" href="mailto:<%= profile.email %>">Send Email</a></li>
+							<% end %>
 						</ul>
 					</div>
 
