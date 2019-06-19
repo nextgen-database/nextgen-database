@@ -113,10 +113,13 @@
 
 			}
 
+			// md and below
+			@media screen and (max-width: $break-lg) {
 
+				padding: 30px 5px 30px 0px;
+				//background: black;
+
+			}
 		}
-
-
-
 	}
 }
