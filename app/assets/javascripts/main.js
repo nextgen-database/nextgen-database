@@ -5,8 +5,10 @@
  *
  */
 
-// Run this when JQuery is ready
-jQuery(document).ready(function ($) {
+// Normally run this when JQuery is ready, however to make
+// it work with tubolinks we have to not run on jquery ready
+// but rather run when turbolinks page load event fires
+document.addEventListener("turbolinks:load", function() {
 
 	// Activate the mobile menu
 	mobileMenu.init({
