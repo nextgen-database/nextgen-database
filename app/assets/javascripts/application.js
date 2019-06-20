@@ -12,9 +12,9 @@
 //
 //
 //= require jquery3
-//= require bootstrap.bundle.min.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require bootstrap.bundle.min.js
 //= require cocoon
 //= require_tree .
