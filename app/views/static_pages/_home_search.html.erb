@@ -20,13 +20,27 @@
 								</div>
 
 								<div class="col-3 my-1">
-								<!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
+								<!-- <label class="mr-sm-2" for="inlineFormCustomSelect">SDGs:</label> -->
 								<select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
-									<option selected>All SDGs...</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+									<option value="0" selected>All SDGs...</option>
+									<% SustainableDevelopmentGoal.all.each do |sdg| %>
+										<option value="<%= sdg.id %>"><%= sdg.banner_en %> (<%= sdg.code %>)</option>
+									<% end %>
 								</select>
+
+
+
+
+
+								<% if I18n.locale == :en %>
+
+
+
+									<% collection_select(:profile, :profile_id, SustainableDevelopmentGoal.all, :id, :title_en, { :multiple => false } , {:class=>'custom-select custom-select-lg form-control mr-sm-2'}) %>
+								<% elsif I18n.locale == :fr %>
+									<% collection_select(:profile, :profile_id, SustainableDevelopmentGoal.all, :id, :title_fr, { :multiple => false } , {:class=>'custom-select custom-select-lg form-control mr-sm-2'}) %>
+								<% end %>
+
 								</div>
 								<div class="col-3">
 									<button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
