@@ -136,6 +136,26 @@
 								</ul>
 							</dd>
 
+							<%#
+								View Countries
+							#%>
+							<dt>Countries:</dt>
+							<dd>
+								<ul class="list-inline">
+									<% if (profile.countries.length <= 0) %>
+										<li class="list-inline-item">No countries listed</li>
+									<% elsif %>
+										<% profile.countries.each do |country| %>
+											<% if I18n.locale == :en %>
+												<li class="list-inline-item"><%= country.english %></li>
+											<% elsif I18n.locale == :fr %>
+												<li class="list-inline-item"><%= country.french %></li>
+											<% end %>
+										<% end %>
+									<% end %>
+								</ul>
+							</dd>
+
 						</dl>
 					</div>
 
