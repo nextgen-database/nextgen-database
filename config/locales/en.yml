@@ -58,8 +58,8 @@ en:
 
   home:
     search:
-      heading: "Find a global development researcher in Canada."
-      blurb: "This is a searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to international development and humanitarian assistance. Find researchers or practitioner-researchers to collaborate with!"
+      heading: "Find a global development researcher in Canada"
+      blurb: "This is a unique searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to global and national development. The NextGen Database also maps areas of research to the Agenda 2030 and the SDGs. It identifies how researchers in Canada contribute to the implementation and understanding of the SDGs. Find researchers or practitioner-researchers to collaborate with!"
       placeholder: "Enter name, sector, organisation"
     partners:
       heading: "Our Partners"
@@ -86,19 +86,19 @@ en:
     target:
       heading: "Using the NextGen Database"
       find-card:
-        title: "Find a Researcher"
-        body-text: "Nostrud tempor ea ex pariatur ipsum ipsum labore veniam enim. Sit sunt culpa consectetur nisi enim aute incididunt ad et culpa. Velit ipsum magna non ex irure ea."
+        title: "Find a researcher"
+        body-text: "Use the search tool to find a researcher based in Canada working on global and national sustainable development issues. Try the SDG filter!"
         link-text: "Search the database"
       add-card:
         title: "Add your name"
-        body-text: "Exercitation amet laborum Lorem dolore ex non aute in occaecat culpa eu. In ea exercitation mollit laborum voluptate magna sint consectetur elit do. Ullamco cillum fugiat velit dolore eiusmod fugiat esse eu officia pariatur dolore. Aliquip adipisicing incididunt magna excepteur quis cillum labore dolor duis."
+        body-text: "Help media, students, researchers, civil society organizations, and policy-makers find out about your work and connect."
         link-text: "Create a profile"
       learn-card:
         title: "Learn more"
-        body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
+        body-text: "Learn more about the NextGen Database, the program that created this tool, and the partners involved."
       link-text: "About the database"
     sdg-nav:
-      heading: "Search by Sustainable Development Goal"
-      sub-heading: "Sint in aute nulla dolor ut"
+      heading: "Find a researcher by Sustainable Development Goal"
+      sub-heading: "The NextGen Database allows you to link research in Canada to relevant Sustainable Development Goals (SDGs) by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
 
   hello: "Hello world"
