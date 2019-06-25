@@ -79,6 +79,52 @@
 
 	<br />
 
+	<%#
+		Add Countries
+	#%>
+
+	<%= label_tag(:country_ids, "Countries:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :country_ids, Country.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :country_ids, Country.all, :id, :french %>
+	<% end %>
+
+
+	<br />
+
+	<%#
+		Add Subregion
+	#%>
+
+	<%= label_tag(:subregion_ids, "Subregions:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :subregion_ids, Subregion.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :subregion_ids, Subregion.all, :id, :french %>
+	<% end %>
+
+
+
+	<br />
+
+	<%#
+		Add Regions
+	#%>
+
+	<%= label_tag(:region_ids, "Regions:") %>
+
+	<% if I18n.locale == :en %>
+  		<%= f.collection_check_boxes :region_ids, Region.all, :id, :english %>
+	<% elsif I18n.locale == :fr %>
+		<%= f.collection_check_boxes :region_ids, Region.all, :id, :french %>
+	<% end %>
+
+	<br />
+
+
 	<h3>Affiliations</h3>
 
 	<div id='affiliations'>

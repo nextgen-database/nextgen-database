@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_020740) do
+ActiveRecord::Schema.define(version: 2019_06_25_040132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2019_06_25_020740) do
     t.index ["title_id"], name: "index_positions_on_title_id"
   end
 
+  create_table "profile_countries", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profile_demographics", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "demographic_id"
@@ -86,6 +93,13 @@ ActiveRecord::Schema.define(version: 2019_06_25_020740) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_regions", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profile_research_methods", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "research_method_id"
@@ -96,6 +110,13 @@ ActiveRecord::Schema.define(version: 2019_06_25_020740) do
   create_table "profile_sectors", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "sector_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_subregions", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "subregion_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

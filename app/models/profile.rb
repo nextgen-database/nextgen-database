@@ -14,6 +14,15 @@ class Profile < ApplicationRecord
 	has_many :profile_research_methods
 	has_many :research_methods, through: :profile_research_methods
 
+	has_many :profile_countries
+	has_many :countries, through: :profile_countries
+
+	has_many :profile_subregions
+	has_many :subregions, through: :profile_subregions
+
+	has_many :profile_regions
+	has_many :regions, through: :profile_regions
+
 	has_many :affiliations, inverse_of: :profile
 
 	# This is for the cocoon gem and nested forms

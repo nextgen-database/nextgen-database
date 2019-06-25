@@ -1,4 +1,4 @@
-class Country < ApplicationRecord
+class Subregion < ApplicationRecord
 
 	validates :english, presence: true
 	validates :french, presence: true

@@ -94,7 +94,7 @@ subregions_list = [
 
 # Function to only add unique values
 subregions_list.each do |s|
-	Region.find_or_create_by(english: s[:english], french: s[:french] )
+	Subregion.find_or_create_by(english: s[:english], french: s[:french] )
 end
 
 

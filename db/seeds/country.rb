@@ -1006,7 +1006,7 @@ countries_list = [
 
 # Function to only add unique values
 countries_list.each do |s|
-	Region.find_or_create_by(english: s[:english], french: s[:french] )
+	Country.find_or_create_by(english: s[:english], french: s[:french] )
 end
 
 
