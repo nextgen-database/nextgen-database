@@ -4,10 +4,15 @@
 		<div class="container-fluid">
 			<div class="container">
 
-				<div class="row">
-					<div class="col-md-10">
+				<div class="row justify-content-center align-items-center pb-5">
+					<div class="col-lg-4 col-md-6 col-lg-4 my-md-5 mt-0 order-md-2">
 
-						<h2 class="display-3 font-weight-normal"><%= t('home.search.heading') %></h2>
+						<%= image_tag("sdg-logo/sdg-logo.png", alt: "", class: "img-fluid") %>
+
+					</div>
+					<div class="col-lg-8 col-9 col-md-4  pt-5 pt-md-0">
+
+						<h2 class="display-4 font-weight-normal"><%= t('home.search.heading') %></h2>
 
 						<p class="lead font-weight-normal py-5"><%= t('home.search.blurb') %></p>
 
@@ -35,6 +40,7 @@
 						</form>
 
 					</div>
+
 				</div>
 
 			</div>
