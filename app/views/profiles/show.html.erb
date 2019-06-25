@@ -188,6 +188,66 @@
 				</ul>
 			</dd>
 
+			<%#
+				View Research Methods
+			#%>
+			<dt>Countries:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.countries.length <= 0) %>
+						<li class="list-inline-item">No countries listed</li>
+					<% elsif %>
+						<% @profile.countries.each do |country| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= country.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= country.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+			<%#
+				View Subregions
+			#%>
+			<dt>Subregions:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.subregions.length <= 0) %>
+						<li class="list-inline-item">No subregions listed</li>
+					<% elsif %>
+						<% @profile.subregions.each do |subregion| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= subregion.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= subregion.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
+			<%#
+				View Regions
+			#%>
+			<dt>Subregions:</dt>
+			<dd>
+				<ul class="list-inline">
+					<% if (@profile.regions.length <= 0) %>
+						<li class="list-inline-item">No regions listed</li>
+					<% elsif %>
+						<% @profile.regions.each do |region| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= region.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= region.french %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</dd>
+
 
 
 
