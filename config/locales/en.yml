@@ -96,7 +96,7 @@ en:
       learn-card:
         title: "Learn more"
         body-text: "Learn more about the NextGen Database, the program that created this tool, and the partners involved."
-      link-text: "About the database"
+        link-text: "About the database"
     sdg-nav:
       heading: "Find a researcher by Sustainable Development Goal"
       sub-heading_html: "The NextGen Database allows you to link research in Canada to relevant <a href='https://sustainabledevelopment.un.org/?menu=1300'>Sustainable Development Goals (SDGs)</a> by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
