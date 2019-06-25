@@ -71,6 +71,26 @@
 	<section>
 		<h3>Affiliations</h3>
 
+		<ul>
+
+		<% @profile.affiliations.each do |affiliation| %>
+			<li>
+		<% if I18n.locale == :en %>
+			<%= affiliation.organisation.english %>
+				<% affiliation.positions.each do |position| %>
+					<%= position.department_en %>
+					<%= position.faculty_en %>
+					<%= position.title.english %>
+			<% end %>
+		<% elsif I18n.locale == :fr %>
+			<%= affiliation.organisation.french %>
+			</li>
+		<% end %>
+
+		</ul>
+
+	<% end %>
+
 
 	</section>
 
