@@ -1,26 +1,26 @@
 
 <h1 name="cont" id="cont">Search Profiles:</h1>
 
-<form>
-    <div class="form-row align-items-center">
-        <div class="col-6">
-            <input type="text" class="form-control form-control-lg" placeholder="<%= t('home.search.placeholder') %>">
-        </div>
-
-        <div class="col-3 my-1">
-        <!--<label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>-->
-        <select class="custom-select custom-select-lg form-control mr-sm-2" id="inlineFormCustomSelect">
-            <option selected>All SDGs...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        </div>
-        <div class="col-3">
-            <button type="submit" class="btn btn-lg btn-success mb-2 btn-block">Search</button>
-        </div>
-    </div>
-</form>
+<%= form_tag(profiles_path, method: "get") do %>
+	<div class="form-row align-items-center">
+			<div class="col-6">
+				<%= text_field_tag 'q', nil,  :value => @search_parameters['query']  , placeholder: t('home.search.placeholder'), class: "form-control form-control-lg"  %>
+			</div>
+			<div class="col-3 my-1">
+				<select class="custom-select custom-select-lg form-control mr-sm-2" name="a">
+					<option value="0" selected><%= t('home.search.sdg_dropdown.') %></option>
+						<% if I18n.locale == :en %>
+							<%= options_from_collection_for_select(SustainableDevelopmentGoal.all, :id, :banner_en, @search_parameters['primary_sdg'] ) %>
+						<% elsif I18n.locale == :fr %>
+							<%= options_from_collection_for_select(SustainableDevelopmentGoal.all, :id, :banner_fr, @search_parameters['primary_sdg'] ) %>
+						<% end %>
+				</select>
+			</div>
+			<div class="col-3">
+				<%= submit_tag 'Search',  { name: nil , class: "btn btn-lg btn-success mb-2 btn-block" }  %>
+        	</div>
+	</div>
+<% end %>
 
 <hr />
 
