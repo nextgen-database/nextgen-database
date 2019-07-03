@@ -11,6 +11,8 @@ gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 gem 'pg', '>= 0.18', '< 2.0'
 # Devise for user / admin authentication
 gem 'devise'
+# Need to seperately add bcrypt because Windows issue
+gem 'bcrypt', platforms: :ruby
 # Use jQuery because Bootstrap requires it
 gem 'jquery-rails'
 # Ensure that sprockets-rails is at least v2.3.2.

@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 		get '/home', to: 'static_pages#home', as: 'home'
 		get '/about', to: 'static_pages#about', as: 'about'
 
+		get '/account', to: 'account#index', as: 'account'
+
+
 		resources :profiles
 
 		# SETUP THE ADMIN SECTION

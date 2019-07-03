@@ -99,4 +99,8 @@ fr:
         body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
         link-text: "About the database"
 
+  account:
+    index:
+      heading: "Mon Account"
+
   hello: "French for Hello world"
