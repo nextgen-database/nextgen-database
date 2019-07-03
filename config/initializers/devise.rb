@@ -115,6 +115,9 @@ Devise.setup do |config|
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '3553608a40f21de395323ae067364dd2ab02c9b40d32298a1d21bace065499e6b257c9c4dc55ba3237a1c33cff8d1af2bb67ab8cae9d92151b10da80c653531c'
+  # Pepper copied from existing repository
+  config.pepper = '57b44bb8d0dc4d6dfc0e095c01b7d83909d5bfd626e0daddbc13b43ad6cea01862252b9b43116ccb1e9a354b7bf1c773253a46a80fff5c5f3b486888997703e7'
+
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -162,7 +165,8 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  # config.rememberable_options = {}
+  # Bring this inline with existing Next Gen settings
+  config.rememberable_options = {secure: true}
 
   # ==> Configuration for :validatable
   # Range for password length.
