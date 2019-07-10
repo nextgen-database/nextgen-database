@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  	devise_for :users
+#	devise_for :users
+
 	#
     # Use the following resource to sort out routes
     # https://dhampik.com/blog/rails-routes-tricks-with-locales
@@ -15,7 +16,19 @@ Rails.application.routes.draw do
 		get '/home', to: 'static_pages#home', as: 'home'
 		get '/about', to: 'static_pages#about', as: 'about'
 
-		get '/account', to: 'account#index', as: 'account'
+		#get '/account', to: 'account#index', as: 'account'
+
+		#devise_for :users,
+		#	path: 'account'
+
+		devise_for :users
+
+
+		# My Account Routes
+		get ':account', to: 'account#show', as: :account
+		get ':account/edit', to: 'account#edit', as: :edit_account
+		patch ':account/edit', to: 'account#update', as: :update_account
+
 
 
 		resources :profiles

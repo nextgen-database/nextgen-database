@@ -1,10 +1,17 @@
-<h1><%= t('account.index.heading') %></h1>
+<h1><%= t('account.show.heading') %></h1>
 
-<nav class="nav flex-column">
-	<a class="nav-link active" href="#">Profile Informaton</a>
-	<a class="nav-link" href="#">Account Settings</a>
-	<a class="nav-link" href="#">Delete Account</a>
-</nav>
+<section>
+	<h2>Account Information</h2>
+
+
+
+	<dl class="row">
+		<dt class="col-sm-3">Account Email:</dt>
+		<dd class="col-sm-9"><%= @user.email %></dd>
+	</dl>
+
+</section>
+
 
 <section>
 	<h2>Profile Information</h2>
@@ -23,17 +30,20 @@
 	  #%>
 
 
-</section>
 
 
-<section>
-	<h2>Account Settings</h2>
 
-	<%= @user %>
 
 </section>
 
 <section>
-	<h2>Delete Account</h2>
+	<h2 class="sr-only">Edit Account</h2>
+
+	<%= link_to "Edit Account", edit_account_path, :class => "btn btn-large btn-primary" %>
+
+</section>
+
+<section>
+
 
 </section>
