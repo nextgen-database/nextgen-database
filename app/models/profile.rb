@@ -31,6 +31,7 @@ class Profile < ApplicationRecord
 	has_many :profile_sustainable_development_goals
 	has_many :sustainable_development_goals, through: :profile_sustainable_development_goals
 
+	belongs_to :user
 
 
 	#

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+	has_one :profile
+
 	# Setup two roles, user and admin
 	enum role: [:user, :admin]
 
