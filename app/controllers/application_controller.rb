@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    # Config default locale handing 
+    # Config default locale handing
     # https://dev.to/morinoko/setting-up-i18n-for-rails-with-locales-from-url-params-38pg
     # We want the following paths:
     #       http://domain.com/en/stuff
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 
     def default_url_options
         { locale: I18n.locale }
-    end
+	end
+
+	def after_sign_in_path_for(resource)
+		stored_location_for(resource) || account_path
+	end
 
 end

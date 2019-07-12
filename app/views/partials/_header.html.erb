@@ -52,16 +52,19 @@
 						<%#
 							TO DO: Add a button to the my profile page (when it's created)
 						%>
-						<li>
-							<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary" ) %>
-						</li>
+							<li>
+								<%= link_to('My Account', account_path, :class=>"btn btn-outline-primary" ) %>
+							</li>
+							<li>
+								<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary ml-lg-2" ) %>
+							</li>
 						<% else %>
-						<li class="link-show-btn-outline-primary">
-							<%= link_to('Sign in', new_user_session_path)  %>
-						</li>
-						<li class="link-show-btn-primary ml-lg-2">
-							<%= link_to('Register', new_user_registration_path ) %>
-						</li>
+							<li class="link-show-btn-outline-primary">
+								<%= link_to('Sign in', new_user_session_path)  %>
+							</li>
+							<li class="link-show-btn-primary ml-lg-2">
+								<%= link_to('Register', new_user_registration_path ) %>
+							</li>
 						<% end %>
 					</ul>
 
