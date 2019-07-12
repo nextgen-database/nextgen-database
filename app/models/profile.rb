@@ -28,6 +28,11 @@ class Profile < ApplicationRecord
 	# This is for the cocoon gem and nested forms
 	accepts_nested_attributes_for :affiliations, reject_if: :all_blank, allow_destroy: true
 
+	#has_many :affiliation_positions
+	has_many :positions, through: :affiliations
+
+
+
 	has_many :profile_sustainable_development_goals
 	has_many :sustainable_development_goals, through: :profile_sustainable_development_goals
 

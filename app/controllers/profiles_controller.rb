@@ -81,19 +81,56 @@ class ProfilesController < ApplicationController
 
 			# Do user things
 
-			# Check if a profile exists already
-			if Profile.exists?(user_id: @user.id)
+			# Does a profile exist on the parameter profile ID
+			if Profile.exists?(params[:id])
 
-				# Load profile
-				@profile = Profile.find_by(user_id: @user.id)
+				# Does exactly one profile exist for this user
+				@profile_ids_from_user_id = Profile.where(user_id: @user.id).pluck(:id)
+
+
+				logger.debug "profile_ids_from_user_id: #{@profile_ids_from_user_id}"
+				logger.debug "params[:id]: #{params[:id]}"
+
+				# The array count for the profile ids should be 1
+				#  If it isn't 1,
+				#   either the user has too many profiles which
+				#   shouldn't exist or
+				#   the user doesn't have any profiles and ending up here by accident
+				if @profile_ids_from_user_id.length == 1
+
+					logger.debug "I am here: #{@profile_ids_from_user_id[0]}"
+
+					# Great, we found one profile that belongs to a user
+					# Does it match the current parameter ID?
+					if params[:id].to_s == @profile_ids_from_user_id[0].to_s
+
+						logger.debug "Now I am here: #{@profile_ids_from_user_id[0]}"
+
+						# Load profile
+						@profile = Profile.find_by(user_id: @user.id)
+
+					else
+
+						redirect_to account_path
+
+					end
+
+
+				else
+
+					redirect_to account_path
+
+				end
+
 
 			else
-				# No profile associated to the account - you shouldn't
-				#  be on the edit profiles page.
+
+				# No profile associated to the parameter ID
 				# Redirec the user to the main account page.
 				redirect_to account_path
 
 			end
+
 
 		end
 
@@ -103,6 +140,8 @@ class ProfilesController < ApplicationController
 
 	# Create function to save the sector into the DB
 	def create
+
+		# Check if an authorised user is logged in
 
 		@profile = Profile.new(profile_params)
 
@@ -114,20 +153,31 @@ class ProfilesController < ApplicationController
       		redirect_to account_path
     	else
       		flash[:alert] = "Error creating new post!"
-      		render :new
+			redirect_to new_profile_path
     	end
 	end
 
 	# Update action updates the post with the new information
 	def update
 
+		# Set the current user
+		@user = current_user
+
+		# Expose whether the user is an admin or not
+		@userisadmin = @user.admin?
+
+		# Load profile
+		@profile = Profile.find_by(user_id: @user.id)
+
+		# Update profile
 		if @profile.update_attributes(profile_params)
-		  flash[:notice] = "Successfully updated post!"
-		  redirect_to account_path
+			flash[:notice] = "Successfully updated post!"
+			redirect_to account_path
 		else
-		  flash[:alert] = "Error updating post!"
-		  redirect_to edit_profile_path
+			flash[:alert] = "Error updating post!"
+			redirect_to edit_profile_path
 		end
+
 	end
 
 

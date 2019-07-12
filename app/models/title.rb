@@ -5,6 +5,4 @@ class Title < ApplicationRecord
 
 	has_one :position
 
-	accepts_nested_attributes_for :position, reject_if: :all_blank, allow_destroy: true
-
 end
