@@ -1,0 +1,70 @@
+<h1><%= t('account.show.heading') %></h1>
+
+<section>
+	<h2>Account Information</h2>
+
+
+
+	<dl class="row">
+		<dt class="col-sm-3">Account Email:</dt>
+		<dd class="col-sm-9"><%= @user.email %></dd>
+	</dl>
+
+	<%= link_to "Change your password", edit_user_registration_path %>
+
+</section>
+
+
+<section>
+	<h2>Profile Information</h2>
+
+	<%#
+	  # If the user has a profile then display some
+	  # profile information with an edit button
+	  #
+	  # If the user doesn't have a profile show links
+	  # to create a new profile or drop down to claim
+	  # a profile and a submit button
+	  #
+	  # If a profile is in the process of being claimed
+	  # then show that and the status of the claim
+	  #
+	  #%>
+
+	<% if @valid_profile %>
+
+
+		<dl class="row">
+			<dt class="col-sm-3">Profile Email:</dt>
+			<dd class="col-sm-9"><%= @user_profile.email %></dd>
+
+			<dt class="col-sm-3">Profile First Name:</dt>
+			<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+
+			<dt class="col-sm-3">Profile Last Name:</dt>
+			<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
+		</dl>
+
+		<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
+
+
+		<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
+
+
+
+	<% else %>
+
+		<h2>We don't have a valid profile accociated with this user</h2>
+
+		<p>Press New Profile below to add a new profile or claim an existing profile</p>
+
+		<%= link_to "New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
+
+		<p>Or select an existing profile to claim</p>
+
+		<p>....</p>
+
+	<% end %>
+
+
+</section>

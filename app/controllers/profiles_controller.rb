@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
 
+	# Make sure a user is authenticated when adding a new profile
+	#  and editing a profile
+	# before_action :authenticate_user!, except: [ :index, :show ]
+
 	def index
 
 		# setup all of the search parameters and expose them to the view
@@ -14,7 +18,37 @@ class ProfilesController < ApplicationController
 	# New action for creating a new profile
 	def new
 
-		@profile = Profile.new
+		@user = current_user
+
+		# Expose whether the user is an admin or not
+		@userisadmin = @user.admin?
+
+		# Check if a profile exists - if not send them back to account screen - unless they are admins
+
+		# If the user is an admin
+		if @userisadmin
+
+			# Do admin things
+
+		else
+
+			# Do user things
+
+			# Check if a profile exists already
+			if Profile.exists?(user_id: @user.id)
+
+				# Load profile
+				redirect_to edit_profile_path(Profile.find_by(user_id: @user.id).id)
+
+			else
+				# No profile associated to the account -
+				#  we are clear to create a new one
+
+				@profile = Profile.new
+
+			end
+
+		end
 
 	end
 
@@ -27,18 +61,73 @@ class ProfilesController < ApplicationController
 
 	end
 
+	# Show function to display a single profile from the DB
+	def edit
+
+		# Set the current user
+		@user = current_user
+
+		# Expose whether the user is an admin or not
+		@userisadmin = @user.admin?
+
+		# Check if a profile exists - if not send them back to account screen - unless they are admins
+
+		# If the user is an admin
+		if @userisadmin
+
+			# Do admin things
+
+		else
+
+			# Do user things
+
+			# Check if a profile exists already
+			if Profile.exists?(user_id: @user.id)
+
+				# Load profile
+				@profile = Profile.find_by(user_id: @user.id)
+
+			else
+				# No profile associated to the account - you shouldn't
+				#  be on the edit profiles page.
+				# Redirec the user to the main account page.
+				redirect_to account_path
+
+			end
+
+		end
+
+
+	end
+
+
 	# Create function to save the sector into the DB
 	def create
 
 		@profile = Profile.new(profile_params)
 
+		# Add the current user id to the profile
+		@profile.user_id = current_user.id
+
    		if @profile.save
       		flash[:notice] = "Successfully created post!"
-      		redirect_to profiles_path
+      		redirect_to account_path
     	else
       		flash[:alert] = "Error creating new post!"
       		render :new
     	end
+	end
+
+	# Update action updates the post with the new information
+	def update
+
+		if @profile.update_attributes(profile_params)
+		  flash[:notice] = "Successfully updated post!"
+		  redirect_to account_path
+		else
+		  flash[:alert] = "Error updating post!"
+		  redirect_to edit_profile_path
+		end
 	end
 
 

@@ -1,11 +1,11 @@
 <div class='nested-fields'>
 
-	<%= label_tag(:title_ids, "Position Title:") %>
+	<%= label_tag("Position Title:") %>
 
 	<% if I18n.locale == :en %>
-		<%= f.collection_select :title_id, Title.all ,:id,:english %>
+		<%= f.collection_select :title_id, Title.all ,:id, :english %>
 	<% elsif I18n.locale == :fr %>
-		<%= f.collection_select :title_id, Title.all ,:id,:french %>
+		<%= f.collection_select :title_id, Title.all ,:id, :french %>
 	<% end %>
 
 	<br />

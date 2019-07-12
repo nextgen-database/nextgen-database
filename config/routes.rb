@@ -12,25 +12,19 @@ Rails.application.routes.draw do
 
 	scope "/:locale", locale: /#{I18n.available_locales.join("|")}/ do
 		root to: redirect("/%{locale}/home", status: 302)
-		#get '/profiles', to: 'profiles#index', as: 'profiles'
+		# The home page
 		get '/home', to: 'static_pages#home', as: 'home'
+
+		# The about page
 		get '/about', to: 'static_pages#about', as: 'about'
 
-		#get '/account', to: 'account#index', as: 'account'
-
-		#devise_for :users,
-		#	path: 'account'
-
+		# Devise authentication routes
 		devise_for :users
 
+		# My Account page
+		get '/account', to: 'account#index', as: 'account'
 
-		# My Account Routes
-		get ':account', to: 'account#show', as: :account
-		get ':account/edit', to: 'account#edit', as: :edit_account
-		patch ':account/edit', to: 'account#update', as: :update_account
-
-
-
+		# Everything to do with profiles
 		resources :profiles
 
 		# SETUP THE ADMIN SECTION

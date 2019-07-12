@@ -106,6 +106,8 @@ en:
     show:
       heading: "My Account"
     edit:
-      heading: "Edit My Account"
+      heading: "Edit My Profile"
+    new:
+      heading: "Create a New Profile"
 
   hello: "Hello world"

@@ -2,24 +2,31 @@
 
 	<%= label_tag(:organisation_ids, "Affiliation Organisations:") %>
 
-	<% if I18n.locale == :en %>
-		<%= f.collection_select :organisation_id, Organisation.all ,:id,:english %>
-	<% elsif I18n.locale == :fr %>
-		<%= f.collection_select :organisation_id, Organisation.all ,:id,:french %>
-	<% end %>
+	<div class="form-group">
+		<% if I18n.locale == :en %>
+			<%= f.collection_select :organisation_id, Organisation.all ,:id,:english, {}, { class: "form-control" } %>
+		<% elsif I18n.locale == :fr %>
+			<%= f.collection_select :organisation_id, Organisation.all ,:id,:french, class: "form-control" %>
+		<% end %>
+	</div>
 
-	<div id='positions'>
-    	<%= f.fields_for :affiliation_positions do |position| %>
-      		<%= render 'position_fields', :f => position %>
-    	<% end %>
+	<% if false %>
+	<div class="row" id='positions'>
+		<div class="col-md-11 offset-md-1">
+			<%= f.fields_for :affiliation_positions do |position| %>
+				<%= render 'position_fields', :f => position %>
+			<% end %>
 
-		<div class='links'>
-      		<%= link_to_add_association 'add position', f, :positions %>
-    	</div>
+			<div class='links'>
+				<%= link_to_add_association 'add position', f, :positions %>
+			</div>
+		</div>
   	</div>
+	<% end %>
 
 	<br />
 
-    <%= link_to_remove_association "remove affiliation", f %>
-
+	<div class="border-bottom py-3">
+    	<%= link_to_remove_association "remove affiliation", f , class: "btn btn-outline-danger" %>
+	</div>
 </div>
