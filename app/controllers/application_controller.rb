@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
         { locale: I18n.locale }
 	end
 
+    # After someone signs in send them to the account page
+    # TODO: If the user is an admin send them to the admin panel
 	def after_sign_in_path_for(resource)
 		stored_location_for(resource) || account_path
 	end
