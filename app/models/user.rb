@@ -1,6 +1,9 @@
 class User < ApplicationRecord
 
 	has_one :profile
+	has_many :profile_requests, dependent: :destroy
+	has_many :profile_approvals, class_name: 'ProfileRequest', inverse_of: 'approver', dependent: :destroy
+
 
 	# Setup two roles, user and admin
 	enum role: [:user, :admin]

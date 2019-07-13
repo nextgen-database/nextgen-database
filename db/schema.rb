@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_10_181737) do
+ActiveRecord::Schema.define(version: 2019_07_13_155143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,18 @@ ActiveRecord::Schema.define(version: 2019_07_10_181737) do
     t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
+    t.integer "status", default: 0
+    t.integer "approver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_requests_on_profile_id"
+    t.index ["status"], name: "index_profile_requests_on_status"
+    t.index ["user_id"], name: "index_profile_requests_on_user_id"
   end
 
   create_table "profile_research_methods", force: :cascade do |t|
@@ -220,6 +232,8 @@ ActiveRecord::Schema.define(version: 2019_07_10_181737) do
   add_foreign_key "affiliations", "organisations"
   add_foreign_key "affiliations", "profiles"
   add_foreign_key "positions", "titles"
+  add_foreign_key "profile_requests", "profiles"
+  add_foreign_key "profile_requests", "users"
   add_foreign_key "profile_sustainable_development_goals", "profiles"
   add_foreign_key "profile_sustainable_development_goals", "sustainable_development_goals"
   add_foreign_key "profiles", "users"
