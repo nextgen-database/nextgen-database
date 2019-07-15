@@ -16,5 +16,6 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap.bundle.min.js
+//= require select2.min.js
 //= require cocoon
 //= require_tree .
