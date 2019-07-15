@@ -34,6 +34,12 @@ class AccountController < ApplicationController
 			# Create a list of user profile requests that are not set yet
 			@user_profile_requests_not_set = @user.profile_requests.status_not_set
 
+			if @user_profile_requests_not_set.blank?
+
+				@available_profiles_collection = Profile.all
+
+			end
+
 			logger.debug "User Profile Requests Not Set: #{@user_profile_requests_not_set}"
 
 			# Create a list of user profile requests that are denied

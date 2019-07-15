@@ -38,6 +38,11 @@ class Profile < ApplicationRecord
 	accepts_nested_attributes_for :affiliations, reject_if: :all_blank, allow_destroy: true
 
 
+	def full_name
+		"#{firstname} #{middlename} #{lastname}"
+	end
+
+
 	#
 	# Setup scopes for search
 	#

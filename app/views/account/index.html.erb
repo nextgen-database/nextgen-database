@@ -1,131 +1,197 @@
 <h1><%= t('account.show.heading') %></h1>
 
 <section>
-	<h2>Account Information</h2>
-
-
-
-	<dl class="row">
-		<dt class="col-sm-3">Account Email:</dt>
-		<dd class="col-sm-9"><%= @user.email %></dd>
-	</dl>
-
-	<%= link_to "Change your password", edit_user_registration_path %>
-
-</section>
-
-
-<section>
-	<h2>Profile Information</h2>
-
-	<%#
-	  # If the user has a profile then display some
-	  # profile information with an edit button
-	  #
-	  # If the user doesn't have a profile show links
-	  # to create a new profile or drop down to claim
-	  # a profile and a submit button
-	  #
-	  # If a profile is in the process of being claimed
-	  # then show that and the status of the claim
-	  #
-	  #%>
-
-	<% if @valid_profile %>
-
-
-		<dl class="row">
-			<dt class="col-sm-3">Profile Email:</dt>
-			<dd class="col-sm-9"><%= @user_profile.email %></dd>
-
-			<dt class="col-sm-3">Profile First Name:</dt>
-			<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
-
-			<dt class="col-sm-3">Profile Last Name:</dt>
-			<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
-		</dl>
-
-		<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
-
-
-		<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
-
-
-
-	<% else %>
-
-		<h2>We don't have a valid profile accociated with this user</h2>
-
-		<p>Press New Profile below to add a new profile or claim an existing profile</p>
-
-		<%= link_to "New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
-
-		<p>Or select an existing profile to claim</p>
-
-		<p>....</p>
+	<div class="border-top mt-5">
+		<h2>Profile Information</h2>
 
 		<%#
-			If all of the profile requests for the user that are not set or denied
-			When do we show the request profile form?
-			We show it when there isn't an outstanding not set
+		# If the user has a profile then display some
+		# profile information with an edit button
+		#
+		# If the user doesn't have a profile show links
+		# to create a new profile or drop down to claim
+		# a profile and a submit button
+		#
+		# If a profile is in the process of being claimed
+		# then show that and the status of the claim
+		#
 		#%>
-		<% if @user_profile_requests_not_set.blank? %>
 
-			THere are no Profile Requests That are not set so show the profile request form:
+		<% if @valid_profile %>
 
-			<%= form_for [:admin, ProfileRequest.new] do |f| %>
 
-			 	<%= f.select :profile_id, options_from_collection_for_select(Profile.order(:lastname), :id, :firstname), { include_blank: true }, { class: 'form-control input-text-field input-lg', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
+			<dl class="row">
+				<dt class="col-sm-3">Profile Email:</dt>
+				<dd class="col-sm-9"><%= @user_profile.email %></dd>
 
-				  <%= f.submit "Post", class: "btn btn-primary" %>
+				<dt class="col-sm-3">Profile First Name:</dt>
+				<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+
+				<dt class="col-sm-3">Profile Last Name:</dt>
+				<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
+			</dl>
+
+			<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
+
+
+			<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
+
+
+
+		<% else %>
+
+
+			<%#
+				State Machine:
+
+				State A: The user doesn't have any profile request
+						 Show them the create profile button
+						 Show them the profile request block
+
+				State B: The user has a request that is in a not set state
+						 Show them the request with the cancel buttom
+						 Disable the new profile buttom
+
+				State C: The user has a request that was denied
+						 Show them the request/s that was denied
+						 Show them the create profile button
+			#%>
+
+
+
+
+
+			<%#
+				If all of the profile requests for the user that are not set or denied
+				When do we show the request profile form?
+				We show it when there isn't an outstanding not set
+			#%>
+
+			<% if @user_profile_requests_not_set.blank? %>
+
+				<div class="card my-3">
+					<div class="card-body">
+						<h4 class="card-title">Step 1 - Check if your profile was created for you</h4>
+
+							<%= form_for [:admin, ProfileRequest.new] do |f| %>
+
+
+								<div class="form-group">
+
+									<%= label_tag(:profile_id, "Profile Name:") %>
+
+									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'form-control', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
+								</div>
+
+
+
+								<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
+
+							<% end %>
+
+					</div>
+				</div>
+
+				<div class="card my-3">
+					<div class="card-body">
+						<h4 class="card-title">Step 2 - Don't see your name? Create a new profile</h4>
+
+							<p>Create a new profile by clicking the button below.</p>
+
+							<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
+
+					</div>
+				</div>
+
+
+
+
+			<% end %>
+
+			<%#
+				List all of the profile requests for the user that are not set or denied
+			#%>
+			<% if !@user_profile_requests_not_set.blank? %>
+
+				<p>The following profile requests are pending:</p>
+
+				<table class="table">
+					<thead>
+						<tr>
+						<th scope="col">User Account</th>
+						<th scope="col">Profile Name</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @user_profile_requests_not_set.each do |profile_request| %>
+							<tr>
+							<td scope="row"><%= @user.email %></td>
+							<td><%= profile_request.profile_id %></td>
+							<td>Pending</td>
+							<td>
+								<%= form_for [:admin, profile_request] do |f| %>
+
+									<%#= render 'shared/error_messages', object: f.object #%>
+									<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+									<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
+								<% end %>
+							</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+			<% end %>
+
+			<% if !@user_profile_requests_denied.blank? %>
+
+				<h3>Denied Profile Requests:</h3>
+
+				<table class="table">
+					<thead>
+						<tr>
+						<th scope="col">User Account</th>
+						<th scope="col">Profile Name</th>
+						<th scope="col">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @user_profile_requests_denied.each do |profile_request| %>
+							<tr>
+							<td scope="row"><%= @user.email %></td>
+							<td><%= profile_request.profile_id %></td>
+							<td>Denied</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
 
 			<% end %>
 
 
-
 		<% end %>
 
-		<%#
-			List all of the profile requests for the user that are not set or denied
-		#%>
-		<% if !@user_profile_requests_not_set.blank? || !@user_profile_requests_denied.blank? %>
-
-			Profile Requests Exist That are not set or denied
-
-			<ul>
-				<% @user_profile_requests_not_set.each do |pr| %>
-					<li>
-						User_id: <%= pr.user_id %> <br />
-						Profile_id: <%= pr.profile_id %> <br />
-						Status: <%= pr.status %> <br />
-						<%= form_for [:admin, pr] do |f| %>
-
-
-							<%#= render 'shared/error_messages', object: f.object #%>
-							<%= f.hidden_field :status, {value: 'user_cancelled'} %>
-
-							<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
-
-
-
-						<% end %>
-
-					</li>
-				<% end %>
-
-				<% @user_profile_requests_denied.each do |profile_request| %>
-					<li>
-						User_id: <%= profile_request.user_id %> <br />
-						Profile_id: <%= profile_request.profile_id %> <br />
-						Status: <%= profile_request.status %> <br />
-					</li>
-				<% end %>
-
-			</ul>
-
-		<% end %>
-
-	<% end %>
-
+	</div>
 
 </section>
+
+<section>
+	<div class="border-top mt-5">
+
+		<h2>Account Information</h2>
+
+		<dl class="row">
+			<dt class="col-sm-3">Account Email:</dt>
+			<dd class="col-sm-9"><%= @user.email %></dd>
+			<dt class="col-sm-3">Account Password:</dt>
+			<dd class="col-sm-9">********</dd>
+		</dl>
+
+		<%= link_to "Edit your account email or password", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
+
+	</div>
+</section>
+
