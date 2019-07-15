@@ -11,19 +11,35 @@
 	<% end %>
 	<br />
 
-	<%= label_tag(:department_en, "Department Name (English):") %>
-	<%= f.text_area :department_en %>
 
-	<%= label_tag(:department_fr, "Department Name (French):") %>
-	<%= f.text_area :department_fr %>
 
-	<br />
+	<div class="form-group">
 
-	<%= label_tag(:faculty_en, "Faculty Name (English):") %>
-	<%= f.text_area :faculty_en %>
+		<%= label_tag(:department_en, "Department Name (English):") %>
+		<%= f.text_field :department_en, class: 'form-control', placeholder: "Name of Department in English" %>
 
-	<%= label_tag(:faculty_fr, "Faculty Name (French):") %>
-	<%= f.text_area :faculty_fr %>
+  	</div>
+
+	<div class="form-group">
+
+		<%= label_tag(:department_fr, "Department Name (French):") %>
+		<%= f.text_field :department_en, class: 'form-control', placeholder: "Name of Department in French" %>
+
+  	</div>
+
+	<div class="form-group">
+
+		<%= label_tag(:faculty_en, "Faculty Name (English):") %>
+		<%= f.text_field :faculty_en, class: 'form-control', placeholder: "Faculty Name in French" %>
+
+  	</div>
+
+	<div class="form-group">
+
+		<%= label_tag(:faculty_fr, "Faculty Name (French):") %>
+		<%= f.text_field :faculty_fr, class: 'form-control', placeholder: "Faculty Name in French" %>
+
+  	</div>
 
 	<br />
 
