@@ -15,4 +15,7 @@ document.addEventListener("turbolinks:load", function() {
 		menuContainerClassName: "ng-navbar-links-container"
 	});
 
+
+	$('.profile-new-country-select2').select2();
+
 });
