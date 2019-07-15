@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 			resources :organisations
 			resources :titles
 			resources :sustainable_development_goals
+			resources :profile_requests
 		end
 
 

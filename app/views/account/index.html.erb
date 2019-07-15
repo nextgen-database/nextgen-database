@@ -64,6 +64,67 @@
 
 		<p>....</p>
 
+		<%#
+			If all of the profile requests for the user that are not set or denied
+			When do we show the request profile form?
+			We show it when there isn't an outstanding not set
+		#%>
+		<% if @user_profile_requests_not_set.blank? %>
+
+			THere are no Profile Requests That are not set so show the profile request form:
+
+			<%= form_for [:admin, ProfileRequest.new] do |f| %>
+
+			 	<%= f.select :profile_id, options_from_collection_for_select(Profile.order(:lastname), :id, :firstname), { include_blank: true }, { class: 'form-control input-text-field input-lg', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
+
+				  <%= f.submit "Post", class: "btn btn-primary" %>
+
+			<% end %>
+
+
+
+		<% end %>
+
+		<%#
+			List all of the profile requests for the user that are not set or denied
+		#%>
+		<% if !@user_profile_requests_not_set.blank? || !@user_profile_requests_denied.blank? %>
+
+			Profile Requests Exist That are not set or denied
+
+			<ul>
+				<% @user_profile_requests_not_set.each do |pr| %>
+					<li>
+						User_id: <%= pr.user_id %> <br />
+						Profile_id: <%= pr.profile_id %> <br />
+						Status: <%= pr.status %> <br />
+						<%= form_for [:admin, pr] do |f| %>
+
+
+							<%#= render 'shared/error_messages', object: f.object #%>
+							<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+							<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
+
+
+
+						<% end %>
+
+					</li>
+				<% end %>
+
+				<% @user_profile_requests_denied.each do |profile_request| %>
+					<li>
+						User_id: <%= profile_request.user_id %> <br />
+						Profile_id: <%= profile_request.profile_id %> <br />
+						Status: <%= profile_request.status %> <br />
+					</li>
+				<% end %>
+
+			</ul>
+
+		<% end %>
+
 	<% end %>
 
 
