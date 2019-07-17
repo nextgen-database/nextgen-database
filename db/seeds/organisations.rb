@@ -179,16 +179,16 @@ organisations_list = [
 		french:"Cape Breton University"
 	},
 	{
-		english:"University of British Columbia ",
-		french:"University of British Columbia "
+		english:"University of British Columbia",
+		french:"University of British Columbia"
 	},
 	{
 		english:"Federation of Canadian Municipalities",
 		french:"Federation of Canadian Municipalities"
 	},
 	{
-		english:"Global Centre for Pluralism ",
-		french:"Global Centre for Pluralism "
+		english:"Global Centre for Pluralism",
+		french:"Global Centre for Pluralism"
 	},
 	{
 		english:"USC Canada",
@@ -223,8 +223,8 @@ organisations_list = [
 		french:"L'Association Québécoise des Organismes de Coopération Internationale (AQOCI)"
 	},
 	{
-		english:"CODE ",
-		french:"CODE "
+		english:"CODE",
+		french:"CODE"
 	},
 	{
 		english:"Victoria International Development Education Association (VIDEA)",
@@ -255,12 +255,12 @@ organisations_list = [
 		french:"Canadian Council for International Cooperation"
 	},
 	{
-		english:"Capilano University ",
-		french:"Capilano University "
+		english:"Capilano University",
+		french:"Capilano University"
 	},
 	{
-		english:"The King's University ",
-		french:"The King's University "
+		english:"The King's University",
+		french:"The King's University"
 	},
 	{
 		english:"Action Canada for Sexual Health and Rights",
@@ -271,8 +271,8 @@ organisations_list = [
 		french:"MacEwan University"
 	},
 	{
-		english:"Islamic Relief Canada ",
-		french:"Islamic Relief Canada "
+		english:"Islamic Relief Canada",
+		french:"Islamic Relief Canada"
 	},
 	{
 		english:"Mt. Allison University",
@@ -303,8 +303,8 @@ organisations_list = [
 		french:"World University Service of Canada"
 	},
 	{
-		english:"Université du Québec à Chicoutimi ",
-		french:"Université du Québec à Chicoutimi "
+		english:"Université du Québec à Chicoutimi",
+		french:"Université du Québec à Chicoutimi"
 	},
 	{
 		english:"School of Oriental and African Studies",
@@ -339,8 +339,8 @@ organisations_list = [
 		french:"Canadian Association for the Study of International Development (CASID)"
 	},
 	{
-		english:"Ideal World ",
-		french:"Ideal World "
+		english:"Ideal World",
+		french:"Ideal World"
   	},
   	{
 		english:"Diamond Development Initiative",
@@ -351,8 +351,8 @@ organisations_list = [
 		french:"OXFAM Canada"
   	},
   	{
-		english:"Veterinarians without Borders ",
-		french:"Veterinarians without Borders "
+		english:"Veterinarians without Borders",
+		french:"Veterinarians without Borders"
   	},
   	{
 		english:"Task Team on CSO Development Effectiveness and Enabling Environment (Secretariat)",

@@ -392,6 +392,158 @@ namespace(:ng) do
 
 
 
+				#
+				# Email Addresses
+				#
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					email = ""
+
+					# Lets get the countries for each entry
+					rs = pg_db.exec "SELECT *
+									FROM
+										public.affiliations
+									WHERE
+										person_id ="+  profile_keys[index][0].to_s + "
+									ORDER BY person_id asc"
+
+					rs.each_with_index do |row, index_b|
+						#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+						if !row['email'].blank?
+							email = row['email']
+						end
+
+					end
+
+					puts "Email: #{email}"
+
+					if !email.blank?
+
+						# Get the profile object that we are working on
+						profile = Profile.find_by_id( profile_keys[index][1].to_s )
+						profile.email = email
+
+						# Save the profile
+						profile.save!
+
+					end
+
+					# Clear the result set because we're done with it
+					rs.clear if rs
+
+				end
+
+
+
+				#
+				# Phone Number
+				#
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					phone_number = ""
+
+					# Lets get the countries for each entry
+					rs = pg_db.exec "SELECT phone_number
+									FROM
+										public.affiliations
+									WHERE
+										person_id ="+  profile_keys[index][0].to_s + "
+									ORDER BY person_id asc"
+
+					rs.each_with_index do |row, index_b|
+						#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+						if !row['phone_number'].blank?
+							phone_number = row['phone_number']
+						end
+
+					end
+
+					puts "Phone Number: #{phone_number}"
+
+					if !phone_number.blank?
+
+						# Get the profile object that we are working on
+						profile = Profile.find_by_id( profile_keys[index][1].to_s )
+						profile.phone_number = phone_number
+
+						# Save the profile
+						profile.save!
+
+					end
+
+					# Clear the result set because we're done with it
+					rs.clear if rs
+
+				end
+
+
+
+				#
+				# Phone Extension
+				#
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					phone_ext = ""
+
+					# Lets get the countries for each entry
+					rs = pg_db.exec "SELECT phone_extension
+									FROM
+										public.affiliations
+									WHERE
+										person_id ="+  profile_keys[index][0].to_s + "
+									ORDER BY person_id asc"
+
+					rs.each_with_index do |row, index_b|
+						#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+						if !row['phone_extension'].blank?
+							phone_ext = row['phone_extension']
+						end
+
+					end
+
+					puts "Phone Number Extension: #{phone_ext}"
+
+					if !phone_ext.blank?
+
+						# Get the profile object that we are working on
+						profile = Profile.find_by_id( profile_keys[index][1].to_s )
+						profile.phone_ext = phone_ext
+
+						# Save the profile
+						profile.save!
+
+					end
+
+					# Clear the result set because we're done with it
+					rs.clear if rs
+
+				end
+
+
+
+
+
+
+
+
 				# Display all of the person ids
 				width = profile_keys.flatten.max.to_s.size+2
  				 #=> 4
