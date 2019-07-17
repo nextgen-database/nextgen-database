@@ -16,13 +16,140 @@ namespace(:ng) do
 		task :profiles => :environment do
 			begin
 
+
+
+				#rs.each do |row|
+				#	puts "COUNT %s" % [ rs[0]['count'] ]
+				#end
+
+
+
+
+
+				# Connect to the Database
 				pg_db = PG.connect :dbname => 'nextgen-database-backup', :user => 'postgres', :password => '!W4i5p901'
 
-				rs = pg_db.exec "SELECT * FROM public.person_translations"
+				# Get the number of people in the database
+				rs = pg_db.exec "SELECT COUNT(*) FROM public.people"
 
-				rs.each do |row|
-					puts "%s %s %s" % [ row['id'], row['name'], row['first_name'] ]
+
+				# Create a 2d array of old and new primary keys
+				# Old keys will be at [0] and new key will be [1]
+				width = 2
+				height = Integer(rs[0]['count'])
+				profile_keys = Array.new(height){Array.new(width) { '0' } }
+
+				# Clear the result set
+				rs.clear if rs
+
+				# GET all of the person_ids
+				rs = pg_db.exec "SELECT id
+								 FROM
+									 public.people
+								 ORDER BY id ASC"
+
+				# Loop through the results and save each person id in the array in index[X][0]
+				rs.each_with_index do |row, index|
+					profile_keys[index][0] = row['id']
 				end
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					puts "Key for index: #{index} #{profile_keys[index][0]}"
+
+					# Start by creating the entry for the profile
+					rs = pg_db.exec "SELECT *
+										FROM
+											public.people
+										JOIN
+											public.person_translations
+										ON
+											public.people.id = public.person_translations.person_id
+										WHERE
+											public.person_translations.person_id = " + profile_keys[index][0] + "
+										ORDER BY public.person_translations.person_id ASC
+										LIMIT 1"
+
+
+					rs.each_with_index do |row, index_a|
+						puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+					end
+
+
+
+
+
+
+				end
+
+
+
+				# Display all of the person ids
+				#width = profile_keys.flatten.max.to_s.size+2
+ 				 #=> 4
+				#puts profile_keys.map { |a| a.map { |i| i.to_s.rjust(width) }.join }
+
+
+
+				#rs.each_with_index do |row, index|
+				#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+
+
+					#Profile.create(firstname: row['first_name'],
+					#				lastname: row['last_name'] )
+
+				#	new_profile = Profile.new
+					#new_profile.accessible = :all # if you're using dynamic attr_accessible
+
+				#	new_profile.prefix = Prefix.where(english: "Dr.").find(1)
+
+				#	new_profile.attributes = {
+				#		:firstname => row['first_name'],
+				#		:lastname => row['last_name']
+				#	}
+					#new_profile.save!
+
+					#profile_keys[index][0] = row['person_id']
+					#profile_keys[index][1] = new_profile.id.to_s
+
+
+#
+#					SELECT *
+#					FROM
+#					public.people_countries
+#					JOIN public.people ON
+#					public.people.id=public.people_countries.person_id
+#					JOIN public.country_translations ON
+#					public.people_countries.country_id=public.country_translations.country_id
+#					WHERE
+#					public.people.id=1 AND public.country_translations.locale='en'
+#
+
+
+#rs = pg_db.exec "SELECT *
+#									FROM
+#									public.person_translations
+#									JOIN public.people ON
+#									public.people.id=public.person_translations.person_id
+#									WHERE
+#									public.people.id=1
+#									LIMIT 1"
+#
+
+
+
+				#end
+
+				#width = profile_keys.flatten.max.to_s.size+2
+ 				 #=> 4
+				#puts profile_keys.map { |a| a.map { |i| i.to_s.rjust(width) }.join }
+
+
 
 			rescue PG::Error => e
 

@@ -32,9 +32,9 @@ class Profile < ApplicationRecord
 	has_many :profile_sustainable_development_goals
 	has_many :sustainable_development_goals, through: :profile_sustainable_development_goals
 
-	belongs_to :prefix
+	belongs_to :prefix, optional: true
 
-	belongs_to :user
+	belongs_to :user, optional: true
 
 	# This is for the cocoon gem and nested forms
 	accepts_nested_attributes_for :affiliations, reject_if: :all_blank, allow_destroy: true
