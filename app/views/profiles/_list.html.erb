@@ -15,7 +15,15 @@
 					<%#
 						Name heading
 					#%>
-					<h2 class="profile-card-title"><%= profile.firstname %> <%= profile.middlename %> <%= profile.lastname %></h2>
+					<h2 class="profile-card-title">
+						<% if profile.prefix.present? %>
+							<% if I18n.locale == :en %>
+								<%= profile.prefix.english %>
+							<% elsif I18n.locale == :fr %>
+								<%= profile.prefix.french %>
+							<% end %>
+						<% end %>
+						<%= profile.firstname %> <%= profile.middlename %> <%= profile.lastname %></h2>
 					<%#
 						Write in the affiliation
 						which consists of the title
