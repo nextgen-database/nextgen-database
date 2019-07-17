@@ -59,7 +59,7 @@ namespace(:ng) do
 				# Now that we have each person_id we need to walk through the database and get each person and their data
 				profile_keys.each_with_index do |profile, index|
 
-					puts "Key for index: #{index} #{profile_keys[index][0]}"
+					# puts "Key for index: #{index} #{profile_keys[index][0]}"
 
 					# Start by creating the entry for the profile
 					rs = pg_db.exec "SELECT *
@@ -75,18 +75,73 @@ namespace(:ng) do
 										LIMIT 1"
 
 
-					rs.each_with_index do |row, index_a|
-						puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
-					end
+					#rs.each_with_index do |row, index_a|
+					#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+#
+#					end
 
+					new_profile = Profile.create(firstname: rs[0]['first_name'],
+									lastname: rs[0]['last_name'],
+									website: rs[0]['website'],
+									twitter: rs[0]['twitter'],
+									linkedin: rs[0]['linkedin'],
+									academia_edu: rs[0]['academia_edu'],
+									prefix_id: rs[0]['person_prefix_id'])
 
+					# Save the profile in the db
+					new_profile.save!
 
-
-
+					# Update the array with the returned profile_id
+					profile_keys[index][1] = new_profile.id.to_s
 
 				end
 
+				#
+				# Email Addresses
+				#
 
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					email = ""
+
+					# Lets get the countries for each entry
+					rs = pg_db.exec "SELECT *
+									FROM
+										affiliations
+									WHERE
+										person_id ="+  profile_keys[index][0].to_s + "
+									ORDER BY person_id asc"
+
+					rs.each_with_index do |row, index_b|
+						#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+						if !row['email'].blank?
+							email = row['email']
+						end
+
+					end
+
+					puts "Email: #{email}"
+
+					if !email.blank?
+
+						# Get the profile object that we are working on
+						profile = Profile.find_by_id( profile_keys[index][1].to_s )
+						profile.email = email
+
+						# Save the profile
+						profile.save!
+
+					end
+
+					# Clear the result set because we're done with it
+					rs.clear if rs
+
+				end
 
 				# Display all of the person ids
 				#width = profile_keys.flatten.max.to_s.size+2
