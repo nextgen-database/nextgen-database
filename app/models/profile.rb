@@ -32,8 +32,7 @@ class Profile < ApplicationRecord
 	has_many :profile_sustainable_development_goals
 	has_many :sustainable_development_goals, through: :profile_sustainable_development_goals
 
-	has_many :profile_prefixes
-	has_many :prefixes, through: :profile_prefixes
+	belongs_to :prefix
 
 	belongs_to :user
 
