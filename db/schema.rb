@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_155143) do
+ActiveRecord::Schema.define(version: 2019_07_17_032034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 2019_07_13_155143) do
     t.index ["title_id"], name: "index_positions_on_title_id"
   end
 
+  create_table "prefixes", force: :cascade do |t|
+    t.string "english", null: false
+    t.string "french", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profile_countries", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "country_id"
@@ -89,6 +96,13 @@ ActiveRecord::Schema.define(version: 2019_07_13_155143) do
   create_table "profile_development_actors", force: :cascade do |t|
     t.integer "profile_id"
     t.integer "development_actor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_prefixes", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "prefix_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
