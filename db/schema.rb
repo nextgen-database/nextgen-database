@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_182748) do
     t.string "twitter"
     t.string "linkedin"
     t.string "academia_edu"
-    t.string "phone_extention"
+    t.string "phone_ext"
     t.index ["prefix_id"], name: "index_profiles_on_prefix_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
