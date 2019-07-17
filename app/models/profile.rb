@@ -32,6 +32,9 @@ class Profile < ApplicationRecord
 	has_many :profile_sustainable_development_goals
 	has_many :sustainable_development_goals, through: :profile_sustainable_development_goals
 
+	has_many :profile_prefixes
+	has_many :prefixes, through: :profile_prefixes
+
 	belongs_to :user
 
 	# This is for the cocoon gem and nested forms
