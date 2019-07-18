@@ -1,5 +1,9 @@
 class ProfilesController < ApplicationController
 
+	# Include the Pagy Library for pagination
+	# https://ddnexus.github.io/pagy/how-to
+	include Pagy::Backend
+
 	# Make sure a user is authenticated when adding a new profile
 	#  and editing a profile
 	# before_action :authenticate_user!, except: [ :index, :show ]
@@ -11,7 +15,9 @@ class ProfilesController < ApplicationController
 
 		# call the profile controller search function that handles search
 		# 	and filtering
-		@profiles = search()
+		# @profiles = search()
+
+		@pagy, @profiles = pagy_array(search())
 
 	end
 
