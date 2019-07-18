@@ -5,7 +5,7 @@ class User < ApplicationRecord
 	has_many :profile_approvals, class_name: 'ProfileRequest', inverse_of: 'approver', dependent: :destroy
 
 	# Setup two roles, user and admin
-	enum role: [:user, :admin]
+	enum role: { user: 0, admin: 1 }
 
 	# After creating a new account set the default role
 	after_initialize :set_default_role, :if => :new_record?

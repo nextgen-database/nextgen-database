@@ -541,6 +541,111 @@ namespace(:ng) do
 
 
 
+				#
+				# Affiliations
+				#
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					# Lets get the countries for each entry
+					rs = pg_db.exec "SELECT
+											affiliation_id , organization_translations.name
+										FROM
+											affiliation_translations
+										JOIN
+											affiliations
+										ON
+											affiliations.id = affiliation_translations.affiliation_id
+										JOIN
+											organization_translations
+										ON
+											affiliations.organization_id = organization_translations.organization_id
+										WHERE
+											person_id ="+  profile_keys[index][0].to_s + " LIMIT 1"
+
+
+					rs.each_with_index do |row, index_b|
+						#	puts "%s %s %s %s" % [ row['person_id'], row['first_name'], row['last_name'],  row['person_prefix_id'] ]
+
+						old_affiliation_id = row['affiliation_id']
+
+						#puts "Affiliation Organisation: #{row['name']}"
+						#puts "Current Profile ID: #{profile_keys[index][1]}"
+
+						#puts "Organisation ID: #{Organisation.where(english: row['name']).id}"
+						#puts "Current Profile ID: #{profile_keys[index][1]}"
+
+						# Get the profile object that we are working on
+						affiliation = Affiliation.new
+						affiliation.profile_id = profile_keys[index][1]
+
+						organisation_id = Organisation.find_by(english: row['name'].strip).id
+						affiliation.organisation_id = organisation_id
+
+						# Save the affiliation
+						affiliation.save!
+
+						new_affiliation_id = affiliation.id
+
+						# Copy and create / save the positions for this affiliation
+
+						# Lets get the positions for each old affiliations
+						rs_a = pg_db.exec "SELECT *
+											FROM
+												designations
+											JOIN
+												designation_translations
+											ON
+												designations.id = designation_translations.designation_id
+											JOIN
+												position_title_translations
+											ON
+												designations.position_title_id = position_title_translations.position_title_id
+											WHERE
+												affiliation_id =" + old_affiliation_id + " AND position_title_translations.locale='en'"
+
+						rs_a.each_with_index do |row, index_b|
+
+							# Create the position object and save it
+							position = Position.new
+							position.department_en = row['department']
+							position.department_fr = row['department']
+							position.faculty_en = row['faculty']
+							position.faculty_fr = row['faculty']
+
+							puts "TITLE: #{row['title'].strip}"
+
+							title_id = Title.find_by(english: row['title'].strip).id
+							position.title_id = title_id
+
+							# Save the position
+							position.save!
+
+							position_id = position.id
+
+							# Add the affiliation_positions record to link affiliation to the
+							#  newly created position
+							affiliation_position = AffiliationPosition.new
+
+							affiliation_position.affiliation_id = new_affiliation_id
+							affiliation_position.position_id = position_id
+
+							affiliation_position.save!
+
+						end
+
+					end
+
+					# Clear the result set because we're done with it
+					rs.clear if rs
+
+				end
+
+
 
 
 

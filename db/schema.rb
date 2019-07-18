@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_182748) do
   end
 
   create_table "demographics", force: :cascade do |t|
-    t.string "english"
-    t.string "french"
+    t.string "english", null: false
+    t.string "french", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
