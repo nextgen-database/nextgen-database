@@ -94,7 +94,7 @@
 									<% if (profile.sustainable_development_goals.length <= 0) %>
 										<li class="list-inline-item">No SDGs listed</li>
 									<% elsif %>
-										<% profile.sustainable_development_goals.each do |sdgs| %>
+										<% profile.sustainable_development_goals.sort_by(&:code).each do |sdgs| %>
 											<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
 												<% if I18n.locale == :en %>
 													<%= sdgs.banner_en %>
@@ -117,7 +117,7 @@
 									<% if (profile.sectors.length <= 0) %>
 										<li class="list-inline-item">No sectors listed</li>
 									<% elsif %>
-										<% profile.sectors.each do |sector| %>
+										<% profile.sectors.sort_by(&:english.downcase).each do |sector| %>
 											<% if I18n.locale == :en %>
 												<li class="list-inline-item"><%= sector.english %></li>
 											<% elsif I18n.locale == :fr %>
@@ -138,7 +138,7 @@
 									<% if (profile.demographics.length <= 0) %>
 										<li class="list-inline-item">No demographics listed</li>
 									<% elsif %>
-										<% profile.demographics.each do |demographic| %>
+										<% profile.demographics.sort_by(&:english.downcase).each do |demographic| %>
 											<% if I18n.locale == :en %>
 												<li class="list-inline-item"><%= demographic.english %></li>
 											<% elsif I18n.locale == :fr %>
@@ -155,7 +155,7 @@
 							<dt>Countries:</dt>
 							<dd>
 								<ul class="list-inline">
-									<% if (profile.countries.length <= 0) %>
+									<% if (profile.countries.sort_by(&:english.downcase).length <= 0) %>
 										<li class="list-inline-item">No countries listed</li>
 									<% elsif %>
 										<% profile.countries.each do |country| %>
