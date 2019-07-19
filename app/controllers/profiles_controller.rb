@@ -216,7 +216,7 @@ class ProfilesController < ApplicationController
 			# ...
 
 			# Find the Profiles by the filtered IDs
-			results = Profile.find(profile_ids)
+			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
 
 		end
 
