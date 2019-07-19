@@ -123,3 +123,27 @@
 		}
 	}
 }
+
+.profile-list-navigation-container {
+
+	padding: 10px 10px 10px 10px;
+	margin: 50px 0px 0px 0px;
+	display: flex;
+	justify-content: center;
+
+	li.page-item {
+
+		&.active a.page-link	{
+			background-color: $primary-color;
+			border-color: $primary-color;
+		}
+
+		a {
+			text-decoration: none;
+			color: $primary-color;
+		}
+	}
+
+
+
+}
