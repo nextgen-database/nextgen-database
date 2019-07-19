@@ -1,20 +1,34 @@
-
-
 <% if (@profiles.blank?) %>
 
-	<div class="profile-empty-list-container mt-5">
+	<%#
+		No results to show
+	#%>
+
+	<div class="profile-empty-list-container">
 	<%#
 		TODO: Add cool empty list page
 	#%>
 
-	<div class="profile-empty-list-container mt-5">
-	<p>Sorry no items :-( </p>
-<% else %>
-	<div class="profile-list-container mt-5">
+		<p>Sorry no items :-( </p>
 
-		<ul class="profile-cards-list row justify-content-center">
+	</div>
+
+<% else %>
+
+	<%#
+		Show Results
+	#%>
+
+	<div class="profile-list-count-container">
+		<p class="small">Viewing <span class="results-count"><%= @pagy.count %></span> of <%= Profile.count %> profiles</p>
+	</div>
+
+	<div class="profile-list-container">
+
+		<ul class="profile-cards-list">
+
 		<% @profiles.each do |profile| %>
-			<li class="profile-card col-11 col-sm-11">
+			<li class="profile-card">
 				<div class="profile-card-body">
 
 					<%#
@@ -175,12 +189,14 @@
 					<!--
 						TODO: In small view these buttons need to be moved to the right closer to the thumb
 					-->
-					<div class="">
-						<ul class="list-inline">
-							<li class="list-inline-item"><%= link_to "View Profile", profile_path(id: profile.id), class: "btn btn-accent" %></li>
+					<div class="profile-card-actions">
+						<ul class="d-flex justify-content-between align-items-center list-unstyled">
 							<% if profile.email.present? %>
-							<li class="list-inline-item"><a class="btn btn-outline-accent" href="mailto:<%= profile.email %>">Send Email</a></li>
+								<li class=""><%= mail_to profile.email , t('profile.index.profile-card.send-email-btn') , class: "btn btn-lg btn-outline-accent" %></li>
 							<% end %>
+
+							<li class="ml-auto"><%= link_to t('profile.index.profile-card.view-profile-btn'), profile_path(id: profile.id), class: "btn btn-lg btn-accent" %></li>
+
 						</ul>
 					</div>
 

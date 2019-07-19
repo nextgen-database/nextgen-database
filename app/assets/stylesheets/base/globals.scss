@@ -29,11 +29,19 @@ $error-color: #AF1534;
 $warning-color: #eb9a28;
 $bright-color: #AF1581;
 
+$gray-accent-1-color: #fbfcfc;
+$gray-accent-2-color: #f2f3f4;
+$gray-accent-3-color: #e5e7e9;
+$gray-accent-4-color: #bdc3c7;
+$gray-accent-5-color: #a6acaf;
+$gray-accent-6-color: #797d7f;
+$gray-accent-7-color: #626567;
+$gray-accent-8-color: #424949;
+
 
 
 // Header
-$gh-header-border-color: black;
-$gh-header-border-width: 2px;
+$gh-header-border-color: $gray-accent-2-color;
 
 
 
@@ -72,13 +80,13 @@ $link-visited-color: #7834bc !default;
 
 // Global Background colours
 $main-home-bg: null !default;
-$main-content-bg: lighten($secondary-color, 28%) !default;
+$main-content-bg: #fff;//lighten($secondary-color, 28%) !default;
 //$main-content-bg: #fff;
 $header-nav-bg: #fff;
 $mobile-menu-bg: #fff;
 $footer-bg: #fff !default;
 $footer-nav-bg: green !default;
-$footer-brand-bg: white !default;
+$footer-brand-bg: #fff !default;
 
 
 // Accessibility Skip Nav

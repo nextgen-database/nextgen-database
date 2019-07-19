@@ -1,5 +1,5 @@
 
-<h1 name="cont" id="cont">Search Profiles:</h1>
+<h1 name="cont" id="cont" class="sr-only">Search Profiles:</h1>
 
 <%= form_tag(profiles_path, method: "get") do %>
 	<div class="form-row align-items-center">
@@ -21,7 +21,5 @@
         	</div>
 	</div>
 <% end %>
-
-<hr />
 
 <%= render 'list' %>

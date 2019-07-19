@@ -110,4 +110,11 @@ en:
     new:
       heading: "Create a New Profile"
 
+  profile:
+    index:
+      heading: "Find a global development researcher in Canada"
+      profile-card:
+        send-email-btn: "Send email"
+        view-profile-btn: "View Full Profile"
+
   hello: "Hello world"

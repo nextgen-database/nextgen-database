@@ -9,10 +9,9 @@
 	header {
 		background-color: $header-nav-bg !important;
 
-		//border-bottom-style: solid;
-
-		//border-bottom-color: $gh-header-border-color;
-		//border-bottom-width: $gh-header-border-width;
+		border-bottom-style: solid;
+		border-bottom-color: $gh-header-border-color;
+		border-bottom-width: 1px;
 
 		.header-language-toggle {
 			padding: 1rem 0 0 0;
@@ -25,7 +24,7 @@
 			justify-content: space-between;
 			align-items: center;
 
-			padding: 35px 0px 35px 0px;
+			padding: 25px 0px 25px 0px;
 
 			.ng-navbar-brand{
 				text-decoration: none !important;

@@ -11,33 +11,39 @@
 
 .profile-list-container {
 
-	background-color: #fff;
+	//background-color: #fff;
 
 	// List of profile results
 	ul.profile-cards-list {
 
 		list-style: none;
-		margin: 0px 0px 0px 0px;
+		margin: 50px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 
 		li.profile-card {
 
-			padding: 25px 0px 25px 0px;
-			border-bottom: 1px solid lighten($secondary-color, 20%);
+			padding: 40px 0px 40px 0px;
+			border-top: 1px solid rgba(0, 0, 0, 0.4);
 
 			.profile-card-title {
-				color: $accent-color;
+				font-size: 2.7rem;
+				color: $dark-grey;
 				font-weight: 600;
+				margin-bottom: 0px;
+				padding-bottom: 0px;
 			}
 
 			.profile-card-subtitle {
-				font-size: 1.2rem;
-				color: lighten($dark-grey, 35%);
-				font-weight: 600;
+				font-size: 1.5rem;
+				color: $gray-accent-6-color;
+				font-weight: 300;
 				margin: 0px 0px 0px 0px;
+				padding-top: 0px;
 			}
 
 			.profile-card-contact-info {
+
+				display: none;
 
 				ul {
 
@@ -85,6 +91,7 @@
 
 			.profile-card-research-info {
 
+				/*
 				ul {
 
 					//background-color: black;
@@ -102,14 +109,48 @@
 						}
 					}
 
+				}*/
+
+				dl {
+
+					dt {
+						margin-top: 15px;
+						color: $gray-accent-7-color;
+						font-weight: 700 !important;
+					}
+
+					dd {
+
+						padding: 0px 15px 0px 15px;
+
+						ul {
+
+							li {
+								color: $gray-accent-8-color;
+								font-size: 0.8rem;
+								background-color: $gray-accent-1-color;
+								//border: 1px solid $accent-light-color;
+								border: 1px solid $gray-accent-4-color;
+								border-radius: 10px;
+								padding: 5px 15px 5px 15px;
+								margin: 5px 0px 5px 0px;
+							}
+						}
+
+					}
 				}
+
 
 			}
 
-			// Remove the bottom border on the last li entry
+			.profile-card-actions {
+
+			}
+
+			// Add the bottom border on the last li entry
 			&:last-child {
 
-				border-bottom: none;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 
 			}
 
@@ -143,7 +184,13 @@
 			color: $primary-color;
 		}
 	}
+}
 
+.profile-list-count-container {
+	margin: 25px 0px 25px 0px;
+	//color:  $primary-color;
 
-
+	.results-count {
+		color:  $accent-color;
+	}
 }
