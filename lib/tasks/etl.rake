@@ -747,6 +747,33 @@ namespace(:ng) do
 
 				end
 
+				#
+				# Add SVGs based on sectors
+				#
+
+				puts "STARTING SVGs..."
+
+
+				# Clear the result set because we're done with it
+				rs.clear if rs
+
+				# Now that we have each person_id we need to walk through the database and get each person and their data
+				profile_keys.each_with_index do |profile, index|
+
+					# For each profile
+					# Get all of the sectors
+					# For each sector
+					# Go through the sectors
+					# Add SVG based on the sectors that are available
+					# If sector there add SVG
+					#
+
+
+
+
+
+				end
+
 				puts "END..."
 
 			rescue PG::Error => e
