@@ -155,11 +155,15 @@ Pagy::VARS[:items] = 10 	                                # overide
 #                  filepath: 'path/to/pagy-xyz.yml',
 #                  pluralize: lambda{|count| ... } )
 
+# load the "de", "en" and "es" built-in locales:
+# the first :locale will be used also as the default locale
+Pagy::I18n.load({locale: 'en'},
+                {locale: 'fr'})
 
 # I18n extra: uses the standard i18n gem which is ~18x slower using ~10x more memory
 # than the default pagy internal i18n (see above)
 # See https://ddnexus.github.io/pagy/extras/i18n
-# require 'pagy/extras/i18n'
+require 'pagy/extras/i18n'
 
 # Default i18n key
 # Pagy::VARS[:i18n_key] = 'pagy.item_name'   # default

@@ -166,6 +166,7 @@
 	}
 }
 
+// Bootrap Pagination Overides
 .profile-list-navigation-container {
 
 	padding: 10px 10px 10px 10px;
@@ -175,9 +176,22 @@
 
 	li.page-item {
 
+		a.page-link {
+			background-color: $gray-accent-2-color;
+			color: $gray-accent-7-color;
+		}
+
+		a.page-link:hover {
+
+			background-color: $gray-accent-4-color;
+			color: $gray-accent-8-color;
+		}
+
+
 		&.active a.page-link	{
-			background-color: $primary-color;
-			border-color: $primary-color;
+			background-color: $accent-color;
+			border-color: $accent-color;
+			color: #fff;
 		}
 
 		a {
