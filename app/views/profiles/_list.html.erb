@@ -20,7 +20,13 @@
 	#%>
 
 	<div class="profile-list-count-container">
-		<p class="small">Viewing <span class="results-count"><%= @pagy.count %></span> of <%= Profile.count %> profiles</p>
+		<% if I18n.locale == :en %>
+			<p class="small">Viewing <span class="results-count"><%= @pagy.count %></span> of <%= Profile.count %> profiles</p>
+		<% elsif I18n.locale == :fr %>
+			<p class="small">Affichage de <span class="results-count"><%= @pagy.count %></span> sur <%= Profile.count %> profils</p>
+			<%== pagy_info(@pagy) %>
+		<% end %>
+
 	</div>
 
 	<div class="profile-list-container">
