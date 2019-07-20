@@ -49,20 +49,29 @@
 						an "at" and a organisation name
 					#%>
 
-					<% if (profile.affiliations.length > 0) %>
+					<% if profile.affiliations.count > 0 %>
 						<p class="profile-card-subtitle">
-							<% profile.affiliations[0].positions.each do |position| %>
-									<%= position.title.english %> at
-									<%#= position.department_en %>
-									<%#= position.faculty_en %>
+							<% if I18n.locale == :en %>
+								<% if profile.affiliations.first.positions.count > 0 %>
+									<%= profile.affiliations[0].positions[0].title.english %>
+									at
+									<%= profile.affiliations[0].organisation.english %>
+								<% end %>
+							<% elsif I18n.locale == :fr %>
+								<% if profile.affiliations.first.positions.count > 0 %>
+									<%= profile.affiliations[0].positions[0].title.french %>
+									de
+									<%= profile.affiliations[0].organisation.french %>
+								<% end %>
 							<% end %>
-							<%= profile.affiliations[0].organisation.english %>
+
 						</p>
 					<% end %>
 
 					<%#
 						Contact Information including email and website link
 					#%>
+					<% if false %>
 					<div class="profile-card-contact-info">
 						<ul class="d-flex flex-column flex-sm-row list-unstyled">
 							<% if profile.email.present? %>
@@ -92,6 +101,7 @@
 							<% end %>
 						</ul>
 					</div>
+					<% end %>
 
 					<%#
 						Profile Information including SDGs, Sectors, and Demographics
