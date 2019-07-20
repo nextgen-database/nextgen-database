@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-3 my-1">
 				<select class="custom-select custom-select-lg form-control mr-sm-2" name="a">
-					<option value="0" selected><%= t('home.search.sdg_dropdown.') %></option>
+					<option value="0" selected><%= t('home.search.sdg_dropdown') %></option>
 						<% if I18n.locale == :en %>
 							<%= options_from_collection_for_select(SustainableDevelopmentGoal.all, :id, :banner_en, @search_parameters['primary_sdg'] ) %>
 						<% elsif I18n.locale == :fr %>
@@ -17,7 +17,7 @@
 				</select>
 			</div>
 			<div class="col-3">
-				<%= submit_tag 'Search',  { name: nil , class: "btn btn-lg btn-success mb-2 btn-block" }  %>
+				<%= submit_tag t('home.search.button'),  { name: nil , class: "btn btn-lg btn-success mb-2 btn-block" }  %>
         	</div>
 	</div>
 <% end %>

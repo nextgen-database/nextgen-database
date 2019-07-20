@@ -61,7 +61,8 @@ fr:
       heading: "Find a global development expert in Canada."
       blurb: "Il s’agit d’une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l’aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
       placeholder: "Entrez un nom, secteur, organisation"
-      sdg_dropdown: "Show All SDGs"
+      sdg_dropdown: "Les objectifs de développement durable"
+      button: "Rechercher"
     partners:
       heading: "Our Partners"
       ccic:
