@@ -210,12 +210,12 @@
 						TODO: In small view these buttons need to be moved to the right closer to the thumb
 					-->
 					<div class="profile-card-actions">
-						<ul class="d-flex justify-content-between align-items-center list-unstyled">
+						<ul class="d-flex justify-content-end align-items-center list-unstyled">
 							<% if profile.email.present? %>
 								<li class=""><%= mail_to profile.email , t('profile.index.profile-card.send-email-btn') , class: "btn btn-lg btn-outline-accent" %></li>
 							<% end %>
 
-							<li class="ml-auto"><%= link_to t('profile.index.profile-card.view-profile-btn'), profile_path(id: profile.id), class: "btn btn-lg btn-accent" %></li>
+							<li class="ml-3"><%= link_to t('profile.index.profile-card.view-profile-btn'), profile_path(id: profile.id), class: "btn btn-lg btn-accent" %></li>
 
 						</ul>
 					</div>

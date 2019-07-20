@@ -27,7 +27,7 @@
 
 			.profile-card-title {
 				font-size: 2.7rem;
-				color: $dark-grey;
+				color: $accent-color;
 				font-weight: 600;
 				margin-bottom: 0px;
 				padding-bottom: 0px;
@@ -35,8 +35,8 @@
 
 			.profile-card-subtitle {
 				font-size: 1.6rem;
-				color: $gray-accent-6-color;
-				font-weight: 500;
+				color: $gray-accent-7-color;
+				font-weight: 600;
 				margin: 0px 0px 0px 0px;
 				padding-top: 0px;
 			}
@@ -115,7 +115,7 @@
 
 					dt {
 						margin-top: 15px;
-						color: $gray-accent-7-color;
+						color: $gray-accent-6-color;
 						font-weight: 700 !important;
 					}
 
