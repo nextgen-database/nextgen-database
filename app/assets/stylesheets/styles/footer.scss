@@ -7,11 +7,16 @@
 .global-footer {
 
 
-	//background-color: $footer-bg;
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	//border-top: 2px solid $primary-color;
 	//padding: 25px 0px 25px 0px;
+
+	background-color: $gray-accent-2-color;
+
+	border-top-style: solid;
+	border-top-color: $gray-accent-3-color;
+	border-top-width: 1px;
 
 	h2 {
 		@include accessible-invisible;
@@ -59,13 +64,13 @@
 				padding: 7px 0px 7px 0px;
 
 				a {
-					text-transform: uppercase;
 					text-decoration: none;
 					color: $primary-color;
 					transition: $btn-transition;
 
 					&:hover {
 						color: darken($primary-color, 15%);
+						text-decoration: underline;
 
 					}
 
