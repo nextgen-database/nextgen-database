@@ -32,7 +32,7 @@
 fr:
 
   application:
-    title: "NextGen Database en Francais"
+    title: "Base de données NextGen"
 
   skipnav:
     main: "Skip to main content in French"
@@ -40,21 +40,21 @@ fr:
 
   navigation:
     links:
-      home: "Home in French"
-      about: "About in French"
-      tc: "Terms and Conditions in French"
-      privacy: "Privacy in French"
+      home: "Accueil"
+      about: "À propos de base de données NextGen"
+      tc: "Avis"
+      privacy: "Confidentialité"
 
   footer:
     heading: "NextGen Database Footer Information in French"
     lang-selection: "Language selection in French"
     links:
-      about: "About in French"
-      tc: "Terms and Conditions in French"
-      privacy: "Privacy in French"
+      about: "À propos de base de données NextGen"
+      tc: "Avis"
+      privacy: "Confidentialité"
     copyright:
-      heading: "Copyright Notice"
-      notice: "2017 - 2019 Canadian Council for International Co-operation (CCIC) | Canadian Association for the Study of International Development (CASID)"
+      heading: "Droit d'auteur"
+      notice: "© 2017 - 2019 Conseil canadien pour la coopération internationale (CCCI) | Association canadienne d’études de développement international (ACÉDI)"
 
   home:
     search:
@@ -98,6 +98,24 @@ fr:
         title: "Learn more"
         body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
         link-text: "About the database"
+    sdg-nav:
+      heading: "Find a researcher by Sustainable Development Goal"
+      sub-heading_html: "The NextGen Database allows you to link research in Canada to relevant <a href='https://sustainabledevelopment.un.org/?menu=1300'>Sustainable Development Goals (SDGs)</a> by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
+
+  account:
+    show:
+      heading: "My Account"
+    edit:
+      heading: "Edit My Profile"
+    new:
+      heading: "Create a New Profile"
+
+  profile:
+    index:
+      heading: "FIND Canadian researchers by entering terms in the search below"
+      profile-card:
+        send-email-btn: "Envoyer un courriel"
+        view-profile-btn: "Voir le profile"
 
   account:
     index:
