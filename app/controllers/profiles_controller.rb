@@ -20,6 +20,16 @@ class ProfilesController < ApplicationController
 		# Paginate the search and filtered results
 		@pagy, @profile_results = pagy_array(@profiles)
 
+		# is advanced search being used? If so set a flag
+		# this flag is used by the view to open the filters
+		@is_advanced_filters_on = false
+		@is_advanced_filters_on = true unless @search_parameters['sector_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['demographic_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['development_actors_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['country_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['region_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['subregion_ids'].blank?
+
 	end
 
 	# New action for creating a new profile
@@ -230,7 +240,6 @@ class ProfilesController < ApplicationController
 
 			# Filter by Subregions
 			profile_ids = Profile.filter_by_subregion_ids(@search_parameters['subregion_ids'], profile_ids) unless @search_parameters['subregion_ids'].blank?
-
 
 			# Find the Profiles by the filtered IDs
 			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
