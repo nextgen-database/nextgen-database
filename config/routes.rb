@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 #	devise_for :users
 
+	# Devise authentication routes
+	devise_for :users
+
 	#
     # Use the following resource to sort out routes
     # https://dhampik.com/blog/rails-routes-tricks-with-locales
@@ -17,9 +20,6 @@ Rails.application.routes.draw do
 
 		# The about page
 		get '/about', to: 'static_pages#about', as: 'about'
-
-		# Devise authentication routes
-		devise_for :users
 
 		# My Account page
 		get '/account', to: 'account#index', as: 'account'
