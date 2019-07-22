@@ -114,6 +114,16 @@ en:
   profile:
     index:
       heading: "Find a global development researcher in Canada"
+      search:
+        advanced-filters:
+          btn: "Advanced Search Filters"
+          filter-sectors-label: "Include any of the following <strong>Sectors</strong>:"
+          filter-demographics-label: "Include any of the following <strong>Demographics</strong>:"
+          filter-countries-label: "Include any of the following <strong>Countries</strong>:"
+          filter-development-actors-label: "Include any of the following <strong>Development Actors</strong>:"
+          filter-regions-label: "Include any of the following <strong>Regions</strong>:"
+          filter-subregions-label: "Include any of the following <strong>Subregions</strong>:"
+          submit-button: "Apply Filters"
       profile-card:
         send-email-btn: "Send email"
         view-profile-btn: "View Full Profile"

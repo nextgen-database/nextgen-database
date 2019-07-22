@@ -15,9 +15,10 @@ class ProfilesController < ApplicationController
 
 		# call the profile controller search function that handles search
 		# 	and filtering
-		# @profiles = search()
+		@profiles = search()
 
-		@pagy, @profiles = pagy_array(search())
+		# Paginate the search and filtered results
+		@pagy, @profile_results = pagy_array(@profiles)
 
 	end
 
@@ -212,8 +213,24 @@ class ProfilesController < ApplicationController
 				end
 			end
 
-			# Eventually Add other filters here
-			# ...
+			# Filter by Sectors
+			profile_ids = Profile.filter_by_sector_ids(@search_parameters['sector_ids'], profile_ids) unless @search_parameters['sector_ids'].blank?
+
+			# Filter by Demographics
+			profile_ids = Profile.filter_by_demographic_ids(@search_parameters['demographic_ids'], profile_ids) unless @search_parameters['demographic_ids'].blank?
+
+			# Filter by Development Actors
+			profile_ids = Profile.filter_by_demographic_ids(@search_parameters['development_actors_ids'], profile_ids) unless @search_parameters['development_actors_ids'].blank?
+
+			# Filter by Countries
+			profile_ids = Profile.filter_by_country_ids(@search_parameters['country_ids'], profile_ids) unless @search_parameters['country_ids'].blank?
+
+			# Filter by Regions
+			profile_ids = Profile.filter_by_region_ids(@search_parameters['region_ids'], profile_ids) unless @search_parameters['region_ids'].blank?
+
+			# Filter by Subregions
+			profile_ids = Profile.filter_by_subregion_ids(@search_parameters['subregion_ids'], profile_ids) unless @search_parameters['subregion_ids'].blank?
+
 
 			# Find the Profiles by the filtered IDs
 			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
@@ -233,6 +250,24 @@ class ProfilesController < ApplicationController
 
 			# Set the First SDG Filter Value
 			@search_parameters['primary_sdg'] = params[:a].split unless params[:a].blank?
+
+			# Set the Sector IDs
+			@search_parameters['sector_ids'] = params[:b] unless params[:b].blank?
+
+			# Set the Demographic IDs
+			@search_parameters['demographic_ids'] = params[:c] unless params[:c].blank?
+
+			# Set the Development Actors IDs
+			@search_parameters['development_actors_ids'] = params[:d] unless params[:d].blank?
+
+			# Set the Development Actors IDs
+			@search_parameters['country_ids'] = params[:e] unless params[:e].blank?
+
+			# Set the Development Actors IDs
+			@search_parameters['region_ids'] = params[:f] unless params[:f].blank?
+
+			# Set the Development Actors IDs
+			@search_parameters['subregion_ids'] = params[:g] unless params[:g].blank?
 
 		end
 

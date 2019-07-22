@@ -1,4 +1,4 @@
-<% if (@profiles.blank?) %>
+<% if (@profile_results.blank?) %>
 
 	<%#
 		No results to show
@@ -37,7 +37,7 @@
 
 		<ul class="profile-cards-list">
 
-		<% @profiles.each do |profile| %>
+		<% @profile_results.each do |profile| %>
 			<li class="profile-card">
 				<div class="profile-card-body">
 
@@ -151,13 +151,43 @@
 									<% if (profile.sectors.length <= 0) %>
 										<li class="list-inline-item">No sectors listed</li>
 									<% elsif %>
-										<% profile.sectors.sort_by(&:english.downcase).each do |sector| %>
-											<% if I18n.locale == :en %>
-												<li class="list-inline-item"><%= sector.english %></li>
-											<% elsif I18n.locale == :fr %>
-												<li class="list-inline-item"><%= sector.french %></li>
+
+										<% if !@search_parameters['sector_ids'].blank? %>
+
+											<% profile.sectors.sort_by(&:english.downcase).each do |sector| %>
+
+												<% if @search_parameters['sector_ids'].include?(sector.id.to_s) %>
+
+													<% if I18n.locale == :en %>
+														<li class="list-inline-item found"><%= sector.english %></li>
+													<% elsif I18n.locale == :fr %>
+														<li class="list-inline-item found"><%= sector.french %></li>
+													<% end %>
+
+												<% else %>
+
+													<% if I18n.locale == :en %>
+														<li class="list-inline-item"><%= sector.english %></li>
+													<% elsif I18n.locale == :fr %>
+														<li class="list-inline-item"><%= sector.french %></li>
+													<% end %>
+
+												<% end %>
+
 											<% end %>
+
+										<% else %>
+
+											<% profile.sectors.sort_by(&:english.downcase).each do |sector| %>
+												<% if I18n.locale == :en %>
+													<li class="list-inline-item"><%= sector.english %></li>
+												<% elsif I18n.locale == :fr %>
+													<li class="list-inline-item"><%= sector.french %></li>
+												<% end %>
+											<% end %>
+
 										<% end %>
+
 									<% end %>
 								</ul>
 							</dd>

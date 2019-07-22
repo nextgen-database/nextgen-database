@@ -70,6 +70,8 @@ class Profile < ApplicationRecord
 			.where(sustainable_development_goals: {id: sustainable_development_goal})
 	}
 
+
+
 	# Add pound it to the bloody array values
 	#
 
@@ -99,14 +101,44 @@ class Profile < ApplicationRecord
 			where("sectors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_sector_ids, -> (sector_ids) do
+		joins(:sectors).
+			where(sectors: {id: sector_ids }) unless sector_ids.blank?
+	end
+
 	scope :where_demographics, -> (query) do
 		joins(:demographics).
 			where("demographics.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_demographic_ids, -> (demographic_ids) do
+		joins(:demographics).
+			where(demographics: {id: demographic_ids }) unless demographic_ids.blank?
+	end
+
 	scope :where_countries, -> (query) do
 		joins(:countries).
 			where("countries.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
+	scope :where_development_actor_ids, -> (development_actor_ids) do
+		joins(:development_actors).
+			where(development_actors: {id: development_actor_ids }) unless development_actor_ids.blank?
+	end
+
+	scope :where_country_ids, -> (country_ids) do
+		joins(:countries).
+			where(countries: {id: country_ids }) unless country_ids.blank?
+	end
+
+	scope :where_region_ids, -> (region_ids) do
+		joins(:regions).
+			where(regions: {id: region_ids }) unless region_ids.blank?
+	end
+
+	scope :where_subregion_ids, -> (subregion_ids) do
+		joins(:subregions).
+			where(subregions: {id: subregion_ids }) unless subregion_ids.blank?
 	end
 
 
@@ -189,6 +221,59 @@ class Profile < ApplicationRecord
 
 	end
 
+	def self.filter_by_sector_ids(sector_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Sector IDs
+		result_ids = Profile.where(id: ids).where_sector_ids(sector_ids).pluck(:id) if !sector_ids.blank?
+
+	end
+
+	def self.filter_by_demographic_ids(demographic_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Demographic IDs
+		result_ids = Profile.where(id: ids).where_demographic_ids(demographic_ids).pluck(:id) if !demographic_ids.blank?
+
+	end
+
+	def self.filter_by_development_actor_ids(development_actor_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Development Actor IDs
+		result_ids = Profile.where(id: ids).where_development_actor_ids(development_actor_ids).pluck(:id) if !development_actor_ids.blank?
+
+	end
+
+	def self.filter_by_country_ids(country_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Country IDs
+		result_ids = Profile.where(id: ids).where_country_ids(country_ids).pluck(:id) if !country_ids.blank?
+
+	end
+
+	def self.filter_by_region_ids(region_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Country IDs
+		result_ids = Profile.where(id: ids).where_region_ids(region_ids).pluck(:id) if !region_ids.blank?
+
+	end
+
+	def self.filter_by_subregion_ids(subregion_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Country IDs
+		result_ids = Profile.where(id: ids).where_subregion_ids(subregion_ids).pluck(:id) if !subregion_ids.blank?
+
+	end
 
 
 	def self.search_logic(search_parameters)

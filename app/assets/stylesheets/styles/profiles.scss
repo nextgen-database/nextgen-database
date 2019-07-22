@@ -2,12 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile-search-box {
+
+
+
+//.profile-search-container {
 
 	//border: 1px solid darken($main-content-bg, 10%);
 	//background-color: #fff;
-	padding: 25px;
-}
+	//padding: 25px;
+
+
+
+	//.ps-advanced-filters {
+	//
+	//
+	//}
+
+
+//}
+
+
+
+
 
 .profile-list-container {
 
@@ -134,7 +150,12 @@
 								border-radius: 10px;
 								padding: 5px 15px 5px 15px;
 								margin: 5px 0px 5px 0px;
+
+								&.found {
+									background-color: $gray-accent-2-color;
+								}
 							}
+
 						}
 
 					}
