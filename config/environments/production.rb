@@ -91,4 +91,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configure Send Grid / Heroku to send emails
+  config.action_mailer.default_url_options = { host: ENV['host'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :port => 587,
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :address => 'smtp.sendgrid.net',
+      :domain => ENV['DOMAIN'],
+      :authentication => "plain",
+      :enable_starttls_auto => true
+  }
+  config.host_domain = 'nextgendatabase.ca'
+  config.admin_email = 'nextgen@ccic.ca'
+
 end
