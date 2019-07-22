@@ -3,293 +3,297 @@
 #%>
 <% if !@profile.nil? %>
 
-	<%#
-		Render the profile and title information
-	#%>
+	<div class="profile-show-container">
 
-	<h1 name="cont" id="cont"><% if I18n.locale == :en %>
-								<%= @profile.prefix.english %>
-							<% elsif I18n.locale == :fr %>
-								<%= @profile.prefix.french %>
-							<% end %><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
-
-	<% if (@profile.affiliations.length > 0) %>
-		<p class="profile-card-subtitle">
-			<% @profile.affiliations[0].positions.each do |position| %>
-					<%= position.title.english %> at
-					<%#= position.department_en %>
-					<%#= position.faculty_en %>
-			<% end %>
-			<%= @profile.affiliations[0].organisation.english %>
-		</p>
-	<% end %>
-
-	<%#
-		Display Contact Information
-	#%>
-
-	<% if @profile.email.present? %>
-	<p>
-		<span class="sr-only">Email: </span>
-		<a href="mailto:<%= @profile.email %>">
-			<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
-				<path d="M 17.388 4.751 H 2.613 c -0.213 0 -0.389 0.175 -0.389 0.389 v 9.72 c 0 0.216 0.175 0.389 0.389 0.389 h 14.775 c 0.214 0 0.389 -0.173 0.389 -0.389 v -9.72 C 17.776 4.926 17.602 4.751 17.388 4.751 M 16.448 5.53 L 10 11.984 L 3.552 5.53 H 16.448 Z M 3.002 6.081 l 3.921 3.925 l -3.921 3.925 V 6.081 Z M 3.56 14.471 l 3.914 -3.916 l 2.253 2.253 c 0.153 0.153 0.395 0.153 0.548 0 l 2.253 -2.253 l 3.913 3.916 H 3.56 Z M 16.999 13.931 l -3.921 -3.925 l 3.921 -3.925 V 13.931 Z" ></path>
-			</svg>
-			<%= @profile.email %>
-		</a>
-	</p>
-	<% end %>
-
-	<% if @profile.website.present? %>
-		<p>
-			<span class="sr-only">Website: </span>
-			<a href="<%= @profile.website %>">
-				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-md-none" viewBox="0 0 20 20">
-					<path fill="none" d="M 10 15.654 c -0.417 0 -0.754 0.338 -0.754 0.754 S 9.583 17.162 10 17.162 s 0.754 -0.338 0.754 -0.754 S 10.417 15.654 10 15.654 Z M 14.523 1.33 H 5.477 c -0.833 0 -1.508 0.675 -1.508 1.508 v 14.324 c 0 0.833 0.675 1.508 1.508 1.508 h 9.047 c 0.833 0 1.508 -0.675 1.508 -1.508 V 2.838 C 16.031 2.005 15.356 1.33 14.523 1.33 Z M 15.277 17.162 c 0 0.416 -0.338 0.754 -0.754 0.754 H 5.477 c -0.417 0 -0.754 -0.338 -0.754 -0.754 V 2.838 c 0 -0.417 0.337 -0.754 0.754 -0.754 h 9.047 c 0.416 0 0.754 0.337 0.754 0.754 V 17.162 Z M 13.77 2.838 H 6.23 c -0.417 0 -0.754 0.337 -0.754 0.754 v 10.555 c 0 0.416 0.337 0.754 0.754 0.754 h 7.539 c 0.416 0 0.754 -0.338 0.754 -0.754 V 3.592 C 14.523 3.175 14.186 2.838 13.77 2.838 Z M 13.77 13.77 c 0 0.208 -0.169 0.377 -0.377 0.377 H 6.607 c -0.208 0 -0.377 -0.169 -0.377 -0.377 V 3.969 c 0 -0.208 0.169 -0.377 0.377 -0.377 h 6.785 c 0.208 0 0.377 0.169 0.377 0.377 V 13.77 Z" ></path>
-				</svg>
-				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-none d-md-inline" viewBox="0 0 20 20">
-					<path fill="none" d="M 17.125 1.375 H 2.875 c -0.828 0 -1.5 0.672 -1.5 1.5 v 11.25 c 0 0.828 0.672 1.5 1.5 1.5 H 7.75 v 2.25 H 6.625 c -0.207 0 -0.375 0.168 -0.375 0.375 s 0.168 0.375 0.375 0.375 h 6.75 c 0.207 0 0.375 -0.168 0.375 -0.375 s -0.168 -0.375 -0.375 -0.375 H 12.25 v -2.25 h 4.875 c 0.828 0 1.5 -0.672 1.5 -1.5 V 2.875 C 18.625 2.047 17.953 1.375 17.125 1.375 Z M 11.5 17.875 h -3 v -2.25 h 3 V 17.875 Z M 17.875 14.125 c 0 0.414 -0.336 0.75 -0.75 0.75 H 2.875 c -0.414 0 -0.75 -0.336 -0.75 -0.75 v -1.5 h 15.75 V 14.125 Z M 17.875 11.875 H 2.125 v -9 c 0 -0.414 0.336 -0.75 0.75 -0.75 h 14.25 c 0.414 0 0.75 0.336 0.75 0.75 V 11.875 Z M 10 14.125 c 0.207 0 0.375 -0.168 0.375 -0.375 S 10.207 13.375 10 13.375 s -0.375 0.168 -0.375 0.375 S 9.793 14.125 10 14.125 Z" ></path>
-				</svg>
-				<%= @profile.website %>
-			</a>
-		</p>
-	<% end %>
-
-	<% if @profile.phone_number.present? %>
-	<p>
-		<span class="sr-only">Phone Number: </span>
-		<a href="tel:<%= @profile.phone_number %>">
-			<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
-				<path d="M 13.372 1.781 H 6.628 c -0.696 0 -1.265 0.569 -1.265 1.265 v 13.91 c 0 0.695 0.569 1.265 1.265 1.265 h 6.744 c 0.695 0 1.265 -0.569 1.265 -1.265 V 3.045 C 14.637 2.35 14.067 1.781 13.372 1.781 M 13.794 16.955 c 0 0.228 -0.194 0.421 -0.422 0.421 H 6.628 c -0.228 0 -0.421 -0.193 -0.421 -0.421 v -0.843 h 7.587 V 16.955 Z M 13.794 15.269 H 6.207 V 4.731 h 7.587 V 15.269 Z M 13.794 3.888 H 6.207 V 3.045 c 0 -0.228 0.194 -0.421 0.421 -0.421 h 6.744 c 0.228 0 0.422 0.194 0.422 0.421 V 3.888 Z" ></path>
-			</svg>
-			<%= @profile.phone_number %>
-		</a>
-	</p>
-	<% end %>
+		<%#
+			Render the profile and title information
+		#%>
+		<div class="d-flex w-100 justify-content-between">
+			<h1 name="cont" id="cont"><% if I18n.locale == :en %>
+											<%= @profile.prefix.english %>
+										<% elsif I18n.locale == :fr %>
+											<%= @profile.prefix.french %>
+										<% end %><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
+			<div>
+				<% unless @profile.twitter.blank? %>
+					<a href="<%= @profile.twitter %>"><img width="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABF1BMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIiwF6AAAAXHRSTlMACIq/iwfAIfgGFwX5pYgWoP4fBAGe+/Sf8/fdjcXEw+nc4xKh8glMiU1KwaZLpBT8XBPwMUAbkRXeYbZEtbpSOOxgRtBzqxA02O3o0/UlItu0PXqOUPqDbj8v/TzA050AAAFNSURBVCjPjZPndoMwDIXZAQJhk93sZjXp3iPde+/h93+OGmFGCacn+sO1voMtXcsUNWvM9zl1OFS5Lp0CM+08IpHXMwnIVxQUC5GT4nRRQImoyhGVt9FUlLWAZgWUEnM8wRWUGgypWUzHygPgNixuSHL/UD45bZ57sgBuQL+KVgN6YOOUdeEcYV30/OlDuk7RPRd/92BD69jwkiMsOcAGNuo+d+X6fl0aYXELoO506EPKAp74dahYsr6NWSvm4pmP2RCjz7jJuxH2N0fuSyukG2K0OUcafot+3iSpHtZdopvfAV1fIqkBXtBFsvj5sIGu1UmiA83onmw8vT4DtJdXA9Od6EreC1/egLR2quGVlEz/LFKc8nh7Hb+x3L/jUAvHTStP08ZW1OgKOzVKctxFifkzMqWclJh0sxD0jzqOmfJO6BEzFoQxM+Bnfne/V+2cLZjA4sYAAAAASUVORK5CYII="></a>
+				<% end %>
+				<% unless @profile.linkedin.blank? %>
+					<a href="<%= @profile.linkedin %>"><img width="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAABDlBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAToPMdAAAAWXRSTlMA/OxM2sq1B/nY+9wIBlgci7TDDtcg+OMdV8hHinCzuFtG64nMslDbF1rlaUpuTxEW/uRESe5tkXIQ2RUatxu2yQVNkBS54gmUmRgDaksNk9b6osv0l1mMH5xDvLYAAAGpSURBVEjHxZZXe4IwFIZBBUFFnHWvqnVV66jWbffeO///j7RGhABmeOV3A3zPeeGQnOSE43ako1ZAlPuS1I+IgdaIHu/O53iAiJ/V3ETAN6wDm7oZH5449oKNqqRwOZ0ArN5vNhHVEiBIaNuJaAUQ5YpaiYkMKPLeW4aqBKgSzKP9BRj0YhpdwKQCkpY+H+JcXRCGwEhtqJsqx8UJn2nqc1hnRWLrz+QNb6HGZ6S/8WvIFWCWqK0Pnh3xhCFyALaQEyI/iLN81q+hxPRsmgiZkDREghjkUfvVhgcJyELLhUF0NZAAGToOGsIhue1DQ8IhT8KncLi8+TYC9oiIEzpLZm5FcIl9QOf0/+7BmtgYg0jGa42ACERE3LyYrZXKEAlsgxRtBUNFVgUz4tmRt1VZcjl2JKhNbo0dWS8xd5cViSnrGsqwrpaBsefLbASyKXEpJqLTQ8v7lgW5MLcjgU4kFfMquqQ3i6qtJbnIxPjX3sbaxNySk83ttYMl7nDNv4BJTu4RzhbNmB24HpDPF4pf9Jg24aBfoR9jwufpbMQhSY7XctH5vKvD1x/LMumU+GCvCwAAAABJRU5ErkJggg=="></a>
+				<% end %>
+				<% unless @profile.academia_edu.blank? %>
+					<a href="<%= @profile.academia_edu %>"><img width="30px" src="data:image/png;base64,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"></a>
+				<% end %>
+			</div>
+		</div>
 
 
-	<%#
-		Display Affiliations
-	#%>
+		<% if @profile.affiliations.count > 0 %>
+			<p class="subtitle">
+				<% if I18n.locale == :en %>
+					<% if @profile.affiliations.first.positions.count > 0 %>
+						<%= @profile.affiliations[0].positions[0].title.english %>
+						at
+						<%= @profile.affiliations[0].organisation.english %>
+					<% end %>
+				<% elsif I18n.locale == :fr %>
+					<% if @profile.affiliations.first.positions.count > 0 %>
+						<%= @profile.affiliations[0].positions[0].title.french %>
+						de
+						<%= @profile.affiliations[0].organisation.french %>
+					<% end %>
+				<% end %>
 
-	<section>
-
-		<hr />
-
-		<h3 class="py-3">Affiliations</h3>
-
-		<ul>
-
-		<% @profile.affiliations.each do |affiliation| %>
-			<li>
-		<% if I18n.locale == :en %>
-			<%= affiliation.organisation.english %>
-				<% affiliation.positions.each do |position| %>
-					<%= position.department_en %>
-					<%= position.faculty_en %>
-					<%= position.title.english %>
-			<% end %>
-		<% elsif I18n.locale == :fr %>
-			<%= affiliation.organisation.french %>
-			</li>
+			</p>
 		<% end %>
 
-		</ul>
+		<%#
+			Display Contact Information
+		#%>
 
-	<% end %>
+		<% if @profile.email.present? %>
+		<p>
+			<span class="sr-only">Email: </span>
+			<a href="mailto:<%= @profile.email %>">
+				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+					<path d="M 17.388 4.751 H 2.613 c -0.213 0 -0.389 0.175 -0.389 0.389 v 9.72 c 0 0.216 0.175 0.389 0.389 0.389 h 14.775 c 0.214 0 0.389 -0.173 0.389 -0.389 v -9.72 C 17.776 4.926 17.602 4.751 17.388 4.751 M 16.448 5.53 L 10 11.984 L 3.552 5.53 H 16.448 Z M 3.002 6.081 l 3.921 3.925 l -3.921 3.925 V 6.081 Z M 3.56 14.471 l 3.914 -3.916 l 2.253 2.253 c 0.153 0.153 0.395 0.153 0.548 0 l 2.253 -2.253 l 3.913 3.916 H 3.56 Z M 16.999 13.931 l -3.921 -3.925 l 3.921 -3.925 V 13.931 Z" ></path>
+				</svg>
+				<%= @profile.email %>
+			</a>
+		</p>
+		<% end %>
+
+		<% if @profile.website.present? %>
+			<p>
+				<span class="sr-only">Website: </span>
+				<a href="<%= @profile.website %>">
+					<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-md-none" viewBox="0 0 20 20">
+						<path fill="none" d="M 10 15.654 c -0.417 0 -0.754 0.338 -0.754 0.754 S 9.583 17.162 10 17.162 s 0.754 -0.338 0.754 -0.754 S 10.417 15.654 10 15.654 Z M 14.523 1.33 H 5.477 c -0.833 0 -1.508 0.675 -1.508 1.508 v 14.324 c 0 0.833 0.675 1.508 1.508 1.508 h 9.047 c 0.833 0 1.508 -0.675 1.508 -1.508 V 2.838 C 16.031 2.005 15.356 1.33 14.523 1.33 Z M 15.277 17.162 c 0 0.416 -0.338 0.754 -0.754 0.754 H 5.477 c -0.417 0 -0.754 -0.338 -0.754 -0.754 V 2.838 c 0 -0.417 0.337 -0.754 0.754 -0.754 h 9.047 c 0.416 0 0.754 0.337 0.754 0.754 V 17.162 Z M 13.77 2.838 H 6.23 c -0.417 0 -0.754 0.337 -0.754 0.754 v 10.555 c 0 0.416 0.337 0.754 0.754 0.754 h 7.539 c 0.416 0 0.754 -0.338 0.754 -0.754 V 3.592 C 14.523 3.175 14.186 2.838 13.77 2.838 Z M 13.77 13.77 c 0 0.208 -0.169 0.377 -0.377 0.377 H 6.607 c -0.208 0 -0.377 -0.169 -0.377 -0.377 V 3.969 c 0 -0.208 0.169 -0.377 0.377 -0.377 h 6.785 c 0.208 0 0.377 0.169 0.377 0.377 V 13.77 Z" ></path>
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-none d-md-inline" viewBox="0 0 20 20">
+						<path fill="none" d="M 17.125 1.375 H 2.875 c -0.828 0 -1.5 0.672 -1.5 1.5 v 11.25 c 0 0.828 0.672 1.5 1.5 1.5 H 7.75 v 2.25 H 6.625 c -0.207 0 -0.375 0.168 -0.375 0.375 s 0.168 0.375 0.375 0.375 h 6.75 c 0.207 0 0.375 -0.168 0.375 -0.375 s -0.168 -0.375 -0.375 -0.375 H 12.25 v -2.25 h 4.875 c 0.828 0 1.5 -0.672 1.5 -1.5 V 2.875 C 18.625 2.047 17.953 1.375 17.125 1.375 Z M 11.5 17.875 h -3 v -2.25 h 3 V 17.875 Z M 17.875 14.125 c 0 0.414 -0.336 0.75 -0.75 0.75 H 2.875 c -0.414 0 -0.75 -0.336 -0.75 -0.75 v -1.5 h 15.75 V 14.125 Z M 17.875 11.875 H 2.125 v -9 c 0 -0.414 0.336 -0.75 0.75 -0.75 h 14.25 c 0.414 0 0.75 0.336 0.75 0.75 V 11.875 Z M 10 14.125 c 0.207 0 0.375 -0.168 0.375 -0.375 S 10.207 13.375 10 13.375 s -0.375 0.168 -0.375 0.375 S 9.793 14.125 10 14.125 Z" ></path>
+					</svg>
+					<%= @profile.website %>
+				</a>
+			</p>
+		<% end %>
+
+		<% if @profile.phone_number.present? %>
+		<p>
+			<span class="sr-only">Phone Number: </span>
+			<a href="tel:<%= @profile.phone_number %>">
+				<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+					<path d="M 13.372 1.781 H 6.628 c -0.696 0 -1.265 0.569 -1.265 1.265 v 13.91 c 0 0.695 0.569 1.265 1.265 1.265 h 6.744 c 0.695 0 1.265 -0.569 1.265 -1.265 V 3.045 C 14.637 2.35 14.067 1.781 13.372 1.781 M 13.794 16.955 c 0 0.228 -0.194 0.421 -0.422 0.421 H 6.628 c -0.228 0 -0.421 -0.193 -0.421 -0.421 v -0.843 h 7.587 V 16.955 Z M 13.794 15.269 H 6.207 V 4.731 h 7.587 V 15.269 Z M 13.794 3.888 H 6.207 V 3.045 c 0 -0.228 0.194 -0.421 0.421 -0.421 h 6.744 c 0.228 0 0.422 0.194 0.422 0.421 V 3.888 Z" ></path>
+				</svg>
+				<%= @profile.phone_number %>
+			</a>
+		</p>
+		<% end %>
 
 
-	</section>
+		<%#
+			Display Affiliations
+		#%>
+
+		<section>
+
+			<hr />
+
+			<h2 class="py-3">Affiliations</h2>
+
+			<ul>
+
+			<% @profile.affiliations.each do |affiliation| %>
+				<li>
+			<% if I18n.locale == :en %>
+				<%= affiliation.organisation.english %>
+					<% affiliation.positions.each do |position| %>
+						<%= position.department_en %>
+						<%= position.faculty_en %>
+						<%= position.title.english %>
+				<% end %>
+			<% elsif I18n.locale == :fr %>
+				<%= affiliation.organisation.french %>
+				</li>
+			<% end %>
+
+			</ul>
+
+		<% end %>
 
 
-	<%#
-		Display Research Information
-	#%>
+		</section>
 
-	<section>
 
-		<hr />
+		<%#
+			Display Research Information
+		#%>
 
-		<h3  class="py-3">Research</h3>
+		<section>
 
-		<dl>
+			<hr />
+
+			<h2 class="py-3">Research</h2>
 
 			<%#
-				View Sustainable Development Goals
+				Profile Information including SDGs, Sectors, and Demographics
 			#%>
-			<dt>SDGs:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.sustainable_development_goals.length <= 0) %>
-						<li class="list-inline-item">No SDGs listed</li>
-					<% elsif %>
-						<% @profile.sustainable_development_goals.each do |sdgs| %>
-							<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
-								<% if I18n.locale == :en %>
-									<%= sdgs.banner_en %>
-								<% elsif I18n.locale == :fr %>
-									<%= sdgs.banner_fr %>
+			<div class="profile-card-research-info">
+				<dl>
+
+					<%#
+						View Sustainable Development Goals
+					#%>
+					<dt>SDGs:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.sustainable_development_goals.length <= 0) %>
+								<li class="list-inline-item">No SDGs listed</li>
+							<% elsif %>
+								<% @profile.sustainable_development_goals.sort_by(&:code).each do |sdgs| %>
+									<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
+										<% if I18n.locale == :en %>
+											<%= sdgs.banner_en %>
+										<% elsif I18n.locale == :fr %>
+											<%= sdgs.banner_fr %>
+										<% end %>
+									<!--</span>-->(<%= sdgs.code %>)</li>
 								<% end %>
-							<!--</span>-->(<%= sdgs.code %>)</li>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
-
-			<%#
-				View Sectors
-			#%>
-			<dt>Sectors:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.sectors.length <= 0) %>
-						<li class="list-inline-item">No sectors listed</li>
-					<% elsif %>
-						<% @profile.sectors.each do |sector| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= sector.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= sector.french %></li>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
 
-			<%#
-				View Demographics
-			#%>
-			<dt>Demographics:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.demographics.length <= 0) %>
-						<li class="list-inline-item">No demographics listed</li>
-					<% elsif %>
-						<% @profile.demographics.each do |demographic| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= demographic.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= demographic.french %></li>
+					<%#
+						View Sectors
+					#%>
+					<dt>Sectors:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.sectors.length <= 0) %>
+								<li class="list-inline-item">No sectors listed</li>
+							<% elsif %>
+
+								<% @profile.sectors.sort_by(&:english.downcase).each do |sector| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= sector.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= sector.french %></li>
+									<% end %>
+								<% end %>
+
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
-			<%#
-				View Development Actors
-			#%>
-			<dt>Development Actors:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.development_actors.length <= 0) %>
-						<li class="list-inline-item">No demographics listed</li>
-					<% elsif %>
-						<% @profile.development_actors.each do |development_actor| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= development_actor.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= development_actor.french %></li>
+
+					<%#
+						View Demographics
+					#%>
+					<dt>Demographics:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.demographics.length <= 0) %>
+								<li class="list-inline-item">No demographics listed</li>
+							<% elsif %>
+								<% @profile.demographics.sort_by(&:english.downcase).each do |demographic| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= demographic.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= demographic.french %></li>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
-
-			<%#
-				View Research Methods
-			#%>
-			<dt>Research Methods:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.research_methods.length <= 0) %>
-						<li class="list-inline-item">No research methods listed</li>
-					<% elsif %>
-						<% @profile.research_methods.each do |research_method| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= research_method.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= research_method.french %></li>
+					<%#
+						View Development Actors
+					#%>
+					<dt>Development Actors:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.development_actors.length <= 0) %>
+								<li class="list-inline-item">No demographics listed</li>
+							<% elsif %>
+								<% @profile.development_actors.sort_by(&:english.downcase).each do |development_actor| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= development_actor.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= development_actor.french %></li>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
-			<%#
-				View Research Methods
-			#%>
-			<dt>Countries:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.countries.length <= 0) %>
-						<li class="list-inline-item">No countries listed</li>
-					<% elsif %>
-						<% @profile.countries.each do |country| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= country.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= country.french %></li>
+
+					<%#
+						View Countries
+					#%>
+					<dt>Countries:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.countries.length <= 0) %>
+								<li class="list-inline-item">No countries listed</li>
+							<% elsif %>
+								<% @profile.countries.sort_by(&:english.downcase).each do |country| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= country.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= country.french %></li>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
-			<%#
-				View Subregions
-			#%>
-			<dt>Subregions:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.subregions.length <= 0) %>
-						<li class="list-inline-item">No subregions listed</li>
-					<% elsif %>
-						<% @profile.subregions.each do |subregion| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= subregion.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= subregion.french %></li>
+					<%#
+						View Subregions
+					#%>
+					<dt>Subregions:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.subregions.length <= 0) %>
+								<li class="list-inline-item">No subregions listed</li>
+							<% elsif %>
+								<% @profile.subregions.sort_by(&:english.downcase).each do |subregion| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= subregion.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= subregion.french %></li>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
-			<%#
-				View Regions
-			#%>
-			<dt>Subregions:</dt>
-			<dd>
-				<ul class="list-inline">
-					<% if (@profile.regions.length <= 0) %>
-						<li class="list-inline-item">No regions listed</li>
-					<% elsif %>
-						<% @profile.regions.each do |region| %>
-							<% if I18n.locale == :en %>
-								<li class="list-inline-item"><%= region.english %></li>
-							<% elsif I18n.locale == :fr %>
-								<li class="list-inline-item"><%= region.french %></li>
+					<%#
+						View Regions
+					#%>
+					<dt>Regions:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.regions.length <= 0) %>
+								<li class="list-inline-item">No regions listed</li>
+							<% elsif %>
+								<% @profile.regions.sort_by(&:english.downcase).each do |region| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= region.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= region.french %></li>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %>
-				</ul>
-			</dd>
+						</ul>
+					</dd>
 
+				</dl>
+			</div>
 
+		</section>
 
-
-
-
-		</dl>
-
-		<hr />
-
-	</section>
-
-
+	</div>
 
 <% else %>
 

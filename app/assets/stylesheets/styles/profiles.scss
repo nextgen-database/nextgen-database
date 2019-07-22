@@ -3,28 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
-//.profile-search-container {
-
-	//border: 1px solid darken($main-content-bg, 10%);
-	//background-color: #fff;
-	//padding: 25px;
-
-
-
-	//.ps-advanced-filters {
-	//
-	//
-	//}
-
-
-//}
-
-
-
-
-
 .profile-list-container {
 
 	//background-color: #fff;
@@ -229,4 +207,65 @@
 	.results-count {
 		color:  $accent-color;
 	}
+}
+
+
+.profile-show-container {
+
+	h1 {
+		font-size: 2.7rem;
+		color: $accent-color;
+		font-weight: 600;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+
+	h2 {
+		font-size: 2.0rem;
+		color: $gray-accent-7-color;
+		font-weight: 600;
+	}
+
+	.subtitle {
+		font-size: 1.6rem;
+		color: $gray-accent-7-color;
+		font-weight: 600;
+	}
+
+	dl {
+
+		dt {
+			margin-top: 15px;
+			color: $gray-accent-6-color;
+			font-weight: 700 !important;
+		}
+
+		dd {
+
+			padding: 0px 15px 0px 15px;
+
+			ul {
+
+				li {
+					color: $gray-accent-8-color;
+					font-size: 0.8rem;
+					background-color: $gray-accent-1-color;
+					//border: 1px solid $accent-light-color;
+					border: 1px solid $gray-accent-4-color;
+					border-radius: 10px;
+					padding: 5px 15px 5px 15px;
+					margin: 5px 0px 5px 0px;
+
+					&.found {
+						background-color: $gray-accent-2-color;
+					}
+				}
+
+			}
+
+		}
+	}
+
+
+
 }
