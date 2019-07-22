@@ -19,7 +19,7 @@
 
 								<p class="card-text"><%= t('home.target.find-card.body-text') %></p>
 
-								<p class="mt-auto"><a href="#" class="btn btn-outline-accent"><%= t('home.target.find-card.link-text') %></a></p>
+								<p class="mt-auto"><%= link_to t('home.target.find-card.link-text'), profiles_path, class: "btn btn-outline-accent" %></p>
 
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 
 								<p class="card-text"><%= t('home.target.add-card.body-text') %></p>
 
-								<p class="mt-auto"><a href="#" class="btn btn-large btn-outline-accent"><%= t('home.target.add-card.link-text') %></a></p>
+								<p class="mt-auto"><%= link_to t('home.target.add-card.link-text'), new_user_registration_path, class: "btn btn-outline-accent" %></p>
 
 							</div>
 						</div>
