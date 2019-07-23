@@ -21,13 +21,7 @@
 		 number of results and total profile number
 	#%>
 	<div class="profile-list-count-container">
-		<% if I18n.locale == :en %>
-			<p class="small">Viewing <span class="results-count"><%= @pagy.count %></span> of <%= Profile.count %> profiles</p>
-		<% elsif I18n.locale == :fr %>
-			<p class="small">Affichage de <span class="results-count"><%= @pagy.count %></span> sur <%= Profile.count %> profils</p>
-			<%== pagy_info(@pagy) %>
-		<% end %>
-
+		<p class="small"><%= t('profile.index.search.results-count-message') %>: <span class="results-count"><%= @pagy.count %></span></p>
 	</div>
 
 	<%#

@@ -115,6 +115,7 @@ en:
     index:
       heading: "Find a global development researcher in Canada"
       search:
+        results-count-message: "Search results"
         no-results-message: "Sorry, no results found using those search terms!"
         advanced-filters:
           btn: "Advanced Search Filters"

@@ -114,6 +114,18 @@ fr:
   profile:
     index:
       heading: "FIND Canadian researchers by entering terms in the search below"
+      search:
+        results-count-message: "Résultat(s) de la recherche"
+        no-results-message: "Aucun résultat"
+        advanced-filters:
+          btn: "Advanced Search Filters"
+          filter-sectors-label: "Include any of the following <strong>Sectors</strong>:"
+          filter-demographics-label: "Include any of the following <strong>Demographics</strong>:"
+          filter-countries-label: "Include any of the following <strong>Countries</strong>:"
+          filter-development-actors-label: "Include any of the following <strong>Development Actors</strong>:"
+          filter-regions-label: "Include any of the following <strong>Regions</strong>:"
+          filter-subregions-label: "Include any of the following <strong>Subregions</strong>:"
+          submit-button: "Chercher"
       profile-card:
         send-email-btn: "Envoyer un courriel"
         view-profile-btn: "Voir le profile"
