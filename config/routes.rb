@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 	# Devise authentication routes
-	devise_for :users
+	devise_for :users, controllers: { confirmations: 'confirmations' }
 
 	#
     # Use the following resource to sort out routes

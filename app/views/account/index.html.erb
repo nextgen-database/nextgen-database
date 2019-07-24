@@ -4,170 +4,187 @@
 	<div class="border-top mt-5">
 		<h2>Profile Information</h2>
 
-		<%#
-		# If the user has a profile then display some
-		# profile information with an edit button
-		#
-		# If the user doesn't have a profile show links
-		# to create a new profile or drop down to claim
-		# a profile and a submit button
-		#
-		# If a profile is in the process of being claimed
-		# then show that and the status of the claim
-		#
-		#%>
+		<% unless @user.confirmed? %>
 
-		<% if @valid_profile %>
+			<p>Welcome to the NextGen Database</p>
 
+			<p>You are required to confirm your email address before you can claim or create a new profile</p>
 
-			<dl class="row">
-				<dt class="col-sm-3">Profile Email:</dt>
-				<dd class="col-sm-9"><%= @user_profile.email %></dd>
+			<p>An email has been send to your email account (<%= @user.email %>). Please click on the link provided to confirm your email address.</p>
 
-				<dt class="col-sm-3">Profile First Name:</dt>
-				<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+			<p>Please check your Junk folder as sometimes the email can end up there.</p>
 
-				<dt class="col-sm-3">Profile Last Name:</dt>
-				<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
-			</dl>
-
-			<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
-
-
-			<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
-
-
+			<p>Once your email address is confirmed please sign back in and you will have the option to create a new profile or claim an existing profile</p>
 
 		<% else %>
 
-
 			<%#
-				State Machine:
-
-				State A: The user doesn't have any profile request
-						 Show them the create profile button
-						 Show them the profile request block
-
-				State B: The user has a request that is in a not set state
-						 Show them the request with the cancel buttom
-						 Disable the new profile buttom
-
-				State C: The user has a request that was denied
-						 Show them the request/s that was denied
-						 Show them the create profile button
+			# If the user has a profile then display some
+			# profile information with an edit button
+			#
+			# If the user doesn't have a profile show links
+			# to create a new profile or drop down to claim
+			# a profile and a submit button
+			#
+			# If a profile is in the process of being claimed
+			# then show that and the status of the claim
+			#
 			#%>
 
+			<% if @valid_profile %>
+
+
+				<dl class="row">
+					<dt class="col-sm-3">Profile Email:</dt>
+					<dd class="col-sm-9"><%= @user_profile.email %></dd>
+
+					<dt class="col-sm-3">Profile First Name:</dt>
+					<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+
+					<dt class="col-sm-3">Profile Last Name:</dt>
+					<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
+				</dl>
+
+				<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
+
+
+				<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
+
+
+
+			<% else %>
+
+
+				<%#
+					State Machine:
+
+					State A: The user doesn't have any profile request
+							Show them the create profile button
+							Show them the profile request block
+
+					State B: The user has a request that is in a not set state
+							Show them the request with the cancel buttom
+							Disable the new profile buttom
+
+					State C: The user has a request that was denied
+							Show them the request/s that was denied
+							Show them the create profile button
+				#%>
 
 
 
 
-			<%#
-				If all of the profile requests for the user that are not set or denied
-				When do we show the request profile form?
-				We show it when there isn't an outstanding not set
-			#%>
 
-			<% if @user_profile_requests_not_set.blank? %>
+				<%#
+					If all of the profile requests for the user that are not set or denied
+					When do we show the request profile form?
+					We show it when there isn't an outstanding not set
+				#%>
 
-				<div class="card my-3">
-					<div class="card-body">
-						<h4 class="card-title">Step 1 - Check if your profile was created for you</h4>
+				<% if @user_profile_requests_not_set.blank? %>
 
-							<%= form_for [:admin, ProfileRequest.new] do |f| %>
+					<div class="card my-3">
+						<div class="card-body">
+							<h4 class="card-title">Step 1 - Check if your profile was created for you</h4>
 
-
-								<div class="form-group">
-
-									<%= label_tag(:profile_id, "Profile Name:") %>
-
-									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'form-control', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
-								</div>
+								<%= form_for [:admin, ProfileRequest.new] do |f| %>
 
 
+									<div class="form-group">
 
-								<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
+										<%= label_tag(:profile_id, "Profile Name:") %>
 
-							<% end %>
-
-					</div>
-				</div>
-
-				<div class="card my-3">
-					<div class="card-body">
-						<h4 class="card-title">Step 2 - Don't see your name? Create a new profile</h4>
-
-							<p>Create a new profile by clicking the button below.</p>
-
-							<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
-
-					</div>
-				</div>
+										<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'form-control', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
+									</div>
 
 
 
+									<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
 
-			<% end %>
-
-			<%#
-				List all of the profile requests for the user that are not set or denied
-			#%>
-			<% if !@user_profile_requests_not_set.blank? %>
-
-				<p>The following profile requests are pending:</p>
-
-				<table class="table">
-					<thead>
-						<tr>
-						<th scope="col">User Account</th>
-						<th scope="col">Profile Name</th>
-						<th scope="col">Status</th>
-						<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @user_profile_requests_not_set.each do |profile_request| %>
-							<tr>
-							<td scope="row"><%= @user.email %></td>
-							<td><%= profile_request.profile_id %></td>
-							<td>Pending</td>
-							<td>
-								<%= form_for [:admin, profile_request] do |f| %>
-
-									<%#= render 'shared/error_messages', object: f.object #%>
-									<%= f.hidden_field :status, {value: 'user_cancelled'} %>
-
-									<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
 								<% end %>
-							</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
 
-			<% end %>
+						</div>
+					</div>
 
-			<% if !@user_profile_requests_denied.blank? %>
+					<div class="card my-3">
+						<div class="card-body">
+							<h4 class="card-title">Step 2 - Don't see your name? Create a new profile</h4>
 
-				<h3>Denied Profile Requests:</h3>
+								<p>Create a new profile by clicking the button below.</p>
 
-				<table class="table">
-					<thead>
-						<tr>
-						<th scope="col">User Account</th>
-						<th scope="col">Profile Name</th>
-						<th scope="col">Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @user_profile_requests_denied.each do |profile_request| %>
+								<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
+
+						</div>
+					</div>
+
+
+
+
+				<% end %>
+
+				<%#
+					List all of the profile requests for the user that are not set or denied
+				#%>
+				<% if !@user_profile_requests_not_set.blank? %>
+
+					<p>The following profile requests are pending:</p>
+
+					<table class="table">
+						<thead>
 							<tr>
-							<td scope="row"><%= @user.email %></td>
-							<td><%= profile_request.profile_id %></td>
-							<td>Denied</td>
+							<th scope="col">User Account</th>
+							<th scope="col">Profile Name</th>
+							<th scope="col">Status</th>
+							<th scope="col">Action</th>
 							</tr>
-						<% end %>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<% @user_profile_requests_not_set.each do |profile_request| %>
+								<tr>
+								<td scope="row"><%= @user.email %></td>
+								<td><%= profile_request.profile_id %></td>
+								<td>Pending</td>
+								<td>
+									<%= form_for [:admin, profile_request] do |f| %>
+
+										<%#= render 'shared/error_messages', object: f.object #%>
+										<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+										<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
+									<% end %>
+								</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+				<% end %>
+
+				<% if !@user_profile_requests_denied.blank? %>
+
+					<h3>Denied Profile Requests:</h3>
+
+					<table class="table">
+						<thead>
+							<tr>
+							<th scope="col">User Account</th>
+							<th scope="col">Profile Name</th>
+							<th scope="col">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @user_profile_requests_denied.each do |profile_request| %>
+								<tr>
+								<td scope="row"><%= @user.email %></td>
+								<td><%= profile_request.profile_id %></td>
+								<td>Denied</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+				<% end %>
+
 
 			<% end %>
 
