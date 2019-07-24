@@ -24,24 +24,38 @@ namespace(:ng) do
 
 			data.each do |row|
 
-				puts "Prefix: #{row["Prefix"]}"
-				puts "First Name: #{row["First Name"]}"
-				puts "Last Name: #{row["Last Name"]}"
-				puts "Website: #{row["Website"]}"
-				puts "Email: #{row["Email"]}"
-				puts "Twitter: #{row["Twitter"]}"
-				puts "Linkedin: #{row["Linkedin"]}"
-				puts "Academia: #{row["Academia"]}"
-				puts "Position Title: #{row["Position Title"]}"
-				puts "Affiliated organizations: #{row["Affiliated organizations"]}"
-				puts "Sectors: #{row["Sectors"]}"
-				puts "Demographic Focus: #{row["Demographic Focus"]}"
-				puts "Development Actors: #{row["Development Actors"]}"
-				puts "Research Methods: #{row["Research Methods"]}"
-				puts "Countries: #{row["Countries"]}"
-				puts "Regions: #{row["Regions"]}"
-				puts "Subregions: #{row["Subregions"]}"
+				if false
+					puts "Prefix: #{row["Prefix"]}"
+					puts "First Name: #{row["First Name"]}"
+					puts "Last Name: #{row["Last Name"]}"
+					puts "Website: #{row["Website"]}"
+					puts "Email: #{row["Email"]}"
+					puts "Twitter: #{row["Twitter"]}"
+					puts "Linkedin: #{row["Linkedin"]}"
+					puts "Academia: #{row["Academia"]}"
+					puts "Position Title: #{row["Position Title "]}"
+					puts "Affiliated organizations: #{row["Affiliated organizations"]}"
+					puts "Sectors: #{row["Sectors"]}"
+					puts "Demographic Focus: #{row["Demographic Focus"]}"
+					puts "Development Actors: #{row["Development Actors"]}"
+					puts "Research Methods: #{row["Research Methods"]}"
+					puts "Countries: #{row["Countries"]}"
+					puts "Regions: #{row["Regions"]}"
+					puts "Subregions: #{row["Subregions"]}"
+				end
+
+
 				puts "SDG: #{row["SDG"]}"
+
+				# Strip any white space front and back
+				sdg_string = row["SDG"].delete("a-z").delete("A-Z").delete("\s").strip
+
+				# Strip any characters
+				puts "SDG String: #{sdg_string}"
+
+				# Get SDGs
+				#
+
 
 			end
 
