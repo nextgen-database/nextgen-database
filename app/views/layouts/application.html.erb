@@ -18,6 +18,9 @@
 		<!-- Required JavaScript file -->
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+		<!-- Favicon -->
+		<%= favicon_link_tag asset_path('favicon/favicon.png') , rel: 'icon', type: 'image/png' %>
+
 	</head>
 
 	<body class="<%= current_page?(root_path) || current_page?(home_path) ? 'home' : 'page' %> <%= controller.class.parents.include?(Admin) ? 'admin' : '' %>">
