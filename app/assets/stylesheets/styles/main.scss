@@ -20,9 +20,27 @@
 		padding: $main-section-padding;
 	}
 
-	h1 {
-		color: #000;
-		//font-size: 3.5rem;
+	h1, h2, h3, h4, h5, h6 {
+		//	@include default-alternative-font-family;
+		padding-bottom: 10px;
+		border-bottom: 1px solid $gray-accent-3-color !important;
 	}
+
+
+	h1 {
+		color: #323737 !important;
+		font-weight: 700;
+	}
+
+	h2, h3, h4, h5 ,h6 {
+		color: #424949 !important;
+		font-weight: 600;
+	}
+
+
+
+
+
+
 
 }

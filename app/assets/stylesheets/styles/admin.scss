@@ -1,0 +1,75 @@
+// Place all the styles related to the admin/dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin {
+
+	ul.admin-list-group {
+
+		background-color: #fff;
+		//border: 1px solid black;
+		list-style: none;
+		padding: 0px;
+		margin: 0px 0px 40px 0px;
+
+		li {
+
+			border-top: 1px solid  $gray-accent-3-color;
+			border-left: 1px solid  $gray-accent-3-color;
+			border-right: 1px solid  $gray-accent-3-color;
+
+			a {
+				display: flex;
+				padding: 10px 10px 10px 10px;
+				text-decoration: none;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+
+				//.list-group-title {
+				//
+				//}
+
+			}
+
+			&:last-child {
+				border-bottom: 1px solid  $gray-accent-3-color;
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+				background-color: #fff;
+			}
+
+			&:first-child {
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+
+			&:hover {
+
+				background-color: $gray-accent-2-color;
+
+			}
+
+		}
+
+	}
+
+	.admin-nav {
+
+		background-color: $gray-accent-1-color;
+		border: 1px solid $gray-accent-3-color;
+		margin: 25px 0px 25px 0px;
+
+		nav {
+
+			.nav-link {
+				text-decoration: none;
+				font-weight: 700;
+			}
+
+		}
+
+	}
+
+
+}

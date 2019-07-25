@@ -1,19 +1,114 @@
-<h1>Admin::Dashboard#index</h1>
-<p>Find me in app/views/admin/dashboard/index.html.erb</p>
+<h1>NextGen Dashboard</h1>
 
+<p><small>Welcome: <span class="text-secondary"><%= @user.email %></span></p>
+
+<section>
+
+	<h2 class="sr-only">On this page</h2>
+
+	<div class="admin-nav">
+		<nav>
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#statistics">Statistics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#requests">Profile Requests</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#profile_management">Profile Management</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#user_management">User Management</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#vocabulary">Controlled Vocabulary</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+</section>
 
 
 <section>
-	<h2>Controlled Vocabulary</h2>
+	<h2 id="statistics">Statistics</h2>
 
-	<ul>
-		<li><%= link_to 'Sectors', admin_sectors_path() %></li>
-		<li><%= link_to 'Demographics', admin_demographics_path() %></li>
-		<li><%= link_to 'Development Actors', admin_development_actors_path() %></li>
-		<li><%= link_to 'Research Methods', admin_research_methods_path() %></li>
-		<li><%= link_to 'Organisations', admin_organisations_path() %></li>
-		<li><%= link_to 'Position Titles', admin_titles_path() %></li>
-		<li><%= link_to 'Sustainable Development Goals', admin_sustainable_development_goals_path() %></li>
+	<p>To be released...</p>
+
+</section>
+
+
+<section>
+	<h2 id="requests">Profile Requests</h2>
+
+	<p>To be released...</p>
+
+</section>
+
+
+<section>
+	<h2 id="profile_management">Profile Management</h2>
+
+	<p>To be released...</p>
+
+</section>
+
+<section>
+	<h2 id="user_management">User Management</h2>
+
+	<p>To be released...</p>
+
+</section>
+
+
+<section>
+	<h2 id="vocabulary">Controlled Vocabulary</h2>
+
+
+	<ul class="admin-list-group">
+		<li>
+			<%= link_to admin_sectors_path() do %>
+				<div class="list-group-title">Sectors</div>
+				<span class="badge badge-primary badge-pill"><%= Sector.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_demographics_path() do %>
+				<div class="list-group-title">Demographic Factors</div>
+				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_development_actors_path() do %>
+				<div class="list-group-title">Development Actors</div>
+				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_research_methods_path() do %>
+				<div class="list-group-title">Research Methods</div>
+				<span class="badge badge-primary badge-pill"><%= ResearchMethod.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_organisations_path() do %>
+				<div class="list-group-title">Organisations</div>
+				<span class="badge badge-primary badge-pill"><%= Organisation.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_titles_path() do %>
+				<div class="list-group-title">Position Titles</div>
+				<span class="badge badge-primary badge-pill"><%= Title.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_sustainable_development_goals_path() do %>
+				<div class="list-group-title">Sustainable Development Goals</div>
+				<span class="badge badge-primary badge-pill"><%= SustainableDevelopmentGoal.count %></span>
+			<% end %>
+		</li>
 	</ul>
 
 </section>

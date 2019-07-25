@@ -20,8 +20,7 @@
 
 	</head>
 
-	<body class="<%= current_page?(root_path) || current_page?(home_path) ? 'home' : 'page' %>">
-
+	<body class="<%= current_page?(root_path) || current_page?(home_path) ? 'home' : 'page' %> <%= controller.class.parents.include?(Admin) ? 'admin' : '' %>">
 
 		<%= render 'partials/accessibility' %>
 

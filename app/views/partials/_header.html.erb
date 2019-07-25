@@ -55,8 +55,13 @@
 						<%#
 							TO DO: Add a button to the my profile page (when it's created)
 						%>
+							<% if current_user.admin? %>
 							<li>
-								<%= link_to('My Account', account_path, :class=>"btn btn-outline-primary" ) %>
+								<%= link_to('Admin', admin_path, :class=>"btn btn-outline-primary" ) %>
+							</li>
+							<% end %>
+							<li>
+								<%= link_to('My Account', account_path, :class=>"btn btn-outline-primary ml-lg-2" ) %>
 							</li>
 							<li>
 								<%= link_to('Logout', destroy_user_session_path, method: :delete, :class=>"btn btn-primary ml-lg-2" ) %>

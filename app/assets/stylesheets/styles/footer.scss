@@ -50,7 +50,8 @@
 			margin: 0px;
 			padding: 0px;
 			text-decoration: none !important;
-			color: $primary-color;
+			color: $primary-color !important;
+			border-bottom: none !important;
 			//color: darken($primary-color, 10%);
 			font-weight: bold;
 		}
