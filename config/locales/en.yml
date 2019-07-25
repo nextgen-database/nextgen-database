@@ -31,6 +31,12 @@
 
 en:
 
+  site_name: "NextGen Database"
+
+  static_pages:
+    home:
+      title: "Home"
+
   application:
     title: "NextGen Database"
 
@@ -103,16 +109,9 @@ en:
       heading: "Find a researcher by Sustainable Development Goal"
       sub-heading_html: "The NextGen Database allows you to link research in Canada to relevant <a href='https://sustainabledevelopment.un.org/?menu=1300'>Sustainable Development Goals (SDGs)</a> by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
 
-  account:
-    show:
-      heading: "My Account"
-    edit:
-      heading: "Edit My Profile"
-    new:
-      heading: "Create a New Profile"
-
-  profile:
+  profiles:
     index:
+      title: "Search"
       heading: "Find a global development researcher in Canada"
       search:
         results-count-message: "Search results"
@@ -129,6 +128,19 @@ en:
       profile-card:
         send-email-btn: "Send email"
         view-profile-btn: "View Full Profile"
+
+  account:
+    index:
+      title: "My Account"
+    show:
+      heading: "My Account"
+    edit:
+      heading: "Edit My Profile"
+    new:
+      heading: "Create a New Profile"
+
+
+
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name
 # :one_other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/locales/utils/p11n.rb)

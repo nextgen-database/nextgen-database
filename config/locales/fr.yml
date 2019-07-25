@@ -31,6 +31,12 @@
 
 fr:
 
+  site_name: "Base de données NextGen"
+
+  static_pages:
+    home:
+      title: "Accueil"
+
   application:
     title: "Base de données NextGen"
 
@@ -58,7 +64,7 @@ fr:
 
   home:
     search:
-      heading: "Find a global development expert in Canada."
+      heading: "Trouvez des chercheurs Canadiens en saisissant des termes dans le moteur de recherche ci-dessous"
       blurb: "Il s’agit d’une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l’aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
       placeholder: "Entrez un nom, secteur, organisation"
       sdg_dropdown: "Les objectifs de développement durable"
@@ -103,17 +109,10 @@ fr:
       heading: "Find a researcher by Sustainable Development Goal"
       sub-heading_html: "The NextGen Database allows you to link research in Canada to relevant <a href='https://sustainabledevelopment.un.org/?menu=1300'>Sustainable Development Goals (SDGs)</a> by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
 
-  account:
-    show:
-      heading: "My Account"
-    edit:
-      heading: "Edit My Profile"
-    new:
-      heading: "Create a New Profile"
-
-  profile:
+  profiles:
     index:
-      heading: "FIND Canadian researchers by entering terms in the search below"
+      title: "Rechercher"
+      heading: "Find a global development researcher in Canada"
       search:
         results-count-message: "Résultat(s) de la recherche"
         no-results-message: "Aucun résultat"
@@ -132,7 +131,18 @@ fr:
 
   account:
     index:
-      heading: "Mon Account"
+      title: "Mon account"
+    show:
+      heading: "Mon account"
+    edit:
+      heading: "Edit My Profile"
+    new:
+      heading: "Create a New Profile"
+
+  admin:
+    dashboard:
+      index:
+        title: "Admin"
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name
 # :one_upto_two_other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/locales/utils/p11n.rb)
