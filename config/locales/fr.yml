@@ -129,6 +129,7 @@ fr:
         send-email-btn: "Envoyer un courriel"
         view-profile-btn: "Voir le profile"
 
+
   account:
     index:
       title: "Mon account"
@@ -138,6 +139,7 @@ fr:
       heading: "Edit My Profile"
     new:
       heading: "Create a New Profile"
+
 
   admin:
     dashboard:

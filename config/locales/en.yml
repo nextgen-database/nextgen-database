@@ -129,6 +129,7 @@ en:
         send-email-btn: "Send email"
         view-profile-btn: "View Full Profile"
 
+
   account:
     index:
       title: "My Account"
@@ -140,7 +141,10 @@ en:
       heading: "Create a New Profile"
 
 
-
+  admin:
+    dashboard:
+      index:
+        title: "Admin Dashboard"
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name
 # :one_other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/locales/utils/p11n.rb)
