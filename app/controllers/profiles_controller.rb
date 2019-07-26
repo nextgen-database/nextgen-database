@@ -23,6 +23,7 @@ class ProfilesController < ApplicationController
 		# is advanced search being used? If so set a flag
 		# this flag is used by the view to open the filters
 		@is_advanced_filters_on = false
+		@is_advanced_filters_on = true unless @search_parameters['advanced_search_flag'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['sector_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['demographic_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['development_actors_ids'].blank?
@@ -277,6 +278,9 @@ class ProfilesController < ApplicationController
 
 			# Set the Development Actors IDs
 			@search_parameters['subregion_ids'] = params[:g] unless params[:g].blank?
+
+			# Set the Development Actors IDs
+			@search_parameters['advanced_search_flag'] = params[:z] unless params[:z].blank?
 
 		end
 
