@@ -64,7 +64,7 @@ en:
 
   home:
     search:
-      heading: "Find a global development researcher in Canada"
+      heading: "Find a Global sustainable development researcher in Canada"
       blurb: "This is a unique searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to global and national development. The NextGen Database also maps areas of research to the Agenda 2030 and the SDGs. It identifies how researchers in Canada contribute to the implementation and understanding of the SDGs. Find researchers or practitioner-researchers to collaborate with!"
       placeholder: "Enter name, sector, organisation, or country"
       sdg_dropdown: "Show All SDGs"
