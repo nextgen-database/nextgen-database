@@ -35,7 +35,9 @@ fr:
 
   static_pages:
     home:
-      title: "Accueil"
+      title: "Home"
+    about:
+      title: "À propos"
 
   application:
     title: "Base de données NextGen"
@@ -47,7 +49,7 @@ fr:
   navigation:
     links:
       home: "Accueil"
-      about: "À propos de base de données NextGen"
+      about: "À propos"
       tc: "Avis"
       privacy: "Confidentialité"
 
@@ -60,19 +62,19 @@ fr:
       privacy: "Confidentialité"
     copyright:
       heading: "Droit d'auteur"
-      notice: "© 2017 - 2019 Conseil canadien pour la coopération internationale (CCCI) | Association canadienne d’études de développement international (ACÉDI)"
+      notice: "© 2017 - 2019 Conseil canadien pour la coopération internationale (CCCI) | Association canadienne d'études de développement international (ACÉDI)"
 
   home:
     search:
       heading: "Trouvez des chercheurs Canadiens en saisissant des termes dans le moteur de recherche ci-dessous"
-      blurb: "Il s’agit d’une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l’aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
+      blurb: "Il s'agit d'une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l'aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
       placeholder: "Entrez un nom, secteur, organisation"
       sdg_dropdown: "Les objectifs de développement durable"
       button: "Rechercher"
     advanced-search:
       link: "Recherche avancée"
     partners:
-      heading: "Our Partners"
+      heading: "Nos partenaires"
       ccic:
         link: "https://ccic.ca/fr/"
         text: "Canadian Council for International Co-operation"
@@ -93,23 +95,27 @@ fr:
         link: "https://canada.ca/fr"
         text: "Gouvernement du Canada"
         src: "partners/canada.png"
+      text:
+        block:
+          a: "La base de données Prochaine Génération a été créée par l'ACÉDI et le CCCI dans le cadre du programme Prochaine Génération, financé principalement par le CRDI. Affaires mondiales Canada a également soutenu la phase initiale de la base de données."
+          b: "En collaboration avec SDSN Canada, la base de données Prochaine Génération a été mise à jour en 2019 afin d'inclure un filtre pour les ODD et de nouveaux chercheurs, financé en partie par le programme des objectifs de développement durable du Gouvernement du Canada."
     target:
-      heading: "Using the NextGen Database"
+      heading: "Base de données NextGen"
       find-card:
-        title: "Find a Researcher"
-        body-text: "Nostrud tempor ea ex pariatur ipsum ipsum labore veniam enim. Sit sunt culpa consectetur nisi enim aute incididunt ad et culpa. Velit ipsum magna non ex irure ea."
-        link-text: "Search the database"
+        title: "Trouvez un chercheur"
+        body-text: "Utilisez l’outil de recherche afin de trouver des chercheurs basés au Canada travaillant sur des enjeux internationaux et nationaux de développement durable. Essayez le filtre pour les ODD!"
+        link-text: "Cherchez dans la base de données"
       add-card:
-        title: "Add your name"
-        body-text: "Exercitation amet laborum Lorem dolore ex non aute in occaecat culpa eu. In ea exercitation mollit laborum voluptate magna sint consectetur elit do. Ullamco cillum fugiat velit dolore eiusmod fugiat esse eu officia pariatur dolore. Aliquip adipisicing incididunt magna excepteur quis cillum labore dolor duis."
-        link-text: "Create a profile"
+        title: "Ajouter votre nom"
+        body-text: "Aidez les médias, étudiants, chercheurs, organisations de la société civile et décideurs politiques à en apprendre davantage sur vos recherches et se connecter."
+        link-text: "Créez un profil"
       learn-card:
-        title: "Learn more"
-        body-text: "Ipsum eiusmod ea culpa esse excepteur consequat fugiat et occaecat consequat ea nisi nisi occaecat. Esse duis velit sint cillum incididunt adipisicing commodo et. Et consequat exercitation proident aute nisi officia reprehenderit dolor. Exercitation voluptate velit quis dolor."
-        link-text: "About the database"
+        title: "En savoir plus"
+        body-text: "Apprenez-en davantage sur la base de données Prochaine Génération, le programme qui a créé cet outil et les partenaires impliqués."
+        link-text: "Au sujet de Prochaine Génération"
     sdg-nav:
-      heading: "Find a researcher by Sustainable Development Goal"
-      sub-heading_html: "The NextGen Database allows you to link research in Canada to relevant <a href='https://sustainabledevelopment.un.org/?menu=1300'>Sustainable Development Goals (SDGs)</a> by mapping areas of research around the SDGs/Agenda 2030. Find which researchers in Canada are working on each SDG."
+      heading: "Trouvez un chercheur selon les Objectifs de Développement Durable "
+      sub-heading_html: "La base de données Prochaine Génération vous permet de relier la recherche au Canada aux <a rel='external' href='https://www.un.org/sustainabledevelopment/fr/'>objectifs de développement durable (ODD)</a> pertinents, en cartographiant les domaines de recherche autour du programme des ODD. Trouvez quels chercheurs travaillent sur chaque ODD."
 
   profiles:
     index:

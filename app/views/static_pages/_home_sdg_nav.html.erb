@@ -11,9 +11,13 @@
 				<ul class="row home-sdg-nav-list">
 
 					<% SustainableDevelopmentGoal.all.each do |sdg| %>
+
 						<li class="col-6 col-sm-4 col-md-3 col-lg-2 py-4">
+
 							<%= link_to profiles_path(:a => sdg.id.to_s) do %>
-								<%= image_tag asset_path("sdg-icons/" + sdg.code.to_s + ".png"), { class: "img-fluid" , alt: "" }  %>
+
+								<%= image_tag asset_path("sdg-icons/" + I18n.locale.to_s + "/" + sdg.code.to_s + ".png"), { class: "img-fluid" , alt: "" }  %>
+
 								<span class="sr-only">
 									<% if I18n.locale == :en %>
 										<%#
@@ -24,8 +28,11 @@
 										<%= sdg.banner_fr %>
 									<% end %>
 								</span>
+
 							<% end %>
+
 						</li>
+
    					<% end %>
 
 				</ul>

@@ -36,6 +36,8 @@ en:
   static_pages:
     home:
       title: "Home"
+    about:
+      title: "About"
 
   application:
     title: "NextGen Database"
@@ -93,6 +95,10 @@ en:
         link: "https://canada.ca/en"
         text: "Government of Canada"
         src: "partners/canada.png"
+      text:
+        block:
+          a: "The NextGen Database has been founded by CASID and CCIC as part of the Next Generation program, funded primarily by the IDRC. Global Affairs Canada also supported the initial phase of the database."
+          b: "In collaboration with SDSN Canada, the NextGen Database was updated in 2019 to include SDG filters and new researchers, funded in part by the Government of Canada’s Sustainable Development Goals Program."
     target:
       heading: "Using the NextGen Database"
       find-card:

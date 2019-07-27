@@ -1,21 +1,29 @@
 
-<div class="row">
-	<div class="col-md-8">
+<div class="row justify-content-center">
+	<div class="col-md-10">
 
-		<h1 class="display-5">About</h1>
+		<% if I18n.locale == :en %>
 
-		<h2 class="display-3">The NextGen Database</h2>
+		<h1 class="h2">About<br /> <span class="h1">The NextGen Database</span></h1>
 
-		<div style="font-size:1.3rem;">
+		<p>We have built an online, searchable database to help identify potential new collaborators (and collaborations) for Next Generation. The database also allows the media, students, policy-makers, and the general public to identify Canadian experts. The Nextgen database is part of the Next Generation – Collaboration for Development program, a partnership between the Canadian Council for International Co-operation (CCIC) and the Canadian Association for the Study of International Development (CASID) (<a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">Learn more about the program</a>).</p>
 
-		<p>We have built an online, searchable database to help identify potential new collaborators (and collaborations) for Next Generation. The database also allows the media, students, policy-makers, and the general public to identify Canadian experts.</p>
+		<div class="collapse" id="collapseExample1">
+			<div class="card card-body mb-4">
+
+				<p>Next Generation aims to position Canada as a <strong>leader</strong> in <em>innovative</em>, multi-stakeholder international development and humanitarian research, practice and policy development. The goal is to encourage better collaborations between civil society and academia, and strengthen the Canadian ecosystem of research and knowledge sharing.</p>
+
+				<p>To facilitate collaborations, we need a better sense of who the different groups and individuals in this ecosystem are – both within and beyond CCIC-CASID respective memberships. That is where this database comes in.</p>
+
+			</div>
+		</div>
 
 		<p>The database includes Canadian researchers from universities, colleges, institutes, think-tanks and civil society organizations working on global sustainable development issues including international development and humanitarian assistance, but also on domestic issues related to the SDGs.</p>
 
 		<p>This community is large. To keep the process manageable during the first phase, <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">we have developed the database in three steps</a>, identifying primary, secondary and tertiary targets.</p>
 
 		<div class="collapse" id="collapseExample">
-			<div class="card card-body mb-3">
+			<div class="card card-body mb-4">
 				<p>Our <strong>primary targets</strong> (January – April 2017) are the 22 institutional members of the Canadian Consortium of University Programs in International Development Studies (CCUPIDS) and "practitioner-researchers". The latter are people who work for civil society organizations focused on international development and humanitarian assistance, and are involved in academic-practitioner collaborations or research that shapes and informs policy and programmatic development.</p>
 
 				<p>Our <strong>secondary targets</strong> (May – September) include universities, colleges and think tanks not captured in the first round that are focused on international development, humanitarian assistance and global cooperation.</p>
@@ -38,5 +46,53 @@
 
 		<p><a href="https://ccic.ca/wp-content/uploads/2019/01/GAC-List-of-Thematic-and-Sector-Specialists-January-2019.pdf" rel="external" target="_blank">Global Affairs Canada - List of Thematic and Sector Specialists (January 2019)</a></p>
 
+		<% elsif I18n.locale == :fr %>
+
+		<h1 class="h2">À propos<br /> <span class="h1">La base de données Nextgen</span></h1>
+
+		<p>Nous avons développé une base de données en ligne consultable pour identifier d'éventuels collaborateurs (et collaborations) dans le cadre de <a href="http://www.ccic.ca/what_we_do/next_generation_f.php">Prochaine génération</a>. La base de données permet également aux médias, aux étudiants, aux décideurs et au grand public d'identifier des experts canadiens. La base de données fait partie du programme Prochaine Génération – Collaboration pour le Développement, une initiative conjointe du Conseil canadien pour la coopération internationale (CCCI) et de l'Association canadienne d'études de développement international (ACÉDI) (<a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">Pour en savoir plus sur le programme</a>).</p>
+
+		<div class="collapse" id="collapseExample1">
+			<div class="card card-body mb-4">
+
+				<p>Prochaine génération vise à faire du Canada un chef de file en matière d'approches multipartites novatrices au niveau de la recherche et l'élaboration de pratiques et politiques dans les secteurs du développement international et de l'aide humanitaire. L'objectif est de créer des conditions de collaboration améliorée entre la société civile et les universitaires et de renforcer le milieu de la recherche et du partage des connaissances au Canada.</p>
+
+				<p>Pour ce faire, il nous faut mieux comprendre quels sont les différents groupes et individus de ce milieu, tant parmi les membres respectifs du CCCI et de l'ACÉDI qu'au-delà. C'est là que la base de données entre en jeu.</p>
+
+			</div>
 		</div>
+
+		<p>Elle regroupe des chercheurs des universités, des collèges, des instituts, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l'aide humanitaire, mais également sur des enjeux nationaux de développement en lien avec les ODD.</p>
+
+		<p>Cette communauté est vaste. Pour maintenir un processus gérable, la première phase de développement de la base de données s'est faite <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">en trois étapes</a>, à savoir l'identification des cibles primaires, secondaires et tertiaires.</p>
+
+		<div class="collapse" id="collapseExample">
+			<div class="card card-body mb-4">
+
+				<p>Nos <strong>cibles primaires</strong> (janvier à avril 2017) sont les 22 membres institutionnels du Consortium canadien pour les programmes universitaires d'études du développement international (CCPUÉDI) et des « praticiens-chercheurs ». Ceux-ci travaillent pour des organisations de la société civile axées sur le développement international et l'aide humanitaire. Ils participent à des collaborations entre praticiens et académiques ou à des recherches qui informent et orientent l'élaboration des politiques et des programmes.</p>
+
+				<p>Nos <strong>cibles secondaires</strong> (mai à septembre) comprennent les universités, les collèges et les groupes de réflexion qui n'ont pas été pris en compte dans la première ronde et qui sont axés sur le développement international, l'aide humanitaire et la coopération mondiale.</p>
+
+				<p>Nos <strong>cibles tertiaires</strong> (septembre et au-delà) englobent tous les membres de l'ACÉDI et du CCCI, des disciplines académiques connexes (science politique, économie, etc.) ainsi que les associations géographiques (Afrique, Asie, etc.) qui souhaitent être incluses dans la base de données. Dans cette phase, les individus créeront leurs propres profils.</p>
+
+			</div>
+		</div>
+
+		<p>La première phase de la collecte de données a servi à développer et à affiner le vocabulaire de chaque catégorie (focus sectoriel, focus géographique, focus démographique, types d'intervenants du secteur du développement, types de méthodologie de recherche). Ce vocabulaire changera au fur et à mesure que la base de données prendra de l'ampleur.</p>
+
+		<h3>Un filtre pour les ODD dans la base de données Prochaine Génération!</h3>
+
+		<p>Dans notre seconde phase de développement (2019), Prochaine Génération a fait équipe avec le <a rel="external" href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/">Réseau de solutions de développement durable Canada</a> pour relier la recherche au Canada aux <a href="https://www.un.org/sustainabledevelopment/fr/" rel="external">objectifs de développement durable (ODD)</a> pertinents, en cartographiant les domaines de recherche autour du programme des ODD et de l'Agenda 2030. Prochaine Génération a établi une correspondance entre les domaines de recherche et le programme des ODD afin de déterminer comment les universitaires canadiens contribuent à la mise en œuvre et la compréhension des ODD. </p>
+
+		<p>Compte tenu de l'universalité de l'Agenda 2030, la base de données Prochaine Génération a élargi son mandat pour inclure les chercheurs au-delà des secteurs du développement humanitaire et de l'aide humanitaire. Elle inclut désormais des chercheurs qui travaillent sur des enjeux nationaux en lien avec les ODD. </p>
+
+		<p>La base de données a également augmenté son nombre de profils de 35%.</p>
+
+		<p>Nous ne nous attendons pas à ce que la base de données soit exhaustive. Mais, la possibilité offerte aux individus de créer et d'actualiser leur profil par l'entremise d'une fonctionnalité d'éditeur du profil unique fera de cette base de données un outil complet, actuel et durable.</p>
+
+		<p><a href="https://ccic.ca/wp-content/uploads/2019/01/GAC-List-of-Thematic-and-Sector-Specialists-January-2019.pdf" rel="external" target="_blank">Affaires Mondiales Canada – Listes des spécialistes thématiques et sectoriels (Octobre 2017)</a></p>
+
+		<% end %>
+
+
 </div>
