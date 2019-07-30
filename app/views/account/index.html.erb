@@ -1,7 +1,7 @@
 <h1><%= t('account.show.heading') %></h1>
 
 <section>
-	<div class="border-top mt-5">
+	<div class="mt-5">
 		<h2>Profile Information</h2>
 
 		<% unless @user.confirmed? %>
@@ -89,7 +89,6 @@
 
 								<%= form_for [:admin, ProfileRequest.new] do |f| %>
 
-
 									<div class="form-group">
 
 										<%= label_tag(:profile_id, "Profile Name:") %>
@@ -127,7 +126,23 @@
 				#%>
 				<% if !@user_profile_requests_not_set.blank? %>
 
-					<p>The following profile requests are pending:</p>
+					<div class="alert alert-secondary" role="alert">
+						<h3 class="alert-heading">Profile Request Pending</h3>
+
+						<% @user_profile_requests_not_set.each do |profile_request| %>
+							<p>The following profile request for <%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) , class: "alert-link" %> is still pending.</p>
+							<%= form_for [:admin, profile_request] do |f| %>
+
+										<%#= render 'shared/error_messages', object: f.object #%>
+										<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+										<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
+									<% end %>
+						<% end %>
+					</div>
+
+
+					<% if false %>
 
 					<table class="table">
 						<thead>
@@ -158,6 +173,8 @@
 						</tbody>
 					</table>
 
+					<% end %>
+
 				<% end %>
 
 				<% if !@user_profile_requests_denied.blank? %>
@@ -170,14 +187,16 @@
 							<th scope="col">User Account</th>
 							<th scope="col">Profile Name</th>
 							<th scope="col">Status</th>
+							<th scope="col">Updated At</th>
 							</tr>
 						</thead>
 						<tbody>
 							<% @user_profile_requests_denied.each do |profile_request| %>
 								<tr>
 								<td scope="row"><%= @user.email %></td>
-								<td><%= profile_request.profile_id %></td>
+								<td><%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) %></td>
 								<td>Denied</td>
+								<td><%= profile_request.updated_at %></td>
 								</tr>
 							<% end %>
 						</tbody>

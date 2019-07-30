@@ -1,0 +1,55 @@
+<%= render "admin/dashboard/nav" %>
+
+<h2>Controlled Vocabulary</h2>
+
+
+<section>
+	<h2 id="vocabulary">Controlled Vocabulary</h2>
+
+
+	<ul class="admin-list-group">
+		<li>
+			<%= link_to admin_sectors_path() do %>
+				<div class="list-group-title">Sectors</div>
+				<span class="badge badge-primary badge-pill"><%= Sector.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_demographics_path() do %>
+				<div class="list-group-title">Demographic Factors</div>
+				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_development_actors_path() do %>
+				<div class="list-group-title">Development Actors</div>
+				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_research_methods_path() do %>
+				<div class="list-group-title">Research Methods</div>
+				<span class="badge badge-primary badge-pill"><%= ResearchMethod.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_organisations_path() do %>
+				<div class="list-group-title">Organisations</div>
+				<span class="badge badge-primary badge-pill"><%= Organisation.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_titles_path() do %>
+				<div class="list-group-title">Position Titles</div>
+				<span class="badge badge-primary badge-pill"><%= Title.count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_sustainable_development_goals_path() do %>
+				<div class="list-group-title">Sustainable Development Goals</div>
+				<span class="badge badge-primary badge-pill"><%= SustainableDevelopmentGoal.count %></span>
+			<% end %>
+		</li>
+	</ul>
+
+</section>

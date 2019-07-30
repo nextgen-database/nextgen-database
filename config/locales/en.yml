@@ -153,6 +153,23 @@ en:
     dashboard:
       index:
         title: "Admin Dashboard"
+      profile_requests:
+        title: "Profile Requests"
+      profile_management:
+        title: "Profile Management"
+      user_management:
+        title: "User Management"
+      vocabulary_management:
+        title: "Controlled Vocabulary"
+
+
+  profile_requests:
+    status:
+      not_set: "Not Set"
+      approved: "Approved"
+      denied: "Denied"
+      user_cancelled: "User Cancelled Request"
+
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name
 # :one_other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/locales/utils/p11n.rb)

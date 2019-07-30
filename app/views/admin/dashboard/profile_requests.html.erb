@@ -1,0 +1,118 @@
+<%= render "admin/dashboard/nav" %>
+
+<section>
+	<h2 id="requests">Profile Requests</h2>
+
+	<% if @profile_requests_active.count > 0 %>
+
+		<% @profile_requests_active.each_with_index do |pr, index| %>
+
+			<div class="card">
+
+				<div class="card-body">
+
+					<%= form_for pr, :url => {:action => "update", :id => pr.id, :controller => "profile_requests"} do |f| %>
+
+						<div class="form-group row">
+							<label for="staticEmail" class="col-sm-2 col-form-label">User Email Address</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%= User.find_by(id: pr.user_id).email %>">
+							</div>
+						</div>
+
+
+						<div class="form-group row">
+							<label for="staticEmail" class="col-sm-2 col-form-label">Requested Profile</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%= Profile.find_by(id: pr.profile_id).full_name %>">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="staticEmail" class="col-sm-2 col-form-label">Profile Email Address</label>
+							<div class="col-sm-10">
+								<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<%= Profile.find_by(id: pr.profile_id).email.blank? ? 'No Email Provided' : Profile.find_by(id: pr.profile_id).email %>">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="staticEmail" class="col-sm-2 col-form-label">Actions:</label>
+							<div class="col-sm-10">
+								<%= link_to t('profiles.index.profile-card.view-profile-btn'), profile_path(id: pr.profile_id), class: "btn btn-outline-primary", target: "_blank" %>
+
+								<%= f.submit "Reject", name: "reject", class: "btn btn-outline-primary" %>
+
+								<%= f.submit "Approve", name: "approve", class: "btn btn-primary" %>
+
+							</div>
+						</div>
+
+					<% end %>
+
+				</div>
+
+			</div>
+
+		<% end %>
+
+
+
+	<% elsif %>
+
+		<p>There are no profile requests pending.</p>
+
+	<% end %>
+
+	<%#
+	 	List past profile requests
+	#%>
+	<% if @profile_requests_not_active.count > 0 %>
+
+		<section>
+
+			<h3>Past Requests</h3>
+
+			<table class="table">
+
+				<table class="table table-hover table-responsive-sm table-bordered">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">User Account</th>
+							<th scope="col">Profile Name</th>
+							<th scope="col">Status</th>
+							<th scope="col">Last Updated</th>
+						</tr>
+					</thead>
+					<tbody>
+			<% @profile_requests_not_active.each_with_index do |pr, index| %>
+
+					<tr>
+						<td><%= index+1 %>
+						<td><%= User.find_by(id: pr.user_id).email %></td>
+						<td>
+							<%= link_to Profile.find_by(id: pr.profile_id).full_name, profile_path(pr.profile_id) %>
+						</td>
+						<td>
+
+							<% case pr.status
+							   when "not_set" %><%= t('profile_requests.status.not_set') %>
+							<% when "approved" %><%= t('profile_requests.status.approved') %> by <%= User.find_by(id: pr.approver_id ).email %>
+							<% when "denied" %><%= t('profile_requests.status.denied') %> by <%= User.find_by(id: pr.approver_id ).email %>
+							<% when "user_cancelled" %><%= t('profile_requests.status.user_cancelled') %>
+							<% end %>
+
+						</td>
+						<td><%= pr.updated_at %></td>
+					</tr>
+
+			<% end %>
+					</tbody>
+				</table>
+		</section>
+
+
+
+	<% end %>
+
+</section>

@@ -30,7 +30,15 @@ Rails.application.routes.draw do
 		# https://roberteshleman.com/blog/2014/08/14/using-rails-namespaces-for-admin-actions/
 		#
 		namespace :admin do
+
+			# Dashboard Pages
 			get '', to: 'dashboard#index', as: '/'
+			get '/profile_requests', to: 'dashboard#profile_requests', as: '/profile_requests'
+			get '/profile_management', to: 'dashboard#profile_management', as: '/profile_management'
+			get '/user_management', to: 'dashboard#user_management', as: '/user_management'
+			get '/vocabulary_management', to: 'dashboard#vocabulary_management', as: '/vocabulary_management'
+
+			# Controlled Vocabulary Pages
 			resources :sectors
 			resources :demographics
 			resources :development_actors
@@ -38,7 +46,10 @@ Rails.application.routes.draw do
 			resources :organisations
 			resources :titles
 			resources :sustainable_development_goals
+
+			# Handle Profile Requests (from the user and the admin)
 			resources :profile_requests
+
 		end
 
 
