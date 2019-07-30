@@ -41,7 +41,7 @@
 						<% if I18n.locale == :en %>
 							<%= options_from_collection_for_select(Sector.all, :id, :english, @search_parameters['sector_ids'] ) %>
 						<% elsif I18n.locale == :fr %>
-
+							<%= options_from_collection_for_select(Sector.all, :id, :french, @search_parameters['sector_ids'] ) %>
 						<% end %>
 					</select>
 

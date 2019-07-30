@@ -22,6 +22,8 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('.js-example-basic-multiple-subregions').select2('destroy');
 
+	$('.js-example-basic-search-profile').select2('destroy');
+
 });
 
 // Normally run this when JQuery is ready, however to make
@@ -70,6 +72,13 @@ document.addEventListener("turbolinks:load", function() {
 		width: '100%',
 		allowClear: true,
 	});
+
+	$('.js-example-basic-search-profile').select2({
+		placeholder: 'Search for your profile',
+		width: '100%',
+		allowClear: true,
+	});
+
 
 
 });

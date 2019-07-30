@@ -36,7 +36,7 @@ class AccountController < ApplicationController
 
 			if @user_profile_requests_not_set.blank?
 
-				@available_profiles_collection = Profile.all
+				@available_profiles_collection = Profile.where(user_id: nil).order(:lastname)
 
 			end
 
