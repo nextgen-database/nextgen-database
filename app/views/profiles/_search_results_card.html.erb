@@ -1,0 +1,265 @@
+	<div class="profile-card-body">
+
+		<%#
+			Name heading
+		#%>
+		<h2 class="profile-card-title">
+			<%= link_to profile_path(id: profile.id) do %>
+			<% if profile.prefix.present? %>
+				<% if I18n.locale == :en %>
+					<%= profile.prefix.english %>
+				<% elsif I18n.locale == :fr %>
+					<%= profile.prefix.french %>
+				<% end %>
+			<% end %>
+			<%= profile.firstname %> <%= profile.middlename %> <%= profile.lastname %><% end %></h2>
+		<%#
+			Write in the affiliation
+			which consists of the title
+			an "at" and a organisation name
+		#%>
+
+		<% if profile.affiliations.count > 0 %>
+			<p class="profile-card-subtitle">
+				<% if I18n.locale == :en %>
+					<% if profile.affiliations.first.positions.count > 0 %>
+						<%= profile.affiliations[0].positions[0].title.english %>
+						at
+						<%= profile.affiliations[0].organisation.english %>
+					<% end %>
+				<% elsif I18n.locale == :fr %>
+					<% if profile.affiliations.first.positions.count > 0 %>
+						<%= profile.affiliations[0].positions[0].title.french %>
+						de
+						<%= profile.affiliations[0].organisation.french %>
+					<% end %>
+				<% end %>
+
+			</p>
+		<% end %>
+
+		<%#
+			Contact Information including email and website link
+		#%>
+		<% if false %>
+		<div class="profile-card-contact-info">
+			<ul class="d-flex flex-column flex-sm-row list-unstyled">
+				<% if profile.email.present? %>
+				<li class="text-truncate">
+					<span class="sr-only">Email: </span>
+					<a href="mailto:<%= profile.email %>">
+						<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 20 20">
+							<path d="M 17.388 4.751 H 2.613 c -0.213 0 -0.389 0.175 -0.389 0.389 v 9.72 c 0 0.216 0.175 0.389 0.389 0.389 h 14.775 c 0.214 0 0.389 -0.173 0.389 -0.389 v -9.72 C 17.776 4.926 17.602 4.751 17.388 4.751 M 16.448 5.53 L 10 11.984 L 3.552 5.53 H 16.448 Z M 3.002 6.081 l 3.921 3.925 l -3.921 3.925 V 6.081 Z M 3.56 14.471 l 3.914 -3.916 l 2.253 2.253 c 0.153 0.153 0.395 0.153 0.548 0 l 2.253 -2.253 l 3.913 3.916 H 3.56 Z M 16.999 13.931 l -3.921 -3.925 l 3.921 -3.925 V 13.931 Z" ></path>
+						</svg>
+						<%= profile.email %>
+					</a>
+				</li>
+				<% end %>
+				<% if profile.website.present? %>
+				<li class="text-truncate">
+					<span class="sr-only">Website: </span>
+					<a href="<%= profile.website %>">
+						<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-md-none" viewBox="0 0 20 20">
+							<path fill="none" d="M 10 15.654 c -0.417 0 -0.754 0.338 -0.754 0.754 S 9.583 17.162 10 17.162 s 0.754 -0.338 0.754 -0.754 S 10.417 15.654 10 15.654 Z M 14.523 1.33 H 5.477 c -0.833 0 -1.508 0.675 -1.508 1.508 v 14.324 c 0 0.833 0.675 1.508 1.508 1.508 h 9.047 c 0.833 0 1.508 -0.675 1.508 -1.508 V 2.838 C 16.031 2.005 15.356 1.33 14.523 1.33 Z M 15.277 17.162 c 0 0.416 -0.338 0.754 -0.754 0.754 H 5.477 c -0.417 0 -0.754 -0.338 -0.754 -0.754 V 2.838 c 0 -0.417 0.337 -0.754 0.754 -0.754 h 9.047 c 0.416 0 0.754 0.337 0.754 0.754 V 17.162 Z M 13.77 2.838 H 6.23 c -0.417 0 -0.754 0.337 -0.754 0.754 v 10.555 c 0 0.416 0.337 0.754 0.754 0.754 h 7.539 c 0.416 0 0.754 -0.338 0.754 -0.754 V 3.592 C 14.523 3.175 14.186 2.838 13.77 2.838 Z M 13.77 13.77 c 0 0.208 -0.169 0.377 -0.377 0.377 H 6.607 c -0.208 0 -0.377 -0.169 -0.377 -0.377 V 3.969 c 0 -0.208 0.169 -0.377 0.377 -0.377 h 6.785 c 0.208 0 0.377 0.169 0.377 0.377 V 13.77 Z" ></path>
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" class="svg-icon d-none d-md-inline" viewBox="0 0 20 20">
+							<path fill="none" d="M 17.125 1.375 H 2.875 c -0.828 0 -1.5 0.672 -1.5 1.5 v 11.25 c 0 0.828 0.672 1.5 1.5 1.5 H 7.75 v 2.25 H 6.625 c -0.207 0 -0.375 0.168 -0.375 0.375 s 0.168 0.375 0.375 0.375 h 6.75 c 0.207 0 0.375 -0.168 0.375 -0.375 s -0.168 -0.375 -0.375 -0.375 H 12.25 v -2.25 h 4.875 c 0.828 0 1.5 -0.672 1.5 -1.5 V 2.875 C 18.625 2.047 17.953 1.375 17.125 1.375 Z M 11.5 17.875 h -3 v -2.25 h 3 V 17.875 Z M 17.875 14.125 c 0 0.414 -0.336 0.75 -0.75 0.75 H 2.875 c -0.414 0 -0.75 -0.336 -0.75 -0.75 v -1.5 h 15.75 V 14.125 Z M 17.875 11.875 H 2.125 v -9 c 0 -0.414 0.336 -0.75 0.75 -0.75 h 14.25 c 0.414 0 0.75 0.336 0.75 0.75 V 11.875 Z M 10 14.125 c 0.207 0 0.375 -0.168 0.375 -0.375 S 10.207 13.375 10 13.375 s -0.375 0.168 -0.375 0.375 S 9.793 14.125 10 14.125 Z" ></path>
+						</svg>
+						<%= profile.website %>
+					</a>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<dl class="row">
+
+
+			<%#
+				List the Sustainable Development Goals
+			#%>
+			<% sdg_limit = 6 %>
+
+			<dt class="col-sm-2"><%= t('profiles.index.profile-card.sdg.label') %></dt>
+			<dd class="col-sm-10">
+				<ul class="list-inline">
+					<% if (profile.sustainable_development_goals.length <= 0) %>
+						<li class="list-inline-item"><%= t('profiles.index.profile-card.sdg.no-values') %></li>
+					<% elsif %>
+						<% profile.sustainable_development_goals.sort_by(&:code).first(sdg_limit).each do |sdgs| %>
+							<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
+								<% if I18n.locale == :en %>
+									<%= sdgs.banner_en %>
+								<% elsif I18n.locale == :fr %>
+									<%= sdgs.banner_fr %>
+								<% end %>
+							<!--</span>-->(<%= sdgs.code %>)</li>
+						<% end %>
+
+						<% left = profile.sustainable_development_goals.length - sdg_limit %>
+
+						<% if left == 1 %>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: '1', type: t('profiles.index.profile-card.sdg.single-value') ) %>)</li>
+						<% elsif left > 1%>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: left.to_s, type: t('profiles.index.profile-card.sdg.plural-value') ) %>)</li>
+						<% end %>
+
+					<% end %>
+				</ul>
+			</dd>
+
+
+
+			<%#
+				List the Sectors
+			#%>
+			<% sector_limit = 10 %>
+
+			<dt class="col-sm-2"><%= t('profiles.index.profile-card.sector.label') %></dt>
+			<dd class="col-sm-10">
+				<ul class="list-inline">
+					<% if (profile.sectors.length <= 0) %>
+						<li class="list-inline-item"><%= t('profiles.index.profile-card.sector.no-values') %></li>
+					<% elsif %>
+						<% profile.sectors.sort_by(&:english.downcase).first(sector_limit).each do |sector| %>
+							<li class="list-inline-item"><!--<span class="badge badge-pill badge-secondary">-->
+								<% if I18n.locale == :en %>
+									<%= sector.english %>
+								<% elsif I18n.locale == :fr %>
+									<%= sector.french %>
+								<% end %>
+							</li>
+						<% end %>
+
+						<% left = profile.sectors.length - sector_limit %>
+
+						<% if left == 1 %>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: '1', type: t('profiles.index.profile-card.sector.single-value') ) %>)</li>
+						<% elsif left > 1%>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: left.to_s, type: t('profiles.index.profile-card.sector.plural-value') ) %>)</li>
+						<% end %>
+
+					<% end %>
+				</ul>
+			</dd>
+
+
+			<%#
+				View Demographics
+			#%>
+			<% demographics_limit = 10 %>
+
+			<dt class="col-sm-2"><%= t('profiles.index.profile-card.demographic.label') %></dt>
+			<dd class="col-sm-10">
+				<ul class="list-inline">
+					<% if (profile.demographics.length <= 0) %>
+						<li class="list-inline-item"><%= t('profiles.index.profile-card.demographic.no-values') %></li>
+					<% elsif %>
+						<% profile.demographics.sort_by(&:english.downcase).first(demographics_limit).each do |demographic| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= demographic.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= demographic.french %></li>
+							<% end %>
+						<% end %>
+
+						<% left = profile.demographics.length - demographics_limit %>
+
+						<% if left == 1 %>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: '1', type: t('profiles.index.profile-card.demographic.single-value') ) %>)</li>
+						<% elsif left > 1%>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: left.to_s, type: t('profiles.index.profile-card.demographic.plural-value') ) %>)</li>
+						<% end %>
+
+					<% end %>
+				</ul>
+			</dd>
+
+			<%#
+				View Countries
+			#%>
+
+			<% countries_limit = 10 %>
+
+			<dt class="col-sm-2"><%= t('profiles.index.profile-card.country.label') %></dt>
+			<dd class="col-sm-10">
+				<ul class="list-inline">
+					<% if (profile.countries.length <= 0) %>
+						<li class="list-inline-item"><%= t('profiles.index.profile-card.country.no-values') %></li>
+					<% elsif %>
+						<% profile.countries.sort_by(&:english.downcase).first(countries_limit).each do |country| %>
+							<% if I18n.locale == :en %>
+								<li class="list-inline-item"><%= country.english %></li>
+							<% elsif I18n.locale == :fr %>
+								<li class="list-inline-item"><%= country.french %></li>
+							<% end %>
+						<% end %>
+
+						<% left = profile.countries.length - countries_limit %>
+
+						<% if left == 1 %>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: '1', type: t('profiles.index.profile-card.country.single-value') ) %>)</li>
+						<% elsif left > 1%>
+							<li class="list-inline-item">(<%= t('profiles.index.profile-card.text-truncate' , count: left.to_s, type: t('profiles.index.profile-card.country.plural-value') ) %>)</li>
+						<% end %>
+
+					<% end %>
+				</ul>
+			</dd>
+
+
+
+
+
+		</dl>
+
+
+
+
+		<%#
+			Profile Information including SDGs, Sectors, and Demographics
+		#%>
+		<div class="profile-card-research-info">
+
+
+
+
+
+
+
+
+
+
+
+			<dl>
+
+
+
+
+
+
+
+
+
+			</dl>
+		</div>
+
+		<!--
+			TODO: In small view these buttons need to be moved to the right closer to the thumb
+		-->
+		<div class="profile-card-actions">
+			<ul class="d-flex justify-content-start align-items-center list-unstyled">
+
+				<li><%= link_to t('profiles.index.profile-card.view-profile-btn'), profile_path(id: profile.id), class: "btn btn-accent" %></li>
+
+				<% if profile.email.present? %>
+					<li class="ml-2"><%= mail_to profile.email , t('profiles.index.profile-card.send-email-btn') , class: "btn btn-outline-accent" %></li>
+				<% end %>
+
+
+
+			</ul>
+		</div>
+
+	</div>

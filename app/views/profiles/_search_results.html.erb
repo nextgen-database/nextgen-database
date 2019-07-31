@@ -1,0 +1,186 @@
+<% if (@profile_results.blank?) %>
+
+	<%#
+		No results to show
+	#%>
+
+	<div class="profile-empty-list-container">
+	<%#
+		TODO: Add cool empty list page
+	#%>
+
+		<p class="display-4 my-5 py-5"><%= t('profiles.index.search.no-results-message') %></p>
+
+	</div>
+
+<% else %>
+
+
+	<%#
+		Print a line telling the user about the
+		 number of results and total profile number
+	#%>
+	<div class="profile-search-results-count-container">
+		<%= t('profiles.index.search.results-count-message') %>: <strong><span class="results-count"><%= @pagy.count %></strong></span>
+	</div>
+
+	<%#
+		Show Results
+	#%>
+	<div class="profile-search-results-container">
+
+		<ul class="profile-cards-list">
+
+		<% @profile_results.each do |profile| %>
+
+			<li class="profile-card">
+
+				<%= render 'search_results_card', profile: profile %>
+
+			</li>
+		<% end %>
+		</ul>
+	</div>
+
+	<%== render partial: 'pagy/bootstrap_nav', locals: {pagy: @pagy} %>
+
+<% end %>
+
+
+
+
+
+
+<%#
+Useful code snippe
+#%>
+<% if false %>
+
+
+
+
+<% @profiles.each do |item| %>
+<div class = "card card-item">
+	<div class = "card-body">
+	<h5 class = "card-title"><%= item.firstname %></h5>
+	<h6 class = "card-subtitle mb-2 text-muted"><%= item.middlename %></h6>
+	<p class = "card-text">
+		<%= item.lastname %>
+	</p>
+
+	<%#
+		View Sectors
+	#%>
+	<h6>Sectors:</h6>
+	<% if (item.sectors.length <= 0) %>
+		<p>Sorry no sectors :-( </p>
+	<% end %>
+
+	<% item.sectors.each do |sector| %>
+		<% if I18n.locale == :en %>
+			<%= sector.english %>
+		<% elsif I18n.locale == :fr %>
+			<%= sector.french %>
+		<% end %>
+
+	<% end %>
+
+
+	<%#
+		View Demographics
+	#%>
+	<h6>Demographics:</h6>
+	<% if (item.demographics.length <= 0) %>
+		<p>Sorry no demographics listed here :-( </p>
+	<% end %>
+
+	<% item.demographics.each do |demographic| %>
+		<% if I18n.locale == :en %>
+			<%= demographic.english %>
+		<% elsif I18n.locale == :fr %>
+			<%= demographic.french %>
+		<% end %>
+
+	<% end %>
+
+	<%#
+		View Development Actors
+	#%>
+	<h6>Development Actors:</h6>
+	<% if (item.development_actors.length <= 0) %>
+		<p>Sorry no Development Actors listed here :-( </p>
+	<% end %>
+
+	<% item.development_actors.each do |demographic| %>
+		<% if I18n.locale == :en %>
+			<%= demographic.english %>
+		<% elsif I18n.locale == :fr %>
+			<%= demographic.french %>
+		<% end %>
+
+	<% end %>
+
+	<%#
+		Research Methods
+	#%>
+	<h6>Research Methods:</h6>
+	<% if (item.research_methods.length <= 0) %>
+		<p>Sorry no Research Methods listed here :-( </p>
+	<% end %>
+
+	<% item.research_methods.each do |research_method| %>
+		<% if I18n.locale == :en %>
+			<%= research_method.english %>
+		<% elsif I18n.locale == :fr %>
+			<%= research_method.french %>
+		<% end %>
+
+	<% end %>
+
+	<%#
+		SDGs
+	#%>
+	<h6>SDGs:</h6>
+	<% if (item.sustainable_development_goals.length <= 0) %>
+		<p>Sorry no SDGs listed here :-( </p>
+	<% end %>
+
+	<% item.sustainable_development_goals.each do |sdg| %>
+		<% if I18n.locale == :en %>
+			<%= sdg.title_en %>
+		<% elsif I18n.locale == :fr %>
+			<%= sdg.title_fr %>
+		<% end %>
+
+	<% end %>
+
+	</div>
+</div>
+<% end %>
+
+
+
+
+
+
+<% profile.affiliations.each do |affiliation| %>
+	<% if I18n.locale == :en %>
+		<%= affiliation.organisation.english %>
+			<% affiliation.positions.each do |position| %>
+				<%= position.department_en %>
+				<%= position.faculty_en %>
+				<%= position.title.english %>
+		<% end %>
+	<% elsif I18n.locale == :fr %>
+		<%= affiliation.organisation.french %>
+	<% end %>
+
+<% end %>
+
+
+
+
+
+
+
+<% end %>

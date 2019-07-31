@@ -122,6 +122,7 @@ fr:
       title: "Rechercher"
       heading: "Find a global development researcher in Canada"
       search:
+        heading: "Chercher"
         results-count-message: "Résultat(s) de la recherche"
         no-results-message: "Aucun résultat"
         advanced-filters:
@@ -134,6 +135,27 @@ fr:
           filter-subregions-label: "Include any of the following <strong>Subregions</strong>:"
           submit-button: "Chercher"
       profile-card:
+        sdg:
+          label: "ODDs"
+          single-value: "ODD"
+          plural-value: "ODDs"
+          no-values: "non disponible"
+        sector:
+          label: "Secteurs"
+          single-value: "Secteur"
+          plural-value: "Secteurs"
+          no-values: "non disponible"
+        demographic:
+          label: "Démographies"
+          single-value: "Démographie"
+          plural-value: "Démographies"
+          no-values: "non disponible"
+        country:
+          label: "Pays"
+          single-value: "Pay"
+          plural-value: "Pays"
+          no-values: "non disponible"
+        text-truncate: "une %{type} ou plus"
         send-email-btn: "Envoyer un courriel"
         view-profile-btn: "Voir le profile"
 

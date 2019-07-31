@@ -3,6 +3,21 @@
   	@title: Mixins for NextGen Database Project
  */
 
+// White Card Mixin
+@mixin card-style-1 {
+	//border: 1px solid $gray-accent-3-color;
+	background-color: #fff;
+	border-radius: 15px;
+	padding: 20px 20px 20px 20px;
+	margin: 20px 0px 20px 0px;
+}
+
+// Box Shadow
+@mixin box-shadow-style-1 {
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+
 // Accessibility Mixins
 @mixin accessible-invisible {
 	position: absolute;

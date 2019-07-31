@@ -3,7 +3,44 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.profile-list-container {
+.profile-search-container {
+
+	@include card-style-1;
+
+
+	h2 {
+		font-size: 1.2rem;
+	}
+
+}
+
+.profile-search-adv-search-toggle {
+	padding: 10px 0px 10px 0px;
+}
+
+.profile-search-adv-search-container {
+
+	@include card-style-1;
+	background-color: $gray-accent-2-color;
+}
+
+.profile-search-results-count-container {
+
+	//background-color: $gray-accent-1-color;
+	//border: 1px solid $gray-accent-3-color;
+	//padding: 15px 15px 15px 15px;
+	//border-radius: 15px;
+	margin: 15px 0px 15px 0px;
+	//color:  $primary-color;
+	font-size: 1.4rem;
+	font-weight: 600;
+
+	.results-count {
+		color:  $accent-color;
+	}
+}
+
+.profile-search-results-container {
 
 	//background-color: #fff;
 
@@ -16,23 +53,41 @@
 
 		li.profile-card {
 
-			padding: 40px 0px 40px 0px;
-			border-top: 1px solid rgba(0, 0, 0, 0.4);
+			@include card-style-1;
+
+			margin: 0px 0px 40px 0px;
+
+			//box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+			// Old styles:
+			//padding: 40px 0px 40px 0px;
+			//border-top: 1px solid rgba(0, 0, 0, 0.4);
 
 			.profile-card-title {
-				font-size: 2.7rem;
-				color: $accent-color;
+				font-size: 1.4rem;
+				color: $accent-color !important;
 				font-weight: 600;
-				margin-bottom: 0px;
-				padding-bottom: 0px;
+				margin: 0px;
+				padding: 0px;
+
+				a {
+					color: $accent-color !important;
+					text-decoration: none !important;
+				}
+
+				a:hover {
+					color: darken($accent-color,20%) !important;
+					transition: $btn-transition;
+				}
+
 			}
 
 			.profile-card-subtitle {
-				font-size: 1.6rem;
+				font-size: 0.9rem;
 				color: $gray-accent-7-color;
-				font-weight: 600;
+				font-weight: 700;
 				margin: 0px 0px 0px 0px;
-				padding-top: 0px;
+				padding: 0px 0px 0px 0px;
 			}
 
 			.profile-card-contact-info {
@@ -78,6 +133,41 @@
 
 
 
+
+				}
+
+			}
+
+			dl {
+
+				margin-top: 15px;
+
+				dt {
+
+					color: $gray-accent-6-color;
+					font-size: 0.9rem;
+
+				}
+
+				dd {
+
+					ul {
+
+
+						li {
+
+
+							&:after {
+								content: ",";
+							}
+
+							&:last-child:after {
+								content: "";
+							}
+
+						}
+
+					}
 
 				}
 
@@ -148,11 +238,11 @@
 			//}
 
 			// Add the bottom border on the last li entry
-			&:last-child {
-
-				border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-
-			}
+			//&:last-child {
+			//
+			// 		border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+			//
+			//}
 
 			// md and below
 			@media screen and (max-width: $break-lg) {
@@ -176,7 +266,7 @@
 	li.page-item {
 
 		a.page-link {
-			background-color: $gray-accent-2-color;
+			background-color: #fff; //$gray-accent-2-color;
 			color: $gray-accent-7-color;
 		}
 
@@ -200,14 +290,6 @@
 	}
 }
 
-.profile-list-count-container {
-	margin: 25px 0px 25px 0px;
-	//color:  $primary-color;
-
-	.results-count {
-		color:  $accent-color;
-	}
-}
 
 
 .profile-show-container {
