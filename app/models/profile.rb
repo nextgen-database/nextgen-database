@@ -97,8 +97,16 @@ class Profile < ApplicationRecord
 	end
 
 	scope :where_organisations, -> (query) do
-		joins("JOIN affiliations ON profiles.id = affiliations.profile_id JOIN organisations on affiliations.organisation_id = organisations.id").
-			where("organisations.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
+				where("organisations.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
+	scope :where_titles, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN affiliation_positions ON affiliations.id = affiliation_positions.affiliation_id").
+				joins("JOIN titles ON titles.id = affiliation_positions.position_id").
+					where("titles.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
 	scope :where_sectors, -> (query) do
@@ -206,18 +214,19 @@ class Profile < ApplicationRecord
 		result_ids = result_ids | Profile.where(nil).where_sectors(query).where(id: ids).pluck(:id)
 
 		# Search Sustainable Development Goals
-		results = result_ids | Profile.where(nil).where_sustainable_development_goals(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_sustainable_development_goals(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Demographics
-		results = result_ids | Profile.where(nil).where_demographics(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_demographics(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Countries
-		results = result_ids | Profile.where(nil).where_countries(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_countries(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Organisations
-		results = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Titles
+		result_ids = result_ids | Profile.where(nil).where_titles(query).where(id: ids).pluck(:id) if !query.blank?
 
 	end
 
