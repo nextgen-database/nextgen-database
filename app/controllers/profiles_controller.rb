@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
 		@is_advanced_filters_on = true unless @search_parameters['country_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['region_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['subregion_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['research_method_ids'].blank?
 
 	end
 
@@ -231,7 +232,7 @@ class ProfilesController < ApplicationController
 			profile_ids = Profile.filter_by_demographic_ids(@search_parameters['demographic_ids'], profile_ids) unless @search_parameters['demographic_ids'].blank?
 
 			# Filter by Development Actors
-			profile_ids = Profile.filter_by_demographic_ids(@search_parameters['development_actors_ids'], profile_ids) unless @search_parameters['development_actors_ids'].blank?
+			profile_ids = Profile.filter_by_development_actor_ids(@search_parameters['development_actors_ids'], profile_ids) unless @search_parameters['development_actors_ids'].blank?
 
 			# Filter by Countries
 			profile_ids = Profile.filter_by_country_ids(@search_parameters['country_ids'], profile_ids) unless @search_parameters['country_ids'].blank?
@@ -241,6 +242,9 @@ class ProfilesController < ApplicationController
 
 			# Filter by Subregions
 			profile_ids = Profile.filter_by_subregion_ids(@search_parameters['subregion_ids'], profile_ids) unless @search_parameters['subregion_ids'].blank?
+
+			# Filter by Research Methods
+			profile_ids = Profile.filter_by_research_method_ids(@search_parameters['research_method_ids'], profile_ids) unless @search_parameters['research_method_ids'].blank?
 
 			# Find the Profiles by the filtered IDs
 			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
@@ -270,16 +274,19 @@ class ProfilesController < ApplicationController
 			# Set the Development Actors IDs
 			@search_parameters['development_actors_ids'] = params[:d] unless params[:d].blank?
 
-			# Set the Development Actors IDs
+			# Set the Country IDs
 			@search_parameters['country_ids'] = params[:e] unless params[:e].blank?
 
-			# Set the Development Actors IDs
+			# Set the Region IDs
 			@search_parameters['region_ids'] = params[:f] unless params[:f].blank?
 
-			# Set the Development Actors IDs
+			# Set the Subregion IDs
 			@search_parameters['subregion_ids'] = params[:g] unless params[:g].blank?
 
-			# Set the Development Actors IDs
+			# Set the Research Method IDs
+			@search_parameters['research_method_ids'] = params[:h] unless params[:h].blank?
+
+			# Set the Advanced Search Flag
 			@search_parameters['advanced_search_flag'] = params[:z] unless params[:z].blank?
 
 		end

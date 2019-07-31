@@ -22,6 +22,8 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('.js-example-basic-multiple-subregions').select2('destroy');
 
+	$('.js-example-basic-multiple-research-methods').select2('destroy');
+
 	$('.js-example-basic-search-profile').select2('destroy');
 
 });
@@ -74,14 +76,17 @@ document.addEventListener("turbolinks:load", function() {
 		allowClear: true
 	});
 
+	$('.js-example-basic-multiple-research-methods').select2({
+		placeholder: 'Select a research method option',
+		width: '100%',
+		allowClear: true
+	});
+
 
 	$('.js-example-basic-search-profile').select2({
 		placeholder: 'Search for your profile',
 		width: '100%',
 		allowClear: true
 	});
-
-	console.log ("I am here");
-
 
 });

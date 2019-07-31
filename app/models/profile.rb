@@ -114,6 +114,11 @@ class Profile < ApplicationRecord
 			where("research_methods.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_research_method_ids, -> (research_method_ids) do
+		joins(:research_methods).
+			where(research_methods: {id: research_method_ids }) unless research_method_ids.blank?
+	end
+
 	scope :where_sectors, -> (query) do
 		joins(:sectors).
 			where("sectors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
@@ -272,6 +277,15 @@ class Profile < ApplicationRecord
 
 		# Search Development Actor IDs
 		result_ids = Profile.where(id: ids).where_development_actor_ids(development_actor_ids).pluck(:id) if !development_actor_ids.blank?
+
+	end
+
+	def self.filter_by_research_method_ids(research_method_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Development Actor IDs
+		result_ids = Profile.where(id: ids).where_research_method_ids(research_method_ids).pluck(:id) if !research_method_ids.blank?
 
 	end
 

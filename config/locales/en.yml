@@ -133,6 +133,7 @@ en:
           filter-development-actors-label: "Include any of the following <strong>Development Actors</strong>:"
           filter-regions-label: "Include any of the following <strong>Regions</strong>:"
           filter-subregions-label: "Include any of the following <strong>Subregions</strong>:"
+          filter-research-methods-label: "Include any of the following <strong>Research Methods</strong>:"
           submit-button: "Apply Filters"
       profile-card:
         sdg:
