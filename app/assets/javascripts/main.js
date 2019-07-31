@@ -8,9 +8,9 @@
 // Function runs before page load
 $(document).on("turbolinks:before-cache", function() {
 
-	$('.select2-input').select2('destroy');
+	if ($('.select2-input').first().data('select2') != undefined) $('.select2-input').select2('destroy');
 
-	$('.js-example-basic-multiple-sectors').select2('destroy');
+	if ($('.js-example-basic-multiple-sectors').first().data('select2') != undefined) $('.js-example-basic-multiple-sectors').select2('destroy');
 
 	$('.js-example-basic-multiple-demographics').select2('destroy');
 
@@ -40,45 +40,48 @@ document.addEventListener("turbolinks:load", function() {
 	$('.js-example-basic-multiple-sectors').select2({
 		placeholder: 'Select a sector option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
+
 
 	$('.js-example-basic-multiple-demographics').select2({
 		placeholder: 'Select a demographic option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
 
 	$('.js-example-basic-multiple-development-actors').select2({
 		placeholder: 'Select a development actor option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
 
 	$('.js-example-basic-multiple-countries').select2({
 		placeholder: 'Select a country option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
 
 	$('.js-example-basic-multiple-regions').select2({
 		placeholder: 'Select a region option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
 
 	$('.js-example-basic-multiple-subregions').select2({
 		placeholder: 'Select a subregion option',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
+
 
 	$('.js-example-basic-search-profile').select2({
 		placeholder: 'Search for your profile',
 		width: '100%',
-		allowClear: true,
+		allowClear: true
 	});
 
+	console.log ("I am here");
 
 
 });

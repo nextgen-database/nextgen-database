@@ -126,7 +126,7 @@ fr:
         results-count-message: "Résultat(s) de la recherche"
         no-results-message: "Aucun résultat"
         advanced-filters:
-          btn: "Advanced Search Filters"
+          btn: "Recherche avancée"
           filter-sectors-label: "Include any of the following <strong>Sectors</strong>:"
           filter-demographics-label: "Include any of the following <strong>Demographics</strong>:"
           filter-countries-label: "Include any of the following <strong>Countries</strong>:"
