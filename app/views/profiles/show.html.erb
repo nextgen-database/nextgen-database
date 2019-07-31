@@ -229,6 +229,27 @@
 
 
 					<%#
+						View Research Methods:
+					#%>
+					<dt>Research Methods:</dt>
+					<dd>
+						<ul class="list-inline">
+							<% if (@profile.research_methods.length <= 0) %>
+								<li class="list-inline-item">No research methods listed</li>
+							<% elsif %>
+								<% @profile.research_methods.sort_by(&:english.downcase).each do |research_method| %>
+									<% if I18n.locale == :en %>
+										<li class="list-inline-item"><%= research_method.english %></li>
+									<% elsif I18n.locale == :fr %>
+										<li class="list-inline-item"><%= research_method.french %></li>
+									<% end %>
+								<% end %>
+							<% end %>
+						</ul>
+					</dd>
+
+
+					<%#
 						View Countries
 					#%>
 					<dt>Countries:</dt>
