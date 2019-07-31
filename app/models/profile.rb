@@ -96,6 +96,11 @@ class Profile < ApplicationRecord
 			where("sustainable_development_goals.banner_en ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_organisations, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id JOIN organisations on affiliations.organisation_id = organisations.id").
+			where("organisations.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
 	scope :where_sectors, -> (query) do
 		joins(:sectors).
 			where("sectors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
@@ -208,6 +213,11 @@ class Profile < ApplicationRecord
 
 		# Search Countries
 		results = result_ids | Profile.where(nil).where_countries(query).where(id: ids).pluck(:id) if !query.blank?
+
+		# Search Organisations
+		results = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
+
+		# Search Titles
 
 	end
 
