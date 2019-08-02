@@ -291,6 +291,184 @@
 }
 
 
+.profile-display {
+
+	h1 {
+		font-size: 1.6rem;
+		color: #000; //$accent-color !important;
+		font-weight: 600;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+		border: none !important;
+	}
+
+	h2 {
+		font-size: 1.3rem;
+
+	}
+
+
+
+	.sm-icons {
+
+		padding: 20px 0px 20px 0px;
+
+		// Default SVG disabled state
+		svg g {
+
+			fill: #bbbbbb;
+
+		}
+
+		// Anchor styles when there is a link (active state)
+		a {
+
+			svg {
+				// Set width to 100% of container
+				width: 100%;
+
+				g {
+					fill: #000000 !important;
+				}
+			}
+
+			&:hover svg g {
+				fill: $accent-color !important;
+			}
+		}
+
+	}
+
+	.contact-information {
+
+		border-top: 1px solid $gray-accent-3-color;
+		padding: 15px 0px 15px 0px;
+
+		svg.disabled g,
+		svg.disabled path {
+
+			fill: #bbbbbb;
+
+		}
+
+		svg.active g,
+		svg.active path {
+
+			fill: #000000;
+
+		}
+
+	}
+
+	.affiliation-information {
+
+		.affiliation-card {
+
+			border-radius: 15px;
+			padding: 15px 15px 15px 15px;
+			//margin: 20px 0px 20px 0px;
+			background-color: #f1f1f1;
+
+			.affiliation-title {
+				margin-bottom: 0px;
+			}
+
+			.affiliation-position {
+				font-size: 0.9rem;
+				//border-bottom: 1px solid $gray-accent-3-color;
+
+			}
+
+
+		}
+	}
+
+
+	.pd-container {
+
+		@include card-style-1;
+
+	}
+
+
+}
+
+
+
+.profile-display-container {
+
+	@include card-style-1;
+
+	h1 {
+		font-size: 4.0rem;
+		color: $accent-color;
+		font-weight: 700;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+		border: none !important;
+	}
+
+
+	.contact-container {
+
+
+	}
+
+	.affiliations-container, .research-container {
+		border-top: 1px solid $gray-accent-3-color;
+	}
+
+	.affiliations-container {
+
+
+
+	}
+
+	.research-container {
+
+
+	}
+
+
+
+}
+
+.profile-display-research-container {
+
+	@include card-style-1;
+
+	dl {
+
+		dt {
+			color: $gray-accent-6-color;
+			font-size: 1.1rem;
+		}
+		dd {
+
+			border-bottom: 1px solid $gray-accent-3-color;
+			//font-size: 1.1rem;
+
+
+			ul {
+
+				//list-style-type: none;
+				/*
+				li {
+					&:after {
+						content: ",";
+					}
+					&:last-child:after {
+						content: "";
+					}
+				}
+				*/
+			}
+
+		}
+	}
+
+}
+
 
 .profile-show-container {
 
@@ -346,8 +524,7 @@
 			}
 
 		}
+
 	}
-
-
 
 }

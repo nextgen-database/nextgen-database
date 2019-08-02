@@ -1,0 +1,46 @@
+<div class="affiliation-information">
+
+	<div class="row">
+
+		<% @profile.affiliations.each do |affiliation| %>
+
+			<div class="col-sm-6 col-md-6 mb-3 mb-sm-4">
+
+				<div class="affiliation-card h-100 d-flex flex-column">
+
+				<h3 class="affiliation-title">
+					<% if I18n.locale == :en %>
+						<%= affiliation.organisation.english %>
+					<% elsif I18n.locale == :fr %>
+						<%= affiliation.organisation.french %>
+					<% end %>
+				</h3>
+
+				<% if affiliation.positions.count > 0 %>
+
+					<ul class="list-unstyled">
+						<% affiliation.positions.each do |position| %>
+							<li><div class="affiliation-position py-1">
+								<% if I18n.locale == :en %>
+									<strong><%= position.title.english %></strong><%= position.department_en.blank? && !position.title.english.blank? ? "" : ", " %>
+											<%= position.department_en %>
+												<%= position.faculty_en.blank? ? "" : " (#{position.faculty_en})" %>
+								<% elsif I18n.locale == :fr %>
+									<%= position.title.french %>
+								<% end %>
+								</div>
+							</li>
+						<% end %>
+
+					</ul>
+
+				<% end %>
+
+				</div>
+			</div>
+
+		<% end %>
+
+	</div>
+
+</div>

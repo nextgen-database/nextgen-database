@@ -159,6 +159,60 @@ fr:
         text-truncate: "une %{type} ou plus"
         send-email-btn: "Envoyer un courriel"
         view-profile-btn: "Voir le profile"
+    show:
+      title: "Profile Information"
+      contact:
+        heading: "Contact Information"
+        website:
+          no-value: "No website provided"
+        phone-number:
+          no-value: "No phone number provided"
+        email:
+          no-value: "No email provided"
+      affiliations:
+        heading: "Affiliations"
+      research:
+        heading: "Research"
+        sdg:
+          label: "SDGs"
+          single-value: "SDG"
+          plural-value: "SDGs"
+          no-values: "No SDGs listed"
+        sector:
+          label: "Sectors"
+          single-value: "Sector"
+          plural-value: "Sectors"
+          no-values: "No Sectors listed"
+        demographic:
+          label: "Demographics"
+          single-value: "Demographic"
+          plural-value: "Demographics"
+          no-values: "No Demographics listed"
+        country:
+          label: "Countries"
+          single-value: "Country"
+          plural-value: "Countries"
+          no-values: "No Countries listed"
+        development-actor:
+          label: "Development Actors"
+          single-value: "Development Actor"
+          plural-value: "Development Actors"
+          no-values: "No Development Actors listed"
+        research-method:
+          label: "Research Methods"
+          single-value: "Research Method"
+          plural-value: "Research Methods"
+          no-values: "No Research Methods listed"
+        subregion:
+          label: "Subregions"
+          single-value: "Subregion"
+          plural-value: "Subregions"
+          no-values: "No Subregions listed"
+        region:
+          label: "Regions"
+          single-value: "Region"
+          plural-value: "Regions"
+          no-values: "No Regions listed"
 
 
   account:

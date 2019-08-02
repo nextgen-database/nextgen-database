@@ -1,0 +1,218 @@
+<div class="profile-display">
+
+	<div class="pd-container">
+
+		<h1 name="cont" id="cont"><% if I18n.locale == :en %>
+									<%= @profile.prefix.english %>
+								<% elsif I18n.locale == :fr %>
+									<%= @profile.prefix.french %>
+								<% end %><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
+
+
+		<h2 class="sr-only"><%= t('profiles.show.contact.heading') %></h2>
+
+		<%= render 'profile_display_social_media_icons' %>
+
+		<%= render 'profile_display_contact_information' %>
+
+	</div>
+
+	<% if @profile.affiliations.count > 0 %>
+
+	<section>
+
+		<div class="pd-container">
+
+			<h2><%= t('profiles.show.affiliations.heading') %></h2>
+
+			<%= render 'profile_display_affiliations' %>
+
+		</div>
+
+	</section>
+
+	<% end %>
+
+	<section>
+		<div class="profile-display-research-container">
+
+			<h2><%= t('profiles.show.research.heading') %></h2>
+
+			<dl>
+
+				<%#
+					View Sustainable Development Goals
+				#%>
+				<dt><%= t('profiles.show.research.sdg.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.sustainable_development_goals.length <= 0) %>
+							<li><%= t('profiles.show.research.sdg.no-values') %></li>
+						<% elsif %>
+							<% @profile.sustainable_development_goals.sort_by(&:code).each do |sdgs| %>
+								<li><!--<span class="badge badge-pill badge-secondary">-->
+									<% if I18n.locale == :en %>
+										<%= sdgs.banner_en %>
+									<% elsif I18n.locale == :fr %>
+										<%= sdgs.banner_fr %>
+									<% end %>
+								<!--</span>-->(<%= sdgs.code %>)</li>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+				<%#
+					View Sectors
+				#%>
+				<dt><%= t('profiles.show.research.sector.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.sectors.length <= 0) %>
+							<li><%= t('profiles.show.research.sector.no-values') %>:</li>
+						<% elsif %>
+
+							<% @profile.sectors.sort_by(&:english.downcase).each do |sector| %>
+								<% if I18n.locale == :en %>
+									<li><%= sector.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= sector.french %></li>
+								<% end %>
+							<% end %>
+
+						<% end %>
+					</ul>
+				</dd>
+
+
+				<%#
+					View Demographics
+				#%>
+				<dt><%= t('profiles.show.research.demographic.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.demographics.length <= 0) %>
+							<li><%= t('profiles.show.research.demographic.no-values') %></li>
+						<% elsif %>
+							<% @profile.demographics.sort_by(&:english.downcase).each do |demographic| %>
+								<% if I18n.locale == :en %>
+									<li><%= demographic.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= demographic.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+				<%#
+					View Development Actors
+				#%>
+				<dt><%= t('profiles.show.research.development-actor.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.development_actors.length <= 0) %>
+							<li><%= t('profiles.show.research.development-actor.no-values') %></li>
+						<% elsif %>
+							<% @profile.development_actors.sort_by(&:english.downcase).each do |development_actor| %>
+								<% if I18n.locale == :en %>
+									<li><%= development_actor.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= development_actor.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+
+				<%#
+					View Research Methods:
+				#%>
+				<dt><%= t('profiles.show.research.research-method.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.research_methods.length <= 0) %>
+							<li><%= t('profiles.show.research.research-method.no-values') %></li>
+						<% elsif %>
+							<% @profile.research_methods.sort_by(&:english.downcase).each do |research_method| %>
+								<% if I18n.locale == :en %>
+									<li><%= research_method.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= research_method.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+
+				<%#
+					View Countries
+				#%>
+				<dt><%= t('profiles.show.research.country.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.countries.length <= 0) %>
+							<li><%= t('profiles.show.research.country.no-values') %></li>
+						<% elsif %>
+							<% @profile.countries.sort_by(&:english.downcase).each do |country| %>
+								<% if I18n.locale == :en %>
+									<li><%= country.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= country.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+				<%#
+					View Subregions
+				#%>
+				<dt><%= t('profiles.show.research.subregion.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.subregions.length <= 0) %>
+							<li><%= t('profiles.show.research.subregion.no-values') %></li>
+						<% elsif %>
+							<% @profile.subregions.sort_by(&:english.downcase).each do |subregion| %>
+								<% if I18n.locale == :en %>
+									<li><%= subregion.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= subregion.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+					</ul>
+				</dd>
+
+				<%#
+					View Regions
+				#%>
+				<dt><%= t('profiles.show.research.region.label') %>:</dt>
+				<dd>
+					<ul>
+						<% if (@profile.regions.length <= 0) %>
+							<li><%= t('profiles.show.research.region.no-values') %></li>
+						<% elsif %>
+							<% @profile.regions.sort_by(&:english.downcase).each do |region| %>
+								<% if I18n.locale == :en %>
+									<li><%= region.english %></li>
+								<% elsif I18n.locale == :fr %>
+									<li><%= region.french %></li>
+								<% end %>
+							<% end %>
+						<% end %>
+
+					</ul>
+
+				</dd>
+
+			</dl>
+
+		</div>
+
+	</section>
+
+</div>

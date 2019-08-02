@@ -1,0 +1,36 @@
+<div class="sm-icons d-flex flex-nowrap">
+
+	<%#
+		Display Social Media
+	#%>
+
+	<% unless @profile.twitter.blank? %>
+		<a href="<%= @profile.twitter %>" rel="external" target="_blank">
+	<% end %>
+		<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+			width="85" height="85"
+			viewBox="0 0 172 172"
+			style=" fill:#000000;"><g xmlns="http://www.w3.org/2000/svg" transform=""><g font-family="none" font-size="none" font-weight="none" style="mix-blend-mode: normal" fill="none" fill-rule="nonzero" stroke="none" stroke-dasharray="" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1" text-anchor="none"><path fill="none" d="M 0 172 v -172 h 172 v 172 Z" /><g fill="#000000"><path d="M 86 6.88 c -43.6295 0 -79.12 35.4905 -79.12 79.12 c 0 43.6295 35.4905 79.12 79.12 79.12 c 43.6295 0 79.12 -35.4905 79.12 -79.12 c 0 -43.6295 -35.4905 -79.12 -79.12 -79.12 Z M 124.655 70.6026 c 0.0344 0.81184 0.05504 1.63744 0.05504 2.46648 c 0 25.1739 -19.1711 54.211 -54.2213 54.211 c -10.7603 0 -20.781 -3.15448 -29.209 -8.56216 c 1.48952 0.17888 2.99968 0.26488 4.54424 0.26488 c 8.93024 0 17.1484 -3.04096 23.6638 -8.1528 c -8.33856 -0.15136 -15.3699 -5.67256 -17.802 -13.2337 c 1.16616 0.2236 2.35984 0.344 3.59136 0.344 c 1.7372 0 3.4228 -0.23048 5.01552 -0.6708 c -8.71008 -1.75784 -15.277 -9.44968 -15.277 -18.6861 c 0 -0.08256 0 -0.16168 0 -0.2408 c 2.56968 1.4276 5.504 2.2876 8.63096 2.38736 c -5.11872 -3.4228 -8.47616 -9.25016 -8.47616 -15.8618 c 0 -3.4916 0.93568 -6.76304 2.57656 -9.58384 c 9.40152 11.5274 23.4436 19.1126 39.2779 19.9107 c -0.3268 -1.39664 -0.4988 -2.84832 -0.4988 -4.34128 c 0 -10.523 8.5312 -19.0542 19.0576 -19.0542 c 5.47992 0 10.4301 2.31168 13.9045 6.01656 c 4.33784 -0.85312 8.42112 -2.43896 12.1019 -4.61992 c -1.42072 4.44448 -4.44448 8.18032 -8.38328 10.5402 c 3.85968 -0.46784 7.52672 -1.48608 10.9495 -3.00312 c -2.55248 3.82184 -5.78264 7.18272 -9.50128 9.86936 Z" /></g></g></g>
+		</svg><% unless @profile.twitter.blank? %></a><% end %>
+
+	<% unless @profile.linkedin.blank? %>
+		<a href="<%= @profile.linkedin %>" rel="external" target="_blank">
+	<% end %>
+		<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+			width="85" height="85"
+			viewBox="0 0 172 172"
+			style=" fill:#000000;"><g xmlns="http://www.w3.org/2000/svg" transform=""><g font-family="none" font-size="none" font-weight="none" style="mix-blend-mode: normal" fill="none" fill-rule="nonzero" stroke="none" stroke-dasharray="" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1" text-anchor="none"><path fill="none" d="M 0 172 v -172 h 172 v 172 Z" /><g fill="#000000"><path d="M 86 6.88 c -43.6261 0 -79.12 35.4905 -79.12 79.12 c 0 43.6295 35.4939 79.12 79.12 79.12 c 43.6261 0 79.12 -35.4905 79.12 -79.12 c 0 -43.6295 -35.4939 -79.12 -79.12 -79.12 Z M 61.92 120.4 h -13.76 v -51.6 h 13.76 Z M 55.04 58.48 c -3.8012 0 -6.88 -3.0788 -6.88 -6.88 c 0 -3.8012 3.0788 -6.88 6.88 -6.88 c 3.8012 0 6.88 3.0788 6.88 6.88 c 0 3.8012 -3.0788 6.88 -6.88 6.88 Z M 127.28 120.4 h -13.76 v -17.2 v -8.6 c 0 -6.622 -5.418 -12.04 -12.04 -12.04 c -6.622 0 -12.04 5.418 -12.04 12.04 v 25.8 h -13.76 v -51.6 h 13.76 v 6.24704 c 4.01792 -3.85968 9.46688 -6.24704 15.48 -6.24704 c 12.3496 0 22.36 10.0104 22.36 22.36 Z" /></g></g></g>
+		</svg><% unless @profile.linkedin.blank? %></a><% end %>
+
+
+	<% unless @profile.academia_edu.blank? %>
+		<a href="<%= @profile.academia_edu %>" rel="external" target="_blank">
+	<% end %>
+		<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+			width="85" height="85"
+			viewBox="0 0 172 172"
+			class="<%= @profile.academia_edu.blank? ? 'disabled' : 'active' %>"
+			style=" fill:#000000;"><g xmlns="http://www.w3.org/2000/svg" transform=""><g font-family="none" font-size="none" font-weight="none" style="mix-blend-mode: normal" fill="none" fill-rule="nonzero" stroke="none" stroke-dasharray="" stroke-dashoffset="0" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-width="1" text-anchor="none"><path fill="none" d="M 0 172 v -172 h 172 v 172 Z" /><g fill="#000000"><path d="M 86 6.88 c -43.6983 0 -79.12 35.4217 -79.12 79.12 c 0 43.6983 35.4217 79.12 79.12 79.12 c 43.6983 0 79.12 -35.4217 79.12 -79.12 c 0 -43.6983 -35.4217 -79.12 -79.12 -79.12 Z M 82.1771 55.04 h 7.63921 l 22.8234 61.92 h -8.10258 l -6.22158 -17.7239 h -24.6311 l -6.22158 17.7239 h -8.10946 Z M 85.6574 65.0377 l -9.70183 27.6342 h 20.0889 l -9.70183 -27.6342 Z" /></g></g></g>
+		</svg><% unless @profile.academia_edu.blank? %></a><% end %>
+
+</div>
