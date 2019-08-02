@@ -240,8 +240,6 @@ var mobileMenu = (function () {
 		// Merge options into defaults
 		options = extend(defaults, settings || {});
 
-		console.log("Running INIT");
-
 		try {
 
 			// Cache the dom and other elements
