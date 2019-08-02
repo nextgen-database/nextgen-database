@@ -26,6 +26,10 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('.js-example-basic-search-profile').select2('destroy');
 
+	// Deactivate the mobile menu
+	mobileMenu.destroy();
+
+
 });
 
 // Normally run this when JQuery is ready, however to make

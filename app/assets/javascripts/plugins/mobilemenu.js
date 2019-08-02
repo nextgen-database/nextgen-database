@@ -208,10 +208,28 @@ var mobileMenu = (function () {
 
 	/**
 	 * A public method
+	 * to destroy everything that the plugin created
 	 */
-	publicAPIs.doSomething = function () {
-		somePrivateMethod();
-		// Code goes here...
+	publicAPIs.destroy = function () {
+
+		hide();
+
+		// Remove the menu close button that we added in
+		menuCloseButton.remove();
+
+		// Remove the menu open button that we added in
+		menuOpenButton.remove();
+
+		// Set all the local variables to null
+		wrapper = null;
+		page = null;
+		menuContainer = null;
+		menuOpenButton = null;
+		menuCloseButton = null;
+
+		menuContainerFirstFocusable = null;
+		menuContainerLastFocusable = null;
+
 	};
 
 	/**
@@ -221,6 +239,8 @@ var mobileMenu = (function () {
 
 		// Merge options into defaults
 		options = extend(defaults, settings || {});
+
+		console.log("Running INIT");
 
 		try {
 
