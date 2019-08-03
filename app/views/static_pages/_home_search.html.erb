@@ -5,16 +5,16 @@
 			<div class="container">
 
 				<div class="row justify-content-center align-items-center">
-					<div class="col-lg-5 col-md-6 col-lg-4 mt-0 order-md-2 align-self-start">
+					<div class="col-6 col-sm-7 col-md-6 col-lg-5 mt-0 order-md-2 align-self-start">
 
 						<%= image_tag("sdg-logo/sdg-logo.png", alt: "", class: "img-fluid") %>
 
 					</div>
-					<div class="col-lg-7 col-9 col-md-4  pt-5 pt-md-0">
+					<div class="col-12 col-md-4 col-lg-7 pt-md-0">
 
-						<h2 class="display-4 font-weight-normal"><%= t('home.search.heading') %></h2>
+						<h2 class="font-weight-normal py-3"><%= t('home.search.heading') %></h2>
 
-						<p class="lead font-weight-normal py-5"><%= t('home.search.blurb') %></p>
+						<p class="lead font-weight-normal py-1 py-md-5"><%= t('home.search.blurb') %></p>
 					</div>
 				</div>
 
@@ -24,11 +24,11 @@
 						<!-- TODO: Make the buttons block in small view -->
 						<%= form_tag(profiles_path, method: "get") do %>
 							<div class="form-row align-items-center">
-									<div class="col-6">
-										<%= text_field_tag 'q', nil,  :value => ""  , placeholder: t('home.search.placeholder'), class: "form-control form-control-lg"  %>
+									<div class="col-md-7">
+										<%= text_field_tag 'q', nil,  :value => ""  , placeholder: t('home.search.placeholder'), class: "form-control"  %>
 									</div>
-									<div class="col-3 my-1">
-										<select class="custom-select custom-select-lg form-control mr-sm-2" name="a">
+									<div class="col-md-3 my-3 my-md-1">
+										<select class="custom-select form-control mr-sm-2" name="a">
 											<option value="0" selected><%= t('home.search.sdg_dropdown') %></option>
 												<% if I18n.locale == :en %>
 													<%= options_from_collection_for_select(SustainableDevelopmentGoal.all, :id, :banner_en ) %>
@@ -37,8 +37,8 @@
 												<% end %>
 										</select>
 									</div>
-									<div class="col-3">
-										<%= submit_tag t('home.search.button'),  { name: nil , class: "btn btn-lg btn-success mb-2 btn-block" }  %>
+									<div class="col-md-2">
+										<%= submit_tag t('home.search.button'),  { name: nil , class: "btn btn-success btn-block" }  %>
 									</div>
 							</div>
 						<% end %>

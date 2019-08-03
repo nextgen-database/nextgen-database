@@ -4,13 +4,19 @@
  */
 
 $home-section-padding: 100px 0px 100px 0px;
+$home-section-padding-sm: 15px 0px 50px 0px;
 $home-section-bg: $main-home-bg;
+
+// sm only
+@media screen and (max-width: $break-md) {
+
+
+}
 
 
 @mixin home-title {
 	padding: 0px 0px 75px 0px;
 	font-size: 3.0em;
-
 }
 
 
@@ -24,7 +30,21 @@ $home-section-bg: $main-home-bg;
 	h2 {
 		//color: $primary-color;
 		color: #0B425A;
+		font-size: 3.0em;
 	}
+
+	// sm only
+	@media screen and (max-width: $break-md) {
+
+		padding: $home-section-padding-sm;
+
+		h2 {
+			font-size: 1.5rem !important;
+			font-weight: 700 !important;
+		}
+
+	}
+
 }
 
 
