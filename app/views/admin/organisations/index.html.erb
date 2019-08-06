@@ -19,6 +19,7 @@
 			<th scope="col">English</th>
 			<th scope="col">French</th>
 			<th scope="col">Type</th>
+			<th scope="col">Province</th>
 			<th scope="col">Actions</th>
 	<thead>
 	<tbody>
@@ -31,6 +32,11 @@
 					<% unless organisation.organisation_type.blank? %>
 						<%= organisation.organisation_type.english %></td>
 					<% end %>
+				<td>
+					<% unless organisation.province.blank? %>
+						<%= organisation.province.english %></td>
+					<% end %>
+				</td>
 				<td>
 					Actions:
 
