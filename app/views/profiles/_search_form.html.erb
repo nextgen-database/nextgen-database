@@ -185,6 +185,20 @@
 
 			</div>
 
+			<%# Province Filter %>
+			<div class="form-group col-md-6">
+				<label for=""><%= t('profiles.index.search.advanced-filters.filter-provinces-label').html_safe %></label>
+
+				<select class="custom-select custom-select-lg form-control mr-sm-2 js-example-basic-multiple-provinces" name="k[]" multiple="multiple">
+					<% if I18n.locale == :en %>
+						<%= options_from_collection_for_select(Province.order(:english).all, :id, :english, @search_parameters['province_ids'] ) %>
+					<% elsif I18n.locale == :fr %>
+						<%= options_from_collection_for_select(Province.order(:french).all, :id, :french, @search_parameters['province_ids'] ) %>
+					<% end %>
+				</select>
+
+			</div>
+
 		</div>
 
 		<div class="d-flex justify-content-end align-items-center">

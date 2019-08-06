@@ -127,6 +127,7 @@ en:
         no-results-message: "Sorry, no results found using those search terms!"
         advanced-filters:
           btn: "Advanced Search Filters"
+          filter-provinces-label: "Include any of the following <strong>Provinces</strong>:"
           filter-organisations-label: "Include any of the following <strong>Organisations</strong>:"
           filter-organisation-types-label: "Include any of the following <strong>Organisation Types</strong>:"
           filter-sectors-label: "Include any of the following <strong>Sectors</strong>:"

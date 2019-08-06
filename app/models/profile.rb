@@ -177,6 +177,13 @@ class Profile < ApplicationRecord
 					where(organisation_types: {id: organisation_type_ids }) unless organisation_type_ids.blank?
 	end
 
+	scope :where_province_ids, -> (province_ids) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
+				joins("JOIN provinces ON provinces.id = organisations.province_id").
+					where(provinces: {id: province_ids }) unless province_ids.blank?
+	end
+
 
 	#
 	# Search
@@ -344,6 +351,15 @@ class Profile < ApplicationRecord
 
 		# Search Country IDs
 		result_ids = Profile.where(id: ids).where_organisation_type_ids(organisation_type_ids).pluck(:id) if !organisation_type_ids.blank?
+
+	end
+
+	def self.filter_by_province_ids(province_ids, ids)
+
+		result_ids = Array.new
+
+		# Search Country IDs
+		result_ids = Profile.where(id: ids).where_province_ids(province_ids).pluck(:id) if !province_ids.blank?
 
 	end
 

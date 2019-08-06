@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
 		@is_advanced_filters_on = true unless @search_parameters['research_method_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['organisation_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['organisation_type_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['province_ids'].blank?
 
 	end
 
@@ -284,6 +285,9 @@ class ProfilesController < ApplicationController
 			# Filter by Organisation Types
 			profile_ids = Profile.filter_by_organisation_type_ids(@search_parameters['organisation_type_ids'], profile_ids) unless @search_parameters['organisation_type_ids'].blank?
 
+			# Filter by Provinces
+			profile_ids = Profile.filter_by_province_ids(@search_parameters['province_ids'], profile_ids) unless @search_parameters['province_ids'].blank?
+
 			# Find the Profiles by the filtered IDs
 			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
 
@@ -329,6 +333,9 @@ class ProfilesController < ApplicationController
 
 			# Set the Organisation TYpes
 			@search_parameters['organisation_type_ids'] = params[:j] unless params[:j].blank?
+
+			# Set the Province
+			@search_parameters['province_ids'] = params[:k] unless params[:k].blank?
 
 			# Set the Advanced Search Flag
 			@search_parameters['advanced_search_flag'] = params[:z] unless params[:z].blank?

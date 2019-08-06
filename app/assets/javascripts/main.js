@@ -28,6 +28,8 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('.js-example-basic-multiple-organisation-types').select2('destroy');
 
+	$('.js-example-basic-multiple-provinces').select2('destroy');
+
 	$('.js-example-basic-search-profile').select2('destroy');
 
 	// Deactivate the mobile menu
@@ -98,6 +100,12 @@ document.addEventListener("turbolinks:load", function() {
 
 	$('.js-example-basic-multiple-organisation-types').select2({
 		placeholder: 'Select an organisation type',
+		width: '100%',
+		allowClear: true
+	});
+
+	$('.js-example-basic-multiple-provinces').select2({
+		placeholder: 'Select a province',
 		width: '100%',
 		allowClear: true
 	});
