@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_182748) do
+ActiveRecord::Schema.define(version: 2019_08_06_032552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,20 @@ ActiveRecord::Schema.define(version: 2019_07_17_182748) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "organisation_types", force: :cascade do |t|
+    t.string "english"
+    t.string "french"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string "english", null: false
     t.string "french", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organisation_type_id"
+    t.index ["organisation_type_id"], name: "index_organisations_on_organisation_type_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -244,6 +253,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_182748) do
 
   add_foreign_key "affiliations", "organisations"
   add_foreign_key "affiliations", "profiles"
+  add_foreign_key "organisations", "organisation_types"
   add_foreign_key "positions", "titles"
   add_foreign_key "profile_requests", "profiles"
   add_foreign_key "profile_requests", "users"

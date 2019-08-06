@@ -4,4 +4,7 @@ class Organisation < ApplicationRecord
 	validates :french, presence: true
 
 	has_one :affiliation
+
+	belongs_to :organisation_type
+
 end

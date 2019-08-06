@@ -4,6 +4,9 @@
   <div class="field">
     <%= f.text_area :english, placeholder: "English" %>
 	<%= f.text_area :french, placeholder: "French" %>
+
+	<%= f.select :organisation_type_id, options_from_collection_for_select(OrganisationType.all, :id, :english), { include_blank: true }, { class: 'form-control', 'data-placeholder': "Organisation Type", 'data-width': 'element', 'data-allowClear': true } %>
+
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

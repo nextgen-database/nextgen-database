@@ -66,7 +66,7 @@ class Admin::OrganisationsController < ApplicationController
 	private
 
     	def organisation_params
-			params.require(:organisation).permit(:english, :french)
+			params.require(:organisation).permit(:english, :french, :organisation_type_id)
 		end
 
 		def find_organisation
