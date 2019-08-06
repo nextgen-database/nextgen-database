@@ -10,10 +10,9 @@ namespace(:ng) do
 		# Testing the waters
 		#
 		desc "Migrate Profiles"
-		task :sdgs => :environment do
+		task :organisation_types => :environment do
 
             # Hash table of Sector to SDG values
-			sector_sdg_hash = Hash.new
 
 
 
