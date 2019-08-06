@@ -44,7 +44,7 @@
 						<dl class="row">
 
 							<dt class="col-sm-3">Profile Prefix:</dt>
-							<dd class="col-sm-9"><%== @user_profile.prefix.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.email.no-value')}</span>" : @user_profile.prefix.english %></dd>
+							<dd class="col-sm-9"><%== @user_profile.prefix.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.prefix.no-value')}</span>" : @user_profile.prefix.english %></dd>
 
 							<dt class="col-sm-3">Profile First Name:</dt>
 							<dd class="col-sm-9"><%= @user_profile.firstname %></dd>

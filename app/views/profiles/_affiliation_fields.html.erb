@@ -1,30 +1,39 @@
-<div class="nested-fields">
 
-	<%= label_tag(:organisation_ids, "Affiliation Organisations:") %>
 
-	<div class="form-group">
-		<% if I18n.locale == :en %>
-			<%= f.collection_select :organisation_id, Organisation.all ,:id,:english, {}, { class: "form-control" } %>
-		<% elsif I18n.locale == :fr %>
-			<%= f.collection_select :organisation_id, Organisation.all ,:id,:french, class: "form-control" %>
-		<% end %>
-	</div>
+	<div class="nested-fields">
 
-	<div class="row" id="positions">
-		<div class="col-md-11 offset-md-1">
-			<%= f.fields_for :positions do |position| %>
-				<%= render 'position_fields', f: position %>
-			<% end %>
+		<div class="card-style-2">
 
-			<div class="links">
-				<%= link_to_add_association 'add position', f, :positions, :force_non_association_create => true %>
+			<%= label_tag(:organisation_ids, "Affiliation Organisation:") %>
+
+			<div class="form-group">
+				<% if I18n.locale == :en %>
+					<%= f.collection_select :organisation_id, Organisation.order(:english).all ,:id,:english, {}, { class: "form-control" } %>
+				<% elsif I18n.locale == :fr %>
+					<%= f.collection_select :organisation_id, Organisation.order(:french).all ,:id,:french, {}, { class: "form-control" } %>
+				<% end %>
 			</div>
+
+			<div id="positions">
+
+				<%= f.fields_for :positions do |position| %>
+					<%= render 'position_fields', f: position %>
+				<% end %>
+
+				<div class="links">
+					<%= link_to_add_association 'add position', f, :positions, :force_non_association_create => true , class: "btn btn-outline-primary" %>
+				</div>
+
+			</div>
+
+			<br />
+
+			<div class="py-3">
+				<%= link_to_remove_association "remove affiliation", f , class: "btn btn-outline-danger" %>
+			</div>
+
+
 		</div>
-  	</div>
 
-	<br />
-
-	<div class="border-bottom py-3">
-    	<%= link_to_remove_association "remove affiliation", f , class: "btn btn-outline-danger" %>
 	</div>
-</div>
+

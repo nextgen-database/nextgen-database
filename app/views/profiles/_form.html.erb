@@ -1,95 +1,150 @@
 
 <%= form_for @profile do |f| %>
 
-	<div class="form-row">
-		<div class="form-group col-lg-3">
-			<%= label_tag(:prefix, "Prefix:") %>
-			<% if I18n.locale == :en %>
-				<%= f.collection_select(:prefix_id, Prefix.all, :id, :english,
-                              {include_blank: true, :include_hidden => false},
-                              {multiple: false, class: "form-control"}) %>
+	<div class="card-style-1">
 
-			<% elsif I18n.locale == :fr %>
-				<%= f.collection_select(:prefix_id, Prefix.all, :id, :french,
-                              {include_blank: true, :include_hidden => false},
-                              {multiple: false, class: "form-control"}) %>
-			<% end %>
-		</div>
-		<div class="form-group col-lg-3">
-			<%= label_tag(:firstname, "First Name:") %>
-			<%= f.text_field :firstname , class: 'form-control', placeholder: "First Name" %>
-		</div>
-		<div class="form-group col-lg-3">
-			<%= label_tag(:middlename, "Middle Name:") %>
-			<%= f.text_field :middlename , class: 'form-control' , placeholder: "MIddle Name" %>
-		</div>
-		<div class="form-group col-lg-3">
-			<%= label_tag(:lastname, "Last Name:") %>
-			<%= f.text_field :lastname,  class: 'form-control' , placeholder: "Last Name" %>
-		</div>
-	</div>
+		<h2 class="h4">Contact Information</h2>
 
-	<div class="form-group">
+		<%#
+			Name
+		#%>
+		<div class="form-row">
+			<div class="form-group col-lg-3">
+				<%= label_tag(:prefix, "Prefix:") %>
+				<% if I18n.locale == :en %>
+					<%= f.collection_select(:prefix_id, Prefix.all, :id, :english,
+								{include_blank: true, :include_hidden => false},
+								{multiple: false, class: "form-control"}) %>
 
-		<%= label_tag(:email, "Email address:") %>
-		<%= f.text_field :email, class: 'form-control', placeholder: "name@example.com" %>
-
-  	</div>
-
-	<div class="form-group">
-
-		<%= label_tag(:website, "Website:") %>
-		<%= f.text_field :website,  class: 'form-control', placeholder: "https://www.my-website.com"  %>
-
-	</div>
-
-	<div class="form-group">
-
-		<%= label_tag(:phone_number, "Phone Number:") %>
-		<%= f.text_field :phone_number ,  class: 'form-control', placeholder: "+15551234567"  %>
-
-	</div>
-
-	<%#
-		Add Affiliations
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
-					<%= label_tag(:affiliations, "Affiliations:") %>
-				</div>
-				<div class="col-md-9">
-
-					<div id='affiliations'>
-						<%= f.fields_for :affiliations do |affiliation| %>
-							<%= render "affiliation_fields", :f => affiliation %>
-						<% end %>
-					</div>
-					<div class="">
-						<%= link_to_add_association 'Click here to add Affiliation', f, :affiliations, class: "btn btn-outline-secondary" %>
-					</div>
-				</div>
+				<% elsif I18n.locale == :fr %>
+					<%= f.collection_select(:prefix_id, Prefix.all, :id, :french,
+								{include_blank: true, :include_hidden => false},
+								{multiple: false, class: "form-control"}) %>
+				<% end %>
 			</div>
-		</fieldset>
+			<div class="form-group col-lg-3">
+				<%= label_tag(:firstname, "First Name:") %>
+				<%= f.text_field :firstname , class: 'form-control', placeholder: "First Name" %>
+			</div>
+			<div class="form-group col-lg-3">
+				<%= label_tag(:middlename, "Middle Name:") %>
+				<%= f.text_field :middlename , class: 'form-control' , placeholder: "MIddle Name" %>
+			</div>
+			<div class="form-group col-lg-3">
+				<%= label_tag(:lastname, "Last Name:") %>
+				<%= f.text_field :lastname,  class: 'form-control' , placeholder: "Last Name" %>
+			</div>
+		</div>
+
+		<%#
+			Email Address
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:email, "Email address:") %>
+			<%= f.text_field :email, class: 'form-control', placeholder: "name@example.com" %>
+
+		</div>
+
+		<%#
+			Website
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:website, "Website:") %>
+			<%= f.text_field :website,  class: 'form-control', placeholder: "https://www.my-website.com"  %>
+
+		</div>
+
+		<%#
+			Phone Number and Extention
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:phone_number, "Phone Number:") %>
+			<%= f.text_field :phone_number ,  class: 'form-control', placeholder: "+15551234567"  %>
+
+		</div>
+
+		<%#
+			Link to Twitter
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:twitter, "Twitter Web Address:") %>
+			<%= f.text_field :twitter ,  class: 'form-control', placeholder: "https://twitter.com/username"  %>
+
+		</div>
+
+		<%#
+			Link to LinkedIn
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:linkedin, "Linked In Web Address:") %>
+			<%= f.text_field :linkedin ,  class: 'form-control', placeholder: "https://www.linkedin.com/in/user-name"  %>
+
+		</div>
+
+		<%#
+			Link to Acadamia
+		#%>
+		<div class="form-group">
+
+			<%= label_tag(:academia_edu, "Academia Web Address:") %>
+			<%= f.text_field :academia_edu ,  class: 'form-control', placeholder: "https://www.academia.edu/user-name"  %>
+
+		</div>
+
+	</div>
+
+	<div class="card-style-1">
+
+		<%#
+			Add Affiliations
+		#%>
+
+		<h2 class="h4">Affiliation(s)</h2>
+
+		<div class="py-3">
+
+			<fieldset>
+
+				<%= label_tag :affiliations, "Affiliations:", class: 'sr-only' %>
+
+				<div id='affiliations'>
+					<%= f.fields_for :affiliations do |affiliation| %>
+						<%= render "affiliation_fields", :f => affiliation %>
+					<% end %>
+				</div>
+				<div class="pt-3">
+					<%= link_to_add_association 'Click here to add Affiliation', f, :affiliations, class: "btn btn-outline-secondary" %>
+				</div>
+
+			</fieldset>
+
+		</div>
+
 	</div>
 
 
-	<%#
-		Add Sustainable Development Goals
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
-					<%= label_tag(:sustainable_development_goal_ids, "Sustainable Development Goals:") %>
-				</div>
+	<div class="card-style-1">
 
-				<div class="col-md-9">
-					<div class="row">
+		<h2 class="h4">Research Information</h2>
+
+		<%#
+			Add Sustainable Development Goals
+		#%>
+		<div class="py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:sustainable_development_goal_ids, "Sustainable Development Goals:") %>
+
+				<div class="row">
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes(:sustainable_development_goal_ids, SustainableDevelopmentGoal.all, :id, :banner_en) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -98,7 +153,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes(:sustainable_development_goal_ids, SustainableDevelopmentGoal.all, :id, :banner_fr) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -106,64 +161,82 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
 				</div>
+
 			</div>
-		</fieldset>
-	</div>
 
-	<%#
-		Add Sectors
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
-					<%= label_tag(:sector_ids, "Sectors:") %>
-				</div>
+		</div>
 
-				<div class="col-md-9">
-					<div class="row">
-					<% if I18n.locale == :en %>
-						<%= f.collection_check_boxes(:sector_ids, Sector.all, :id, :english) do |b| %>
-						<div class="col-md-6">
-							<div class="custom-control custom-checkbox">
-								<%= b.check_box class: "custom-control-input" %>
-								<%= b.label class: "custom-control-label" %>
-							</div>
+		<%#
+			Add Sectors
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:sector_ids, "Sectors:") %>
+
+				<% if I18n.locale == :en %>
+
+					<%= f.collection_select :sector_ids, Sector.order(:english).all, :id, :english, {:selected => @profile.sectors, include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true } %>
+					<small id="sectorsHelp" class="form-text text-muted">Select as many sectors as may be applicable</small>
+
+				<% elsif I18n.locale == :fr %>
+
+					<%= f.collection_select :sector_ids, Sector.order(:french).all, :id, :french, {:selected => @profile.sectors, include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true } %>
+
+					<small id="sectorsHelp" class="form-text text-muted">Select as many sectors as may be applicable</small>
+
+				<% end %>
+
+			</div>
+
+		</div>
+
+		<%#
+			Add Countries
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:country_ids, "Countries:") %>
+
+				<% if I18n.locale == :en %>
+
+					<%= f.collection_select :country_ids, Country.order(:english).all, :id, :english, {:selected => @profile.countries, include_blank: 'Select countries'} , { class: "js-example-basic-multiple-countries" , multiple: true } %>
+
+					<small id="countriesHelp" class="form-text text-muted">Select as many countries as may be applicable</small>
+
+				<% elsif I18n.locale == :fr %>
+					<%= f.collection_check_boxes(:country_ids, Country.order(:french).all, :id, :french) do |b| %>
+					<div class="col-md-3">
+						<div class="custom-control custom-checkbox">
+							<%= b.check_box class: "custom-control-input" %>
+							<%= b.label class: "custom-control-label" %>
 						</div>
-						<% end %>
-					<% elsif I18n.locale == :fr %>
-						<%= f.collection_check_boxes(:sector_ids, Sector.all, :id, :french) do |b| %>
-						<div class="col-md-6">
-							<div class="custom-control custom-checkbox">
-								<%= b.check_box class: "custom-control-input" %>
-								<%= b.label class: "custom-control-label" %>
-							</div>
-						</div>
-						<% end %>
+					</div>
 					<% end %>
-					</div>
-				</div>
+				<% end %>
+
 			</div>
-		</fieldset>
-	</div>
 
-	<%#
-		Add Demographics
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
-					<%= label_tag(:demographic_ids, "Demographics:") %>
-				</div>
+		</div>
 
-				<div class="col-md-9">
-					<div class="row">
+		<%#
+			Add Demographics
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:demographic_ids, "Demographics:") %>
+
+				<div class="row">
+
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes( :demographic_ids, Demographic.all, :id, :english) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -172,7 +245,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes( :demographic_ids, Demographic.all, :id, :french) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -180,28 +253,28 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
+
 				</div>
+
 			</div>
-		</fieldset>
-	</div>
+
+		</div>
 
 
-	<%#
-		Add Development Actors
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
+		<%#
+			Add Development Actors
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
 				<%= label_tag(:development_actor_ids, "Development Actors:") %>
-				</div>
 
-				<div class="col-md-9">
-					<div class="row">
+				<div class="row">
+
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes(:development_actor_ids, DevelopmentActor.all, :id, :english) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -210,7 +283,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes(:development_actor_ids, DevelopmentActor.all, :id, :french) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -218,27 +291,27 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
+
 				</div>
+
 			</div>
-		</fieldset>
-	</div>
 
-	<%#
-		Add Research Methods
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
+		</div>
+
+		<%#
+			Add Research Methods
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
 				<%= label_tag(:research_method_ids, "Research Methods:") %>
-				</div>
 
-				<div class="col-md-9">
-					<div class="row">
+				<div class="row">
+
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes(:research_method_ids, ResearchMethod.all, :id, :english) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -247,7 +320,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes(:research_method_ids, ResearchMethod.all, :id, :french) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -255,28 +328,28 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
+
 				</div>
+
 			</div>
-		</fieldset>
-	</div>
+
+		</div>
 
 
-	<%#
-		Add Regions
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
+		<%#
+			Add Regions
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
 				<%= label_tag(:region_ids, "Regions:") %>
-				</div>
 
-				<div class="col-md-9">
-					<div class="row">
+				<div class="row">
+
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :english) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -285,7 +358,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :french) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -293,27 +366,27 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
+
 				</div>
+
 			</div>
-		</fieldset>
-	</div>
 
-	<%#
-		Add Subregion
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
+		</div>
+
+		<%#
+			Add Subregion
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
 				<%= label_tag(:subregion_ids, "Subregions:") %>
-				</div>
 
-				<div class="col-md-9">
-					<div class="row">
+				<div class="row">
+
 					<% if I18n.locale == :en %>
 						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :english) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -322,7 +395,7 @@
 						<% end %>
 					<% elsif I18n.locale == :fr %>
 						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :french) do |b| %>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
 								<%= b.label class: "custom-control-label" %>
@@ -330,52 +403,17 @@
 						</div>
 						<% end %>
 					<% end %>
-					</div>
+
 				</div>
+
 			</div>
-		</fieldset>
+
+		</div>
+
 	</div>
 
-
-	<%#
-		Add Countries
-	#%>
-	<div class="border-top py-3">
-		<fieldset>
-			<div class="row">
-				<div class="col-md-3">
-				<%= label_tag(:country_ids, "Countries:") %>
-				</div>
-
-				<div class="col-md-9">
-					<div class="row">
-					<% if I18n.locale == :en %>
-						<%= f.collection_check_boxes(:country_ids, Country.order(:english).all, :id, :english) do |b| %>
-						<div class="col-md-3">
-							<div class="custom-control custom-checkbox">
-								<%= b.check_box class: "custom-control-input" %>
-								<%= b.label class: "custom-control-label" %>
-							</div>
-						</div>
-						<% end %>
-					<% elsif I18n.locale == :fr %>
-						<%= f.collection_check_boxes(:country_ids, Country.order(:french).all, :id, :french) do |b| %>
-						<div class="col-md-3">
-							<div class="custom-control custom-checkbox">
-								<%= b.check_box class: "custom-control-input" %>
-								<%= b.label class: "custom-control-label" %>
-							</div>
-						</div>
-						<% end %>
-					<% end %>
-					</div>
-				</div>
-			</div>
-		</fieldset>
+	<div class="card-style-1">
+  		<%= f.submit "Submit" , class: "btn btn-lg btn-primary" %>
 	</div>
-
-
-
-  	<%= f.submit "Create" %>
 
 <% end %>

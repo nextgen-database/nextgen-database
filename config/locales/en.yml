@@ -225,6 +225,9 @@ en:
       title: "My Account"
       profile-contact-info:
         heading: "Contact Information"
+        prefix:
+          heading: "Profile Prefix"
+          no-value: "No prefix provided"
         website:
           heading: "Profile Website"
           no-value: "No website provided"
