@@ -209,10 +209,10 @@ class ProfilesController < ApplicationController
 		# profile
 
 
-
 		@profile = Profile.new(profile_params)
 
-		# Add the current user id to the profile
+		# Add the current user id to the profile unless it's an admin
+		# Then we need to know if the admin is adding a new profile
 		@profile.user_id = current_user.id
 
    		if @profile.save
@@ -254,9 +254,9 @@ class ProfilesController < ApplicationController
 					if @user_is_admin
 
 						# Is the admin user is working on their profile or someone elses
-						if @user.id == Profile.find(params[:id]).user_id
-							redirect_to account_path
-						end
+						#if @user.id == Profile.find(params[:id]).user_id
+						#	redirect_to account_path
+						#end
 
 						# Send an admin user back to the profile management screen
 						redirect_to admin_profile_management_path
