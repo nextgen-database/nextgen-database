@@ -2,11 +2,14 @@
 
 	<div class="pd-container">
 
-		<h1 name="cont" id="cont"><% if I18n.locale == :en %>
+		<h1 name="cont" id="cont">
+							<% unless @profile.prefix.blank? %>
+								<% if I18n.locale == :en %>
 									<%= @profile.prefix.english %>
 								<% elsif I18n.locale == :fr %>
 									<%= @profile.prefix.french %>
-								<% end %><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
+								<% end %>
+							<% end %><%= @profile.firstname %> <%= @profile.middlename %> <%= @profile.lastname %></h1>
 
 
 		<h2 class="sr-only"><%= t('profiles.show.contact.heading') %></h2>
