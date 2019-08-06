@@ -1,16 +1,6 @@
 
 <%= form_for @profile do |f| %>
 
-	<% if @user.admin? %>
-
-		<p>The user is an admin</p>
-
-	<% end %>
-
-
-
-
-
 	<div class="form-row">
 		<div class="form-group col-lg-3">
 			<%= label_tag(:prefix, "Prefix:") %>

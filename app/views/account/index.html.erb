@@ -1,241 +1,296 @@
-<h1><%= t('account.show.heading') %></h1>
+<div class="account">
 
-<section>
-	<div class="mt-5">
-		<h2>Profile Information</h2>
+	<h1><%= t('account.show.heading') %></h1>
 
-		<% unless @user.confirmed? %>
+	<p class="mb-0"><small>Welcome: <span class="text-secondary"><%= @user.email %></span></p>
 
-			<p>Welcome to the NextGen Database</p>
+	<section>
+		<div class="mt-5">
+			<h2>Profile Information</h2>
 
-			<p>You are required to confirm your email address before you can claim or create a new profile</p>
+			<% unless @user.confirmed? %>
 
-			<p>An email has been send to your email account (<%= @user.email %>). Please click on the link provided to confirm your email address.</p>
+				<p>Welcome to the NextGen Database</p>
 
-			<p>Please check your Junk folder as sometimes the email can end up there.</p>
+				<p>You are required to confirm your email address before you can claim or create a new profile</p>
 
-			<p>Once your email address is confirmed please sign back in and you will have the option to create a new profile or claim an existing profile</p>
+				<p>An email has been send to your email account (<%= @user.email %>). Please click on the link provided to confirm your email address.</p>
 
-		<% else %>
+				<p>Please check your Junk folder as sometimes the email can end up there.</p>
 
-			<%#
-			# If the user has a profile then display some
-			# profile information with an edit button
-			#
-			# If the user doesn't have a profile show links
-			# to create a new profile or drop down to claim
-			# a profile and a submit button
-			#
-			# If a profile is in the process of being claimed
-			# then show that and the status of the claim
-			#
-			#%>
-
-			<% if @valid_profile %>
-
-
-				<dl class="row">
-					<dt class="col-sm-3">Profile Email:</dt>
-					<dd class="col-sm-9"><%= @user_profile.email %></dd>
-
-					<dt class="col-sm-3">Profile First Name:</dt>
-					<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
-
-					<dt class="col-sm-3">Profile Last Name:</dt>
-					<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
-				</dl>
-
-				<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-secondary" %>
-
-
-				<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
-
-
+				<p>Once your email address is confirmed please sign back in and you will have the option to create a new profile or claim an existing profile</p>
 
 			<% else %>
 
-
 				<%#
-					State Machine:
-
-					State A: The user doesn't have any profile request
-							Show them the create profile button
-							Show them the profile request block
-
-					State B: The user has a request that is in a not set state
-							Show them the request with the cancel buttom
-							Disable the new profile buttom
-
-					State C: The user has a request that was denied
-							Show them the request/s that was denied
-							Show them the create profile button
+				# If the user has a profile then display some
+				# profile information with an edit button
+				#
+				# If the user doesn't have a profile show links
+				# to create a new profile or drop down to claim
+				# a profile and a submit button
+				#
+				# If a profile is in the process of being claimed
+				# then show that and the status of the claim
+				#
 				#%>
 
+				<% if @valid_profile %>
+
+					<div class="card-style-1">
+
+						<h3><%= t('account.index.profile-contact-info.heading') %></h3>
+
+						<dl class="row">
+
+							<dt class="col-sm-3">Profile Prefix:</dt>
+							<dd class="col-sm-9"><%== @user_profile.prefix.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.email.no-value')}</span>" : @user_profile.prefix.english %></dd>
+
+							<dt class="col-sm-3">Profile First Name:</dt>
+							<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+
+							<dt class="col-sm-3">Profile Last Name:</dt>
+							<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
+
+							<dt class="col-sm-3">Profile Email:</dt>
+							<dd class="col-sm-9"><%== @user_profile.email.blank? ? "<span class='text-danger'>#{t('account.index.profile-contact-info.email.no-value')}</span>" : @user_profile.email %></dd>
+
+							<dt class="col-sm-3">Profile Phone Number:</dt>
+							<dd class="col-sm-9"><%== @user_profile.phone_number.blank? ? "<span class='text-danger'>#{t('account.index.profile-contact-info.phone-number.no-value')}</span>" : @user_profile.phone_number %></dd>
+
+							<dt class="col-sm-3">Profile Website:</dt>
+							<dd class="col-sm-9 text-truncate"><%== @user_profile.website.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.website.no-value')}</span>" : @user_profile.website %></dd>
+
+						</dl>
+
+						<% if false %>
+
+						<h3><%= t('account.index.profile-research-info.heading') %></h3>
+
+						<dl class="row">
+
+							<dt class="col-sm-3">Profile SDGs:</dt>
+							<dd class="col-sm-9"><%== @user_profile.sustainable_development_goals.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Sectors:</dt>
+							<dd class="col-sm-9"><%== @user_profile.sectors.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Demographics:</dt>
+							<dd class="col-sm-9"><%== @user_profile.demographics.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Development Actors:</dt>
+							<dd class="col-sm-9"><%== @user_profile.development_actors.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Research Methods:</dt>
+							<dd class="col-sm-9"><%== @user_profile.research_methods.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Countries:</dt>
+							<dd class="col-sm-9"><%== @user_profile.countries.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Subregions:</dt>
+							<dd class="col-sm-9"><%== @user_profile.subregions.count > 0 ? "Yes" : "No" %></dd>
+
+							<dt class="col-sm-3">Profile Regions:</dt>
+							<dd class="col-sm-9"><%== @user_profile.regions.count > 0 ? "Yes" : "No" %></dd>
+
+
+						</dl>
+
+						<% end %>
+
+						<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
+
+						<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-outline-secondary" %>
+
+					</div>
+
+				<% else %>
+
+
+					<%#
+						State Machine:
+
+						State A: The user doesn't have any profile request
+								Show them the create profile button
+								Show them the profile request block
+
+						State B: The user has a request that is in a not set state
+								Show them the request with the cancel buttom
+								Disable the new profile buttom
+
+						State C: The user has a request that was denied
+								Show them the request/s that was denied
+								Show them the create profile button
+					#%>
 
 
 
 
-				<%#
-					If all of the profile requests for the user that are not set or denied
-					When do we show the request profile form?
-					We show it when there isn't an outstanding not set
-				#%>
 
-				<% if @user_profile_requests_not_set.blank? %>
+					<%#
+						If all of the profile requests for the user that are not set or denied
+						When do we show the request profile form?
+						We show it when there isn't an outstanding not set
+					#%>
 
-					<div class="card my-3">
-						<div class="card-body">
+					<% if @user_profile_requests_not_set.blank? %>
+
+						<div class="account-card my-3">
+
 							<h4 class="card-title">Step 1 - Check if your profile was created for you</h4>
 
-								<%= form_for [:admin, ProfileRequest.new] do |f| %>
+							<%= form_for [:admin, ProfileRequest.new] do |f| %>
 
-									<% if false %>
-									<div class="form-group">
+								<% if false %>
+								<div class="form-group">
 
+									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'form-control', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
 
-
-										<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'form-control', 'data-placeholder': t('devise.registrations.edit.step1_placeholder'), 'data-width': 'element', 'data-allowClear': true } %>
-									</div>
-
-									<% end %>
-
-									<div class="form-group">
-										<%= label_tag(:profile_id, "Profile Name:") %>
-
-										<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: false }, { class: 'custom-select custom-select-lg form-control-lg mr-sm-2 js-example-basic-search-profile', 'data-placeholder': 'Search for your profile', 'data-width': 'element', 'data-allowClear': true } %>
-
-									</div>
-
-									<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
+								</div>
 
 								<% end %>
 
-						</div>
-					</div>
+								<div class="form-group">
+									<%= label_tag(:profile_id, "Profile Name:") %>
 
-					<div class="card my-3">
-						<div class="card-body">
+									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: true }, { class: 'custom-select custom-select-lg form-control-lg mr-sm-2 js-example-basic-search-profile', 'data-placeholder': 'Search for your profile', 'data-width': 'element', 'data-allowClear': true } %>
+
+								</div>
+
+								<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
+
+							<% end %>
+
+						</div>
+
+						<div class="account-card my-3">
+
 							<h4 class="card-title">Step 2 - Don't see your name? Create a new profile</h4>
 
-								<p>Create a new profile by clicking the button below.</p>
+							<p>Create a new profile by clicking the button below.</p>
 
-								<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
+							<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
 
 						</div>
-					</div>
 
 
 
-
-				<% end %>
-
-				<%#
-					List all of the profile requests for the user that are not set or denied
-				#%>
-				<% if !@user_profile_requests_not_set.blank? %>
-
-					<div class="alert alert-secondary" role="alert">
-						<h3 class="alert-heading">Profile Request Pending</h3>
-
-						<% @user_profile_requests_not_set.each do |profile_request| %>
-							<p>The following profile request for <%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) , class: "alert-link" %> is still pending.</p>
-							<%= form_for [:admin, profile_request] do |f| %>
-
-										<%#= render 'shared/error_messages', object: f.object #%>
-										<%= f.hidden_field :status, {value: 'user_cancelled'} %>
-
-										<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
-									<% end %>
-						<% end %>
-					</div>
-
-
-					<% if false %>
-
-					<table class="table">
-						<thead>
-							<tr>
-							<th scope="col">User Account</th>
-							<th scope="col">Profile Name</th>
-							<th scope="col">Status</th>
-							<th scope="col">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% @user_profile_requests_not_set.each do |profile_request| %>
-								<tr>
-								<td scope="row"><%= @user.email %></td>
-								<td><%= profile_request.profile_id %></td>
-								<td>Pending</td>
-								<td>
-									<%= form_for [:admin, profile_request] do |f| %>
-
-										<%#= render 'shared/error_messages', object: f.object #%>
-										<%= f.hidden_field :status, {value: 'user_cancelled'} %>
-
-										<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
-									<% end %>
-								</td>
-								</tr>
-							<% end %>
-						</tbody>
-					</table>
 
 					<% end %>
 
-				<% end %>
+					<%#
+						List all of the profile requests for the user that are not set or denied
+					#%>
+					<% if !@user_profile_requests_not_set.blank? %>
 
-				<% if !@user_profile_requests_denied.blank? %>
+						<div class="account-alert-card" role="alert">
+							<h3 class="alert-heading">Profile Request Pending</h3>
 
-					<h3>Denied Profile Requests:</h3>
+							<% @user_profile_requests_not_set.each do |profile_request| %>
+								<p>The following profile request for <%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) , class: "alert-link" %> is still pending.</p>
+								<%= form_for [:admin, profile_request] do |f| %>
 
-					<table class="table">
-						<thead>
-							<tr>
-							<th scope="col">User Account</th>
-							<th scope="col">Profile Name</th>
-							<th scope="col">Status</th>
-							<th scope="col">Updated At</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% @user_profile_requests_denied.each do |profile_request| %>
-								<tr>
-								<td scope="row"><%= @user.email %></td>
-								<td><%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) %></td>
-								<td>Denied</td>
-								<td><%= profile_request.updated_at %></td>
-								</tr>
+											<%#= render 'shared/error_messages', object: f.object #%>
+											<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+											<%= f.submit "Cancel Profile Request", class: "btn btn-outline-primary" %>
+										<% end %>
 							<% end %>
-						</tbody>
-					</table>
+						</div>
+
+
+						<% if false %>
+
+						<table class="table">
+							<thead>
+								<tr>
+								<th scope="col">User Account</th>
+								<th scope="col">Profile Name</th>
+								<th scope="col">Status</th>
+								<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @user_profile_requests_not_set.each do |profile_request| %>
+									<tr>
+									<td scope="row"><%= @user.email %></td>
+									<td><%= profile_request.profile_id %></td>
+									<td>Pending</td>
+									<td>
+										<%= form_for [:admin, profile_request] do |f| %>
+
+											<%#= render 'shared/error_messages', object: f.object #%>
+											<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+
+											<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
+										<% end %>
+									</td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+
+						<% end %>
+
+					<% end %>
+
+					<% if !@user_profile_requests_denied.blank? %>
+
+						<h3>Denied Profile Requests:</h3>
+
+						<table class="table">
+							<thead>
+								<tr>
+								<th scope="col">User Account</th>
+								<th scope="col">Profile Name</th>
+								<th scope="col">Status</th>
+								<th scope="col">Updated At</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @user_profile_requests_denied.each do |profile_request| %>
+									<tr>
+									<td scope="row"><%= @user.email %></td>
+									<td><%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) %></td>
+									<td>Denied</td>
+									<td><%= profile_request.updated_at %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+
+					<% end %>
+
 
 				<% end %>
 
 
 			<% end %>
 
+		</div>
 
-		<% end %>
+	</section>
 
-	</div>
+	<section>
+		<div class="mt-5">
 
-</section>
+			<h2>Account Information</h2>
 
-<section>
-	<div class="border-top mt-5">
+			<div class="card-style-1">
 
-		<h2>Account Information</h2>
+				<dl class="row">
+					<dt class="col-sm-3">Account Email:</dt>
+					<dd class="col-sm-9"><%= @user.email %></dd>
+					<dt class="col-sm-3">Account Password:</dt>
+					<dd class="col-sm-9">********</dd>
+				</dl>
 
-		<dl class="row">
-			<dt class="col-sm-3">Account Email:</dt>
-			<dd class="col-sm-9"><%= @user.email %></dd>
-			<dt class="col-sm-3">Account Password:</dt>
-			<dd class="col-sm-9">********</dd>
-		</dl>
+				<%= link_to "Edit your account email or password", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
 
-		<%= link_to "Edit your account email or password", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
+				</div>
 
-	</div>
-</section>
+		</div>
 
+	</section>
+
+</div>

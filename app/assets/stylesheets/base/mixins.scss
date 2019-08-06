@@ -12,6 +12,11 @@
 	margin: 20px 0px 20px 0px;
 }
 
+@mixin card-style-2 {
+	@include card-style-1;
+	background-color: $gray-accent-3-color;
+}
+
 // Box Shadow
 @mixin box-shadow-style-1 {
 	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);

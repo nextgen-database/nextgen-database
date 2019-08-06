@@ -21,15 +21,12 @@ class AccountController < ApplicationController
 			@user_profile = Profile.find_by(user_id: @user.id)
 
 		else
+
 			# No valid profile exists
 			# The user can either create a new profile or request an existing one
 			#@user_profile_requests = @user.profile_requests
 
-			# Check to see if there are any profile requests that have been denied
-			#
-#
-
-#			if !current_user.profile_requests.approved(false).empty? %>
+			# if !current_user.profile_requests.approved(false).empty? %>
 
 			# Create a list of user profile requests that are not set yet
 			@user_profile_requests_not_set = @user.profile_requests.status_not_set
@@ -40,12 +37,8 @@ class AccountController < ApplicationController
 
 			end
 
-			logger.debug "User Profile Requests Not Set: #{@user_profile_requests_not_set}"
-
 			# Create a list of user profile requests that are denied
 			@user_profile_requests_denied = @user.profile_requests.status_denied
-
-			logger.debug "User Profile Requests Denied: #{@user_profile_requests_denied}"
 
 		end
 

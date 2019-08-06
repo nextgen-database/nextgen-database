@@ -83,18 +83,46 @@ class ProfilesController < ApplicationController
 	# Show function to display a single profile from the DB
 	def edit
 
+		# Flag to tell the view if the profile exists or not
+		@profile_exists = false
+
+		# Flag to tell if it's the admins profile or someone else's
+		@profile_belongs_to_admin = false
+
 		# Set the current user
 		@user = current_user
 
 		# Expose whether the user is an admin or not
-		@userisadmin = @user.admin?
+		@user_is_admin = @user.admin?
 
 		# Check if a profile exists - if not send them back to account screen - unless they are admins
+		if Profile.exists?(params[:id])
+
+			@profile_exists = true
+
+		end
+
+		# If you are an admin you have permission to edit any profile
+
 
 		# If the user is an admin
 		if @userisadmin
 
-			# Do admin things
+			if Profile.exists?(params[:id])
+
+				# Turn the profile exists flag on for the view
+				@profile_exists = true
+
+				# Is this the admins profile or someone else's profile they are editing
+				if @user.id == Profile.find_by(params[:id]).pluck(:user_id)
+					@profile_belongs_to_admin = true
+				end
+
+				# Load profile
+				@profile = Profile.find_by(params[:id])
+
+			end
+
 
 		else
 
@@ -152,6 +180,8 @@ class ProfilesController < ApplicationController
 
 
 		end
+
+
 
 
 	end

@@ -220,6 +220,19 @@ en:
   account:
     index:
       title: "My Account"
+      profile-contact-info:
+        heading: "Contact Information"
+        website:
+          heading: "Profile Website"
+          no-value: "No website provided"
+        phone-number:
+          heading: "Profile Phone Number"
+          no-value: "No phone number provided"
+        email:
+          heading: "Profile Email Address"
+          no-value: "No email provided"
+      profile-research-info:
+        heading: "Research Information"
     show:
       heading: "My Account"
     edit:
