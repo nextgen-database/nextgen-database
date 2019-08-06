@@ -16,7 +16,7 @@ province_list = [
 	},
 	{
 		english: "New Brunswick",
-		frenhc: "Nouveau-Brunswick"
+		french: "Nouveau-Brunswick"
 	},
 	{
 		english: "Newfoundland and Labrador",
