@@ -3,7 +3,7 @@
 	<div class="pd-container">
 
 		<h1 name="cont" id="cont">
-							<% unless @profile.prefix.blank? %>
+							<% if @profile.prefix.present? %>
 								<% if I18n.locale == :en %>
 									<%= @profile.prefix.english %>
 								<% elsif I18n.locale == :fr %>
