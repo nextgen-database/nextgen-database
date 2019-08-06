@@ -102,6 +102,12 @@ class Profile < ApplicationRecord
 				where("organisations.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_organisation_abbreviations, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
+				where("organisations.abbreviation_en ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
 	scope :where_titles, -> (query) do
 		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
 			joins("JOIN affiliation_positions ON affiliations.id = affiliation_positions.affiliation_id").
@@ -254,6 +260,9 @@ class Profile < ApplicationRecord
 
 		# Search Organisations
 		result_ids = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
+
+		# Search Organisation Abbreviations
+		result_ids = result_ids | Profile.where(nil).where_organisation_abbreviations(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Titles
 		result_ids = result_ids | Profile.where(nil).where_titles(query).where(id: ids).pluck(:id) if !query.blank?

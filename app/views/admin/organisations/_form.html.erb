@@ -5,6 +5,10 @@
     <%= f.text_area :english, placeholder: "English" %>
 	<%= f.text_area :french, placeholder: "French" %>
 
+	<%= f.text_area :abbreviation_en, placeholder: "English Abbreviation" %>
+
+	<%= f.text_area :abbreviation_fr, placeholder: "French Abbreviation" %>
+
 	<%= f.collection_select :organisation_type_id, OrganisationType.order(:english).all ,:id, :english, :include_blank => true %>
 
 	<%= f.collection_select :province_id, Province.order(:english).all ,:id, :english, :include_blank => true %>
