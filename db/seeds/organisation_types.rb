@@ -31,6 +31,10 @@ organisation_type_list = [
 		french: "Centre de recherche"
 	},
 	{
+		english: "Research Institute",
+		french: "Institut de recherche"
+	},
+	{
 		english: "Think Tank",
 		french: "Groupe de réflexion"
 	},
@@ -39,6 +43,9 @@ organisation_type_list = [
 		french: "Research Funding Agency"
 	}
 ]
+
+
+
 
 # Function to only add unique values
 organisation_type_list.each do |s|
