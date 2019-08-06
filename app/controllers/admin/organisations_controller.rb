@@ -4,7 +4,7 @@ class Admin::OrganisationsController < ApplicationController
 
 	# Index action to render all organisations
 	def index
-		@organisations = Organisation.all
+		@organisations = Organisation.order(:english).all
 	end
 
 	# New action for creating sector
@@ -14,7 +14,7 @@ class Admin::OrganisationsController < ApplicationController
 
 	# Edit function to update the organisation into the DB
 	def edit
-		#@organisation = Organisation.find(params[:id])
+		@organisation = Organisation.find(params[:id])
 	end
 
 

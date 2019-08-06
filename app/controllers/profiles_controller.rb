@@ -31,6 +31,8 @@ class ProfilesController < ApplicationController
 		@is_advanced_filters_on = true unless @search_parameters['region_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['subregion_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['research_method_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['organisation_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['organisation_type_ids'].blank?
 
 	end
 
@@ -276,6 +278,12 @@ class ProfilesController < ApplicationController
 			# Filter by Research Methods
 			profile_ids = Profile.filter_by_research_method_ids(@search_parameters['research_method_ids'], profile_ids) unless @search_parameters['research_method_ids'].blank?
 
+			# Filter by Organisations
+			profile_ids = Profile.filter_by_organisation_ids(@search_parameters['organisation_ids'], profile_ids) unless @search_parameters['organisation_ids'].blank?
+
+			# Filter by Organisation Types
+			profile_ids = Profile.filter_by_organisation_type_ids(@search_parameters['organisation_type_ids'], profile_ids) unless @search_parameters['organisation_type_ids'].blank?
+
 			# Find the Profiles by the filtered IDs
 			results = Profile.find(profile_ids).sort! { |a,b| a.lastname.downcase <=> b.lastname.downcase }
 
@@ -315,6 +323,12 @@ class ProfilesController < ApplicationController
 
 			# Set the Research Method IDs
 			@search_parameters['research_method_ids'] = params[:h] unless params[:h].blank?
+
+			# Set the Organisations
+			@search_parameters['organisation_ids'] = params[:i] unless params[:i].blank?
+
+			# Set the Organisation TYpes
+			@search_parameters['organisation_type_ids'] = params[:j] unless params[:j].blank?
 
 			# Set the Advanced Search Flag
 			@search_parameters['advanced_search_flag'] = params[:z] unless params[:z].blank?

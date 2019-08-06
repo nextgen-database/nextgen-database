@@ -5,6 +5,6 @@ class Organisation < ApplicationRecord
 
 	has_one :affiliation
 
-	belongs_to :organisation_type
+	belongs_to :organisation_type, optional: true
 
 end

@@ -24,6 +24,10 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('.js-example-basic-multiple-research-methods').select2('destroy');
 
+	$('.js-example-basic-multiple-organisations').select2('destroy');
+
+	$('.js-example-basic-multiple-organisation-types').select2('destroy');
+
 	$('.js-example-basic-search-profile').select2('destroy');
 
 	// Deactivate the mobile menu
@@ -82,6 +86,18 @@ document.addEventListener("turbolinks:load", function() {
 
 	$('.js-example-basic-multiple-research-methods').select2({
 		placeholder: 'Select a research method option',
+		width: '100%',
+		allowClear: true
+	});
+
+	$('.js-example-basic-multiple-organisations').select2({
+		placeholder: 'Select an organisation',
+		width: '100%',
+		allowClear: true
+	});
+
+	$('.js-example-basic-multiple-organisation-types').select2({
+		placeholder: 'Select an organisation type',
 		width: '100%',
 		allowClear: true
 	});

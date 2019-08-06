@@ -38,6 +38,40 @@
 
 		<div class="form-row">
 
+			<%# Organisation Filter %>
+			<div class="form-group col-md-6">
+				<label for=""><%= t('profiles.index.search.advanced-filters.filter-organisations-label').html_safe %></label>
+
+				<select class="custom-select custom-select-lg form-control mr-sm-2 js-example-basic-multiple-organisations" name="i[]" multiple="multiple">
+					<% if I18n.locale == :en %>
+						<%= options_from_collection_for_select(Organisation.order(:english).all, :id, :english, @search_parameters['organisation_ids'] ) %>
+					<% elsif I18n.locale == :fr %>
+						<%= options_from_collection_for_select(Organisation.order(:french).all, :id, :french, @search_parameters['organisation_ids'] ) %>
+					<% end %>
+				</select>
+
+			</div>
+
+			<%# Organisation Type Filter %>
+			<div class="form-group col-md-6">
+				<label for=""><%= t('profiles.index.search.advanced-filters.filter-organisation-types-label').html_safe %></label>
+
+				<select class="custom-select custom-select-lg form-control mr-sm-2 js-example-basic-multiple-organisation-types" name="j[]" multiple="multiple">
+					<% if I18n.locale == :en %>
+						<%= options_from_collection_for_select(OrganisationType.order(:english).all, :id, :english, @search_parameters['organisation_type_ids'] ) %>
+					<% elsif I18n.locale == :fr %>
+						<%= options_from_collection_for_select(OrganisationType.order(:french).all, :id, :french, @search_parameters['organisation_type_ids'] ) %>
+					<% end %>
+				</select>
+
+			</div>
+
+		</div>
+
+
+		<div class="form-row">
+
+			<%# Sectors Filter %>
 			<div class="form-group col-md-6">
 				<label for=""><%= t('profiles.index.search.advanced-filters.filter-sectors-label').html_safe %></label>
 
@@ -51,6 +85,7 @@
 
 			</div>
 
+			<%# Demographics Filter %>
 			<div class="form-group col-md-6">
 				<label for=""><%= t('profiles.index.search.advanced-filters.filter-demographics-label').html_safe %></label>
 
