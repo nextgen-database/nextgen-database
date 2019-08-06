@@ -6,12 +6,12 @@
 			<%= label_tag(:prefix, "Prefix:") %>
 			<% if I18n.locale == :en %>
 				<%= f.collection_select(:prefix_id, Prefix.all, :id, :english,
-                              {include_blank: false, :include_hidden => false},
+                              {include_blank: true, :include_hidden => false},
                               {multiple: false, class: "form-control"}) %>
 
 			<% elsif I18n.locale == :fr %>
 				<%= f.collection_select(:prefix_id, Prefix.all, :id, :french,
-                              {include_blank: false, :include_hidden => false},
+                              {include_blank: true, :include_hidden => false},
                               {multiple: false, class: "form-control"}) %>
 			<% end %>
 		</div>

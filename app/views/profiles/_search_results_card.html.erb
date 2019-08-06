@@ -26,11 +26,15 @@
 						<%= profile.affiliations[0].positions[0].title.english %>
 						at
 						<%= profile.affiliations[0].organisation.english %>
+					<% else %>
+						<%= profile.affiliations[0].organisation.english %>
 					<% end %>
 				<% elsif I18n.locale == :fr %>
 					<% if profile.affiliations.first.positions.count > 0 %>
 						<%= profile.affiliations[0].positions[0].title.french %>
 						de
+						<%= profile.affiliations[0].organisation.french %>
+					<% else %>
 						<%= profile.affiliations[0].organisation.french %>
 					<% end %>
 				<% end %>

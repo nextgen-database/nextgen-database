@@ -43,14 +43,18 @@ class ProfilesController < ApplicationController
 		@user = current_user
 
 		# Expose whether the user is an admin or not
-		@userisadmin = @user.admin?
+		@user_is_admin = @user.admin?
 
 		# Check if a profile exists - if not send them back to account screen - unless they are admins
 
 		# If the user is an admin
-		if @userisadmin
+		if @user_is_admin
 
 			# Do admin things
+			@profile = Profile.new
+
+			# Flag to tell if it's the admins profile or someone else's
+			#@profile_belongs_to_admin = false
 
 		else
 
@@ -109,20 +113,26 @@ class ProfilesController < ApplicationController
 
 
 		# If the user is an admin
-		if @userisadmin
+		if @user_is_admin
+
+			logger.debug "I AM AN ADMIN!"
 
 			if Profile.exists?(params[:id])
 
 				# Turn the profile exists flag on for the view
 				@profile_exists = true
 
-				# Is this the admins profile or someone else's profile they are editing
-				if @user.id == Profile.find_by(params[:id]).pluck(:user_id)
+				# Load profile
+				@profile = Profile.find(params[:id])
+
+				if @profile.user_id == @user.id
 					@profile_belongs_to_admin = true
 				end
 
-				# Load profile
-				@profile = Profile.find_by(params[:id])
+				logger.debug "User ID from profile_id: #{@profile.user_id}"
+				logger.debug "params[:id]: #{params[:id]}"
+				logger.debug "User ID: #{@user.id}"
+				logger.debug "@profile_belongs_to_admin: #{@profile_belongs_to_admin}"
 
 			end
 
@@ -185,8 +195,6 @@ class ProfilesController < ApplicationController
 		end
 
 
-
-
 	end
 
 
@@ -194,6 +202,13 @@ class ProfilesController < ApplicationController
 	def create
 
 		# Check if an authorised user is logged in
+
+
+		# TO DO: If the user is an admin then don't
+		# update the user id unless the admin is editing their own
+		# profile
+
+
 
 		@profile = Profile.new(profile_params)
 
@@ -216,18 +231,50 @@ class ProfilesController < ApplicationController
 		@user = current_user
 
 		# Expose whether the user is an admin or not
-		@userisadmin = @user.admin?
+		@user_is_admin = @user.admin?
 
-		# Load profile
-		@profile = Profile.find_by(user_id: @user.id)
+		# How can we know if the admin is
+		# updating their own or someone else's
+		# does it even matter
 
-		# Update profile
-		if @profile.update_attributes(profile_params)
-			flash[:notice] = "Successfully updated post!"
-			redirect_to account_path
-		else
-			flash[:alert] = "Error updating post!"
-			redirect_to edit_profile_path
+		# Check that the user is an admin or that the user
+		# owns the profile
+		# Check if a profile exists - if not send them back to account screen - unless they are admins
+		if Profile.exists?(params[:id])
+
+			@profile_exists = true
+			@profile = Profile.find(params[:id])
+
+			if @user_is_admin || @user.id == Profile.find(params[:id]).user_id
+
+				# Update profile
+				if @profile.update_attributes(profile_params)
+					flash[:notice] = "Successfully updated post!"
+
+					if @user_is_admin
+
+						# Is the admin user is working on their profile or someone elses
+						if @user.id == Profile.find(params[:id]).user_id
+							redirect_to account_path
+						end
+
+						# Send an admin user back to the profile management screen
+						redirect_to admin_profile_management_path
+
+					else
+
+						# Send a regular user back to their account page
+						redirect_to account_path
+
+					end
+
+				else
+					flash[:alert] = "Error updating post!"
+					redirect_to edit_profile_path
+				end
+
+			end
+
 		end
 
 	end

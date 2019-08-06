@@ -3,6 +3,74 @@
 <section>
 	<h2 id="profile_management">Profile Management</h2>
 
-	<p>To be released...</p>
+	<% if @profiles.blank? %>
+
+		<p>No profiles currently in the system</p>
+
+	<% else %>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Affiliations</th>
+					<th scope="col">Actions</th>
+					<!--<th scope="col">French</th>
+					<th scope="col">Type</th>
+					<th scope="col">Province</th>
+					<th scope="col">Actions</th>-->
+			<thead>
+			<tbody>
+
+				<% @profiles.each_with_index do |profile,index| %>
+
+					<tr>
+						<td>
+							<%= index+1 %>
+						</td>
+						<td>
+							<% if profile.prefix.present? %>
+								<%= profile.prefix.english %>
+							<% end %>
+							<%= profile.full_name %>
+						</td>
+						<td>
+							<%= profile.email unless profile.email.blank? %>
+						</td>
+						<td>
+
+							<% if profile.affiliations.present? %>
+
+								<% profile.affiliations.each do |affiliation| %>
+									<% if I18n.locale == :en %>
+										<%= affiliation.organisation.english %>
+									<% elsif I18n.locale == :fr %>
+										<%= affiliation.organisation.french %>
+									<% end %>
+								<% end %>
+
+							<% else %>
+
+								<p class="text-danger">No Affiliation Found</p>
+
+							<% end %>
+
+						</td>
+						<td>
+							<%= link_to 'Edit', edit_profile_path(profile) %>
+
+							<%= link_to 'View', profile_path(profile) %>
+						</td>
+					</tr>
+
+				<% end %>
+
+			</tbody>
+		</table>
+
+	<% end %>
 
 </section>
+

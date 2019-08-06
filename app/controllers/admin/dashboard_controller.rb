@@ -20,6 +20,8 @@ class Admin::DashboardController < AdminController
 
 	def profile_management
 
+		@profiles = Profile.order(:lastname).all.includes( affiliations: [ :organisation]).includes(:prefix)
+
 	end
 
 	def user_management
