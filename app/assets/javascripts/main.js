@@ -117,4 +117,10 @@ document.addEventListener("turbolinks:load", function() {
 		allowClear: true
 	});
 
+
+	// Setup the datatable
+	$('#admin-dashboard-profile-management').DataTable();
+
+
+
 });
