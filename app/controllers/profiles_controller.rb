@@ -198,7 +198,7 @@ class ProfilesController < ApplicationController
 	end
 
 
-	# Create function to save the sector into the DB
+	# Create function to save the profile into the DB
 	def create
 
 		# Check if an authorised user is logged in
