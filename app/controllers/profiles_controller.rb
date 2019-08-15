@@ -40,39 +40,63 @@ class ProfilesController < ApplicationController
 	# New action for creating a new profile
 	def new
 
+		# Setup variables
+		@user = nil
+		@user_is_admin = false
+		@admin_has_own_profile = false
+
+		# Try to get the current user if he/she exists
 		@user = current_user
 
-		# Expose whether the user is an admin or not
-		@user_is_admin = @user.admin?
+		# As long as the user exists then we can create a new profile
+		if @user
 
-		# Check if a profile exists - if not send them back to account screen - unless they are admins
+			# Expose whether the user is an admin or not
+			@user_is_admin = @user.admin?
 
-		# If the user is an admin
-		if @user_is_admin
+			# Check if a profile exists - if not send them back to account screen - unless they are admins
 
-			# Do admin things
+			# Check if the user is an admin or a regular user
+			if @user_is_admin
+
+				# The user is an admin
+
+				# Admins can add new Profiles even if they have an existing profile
+				# If an admin has a profile then they can optionaly assign
+				# this new profile to their user account
+				# or they can create a new profile not assigned to any user account
+				#
+
+				# Check if the admin has a profile already
+				if Profile.exists?(user_id: @user.id)
+					@admin_has_own_profile = true
+				else
+					@admin_has_own_profile = false
+				end
+
+			else
+
+				# The user is a regular user
+
+				# Check if a profile exists already
+				if Profile.exists?(user_id: @user.id)
+
+					# Load profile
+					redirect_to edit_profile_path(Profile.find_by(user_id: @user.id).id)
+
+				end
+
+			end
+
+			# Load a new profile
 			@profile = Profile.new
 
-			# Flag to tell if it's the admins profile or someone else's
-			#@profile_belongs_to_admin = false
 
 		else
 
-			# Do user things
-
-			# Check if a profile exists already
-			if Profile.exists?(user_id: @user.id)
-
-				# Load profile
-				redirect_to edit_profile_path(Profile.find_by(user_id: @user.id).id)
-
-			else
-				# No profile associated to the account -
-				#  we are clear to create a new one
-
-				@profile = Profile.new
-
-			end
+			# Not a valid user
+			# Redirect to the home page
+			redirect_to root_path
 
 		end
 
@@ -99,75 +123,84 @@ class ProfilesController < ApplicationController
 		# Set the current user
 		@user = current_user
 
-		# Expose whether the user is an admin or not
-		@user_is_admin = @user.admin?
+		# As long as the user exists then we can create a new profile
+		if @user
 
-		# Check if a profile exists - if not send them back to account screen - unless they are admins
-		if Profile.exists?(params[:id])
+			# Expose whether the user is an admin or not
+			@user_is_admin = @user.admin?
 
-			@profile_exists = true
-
-		end
-
-		# If you are an admin you have permission to edit any profile
-
-
-		# If the user is an admin
-		if @user_is_admin
-
-			logger.debug "I AM AN ADMIN!"
-
+			# Check if a profile exists - if not send them back to account screen - unless they are admins
 			if Profile.exists?(params[:id])
 
-				# Turn the profile exists flag on for the view
 				@profile_exists = true
-
-				# Load profile
-				@profile = Profile.find(params[:id])
-
-				if @profile.user_id == @user.id
-					@profile_belongs_to_admin = true
-				end
-
-				logger.debug "User ID from profile_id: #{@profile.user_id}"
-				logger.debug "params[:id]: #{params[:id]}"
-				logger.debug "User ID: #{@user.id}"
-				logger.debug "@profile_belongs_to_admin: #{@profile_belongs_to_admin}"
 
 			end
 
-
-		else
-
-			# Do user things
-
-			# Does a profile exist on the parameter profile ID
-			if Profile.exists?(params[:id])
-
-				# Does exactly one profile exist for this user
-				@profile_ids_from_user_id = Profile.where(user_id: @user.id).pluck(:id)
+			# If you are an admin you have permission to edit any profile
 
 
-				logger.debug "profile_ids_from_user_id: #{@profile_ids_from_user_id}"
-				logger.debug "params[:id]: #{params[:id]}"
+			# If the user is an admin
+			if @user_is_admin
 
-				# The array count for the profile ids should be 1
-				#  If it isn't 1,
-				#   either the user has too many profiles which
-				#   shouldn't exist or
-				#   the user doesn't have any profiles and ending up here by accident
-				if @profile_ids_from_user_id.length == 1
+				logger.debug "I AM AN ADMIN!"
 
-					logger.debug "I am here: #{@profile_ids_from_user_id[0]}"
+				if Profile.exists?(params[:id])
 
-					# Great, we found one profile that belongs to a user
-					# Does it match the current parameter ID?
-					if params[:id].to_s == @profile_ids_from_user_id[0].to_s
+					# Turn the profile exists flag on for the view
+					@profile_exists = true
 
-						logger.debug "Now I am here: #{@profile_ids_from_user_id[0]}"
+					# Load profile
+					@profile = Profile.find(params[:id])
 
-						# Load profile
-						@profile = Profile.find_by(user_id: @user.id)
+					if @profile.user_id == @user.id
+						@profile_belongs_to_admin = true
+					end
+
+					logger.debug "User ID from profile_id: #{@profile.user_id}"
+					logger.debug "params[:id]: #{params[:id]}"
+					logger.debug "User ID: #{@user.id}"
+					logger.debug "@profile_belongs_to_admin: #{@profile_belongs_to_admin}"
+
+				end
+
+
+			else
+
+				# Do user things
+
+				# Does a profile exist on the parameter profile ID
+				if Profile.exists?(params[:id])
+
+					# Does exactly one profile exist for this user
+					@profile_ids_from_user_id = Profile.where(user_id: @user.id).pluck(:id)
+
+
+					logger.debug "profile_ids_from_user_id: #{@profile_ids_from_user_id}"
+					logger.debug "params[:id]: #{params[:id]}"
+
+					# The array count for the profile ids should be 1
+					#  If it isn't 1,
+					#   either the user has too many profiles which
+					#   shouldn't exist or
+					#   the user doesn't have any profiles and ending up here by accident
+					if @profile_ids_from_user_id.length == 1
+
+						logger.debug "I am here: #{@profile_ids_from_user_id[0]}"
+
+						# Great, we found one profile that belongs to a user
+						# Does it match the current parameter ID?
+						if params[:id].to_s == @profile_ids_from_user_id[0].to_s
+
+							logger.debug "Now I am here: #{@profile_ids_from_user_id[0]}"
+
+							# Load profile
+							@profile = Profile.find_by(user_id: @user.id)
+
+						else
+
+							redirect_to account_path
+
+						end
 
 					else
 
@@ -175,25 +208,21 @@ class ProfilesController < ApplicationController
 
 					end
 
-
 				else
 
+					# No profile associated to the parameter ID
+					# Redirec the user to the main account page.
 					redirect_to account_path
 
 				end
 
-
-			else
-
-				# No profile associated to the parameter ID
-				# Redirec the user to the main account page.
-				redirect_to account_path
-
 			end
 
+		else
+
+			redirect_to root_path
 
 		end
-
 
 	end
 
@@ -203,25 +232,53 @@ class ProfilesController < ApplicationController
 
 		# Check if an authorised user is logged in
 
+		# Set the current user
+		@user = current_user
 
-		# TO DO: If the user is an admin then don't
-		# update the user id unless the admin is editing their own
-		# profile
+		# As long as the user exists then we can create a new profile
+		if @user
+
+			# Expose whether the user is an admin or not
+			@user_is_admin = @user.admin?
 
 
-		@profile = Profile.new(profile_params)
+			# Create the profile objects with the parameters that are passed in
+			@profile = Profile.new(profile_params)
 
-		# Add the current user id to the profile unless it's an admin
-		# Then we need to know if the admin is adding a new profile
-		@profile.user_id = current_user.id
+			# If the user is an admin
+			if @user_is_admin
 
-   		if @profile.save
-      		flash[:notice] = "Successfully created post!"
-      		redirect_to account_path
-    	else
-      		flash[:alert] = "Error creating new post!"
-			redirect_to new_profile_path
-    	end
+				# Get the boolean parameter on
+				# whether or not to link this profile
+				# to the admin profile
+				if params[:admin_link_profile] == "true"
+
+					@profile.user_id = current_user.id
+
+				else
+
+					@profile.user_id = nil
+
+				end
+
+			else
+
+				# Add the current user id to the profile unless it's an admin
+				# Then we need to know if the admin is adding a new profile
+				@profile.user_id = current_user.id
+
+			end
+
+			if @profile.save
+				flash[:notice] = "Successfully created post!"
+				redirect_to account_path
+			else
+				flash[:alert] = "Error creating new post!"
+				redirect_to new_profile_path
+			end
+
+		end
+
 	end
 
 	# Update action updates the post with the new information

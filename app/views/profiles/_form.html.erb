@@ -1,6 +1,63 @@
 
 <%= form_for @profile do |f| %>
 
+
+		<%#
+			If the user is an admin:
+
+			We need to know if the admin wants to associate this
+			new profile to themselves or
+
+			This happens both with edit and new
+
+		#%>
+		<% if local_assigns[:new_profile] %>
+
+			<% if new_profile %>
+
+				<% if @user_is_admin %>
+
+					<div class="alert alert-info" role="alert">
+						<h4 class="alert-heading">Welcome Admin</h4>
+
+							<p class="mb-0">You are creating a new profile which will be added to the database!</p>
+
+					<% unless @admin_has_own_profile %>
+
+							<hr>
+
+							<p class="mb-3">Would you like this profile to be associated to your admin user account?</p>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_false" value="false" checked>
+								<label class="form-check-label" for="admin_link_profile_false">
+									This profile is for someone else. Do not link this to my admin user account.
+								</label>
+							</div>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_true" value="true" >
+								<label class="form-check-label" for="admin_link_profile_true">
+									Link this profile to my account
+								</label>
+							</div>
+
+					<% end %>
+
+
+					</div>
+
+				<% end %>
+
+			<% end %>
+
+		<% end %>
+
+
+
+
+
+
 	<div class="card-style-1">
 
 		<h2 class="h4">Contact Information</h2>
