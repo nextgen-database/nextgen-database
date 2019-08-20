@@ -1,73 +1,67 @@
 
 <%= form_for @profile do |f| %>
 
+	<%#
+		If the user is an admin:
 
-		<%#
-			If the user is an admin:
+		We need to know if the admin wants to associate this
+		new profile to themselves or
 
-			We need to know if the admin wants to associate this
-			new profile to themselves or
+		This happens both with edit and new
 
-			This happens both with edit and new
+	#%>
+	<% if local_assigns[:new_profile] %>
 
-		#%>
-		<% if local_assigns[:new_profile] %>
+		<% if new_profile %>
 
-			<% if new_profile %>
+			<% if @user_is_admin %>
 
-				<% if @user_is_admin %>
+				<div class="alert alert-info" role="alert">
+					<h4 class="alert-heading">Welcome Admin</h4>
 
-					<div class="alert alert-info" role="alert">
-						<h4 class="alert-heading">Welcome Admin</h4>
+						<p class="mb-0">You are creating a new profile which will be added to the database!</p>
 
-							<p class="mb-0">You are creating a new profile which will be added to the database!</p>
+				<% unless @admin_has_own_profile %>
 
-					<% unless @admin_has_own_profile %>
+						<hr>
 
-							<hr>
+						<p class="mb-3">Would you like this profile to be associated to your admin user account?</p>
 
-							<p class="mb-3">Would you like this profile to be associated to your admin user account?</p>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_false" value="false" checked>
+							<label class="form-check-label" for="admin_link_profile_false">
+								This profile is for someone else. Do not link this to my admin user account.
+							</label>
+						</div>
 
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_false" value="false" checked>
-								<label class="form-check-label" for="admin_link_profile_false">
-									This profile is for someone else. Do not link this to my admin user account.
-								</label>
-							</div>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_true" value="true" >
-								<label class="form-check-label" for="admin_link_profile_true">
-									Link this profile to my account
-								</label>
-							</div>
-
-					<% end %>
-
-
-					</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="admin_link_profile" id="admin_link_profile_true" value="true" >
+							<label class="form-check-label" for="admin_link_profile_true">
+								Link this profile to my account
+							</label>
+						</div>
 
 				<% end %>
+
+
+				</div>
 
 			<% end %>
 
 		<% end %>
 
-
-
-
-
+	<% end %>
 
 	<div class="card-style-1">
 
-		<h2 class="h4">Contact Information</h2>
+		<h2 class="h4"><%= t('profile.headings.section.contact') %></h2>
 
 		<%#
 			Name
 		#%>
 		<div class="form-row">
 			<div class="form-group col-lg-3">
-				<%= label_tag(:prefix, "Prefix:") %>
+				<%= label_tag(:prefix, t('profile.details.prefix.description')) %>
 				<% if I18n.locale == :en %>
 					<%= f.collection_select(:prefix_id, Prefix.all, :id, :english,
 								{include_blank: true, :include_hidden => false},
@@ -80,16 +74,16 @@
 				<% end %>
 			</div>
 			<div class="form-group col-lg-3">
-				<%= label_tag(:firstname, "First Name:") %>
-				<%= f.text_field :firstname , class: 'form-control', placeholder: "First Name" %>
+				<%= label_tag(:firstname, t('profile.details.firstname.description')) %>
+				<%= f.text_field :firstname , class: 'form-control', placeholder: t('profile.details.firstname.description') %>
 			</div>
 			<div class="form-group col-lg-3">
-				<%= label_tag(:middlename, "Middle Name:") %>
-				<%= f.text_field :middlename , class: 'form-control' , placeholder: "MIddle Name" %>
+				<%= label_tag(:middlename, t('profile.details.middlename.description')) %>
+				<%= f.text_field :middlename , class: 'form-control' , placeholder: t('profile.details.middlename.description') %>
 			</div>
 			<div class="form-group col-lg-3">
-				<%= label_tag(:lastname, "Last Name:") %>
-				<%= f.text_field :lastname,  class: 'form-control' , placeholder: "Last Name" %>
+				<%= label_tag(:lastname, t('profile.details.lastname.description')) %>
+				<%= f.text_field :lastname,  class: 'form-control' , placeholder: t('profile.details.lastname.description') %>
 			</div>
 		</div>
 
@@ -98,8 +92,8 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:email, "Email address:") %>
-			<%= f.text_field :email, class: 'form-control', placeholder: "name@example.com" %>
+			<%= label_tag(:email, t('profile.details.email.description')) %>
+			<%= f.text_field :email, class: 'form-control', placeholder: t('profile.details.email.placeholder') %>
 
 		</div>
 
@@ -108,8 +102,8 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:website, "Website:") %>
-			<%= f.text_field :website,  class: 'form-control', placeholder: "https://www.my-website.com"  %>
+			<%= label_tag(:website, t('profile.details.website.description')) %>
+			<%= f.text_field :website,  class: 'form-control', placeholder: t('profile.details.website.placeholder')  %>
 
 		</div>
 
@@ -118,8 +112,8 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:phone_number, "Phone Number:") %>
-			<%= f.text_field :phone_number ,  class: 'form-control', placeholder: "+15551234567"  %>
+			<%= label_tag(:phone_number, t('profile.details.phone.description')) %>
+			<%= f.text_field :phone_number ,  class: 'form-control', placeholder: t('profile.details.phone.placeholder')  %>
 
 		</div>
 
@@ -128,8 +122,8 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:twitter, "Twitter Web Address:") %>
-			<%= f.text_field :twitter ,  class: 'form-control', placeholder: "https://twitter.com/username"  %>
+			<%= label_tag(:twitter, t('profile.details.twitter.description')) %>
+			<%= f.text_field :twitter ,  class: 'form-control', placeholder: t('profile.details.twitter.placeholder')  %>
 
 		</div>
 
@@ -138,7 +132,7 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:linkedin, "Linked In Web Address:") %>
+			<%= label_tag(:linkedin, t('profile.details.linkedin.description')) %>
 			<%= f.text_field :linkedin ,  class: 'form-control', placeholder: "https://www.linkedin.com/in/user-name"  %>
 
 		</div>
@@ -148,8 +142,8 @@
 		#%>
 		<div class="form-group">
 
-			<%= label_tag(:academia_edu, "Academia Web Address:") %>
-			<%= f.text_field :academia_edu ,  class: 'form-control', placeholder: "https://www.academia.edu/user-name"  %>
+			<%= label_tag(:academia_edu, t('profile.details.academia_edu.description')) %>
+			<%= f.text_field :academia_edu ,  class: 'form-control', placeholder: t('profile.details.academia_edu.placeholder')  %>
 
 		</div>
 
@@ -161,13 +155,13 @@
 			Add Affiliations
 		#%>
 
-		<h2 class="h4">Affiliation(s)</h2>
+		<h2 class="h4"><%= t('profile.headings.section.affiliations') %></h2>
 
 		<div class="py-3">
 
 			<fieldset>
 
-				<%= label_tag :affiliations, "Affiliations:", class: 'sr-only' %>
+				<%= label_tag :affiliations, t('profile.details.affiliation') , class: 'sr-only' %>
 
 				<div id='affiliations'>
 					<%= f.fields_for :affiliations do |affiliation| %>
@@ -175,7 +169,7 @@
 					<% end %>
 				</div>
 				<div class="pt-3">
-					<%= link_to_add_association 'Click here to add Affiliation', f, :affiliations, class: "btn btn-outline-secondary" %>
+					<%= link_to_add_association t('profile.actions.buttons.add-affiliation'), f, :affiliations, class: "btn btn-outline-secondary" %>
 				</div>
 
 			</fieldset>
@@ -187,16 +181,43 @@
 
 	<div class="card-style-1">
 
-		<h2 class="h4">Research Information</h2>
+		<h2 class="h4"><%= t('profile.headings.section.research') %></h2>
+
+		<%#
+			Add Sectors
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:sector_ids, t('profile.details.sector.description') ) %>
+
+				<% if I18n.locale == :en %>
+
+					<%= f.collection_select :sector_ids, Sector.order(:english).all, :id, :english, {include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true , :selected => @profile.sectors } %>
+
+				<% elsif I18n.locale == :fr %>
+
+					<%= f.collection_select :sector_ids, Sector.order(:french).all, :id, :french, { include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true , :selected => @profile.sectors } %>
+
+
+				<% end %>
+
+				<small id="sectorsHelp" class="form-text text-muted"><%= t('profile.details.sector.help') %></small>
+
+
+			</div>
+
+		</div>
 
 		<%#
 			Add Sustainable Development Goals
 		#%>
-		<div class="py-3">
+		<div class="border-top py-3">
 
 			<div class="form-group">
 
-				<%= label_tag(:sustainable_development_goal_ids, "Sustainable Development Goals:") %>
+				<%= label_tag(:sustainable_development_goal_ids, t('profile.details.sdg.description')) %>
 
 				<div class="row">
 					<% if I18n.locale == :en %>
@@ -225,66 +246,13 @@
 		</div>
 
 		<%#
-			Add Sectors
-		#%>
-		<div class="border-top py-3">
-
-			<div class="form-group">
-
-				<%= label_tag(:sector_ids, "Sectors:") %>
-
-				<% if I18n.locale == :en %>
-
-					<%= f.collection_select :sector_ids, Sector.order(:english).all, :id, :english, {include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true , :selected => @profile.sectors } %>
-					<small id="sectorsHelp" class="form-text text-muted">Select as many sectors as may be applicable</small>
-
-				<% elsif I18n.locale == :fr %>
-
-					<%= f.collection_select :sector_ids, Sector.order(:french).all, :id, :french, { include_blank: 'Select sectors'} , { class: "js-example-basic-multiple-sectors" , multiple: true , :selected => @profile.sectors } %>
-
-					<small id="sectorsHelp" class="form-text text-muted">Select as many sectors as may be applicable</small>
-
-				<% end %>
-
-			</div>
-
-		</div>
-
-		<%#
-			Add Countries
-		#%>
-		<div class="border-top py-3">
-
-			<div class="form-group">
-
-				<%= label_tag(:country_ids, "Countries:") %>
-
-				<% if I18n.locale == :en %>
-
-					<%= f.collection_select :country_ids, Country.order(:english).all, :id, :english, { include_blank: 'Select countries'} , { class: "js-example-basic-multiple-countries" , multiple: true , :selected => @profile.countries } %>
-
-					<small id="countriesHelp" class="form-text text-muted">Select as many countries as may be applicable</small>
-
-				<% elsif I18n.locale == :fr %>
-
-					<%= f.collection_select :country_ids, Country.order(:french).all, :id, :french, { include_blank: 'Select countries'} , { class: "js-example-basic-multiple-countries" , multiple: true , :selected => @profile.countries } %>
-
-					<small id="countriesHelp" class="form-text text-muted">Select as many countries as may be applicable</small>
-
-				<% end %>
-
-			</div>
-
-		</div>
-
-		<%#
 			Add Demographics
 		#%>
 		<div class="border-top py-3">
 
 			<div class="form-group">
 
-				<%= label_tag(:demographic_ids, "Demographics:") %>
+				<%= label_tag(:demographic_ids, t('profile.details.demographic.description')) %>
 
 				<div class="row">
 
@@ -322,7 +290,7 @@
 
 			<div class="form-group">
 
-				<%= label_tag(:development_actor_ids, "Development Actors:") %>
+				<%= label_tag(:development_actor_ids, t('profile.details.development-actor.description')) %>
 
 				<div class="row">
 
@@ -359,7 +327,7 @@
 
 			<div class="form-group">
 
-				<%= label_tag(:research_method_ids, "Research Methods:") %>
+				<%= label_tag(:research_method_ids, t('profile.details.research-method.description')) %>
 
 				<div class="row">
 
@@ -390,19 +358,54 @@
 		</div>
 
 
+
+
+
+
+	</div>
+
+	<div class="card-style-1">
+
+		<h2 class="h4"><%= t('profile.headings.section.location') %></h2>
+
 		<%#
-			Add Regions
+			Add Countries
 		#%>
 		<div class="border-top py-3">
 
 			<div class="form-group">
 
-				<%= label_tag(:region_ids, "Regions:") %>
+				<%= label_tag(:country_ids, t('profile.details.country.description') ) %>
+
+				<% if I18n.locale == :en %>
+
+					<%= f.collection_select :country_ids, Country.order(:english).all, :id, :english, { include_blank: 'Select countries'} , { class: "js-example-basic-multiple-countries" , multiple: true , :selected => @profile.countries } %>
+
+				<% elsif I18n.locale == :fr %>
+
+					<%= f.collection_select :country_ids, Country.order(:french).all, :id, :french, { include_blank: 'Select countries'} , { class: "js-example-basic-multiple-countries" , multiple: true , :selected => @profile.countries } %>
+
+				<% end %>
+
+				<small id="countriesHelp" class="form-text text-muted"><%= t('profile.details.country.help') %></small>
+
+			</div>
+
+		</div>
+
+		<%#
+			Add Subregion
+		#%>
+		<div class="border-top py-3">
+
+			<div class="form-group">
+
+				<%= label_tag(:subregion_ids, t('profile.details.subregion.description') ) %>
 
 				<div class="row">
 
 					<% if I18n.locale == :en %>
-						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :english) do |b| %>
+						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :english) do |b| %>
 						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
@@ -411,7 +414,7 @@
 						</div>
 						<% end %>
 					<% elsif I18n.locale == :fr %>
-						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :french) do |b| %>
+						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :french) do |b| %>
 						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
@@ -427,19 +430,20 @@
 
 		</div>
 
+
 		<%#
-			Add Subregion
+			Add Regions
 		#%>
 		<div class="border-top py-3">
 
 			<div class="form-group">
 
-				<%= label_tag(:subregion_ids, "Subregions:") %>
+				<%= label_tag(:region_ids, t('profile.details.region.description') ) %>
 
 				<div class="row">
 
 					<% if I18n.locale == :en %>
-						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :english) do |b| %>
+						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :english) do |b| %>
 						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>
@@ -448,7 +452,7 @@
 						</div>
 						<% end %>
 					<% elsif I18n.locale == :fr %>
-						<%= f.collection_check_boxes(:subregion_ids, Subregion.all, :id, :french) do |b| %>
+						<%= f.collection_check_boxes(:region_ids, Region.all, :id, :french) do |b| %>
 						<div class="col-md-4">
 							<div class="custom-control custom-checkbox">
 								<%= b.check_box class: "custom-control-input" %>

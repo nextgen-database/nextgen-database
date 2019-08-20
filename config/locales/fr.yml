@@ -52,6 +52,10 @@ fr:
       about: "À propos"
       tc: "Avis"
       privacy: "Confidentialité"
+      sign_in: "Connexion"
+      register: "Inscrivez-vous"
+      logout: "Déconnexion"
+      my_account: "Compte"
 
   footer:
     heading: "NextGen Database Footer Information in French"
@@ -66,11 +70,11 @@ fr:
 
   home:
     search:
-      heading: "Trouvez des chercheurs Canadiens en saisissant des termes dans le moteur de recherche ci-dessous"
-      blurb: "Il s'agit d'une base de données consultable de chercheurs des universités, des collèges, des instituts de recherche, des groupes de réflexion et des organisations de la société civile du Canada, travaillant tous sur des enjeux liés au développement international et à l'aide humanitaire. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
+      heading: "Trouvez des chercheurs en développement durable au Canada"
+      blurb: "Il s'agit d'une base de données consultable de chercheurs des universités, collèges, instituts de recherche et organisations de la société civile au Canada - travaillant tous sur des enjeux liés au développement durable. La base de données NextGen identifie les secteurs de recherche en lien avec les ODD et la façon dont les chercheurs au Canada contribuent à la mise en oeuvre de l'agenda 2030 et aux objectifs de développement durable. Trouvez des chercheurs ou des praticiens-chercheurs avec qui collaborer!"
       placeholder: "Entrez un nom, secteur, organisation"
       sdg_dropdown: "Les objectifs de développement durable"
-      button: "Rechercher"
+      button: "Recherche"
     advanced-search:
       link: "Recherche avancée"
     partners:
@@ -158,7 +162,7 @@ fr:
           no-values: "non disponible"
         text-truncate: "une %{type} ou plus"
         send-email-btn: "Envoyer un courriel"
-        view-profile-btn: "Voir le profile"
+        view-profile-btn: "Voir le profil complet"
     show:
       title: "Profile Information"
       contact:
@@ -214,17 +218,54 @@ fr:
           plural-value: "Regions"
           no-values: "No Regions listed"
 
-
   account:
     index:
-      title: "Mon account"
-    show:
-      heading: "Mon account"
-    edit:
-      heading: "Edit My Profile"
-    new:
-      heading: "Create a New Profile"
-
+      title: "Mon compte"
+      heading: "Mon compte"
+      welcome: "Compte de courriel "
+      profile-info:
+        heading: "Votre profil public"
+        email-confirmation-message: "<p>Bienvenue dans la Base de données NextGen</p>
+                                      <p>Nous vous invitons à confirmer votre adresse courriel avant de pouvoir réclamer ou créer un nouveau profil.
+</p>
+                                      <p>Un courriel a été envoyé à votre compte courriel. Veuillez cliquer sur le lien pour confirmer votre adresse courriel.</p>
+                                      <p>Veuillez vérifier votre boîte de courrier indésirable puisque le message pourrait s'y trouver.</p>
+                                      <p>Dès que votre adresse courriel est confirmé, veuillez vous reconnecter et vous aurez l'option de créer un nouveau profile ou de réclamer un profil existant.</p>"
+        create-new-profile:
+          message: "Vous n’avez pas encore de profil public. Suivez les instructions ici-bas pour ajouter votre profil."
+          step-1:
+            heading: "ÉTAPE 1 – VÉRIFIER SI VOTRE PROFIL A ÉTÉ CRÉÉ POUR VOUS"
+            profile-search:
+              label: "Chercher Votre Nom"
+              btn: "Demande d’appropriation du profil"
+          step-2:
+            heading: "ÉTAPE 2 – Vous ne trouvez pas votre nom?"
+            profile-new:
+              label: "Créez un nouveau profil en cliquant sur le bouton ci-dessous"
+              btn: "Créer un nouveau profil"
+        pending-request-profile:
+          heading: "Demande de profil en attente"
+          message_html: "<p>Votre demande d’autorisation pour modifier le profil de <a href='%{href}' class='%{class}'>%{name}</a> est en attente.</p>
+                         <p>Vous serez averti par email une fois qu'il aura été examiné.</p>"
+          cancel-btn: "Annuler"
+        prefix:
+          heading: "Profile Prefix"
+          no-value: "No prefix provided"
+        website:
+          heading: "Profile Website"
+          no-value: "No website provided"
+        phone-number:
+          heading: "Profile Phone Number"
+          no-value: "No phone number provided"
+        email:
+          heading: "Profile Email Address"
+          no-value: "No email provided"
+      account-info:
+        heading: "Information sur le compte"
+        details:
+          email: "Courriel"
+          password: "Mot de passe"
+          edit-btn: "Modifier le compte"
 
   admin:
     dashboard:
@@ -239,6 +280,92 @@ fr:
       vocabulary_management:
         title: "Controlled Vocabulary"
 
+  profile:
+    details:
+      prefix:
+        description: "Préfixe du nom"
+      firstname:
+        description: "Prénom"
+      middlename:
+        description: "Second prénom"
+      lastname:
+        description: "Nom de famille"
+      name:
+        description: "Nom"
+      email:
+        description: "Courriel"
+        placeholder: "nom@example.com"
+        no-value: "Pas d'email"
+      phone:
+        description: "Numéro de téléphone"
+        placeholder: "+15551234567"
+        no-value: "Pas de numéro de téléphone"
+      website:
+        description: "Site web"
+        placeholder: "https://www.mon-site-web.com"
+        no-value: "Pa de site web"
+      twitter:
+        description: "Site Twitter"
+        placeholder: "https://www.twitter.com/username"
+        no-value: "No twitter address provided"
+      linkedin:
+        description: "Site de LinkedIn"
+        placeholder: "https://www.linkedin.com/in/user-name"
+        no-value: "No LinkedIn address provided"
+      academia_edu:
+        description: "Site de Academia"
+        placeholder: "https://www.academia.edu/in/user-name"
+        no-value: "No LinkedIn address provided"
+      affiliation:
+        description: "Affiliation"
+      affiliation-organisation:
+        description: "Organisation"
+      affiliation-organisation-position-title:
+        description: "Titre du poste"
+        help: "Optionnel :"
+      affiliation-organisation-position-department:
+        description: "Département/Unité/Division"
+        description-en: "Département/Unité/Division (anglais)"
+        description-fr: "Département/Unité/Division (français)"
+      affiliation-organisation-position-faculty:
+        description: "Faculté"
+        description-en: "Faculté (anglais)"
+        description-fr: "Faculté (français)"
+      country:
+        description: "Pays"
+        help: "Sélectionnez les pays applicables"
+      subregion:
+        description: "Sous régions"
+      region:
+        description: "Régions"
+      sector:
+        description: "Secteurs"
+        help: "Sélectionnez les secteurs applicables"
+      sdg:
+        description: "Objectifs de Développement Durable"
+      demographic:
+        description: "Démographies"
+      development-actor:
+        description: "Acteurs de développement"
+      research-method:
+        description: "Méthodes de recherche"
+    actions:
+      buttons:
+        edit-profile: "Modifier"
+        view-profile: "Voir le profil complet"
+        add-affiliation: "Ajouter une affiliation"
+        add-position: "Ajouter un titre de poste ou un titre professionnel"
+        remove-position: "Enlever"
+        remove-affiliation: "Enlever"
+    headings:
+      page:
+        new-profile: "Créer un nouveau profil"
+        edit-profile: "Modifier le profil"
+      section:
+        contact: "Coordonnées"
+        affiliations: "Affiliation"
+        research: "Intérêts de recherche"
+        location: "Lieux des intérêts"
 
   profile_requests:
     status:
@@ -247,6 +374,65 @@ fr:
       denied: "Denied"
       user_cancelled: "User Cancelled Request"
 
+  search:
+    heading: "Chercher"
+    results-count-message: "Résultat(s) de la recherche"
+    no-results-message: "Aucun résultat"
+    advanced-filters:
+        btn: "Recherche avancée"
+        filter-provinces-label: "Provinces :"
+        filter-organisations-label: "Organisation :"
+        filter-organisation-types-label: "Type d'organisation :"
+        filter-sectors-label: "Secteurs :"
+        filter-demographics-label: "Démographies :"
+        filter-countries-label: "Pays :"
+        filter-development-actors-label: "Acteurs de développement :"
+        filter-regions-label: "Régions :"
+        filter-subregions-label: "Sous régions :"
+        filter-research-methods-label: "Méthodes de recherche :"
+        submit-button: "Appliquer les filtres"
+
+  devise:
+      username:
+        title: "Nom d'utilisateur"
+      email:
+        title: "Adresse de courrier électronique"
+        placeholder: "Adresse de courrier électronique"
+        help: "We'll never share your email with anyone else."
+      subdomain:
+        title: "Sous-domaine"
+      password:
+        title: "Mot de passe"
+        confirm: "Confirmez le mot de passe"
+      register:
+        title: "Inscrivez-vous"
+        submit: "Inscrivez-vous"
+        message: "Créer un nouveau profil dans la base de données NextGen"
+      login:
+        title: "Connexion"
+        remember_me: "Garder ma session ouverte"
+        submit: "Se connecter"
+      reset_password:
+        title: "Vous avez oublié votre mot de passe?"
+        submit: "Réinitialiser mon mot de passe"
+      change_password:
+        title: "Changez votre mot de passe"
+        new: "Nouveau mot de passe"
+        confirm: "Confirmer le nouveau mot de passe"
+        submit: "Changer mon mot de passe"
+      unlock:
+        title: "Renvoyer les instructions de déverrouillage"
+        submit: "Renvoyer les instructions de déverrouillage"
+      resend_confirmation_instructions:
+        title: "Envoyer de nouveau les instructions de confirmation"
+        submit: "Envoyer de nouveau les instructions de confirmation"
+      links:
+        sign_in: "Connectez-vous"
+        sign_up: "Inscrivez-vous"
+        forgot_your_password: "Vous avez oublié votre mot de passe ?"
+        sign_in_with_omniauth_provider: "Connectez-vous avec %{provider}"
+        resend_unlock_instructions: "Envoyer de nouveau les instructions pour déverrouiller"
+        resend_confirmation_instructions: "Envoyer de nouveau les instructions de confirmation"
 
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name

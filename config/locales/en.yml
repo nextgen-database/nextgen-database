@@ -52,6 +52,10 @@ en:
       about: "About"
       tc: "Terms and Conditions"
       privacy: "Privacy"
+      sign_in: "Sign in"
+      register: "Register"
+      logout: "Log out"
+      my_account: "My Account"
 
   footer:
     heading: "NextGen Database Footer Information"
@@ -66,8 +70,8 @@ en:
 
   home:
     search:
-      heading: "Find a Global sustainable development researcher in Canada"
-      blurb: "This is a unique searchable database of researchers from Canadian universities, colleges, research institutes, think-tanks and civil society organizations – all working on issues related to global and national sustainable development. The NextGen Database also maps areas of research to the 2030 Agenda and the SDGs. It identifies how researchers in Canada contribute to the implementation and understanding of the SDGs. Find researchers or practitioner-researchers to collaborate with!"
+      heading: "Find a global sustainable development researcher in Canada"
+      blurb: "This is a unique searchable database of researchers from Canadian universities, colleges, research institutes, and civil society organizations – all working on issues related to sustainable development. The NextGen Database maps areas of research to the SDGs and identifies how researchers in Canada contribute to the implementation of the 2030 Agenda for Sustainable Development. Find researchers or practitioner-researchers to collaborate with!"
       placeholder: "Enter name, sector, organization, or country"
       sdg_dropdown: "Show All SDGs"
       button: "Search"
@@ -223,8 +227,31 @@ en:
   account:
     index:
       title: "My Account"
-      profile-contact-info:
-        heading: "Contact Information"
+      heading: "My Account"
+      welcome: "Welcome"
+      profile-info:
+        heading: "Profile Information"
+        email-confirmation-message: "<p>Welcome to the NextGen Database</p>
+                                      <p>You are required to confirm your email address before you can claim or create a new profile</p>
+                                      <p>An email has been send to your email account. Please click on the link provided to confirm your email address.</p>
+                                      <p>Please check your Junk folder as sometimes the email can end up there.</p>
+                                      <p>Once your email address is confirmed please sign back in and you will have the option to create a new profile or claim an existing profile</p>"
+        create-new-profile:
+          message: "You currently have no public profile. Follow the instructions below to add yours."
+          step-1:
+            heading: "Step 1 - Check if your profile was created for you"
+            profile-search:
+              label: "Search for your name"
+              btn: "Request Profile Ownership"
+          step-2:
+            heading: "Step 2 - Don't see your name?"
+            profile-new:
+              label: "Create a new profile by clicking the button below"
+              btn: "Create New Profile"
+        pending-request-profile:
+          heading: "Profile Request Pending"
+          message_html: "<p>Your request to edit the profile for <a href='%{href}' class='%{class}'>%{name}</a> is still pending.</p><p>You will be notified by email once it has been reviewed.</p>"
+          cancel-btn: "Cancel Profile Request"
         prefix:
           heading: "Profile Prefix"
           no-value: "No prefix provided"
@@ -237,15 +264,12 @@ en:
         email:
           heading: "Profile Email Address"
           no-value: "No email provided"
-      profile-research-info:
-        heading: "Research Information"
-    show:
-      heading: "My Account"
-    edit:
-      heading: "Edit My Profile"
-    new:
-      heading: "Create a New Profile"
-
+      account-info:
+        heading: "Account Information"
+        details:
+          email: "Account Email"
+          password: "Account Password"
+          edit-btn: "Edit your account email or password"
 
   admin:
     dashboard:
@@ -260,6 +284,92 @@ en:
       vocabulary_management:
         title: "Controlled Vocabulary"
 
+  profile:
+    details:
+      prefix:
+        description: "Name Prefix"
+      name:
+        description: "Name"
+      firstname:
+        description: "First Name"
+      middlename:
+        description: "Middle Name"
+      lastname:
+        description: "Last Name"
+      email:
+        description: "Email"
+        placeholder: "name@example.com"
+        no-value: "No email provided"
+      phone:
+        description: "Phone number"
+        placeholder: "+15551234567"
+        no-value: "No phone number provided"
+      website:
+        description: "Website"
+        placeholder: "https://www.my-website.com"
+        no-value: "No website provided"
+      twitter:
+        description: "Twitter Web Address"
+        placeholder: "https://www.twitter.com/username"
+        no-value: "No twitter address provided"
+      linkedin:
+        description: "LinkedIn Web Address"
+        placeholder: "https://www.linkedin.com/in/user-name"
+        no-value: "No LinkedIn address provided"
+      academia_edu:
+        description: "Academia Web Address"
+        placeholder: "https://www.academia.edu/in/user-name"
+        no-value: "No Academia address provided"
+      affiliation:
+        description: "Affiliation"
+      affiliation-organisation:
+        description: "Organisation"
+      affiliation-organisation-position-title:
+        description: "Position Title"
+        help: "The following items are optional:"
+      affiliation-organisation-position-department:
+        description: "Department/Unit/Division"
+        description-en: "Department/Unit/Division (English)"
+        description-fr: "Department/Unit/Division (French)"
+      affiliation-organisation-position-faculty:
+        description: "Faculty"
+        description-en: "Faculty (English)"
+        description-fr: "Faculty (French)"
+      country:
+        description: "Countries"
+        help: "Select as many countries as may be applicable"
+      subregion:
+        description: "Subregion"
+      region:
+        description: "Regions"
+      sector:
+        description: "Sectors"
+        help: "Select as many sectors as may be applicable"
+      sdg:
+        description: "Sustainable Development Goals"
+      demographic:
+        description: "Demographics"
+      development-actor:
+        description: "Development Actors"
+      research-method:
+        description: "Research Methods"
+    actions:
+      buttons:
+        edit-profile: "Edit Profile"
+        view-profile: "View Profile"
+        add-affiliation: "Click here to add an affiliation"
+        add-position: "Click here to add a position"
+        remove-position: "Remove position"
+        remove-affiliation: "Remove affiliation"
+    headings:
+      page:
+        new-profile: "New Profile"
+        edit-profile: "Edit Profile"
+      section:
+        contact: "Contact Information"
+        affiliations: "Affiliations"
+        research: "Research Interests"
+        location: "Locations of Interest"
 
   profile_requests:
     status:
@@ -267,6 +377,72 @@ en:
       approved: "Approved"
       denied: "Denied"
       user_cancelled: "User Cancelled Request"
+
+  search:
+    heading: "Search Profiles"
+    results-count-message: "Search results"
+    no-results-message: "Sorry, no results found using those search terms!"
+    advanced-filters:
+        btn: "Advanced Search Filters"
+        filter-provinces-label: "Include any of the following <strong>Provinces</strong>:"
+        filter-organisations-label: "Include any of the following <strong>Organisations</strong>:"
+        filter-organisation-types-label: "Include any of the following <strong>Organisation Types</strong>:"
+        filter-sectors-label: "Include any of the following <strong>Sectors</strong>:"
+        filter-demographics-label: "Include any of the following <strong>Demographics</strong>:"
+        filter-countries-label: "Include any of the following <strong>Countries</strong>:"
+        filter-development-actors-label: "Include any of the following <strong>Development Actors</strong>:"
+        filter-regions-label: "Include any of the following <strong>Regions</strong>:"
+        filter-subregions-label: "Include any of the following <strong>Subregions</strong>:"
+        filter-research-methods-label: "Include any of the following <strong>Research Methods</strong>:"
+        submit-button: "Apply Filters"
+
+
+
+
+
+
+
+  devise:
+    username:
+      title: "Username"
+    email:
+      title: "Email"
+      placeholder: "Enter Email"
+      help: "We'll never share your email with anyone else."
+    subdomain:
+      title: "Subdomain"
+    password:
+      title: "Password"
+      confirm: "Confirm Password"
+    register:
+      title: "Register"
+      submit: "Register"
+      message: "Create your NextGen Database account to add a new profile or edit an existing profile within the database"
+    login:
+      title: "Login"
+      remember_me: "Remember me"
+      submit: "Login"
+    reset_password:
+      title: "Forgot your password?"
+      submit: "Reset My Password"
+    change_password:
+      title: "Change your password"
+      new: "New Password"
+      confirm: "Confirm New Password"
+      submit: "Change my password"
+    unlock:
+      title: "Resend unlock instructions"
+      submit: "Resend unlock instructions"
+    resend_confirmation_instructions:
+      title: "Resend confirmation instructions"
+      submit: "Resend confirmation instructions"
+    links:
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+      forgot_your_password: "Forgot your password?"
+      sign_in_with_omniauth_provider: "Sign in with %{provider}"
+      resend_unlock_instructions: "Resend unlock instructions"
+      resend_confirmation_instructions: "Resend confirmation instructions"
 
 
 # https://ddnexus.github.io/pagy/how-to.html#customizing-the-item-name

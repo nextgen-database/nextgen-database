@@ -6,9 +6,9 @@
 
 			<div class="card-body">
 
-				<h1>Create your Account</h1>
+				<h1><%= t('devise.register.title') %></h1>
 
-				<p class="lead">Create your NextGen Database account to add a new profile or edit an existing profile within the database.</p>
+				<p class="lead"><%= t('devise.register.message') %></p>
 
 
 				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -16,26 +16,26 @@
 				<%= render "devise/shared/error_messages", resource: resource %>
 
 				<div class="form-group">
-					<%= f.label :email %><br />
-					<%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", placeholder: "Enter email" %>
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					<%= f.label t('devise.email.title') %><br />
+					<%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", placeholder: t('devise.email.placeholder') %>
+					<small id="emailHelp" class="form-text text-muted"><%  t('devise.email.title') %></small>
 				</div>
 
 				<div class="form-group">
-					<%= f.label :password %>
+					<%= f.label t('devise.password.title') %>
 					<% if @minimum_password_length %>
 					<em>(<%= @minimum_password_length %> characters minimum)</em>
 					<% end %><br />
-					<%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "Password" %>
+					<%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: t('devise.password.title') %>
 				</div>
 
 				<div class="form-group">
-					<%= f.label :password_confirmation %><br />
-					<%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "Confirm Password" %>
+					<%= f.label t('devise.password.confirm') %><br />
+					<%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: t('devise.password.confirm') %>
 				</div>
 
 
-				<%= f.submit "Create your account", class: "btn btn-lg btn-primary btn-block" %>
+				<%= f.submit t('devise.register.submit'), class: "btn btn-lg btn-primary btn-block" %>
 
 				<% end %>
 

@@ -1,24 +1,22 @@
 <div class="account">
 
-	<h1><%= t('account.show.heading') %></h1>
+	<h1><%= t('account.index.heading') %></h1>
 
-	<p class="mb-0"><small>Welcome: <span class="text-secondary"><%= @user.email %></span></p>
+	<p class="mb-0"><small><%= t('account.index.welcome') %>: <span class="text-secondary"><%= @user.email %></span></p>
 
 	<section>
-		<div class="mt-5">
-			<h2>Profile Information</h2>
+		<div class="mt-4">
+
+			<h2><%= t('account.index.profile-info.heading') %></h2>
+
 
 			<% unless @user.confirmed? %>
 
-				<p>Welcome to the NextGen Database</p>
+			<div class="card-style-1">
 
-				<p>You are required to confirm your email address before you can claim or create a new profile</p>
+				<%= t('account.index.profile-info.email-confirmation-message').html_safe %>
 
-				<p>An email has been send to your email account (<%= @user.email %>). Please click on the link provided to confirm your email address.</p>
-
-				<p>Please check your Junk folder as sometimes the email can end up there.</p>
-
-				<p>Once your email address is confirmed please sign back in and you will have the option to create a new profile or claim an existing profile</p>
+			</div>
 
 			<% else %>
 
@@ -39,105 +37,106 @@
 
 					<div class="card-style-1">
 
-						<h3><%= t('account.index.profile-contact-info.heading') %></h3>
-
 						<dl class="row">
 
-							<dt class="col-sm-3">Profile Prefix:</dt>
-							<dd class="col-sm-9"><%== @user_profile.prefix.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.prefix.no-value')}</span>" : @user_profile.prefix.english %></dd>
+							<dt class="col-sm-3"><%= t('profile.details.name.description') %>:</dt>
+							<dd class="col-sm-9">
+								<% if @user_profile.prefix.present? %>
+									<% if I18n.locale == :en %>
+										<%= @user_profile.prefix.english %>
+									<% elsif I18n.locale == :fr %>
+										<%= @user_profile.prefix.french %>
+									<% end %>
+								<% end %><%= @user_profile.firstname %> <%= @user_profile.middlename %> <%= @user_profile.lastname %></dd>
 
-							<dt class="col-sm-3">Profile First Name:</dt>
-							<dd class="col-sm-9"><%= @user_profile.firstname %></dd>
+							<dt class="col-sm-3"><%= t('profile.details.email.description') %>:</dt>
+							<dd class="col-sm-9"><%== @user_profile.email.blank? ? "<span class='text-danger'>#{t('profile.details.email.no-value')}</span>" : @user_profile.email %></dd>
 
-							<dt class="col-sm-3">Profile Last Name:</dt>
-							<dd class="col-sm-9"><%= @user_profile.lastname %></dd>
+							<dt class="col-sm-3"><%= t('profile.details.phone.description') %>:</dt>
+							<dd class="col-sm-9"><%== @user_profile.phone_number.blank? ? "<span class='text-danger'>#{t('profile.details.phone.no-value')}</span>" : @user_profile.phone_number %></dd>
 
-							<dt class="col-sm-3">Profile Email:</dt>
-							<dd class="col-sm-9"><%== @user_profile.email.blank? ? "<span class='text-danger'>#{t('account.index.profile-contact-info.email.no-value')}</span>" : @user_profile.email %></dd>
-
-							<dt class="col-sm-3">Profile Phone Number:</dt>
-							<dd class="col-sm-9"><%== @user_profile.phone_number.blank? ? "<span class='text-danger'>#{t('account.index.profile-contact-info.phone-number.no-value')}</span>" : @user_profile.phone_number %></dd>
-
-							<dt class="col-sm-3">Profile Website:</dt>
-							<dd class="col-sm-9 text-truncate"><%== @user_profile.website.blank? ? "<span class='text-secondary'>#{t('account.index.profile-contact-info.website.no-value')}</span>" : @user_profile.website %></dd>
+							<dt class="col-sm-3"><%= t('profile.details.website.description') %>:</dt>
+							<dd class="col-sm-9 text-truncate"><%== @user_profile.website.blank? ? "<span class='text-danger'>#{t('profile.details.website.no-value')}</span>" : @user_profile.website %></dd>
 
 						</dl>
 
 						<% if false %>
 
-						<h3><%= t('account.index.profile-research-info.heading') %></h3>
+							<h3><%= t('account.index.profile-research-info.heading') %></h3>
 
-						<dl class="row">
+							<dl class="row">
 
-							<dt class="col-sm-3">Profile SDGs:</dt>
-							<dd class="col-sm-9"><%== @user_profile.sustainable_development_goals.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile SDGs:</dt>
+								<dd class="col-sm-9"><%== @user_profile.sustainable_development_goals.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Sectors:</dt>
-							<dd class="col-sm-9"><%== @user_profile.sectors.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Sectors:</dt>
+								<dd class="col-sm-9"><%== @user_profile.sectors.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Demographics:</dt>
-							<dd class="col-sm-9"><%== @user_profile.demographics.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Demographics:</dt>
+								<dd class="col-sm-9"><%== @user_profile.demographics.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Development Actors:</dt>
-							<dd class="col-sm-9"><%== @user_profile.development_actors.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Development Actors:</dt>
+								<dd class="col-sm-9"><%== @user_profile.development_actors.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Research Methods:</dt>
-							<dd class="col-sm-9"><%== @user_profile.research_methods.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Research Methods:</dt>
+								<dd class="col-sm-9"><%== @user_profile.research_methods.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Countries:</dt>
-							<dd class="col-sm-9"><%== @user_profile.countries.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Countries:</dt>
+								<dd class="col-sm-9"><%== @user_profile.countries.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Subregions:</dt>
-							<dd class="col-sm-9"><%== @user_profile.subregions.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Subregions:</dt>
+								<dd class="col-sm-9"><%== @user_profile.subregions.count > 0 ? "Yes" : "No" %></dd>
 
-							<dt class="col-sm-3">Profile Regions:</dt>
-							<dd class="col-sm-9"><%== @user_profile.regions.count > 0 ? "Yes" : "No" %></dd>
+								<dt class="col-sm-3">Profile Regions:</dt>
+								<dd class="col-sm-9"><%== @user_profile.regions.count > 0 ? "Yes" : "No" %></dd>
 
 
-						</dl>
+							</dl>
 
 						<% end %>
 
-						<%= link_to "Edit Profile Informaton", edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
+						<%= link_to t('profile.actions.buttons.edit-profile') , edit_profile_path(id: @user_profile.id), :class => "btn btn-large btn-primary" %>
 
-						<%= link_to "View Profile", profile_path(id: @user_profile.id), :class => "btn btn-large btn-outline-secondary" %>
+						<%= link_to t('profile.actions.buttons.view-profile') , profile_path(id: @user_profile.id), :class => "btn btn-large btn-outline-secondary" %>
 
 					</div>
 
 				<% else %>
 
 
-					<%#
-						State Machine:
+				<%#
+					State Machine:
 
-						State A: The user doesn't have any profile request
-								Show them the create profile button
-								Show them the profile request block
+					State A: The user doesn't have any profile request
+							Show them the create profile button
+							Show them the profile request block
 
-						State B: The user has a request that is in a not set state
-								Show them the request with the cancel buttom
-								Disable the new profile buttom
+					State B: The user has a request that is in a not set state
+							Show them the request with the cancel buttom
+							Disable the new profile buttom
 
-						State C: The user has a request that was denied
-								Show them the request/s that was denied
-								Show them the create profile button
-					#%>
-
-
+					State C: The user has a request that was denied
+							Show them the request/s that was denied
+							Show them the create profile button
+				#%>
 
 
 
-					<%#
-						If all of the profile requests for the user that are not set or denied
-						When do we show the request profile form?
-						We show it when there isn't an outstanding not set
-					#%>
+
+
+				<%#
+					If all of the profile requests for the user that are not set or denied
+					When do we show the request profile form?
+					We show it when there isn't an outstanding not set
+				#%>
 
 					<% if @user_profile_requests_not_set.blank? %>
 
-						<div class="account-card my-3">
+						<p><%= t('account.index.profile-info.create-new-profile.message') %></p>
 
-							<h4 class="card-title">Step 1 - Check if your profile was created for you</h4>
+						<div class="card-style-1">
+
+							<h4 class="card-title"><%= t('account.index.profile-info.create-new-profile.step-1.heading') %></h4>
 
 							<%= form_for [:admin, ProfileRequest.new] do |f| %>
 
@@ -151,86 +150,55 @@
 								<% end %>
 
 								<div class="form-group">
-									<%= label_tag(:profile_id, "Profile Name:") %>
+									<%= label_tag(:profile_id,  t('account.index.profile-info.create-new-profile.step-1.profile-search.label') ) %>
 
-									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: true }, { class: 'custom-select custom-select-lg form-control-lg mr-sm-2 js-example-basic-search-profile', 'data-placeholder': 'Search for your profile', 'data-width': 'element', 'data-allowClear': true } %>
+									<%= f.select :profile_id, options_from_collection_for_select(@available_profiles_collection, :id, :full_name), { include_blank: true }, { class: 'custom-select custom-select-lg form-control-lg mr-sm-2 js-example-basic-search-profile', 'data-placeholder':  t('account.index.profile-info.create-new-profile.step-1.profile-search.label'), 'data-width': 'element', 'data-allowClear': true } %>
 
 								</div>
 
-								<%= f.submit "Request Profile Ownership", class: "btn btn-primary" %>
+								<%= f.submit t('account.index.profile-info.create-new-profile.step-1.profile-search.btn'), class: "btn btn-primary" %>
 
 							<% end %>
 
 						</div>
 
-						<div class="account-card my-3">
+						<div class="card-style-1">
 
-							<h4 class="card-title">Step 2 - Don't see your name? Create a new profile</h4>
+							<h4 class="card-title"><%= t('account.index.profile-info.create-new-profile.step-2.heading') %></h4>
 
-							<p>Create a new profile by clicking the button below.</p>
+							<p><%= t('account.index.profile-info.create-new-profile.step-2.profile-new.label') %></p>
 
-							<%= link_to "Create New Profile", new_profile_path, :class => "btn btn-large btn-primary" %>
+							<%= link_to t('account.index.profile-info.create-new-profile.step-2.profile-new.btn'), new_profile_path, :class => "btn btn-large btn-primary" %>
 
 						</div>
-
-
-
 
 					<% end %>
 
-					<%#
-						List all of the profile requests for the user that are not set or denied
-					#%>
+				<%#
+					List all of the profile requests for the user that are not set or denied
+				#%>
 					<% if !@user_profile_requests_not_set.blank? %>
 
 						<div class="account-alert-card" role="alert">
-							<h3 class="alert-heading">Profile Request Pending</h3>
+
+							<h3 class="alert-heading"><%= t('account.index.profile-info.pending-request-profile.heading') %></h3>
 
 							<% @user_profile_requests_not_set.each do |profile_request| %>
-								<p>The following profile request for <%= link_to Profile.find_by(id: profile_request.profile_id).full_name, profile_path(profile_request.profile_id) , class: "alert-link" %> is still pending.</p>
+
+								<p><%= t('account.index.profile-info.pending-request-profile.message_html' , name: Profile.find_by(id: profile_request.profile_id).full_name , href: profile_path(profile_request.profile_id), class: "alert-link" ) %></p>
+
 								<%= form_for [:admin, profile_request] do |f| %>
 
-											<%#= render 'shared/error_messages', object: f.object #%>
-											<%= f.hidden_field :status, {value: 'user_cancelled'} %>
+									<%#= render 'shared/error_messages', object: f.object #%>
+									<%= f.hidden_field :status, {value: 'user_cancelled'} %>
 
-											<%= f.submit "Cancel Profile Request", class: "btn btn-outline-primary" %>
-										<% end %>
+									<%= f.submit t('account.index.profile-info.pending-request-profile.cancel-btn'), class: "btn btn-outline-primary" %>
+
+								<% end %>
+
 							<% end %>
 						</div>
 
-
-						<% if false %>
-
-						<table class="table">
-							<thead>
-								<tr>
-								<th scope="col">User Account</th>
-								<th scope="col">Profile Name</th>
-								<th scope="col">Status</th>
-								<th scope="col">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<% @user_profile_requests_not_set.each do |profile_request| %>
-									<tr>
-									<td scope="row"><%= @user.email %></td>
-									<td><%= profile_request.profile_id %></td>
-									<td>Pending</td>
-									<td>
-										<%= form_for [:admin, profile_request] do |f| %>
-
-											<%#= render 'shared/error_messages', object: f.object #%>
-											<%= f.hidden_field :status, {value: 'user_cancelled'} %>
-
-											<%= f.submit "Cancel Profile Request", class: "btn btn-primary" %>
-										<% end %>
-									</td>
-									</tr>
-								<% end %>
-							</tbody>
-						</table>
-
-						<% end %>
 
 					<% end %>
 
@@ -264,7 +232,6 @@
 
 				<% end %>
 
-
 			<% end %>
 
 		</div>
@@ -274,18 +241,18 @@
 	<section>
 		<div class="mt-5">
 
-			<h2>Account Information</h2>
+			<h2><%= t('account.index.account-info.heading') %></h2>
 
 			<div class="card-style-1">
 
 				<dl class="row">
-					<dt class="col-sm-3">Account Email:</dt>
+					<dt class="col-sm-3"><%= t('account.index.account-info.details.email') %>:</dt>
 					<dd class="col-sm-9"><%= @user.email %></dd>
-					<dt class="col-sm-3">Account Password:</dt>
+					<dt class="col-sm-3"><%= t('account.index.account-info.details.password') %>:</dt>
 					<dd class="col-sm-9">********</dd>
 				</dl>
 
-				<%= link_to "Edit your account email or password", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
+				<%= link_to t('account.index.account-info.details.edit-btn') , edit_user_registration_path, :class => "btn btn-outline-secondary" %>
 
 				</div>
 

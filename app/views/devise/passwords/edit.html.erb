@@ -7,27 +7,27 @@
 
 				<section>
 
-					<h2>Change your password</h2>
+					<h1><%= t('devise.change_password.title') %></h1>
 
 					<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 					<%= render "devise/shared/error_messages", resource: resource %>
 					<%= f.hidden_field :reset_password_token %>
 
 					<div class="form-group">
-						<%= f.label :password, "New password" %><br />
+						<%= f.label :password, t('devise.change_password.new') %><br />
 						<% if @minimum_password_length %>
 						<em>(<%= @minimum_password_length %> characters minimum)</em><br />
 						<% end %>
-						<%= f.password_field :password, autofocus: true, autocomplete: "new-password" , class: "form-control" , placeholder: "Enter password"  %>
+						<%= f.password_field :password, autofocus: true, autocomplete: "new-password" , class: "form-control" , placeholder: t('devise.change_password.new')  %>
 					</div>
 
 					<div class="form-group">
-						<%= f.label :password_confirmation, "Confirm new password" %><br />
-						<%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control" , placeholder: "Confirm new password" %>
+						<%= f.label :password_confirmation, t('devise.change_password.confirm') %><br />
+						<%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control" , placeholder: t('devise.change_password.confirm') %>
 					</div>
 
 					<div class="actions">
-						<%= f.submit "Change my password" , class: "btn btn-lg btn-primary btn-block" %>
+						<%= f.submit t('devise.change_password.submit') , class: "btn btn-lg btn-primary btn-block" %>
 					</div>
 					<% end %>
 

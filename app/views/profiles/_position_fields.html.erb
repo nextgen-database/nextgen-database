@@ -5,7 +5,7 @@
 
 		<div class="form-group">
 
-			<%= label_tag(:title_id , "Position Title:") %>
+			<%= label_tag(:title_id , t('profile.details.affiliation-organisation-position-title.description')) %>
 
 			<% if I18n.locale == :en %>
 				<%= f.collection_select :title_id, Title.order(:english).all ,:id, :english, {}, { multiple: false, class: "form-control" } %>
@@ -16,22 +16,22 @@
 		</div>
 
 
-		<p class="text-muted pb-1 mb-1">The following items are optional:</p>
+		<p class="text-muted pb-1 mb-1"><%= t('profile.details.affiliation-organisation-position-title.help') %></p>
 
 
 		<div class="form-row">
 
 			<div class="form-group col-lg-6">
 
-				<%= label_tag(:department_en, "Department Name (English):") %>
-				<%= f.text_field :department_en, class: 'form-control', placeholder: "Name of Department in English" %>
+				<%= label_tag(:department_en, t('profile.details.affiliation-organisation-position-department.description-en')) %>
+				<%= f.text_field :department_en, class: 'form-control' %>
 
 			</div>
 
 			<div class="form-group col-lg-6">
 
-				<%= label_tag(:department_fr, "Department Name (French):") %>
-				<%= f.text_field :department_en, class: 'form-control', placeholder: "Name of Department in French" %>
+				<%= label_tag(:department_fr,  t('profile.details.affiliation-organisation-position-department.description-fr')) %>
+				<%= f.text_field :department_fr, class: 'form-control' %>
 
 			</div>
 
@@ -41,21 +41,21 @@
 
 			<div class="form-group col-lg-6">
 
-				<%= label_tag(:faculty_en, "Faculty Name (English):") %>
-				<%= f.text_field :faculty_en, class: 'form-control', placeholder: "Faculty Name in French" %>
+				<%= label_tag(:faculty_en, t('profile.details.affiliation-organisation-position-faculty.description-en')) %>
+				<%= f.text_field :faculty_en, class: 'form-control' %>
 
 			</div>
 
 			<div class="form-group col-lg-6">
 
-				<%= label_tag(:faculty_fr, "Faculty Name (French):") %>
-				<%= f.text_field :faculty_fr, class: 'form-control', placeholder: "Faculty Name in French" %>
+				<%= label_tag(:faculty_fr, t('profile.details.affiliation-organisation-position-faculty.description-fr')) %>
+				<%= f.text_field :faculty_fr, class: 'form-control' %>
 
 			</div>
 
 		</div>
 
-		<%= link_to_remove_association "Remove position", f , class: "btn btn-outline-secondary" %>
+		<%= link_to_remove_association t('profile.actions.buttons.remove-position'), f , class: "btn btn-outline-secondary" %>
 
 	</div>
 
