@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Configure Send Grid / Heroku to send emails
-  config.action_mailer.default_url_options = { host: 'nextgen-database-development.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: ENV['host'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :port => 587,
