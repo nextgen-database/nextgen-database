@@ -103,11 +103,24 @@ class Profile < ApplicationRecord
 				where("organisations.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
 
+	scope :where_organisations_fr, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
+				where("organisations.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
 	scope :where_organisation_abbreviations, -> (query) do
 		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
 			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
 				where("organisations.abbreviation_en ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
+
+	scope :where_organisation_abbreviations_fr, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN organisations on affiliations.organisation_id = organisations.id").
+				where("organisations.abbreviation_fr ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
 
 	scope :where_titles, -> (query) do
 		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
@@ -115,6 +128,14 @@ class Profile < ApplicationRecord
 				joins("JOIN titles ON titles.id = affiliation_positions.position_id").
 					where("titles.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
+
+	scope :where_titles_fr, -> (query) do
+		joins("JOIN affiliations ON profiles.id = affiliations.profile_id").
+			joins("JOIN affiliation_positions ON affiliations.id = affiliation_positions.affiliation_id").
+				joins("JOIN titles ON titles.id = affiliation_positions.position_id").
+					where("titles.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+	end
+
 
 	scope :where_research_methods, -> (query) do
 		joins(:research_methods).
@@ -265,12 +286,15 @@ class Profile < ApplicationRecord
 
 		# Search Organisations
 		result_ids = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_organisations_fr(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Organisation Abbreviations
 		result_ids = result_ids | Profile.where(nil).where_organisation_abbreviations(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_organisation_abbreviations_fr(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Titles
 		result_ids = result_ids | Profile.where(nil).where_titles(query).where(id: ids).pluck(:id) if !query.blank?
+		result_ids = result_ids | Profile.where(nil).where_titles_fr(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Research Methods
 		result_ids = result_ids | Profile.where(nil).where_research_methods(query).where(id: ids).pluck(:id) if !query.blank?
