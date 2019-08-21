@@ -181,42 +181,42 @@ fr:
           label: "SDGs"
           single-value: "SDG"
           plural-value: "SDGs"
-          no-values: "No SDGs listed"
+          no-values: "non disponible"
         sector:
           label: "Sectors"
           single-value: "Sector"
           plural-value: "Sectors"
-          no-values: "No Sectors listed"
+          no-values: "non disponible"
         demographic:
           label: "Demographics"
           single-value: "Demographic"
           plural-value: "Demographics"
-          no-values: "No Demographics listed"
+          no-values: "non disponible"
         country:
           label: "Countries"
           single-value: "Country"
           plural-value: "Countries"
-          no-values: "No Countries listed"
+          no-values: "non disponible"
         development-actor:
           label: "Development Actors"
           single-value: "Development Actor"
           plural-value: "Development Actors"
-          no-values: "No Development Actors listed"
+          no-values: "non disponible"
         research-method:
           label: "Research Methods"
           single-value: "Research Method"
           plural-value: "Research Methods"
-          no-values: "No Research Methods listed"
+          no-values: "non disponible"
         subregion:
           label: "Subregions"
           single-value: "Subregion"
           plural-value: "Subregions"
-          no-values: "No Subregions listed"
+          no-values: "non disponible"
         region:
           label: "Regions"
           single-value: "Region"
           plural-value: "Regions"
-          no-values: "No Regions listed"
+          no-values: "non disponible"
 
   account:
     index:
