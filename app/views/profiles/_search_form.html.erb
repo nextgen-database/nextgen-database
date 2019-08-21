@@ -11,11 +11,11 @@
 	<h2><%= t('search.heading') %></h2>
 
 	<div class="form-row align-items-end">
-		<div class="col-6">
+		<div class="col-md-6">
 			<%= label_tag 'q', t('home.search.placeholder') , class: 'sr-only' %>
 			<%= text_field_tag 'q', nil,  :value => @search_parameters['query']  , placeholder: t('home.search.placeholder'), class: "form-control"  %>
 		</div>
-		<div class="col-4">
+		<div class="col-md-4 my-3 my-md-0">
 			<%= label_tag 'a', t('home.search.sdg_dropdown') , class: 'sr-only'  %>
 			<select class="custom-select form-control mr-sm-2" name="a">
 				<option value="0" selected><%= t('home.search.sdg_dropdown') %></option>
@@ -26,7 +26,7 @@
 					<% end %>
 			</select>
 		</div>
-		<div class="col-2">
+		<div class="col-md-2">
 			<%= submit_tag t('home.search.button'),  { name: nil , class: "btn btn-success btn-block " }  %>
 		</div>
 	</div>
