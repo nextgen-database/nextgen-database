@@ -39,14 +39,14 @@
 	<section>
 		<div class="profile-display-research-container">
 
-			<h2><%= t('profiles.show.research.heading') %></h2>
+			<h2><%= t('profile.headings.section..research') %></h2>
 
 			<dl>
 
 				<%#
 					View Sustainable Development Goals
 				#%>
-				<dt><%= t('profiles.show.research.sdg.label') %>:</dt>
+				<dt><%= t('profile.details.sdg.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.sustainable_development_goals.length <= 0) %>
@@ -68,7 +68,7 @@
 				<%#
 					View Sectors
 				#%>
-				<dt><%= t('profiles.show.research.sector.label') %>:</dt>
+				<dt><%= t('profile.details.sector.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.sectors.length <= 0) %>
@@ -91,7 +91,7 @@
 				<%#
 					View Demographics
 				#%>
-				<dt><%= t('profiles.show.research.demographic.label') %>:</dt>
+				<dt><%= t('profile.details.demographic.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.demographics.length <= 0) %>
@@ -111,7 +111,7 @@
 				<%#
 					View Development Actors
 				#%>
-				<dt><%= t('profiles.show.research.development-actor.label') %>:</dt>
+				<dt><%= t('profile.details.development-actor.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.development_actors.length <= 0) %>
@@ -132,7 +132,7 @@
 				<%#
 					View Research Methods:
 				#%>
-				<dt><%= t('profiles.show.research.research-method.label') %>:</dt>
+				<dt><%= t('profile.details.research-method.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.research_methods.length <= 0) %>
@@ -153,7 +153,7 @@
 				<%#
 					View Countries
 				#%>
-				<dt><%= t('profiles.show.research.country.label') %>:</dt>
+				<dt><%= t('profile.details.country.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.countries.length <= 0) %>
@@ -173,7 +173,7 @@
 				<%#
 					View Subregions
 				#%>
-				<dt><%= t('profiles.show.research.subregion.label') %>:</dt>
+				<dt><%= t('profile.details.subregion.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.subregions.length <= 0) %>
@@ -193,7 +193,7 @@
 				<%#
 					View Regions
 				#%>
-				<dt><%= t('profiles.show.research.region.label') %>:</dt>
+				<dt><%= t('profile.details.region.description') %>:</dt>
 				<dd>
 					<ul>
 						<% if (@profile.regions.length <= 0) %>
