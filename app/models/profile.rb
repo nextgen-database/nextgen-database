@@ -147,7 +147,8 @@ class Profile < ApplicationRecord
 
 	scope :where_countries, -> (query) do
 		joins(:countries).
-			where("countries.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+			where("countries.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or(joins(:countries).where("countries.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
 	end
 
 	scope :where_development_actor_ids, -> (development_actor_ids) do
