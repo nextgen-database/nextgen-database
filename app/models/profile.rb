@@ -170,6 +170,12 @@ class Profile < ApplicationRecord
 			where(demographics: {id: demographic_ids }) unless demographic_ids.blank?
 	end
 
+	scope :where_development_actors, -> (query) do
+		joins(:development_actors).
+			where("development_actors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or( joins(:development_actors).where("development_actors.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
+	end
+
 	scope :where_countries, -> (query) do
 		joins(:countries).
 			where("countries.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
@@ -283,6 +289,9 @@ class Profile < ApplicationRecord
 
 		# Search Countries
 		result_ids = result_ids | Profile.where(nil).where_countries(query).where(id: ids).pluck(:id) if !query.blank?
+
+		# Search Development Actors
+		result_ids = result_ids | Profile.where(nil).where_development_actors(query).where(id: ids).pluck(:id) if !query.blank?
 
 		# Search Organisations
 		result_ids = result_ids | Profile.where(nil).where_organisations(query).where(id: ids).pluck(:id) if !query.blank?
