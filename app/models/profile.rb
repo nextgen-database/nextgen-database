@@ -93,7 +93,8 @@ class Profile < ApplicationRecord
 
 	scope :where_sustainable_development_goals, -> (query) do
 		joins(:sustainable_development_goals).
-			where("sustainable_development_goals.banner_en ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+			where("sustainable_development_goals.banner_en ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or(joins(:sustainable_development_goals).where("sustainable_development_goals.banner_fr ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
 	end
 
 	scope :where_organisations, -> (query) do
@@ -117,7 +118,8 @@ class Profile < ApplicationRecord
 
 	scope :where_research_methods, -> (query) do
 		joins(:research_methods).
-			where("research_methods.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+			where("research_methods.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or(joins(:research_methods).where("research_methods.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
 	end
 
 	scope :where_research_method_ids, -> (research_method_ids) do
@@ -127,7 +129,8 @@ class Profile < ApplicationRecord
 
 	scope :where_sectors, -> (query) do
 		joins(:sectors).
-			where("sectors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+			where("sectors.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or(joins(:sectors).where("sectors.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
 	end
 
 	scope :where_sector_ids, -> (sector_ids) do
