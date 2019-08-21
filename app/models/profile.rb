@@ -137,7 +137,8 @@ class Profile < ApplicationRecord
 
 	scope :where_demographics, -> (query) do
 		joins(:demographics).
-			where("demographics.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
+			where("demographics.english ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }).
+				or( joins(:demographics).where("demographics.french ILIKE ANY (array[?])", query.map {|val| "%#{val}%" })) unless query.blank?
 	end
 
 	scope :where_demographic_ids, -> (demographic_ids) do
