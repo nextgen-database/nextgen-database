@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
 		@is_advanced_filters_on = true unless @search_parameters['advanced_search_flag'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['sector_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['demographic_ids'].blank?
-		@is_advanced_filters_on = true unless @search_parameters['development_actors_ids'].blank?
+		@is_advanced_filters_on = true unless @search_parameters['development_actor_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['country_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['region_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['subregion_ids'].blank?
@@ -369,7 +369,7 @@ class ProfilesController < ApplicationController
 			profile_ids = Profile.filter_by_demographic_ids(@search_parameters['demographic_ids'], profile_ids) unless @search_parameters['demographic_ids'].blank?
 
 			# Filter by Development Actors
-			profile_ids = Profile.filter_by_development_actor_ids(@search_parameters['development_actors_ids'], profile_ids) unless @search_parameters['development_actors_ids'].blank?
+			profile_ids = Profile.filter_by_development_actor_ids(@search_parameters['development_actor_ids'], profile_ids) unless @search_parameters['development_actor_ids'].blank?
 
 			# Filter by Countries
 			profile_ids = Profile.filter_by_country_ids(@search_parameters['country_ids'], profile_ids) unless @search_parameters['country_ids'].blank?
@@ -418,7 +418,7 @@ class ProfilesController < ApplicationController
 			@search_parameters['demographic_ids'] = params[:c] unless params[:c].blank?
 
 			# Set the Development Actors IDs
-			@search_parameters['development_actors_ids'] = params[:d] unless params[:d].blank?
+			@search_parameters['development_actor_ids'] = params[:d] unless params[:d].blank?
 
 			# Set the Country IDs
 			@search_parameters['country_ids'] = params[:e] unless params[:e].blank?
