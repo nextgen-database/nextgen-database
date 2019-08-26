@@ -4,20 +4,53 @@
 
 .admin {
 
-	.admin_nav {
+	.nav-admin {
 
-		margin: 25px 0px 25px 0px;
+		//@include card-style-1;
 
-		nav {
+		background-color: $gray-accent-1-color;
+		border-radius: 14px;
+		margin-top: 40px;
+		margin-bottom: 40px;
 
-			a {
-				text-decoration: none;
+		a {
+			border-radius: 14px;
+			text-decoration: none;
+			color: $gray-accent-7-color;
+			font-weight: bold;
+
+			&.active {
+				background-color: $accent-color;
+				color: #fff;
 			}
+
 		}
+
 
 	}
 
 
+	.statistic {
+
+		display: flex;
+		flex-direction: column;
+
+		.field {
+			margin: 0px;
+			padding: 0px;
+			color: $gray-accent-7-color;
+			order: 2;
+		}
+
+		.value {
+			font-size: 4rem;
+			margin: 0px;
+			padding: 0px;
+			line-height: 1;
+			color: $accent-color;
+		}
+
+	}
 
 
 

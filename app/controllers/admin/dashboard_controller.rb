@@ -4,6 +4,17 @@ class Admin::DashboardController < AdminController
 
 	def index
 
+		# Expose the number of profiles in the databases
+		@profile_count = Profile.count
+
+		# Expose the number of users in the database
+		@user_count = User.count
+
+		# Expose the number of profiles that don't belong to a user
+		@profile_orphaned_count = Profile.where(user: nil).count
+
+		# Expose the number of profiles that belong to a user
+		@profile_linked_count = @profile_count - @profile_orphaned_count
 
 
 	end

@@ -1,13 +1,60 @@
 <%= render "admin/dashboard/nav" %>
 
+<h1 id="cont" name="cont"><%= t('admin.dashboard.index.headings.page')%></h1>
+<p class="mb-0"><small>Welcome: <span class="text-secondary"><%= @user.email %></span></p>
+
 <section>
-	<h2 id="statistics">Statistics</h2>
+	<h2 class="sr-only"><%= t('admin.dashboard.index.headings.section.statistics')%></h2>
+
+	<div class="row">
+
+		<div class="col col-md-6 col-lg-3">
+			<div class="card-style-1">
+
+				<div class="statistic">
+					<span class="field">Profiles</span>
+					<span class="value"><%= @profile_count %></span>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col col-md-6 col-lg-3">
+			<div class="card-style-1">
+
+				<div class="statistic">
+					<span class="field">Users</span>
+					<span class="value"><%= @user_count %></span>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col col-md-6 col-lg-3">
+			<div class="card-style-1">
+
+				<div class="statistic">
+					<span class="field">Linked Profiles</span>
+					<span class="value"><%= @profile_linked_count %></span>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col col-md-6 col-lg-3">
+			<div class="card-style-1">
+
+				<div class="statistic">
+					<span class="field">Orphaned Profiles</span>
+					<span class="value"><%= @profile_orphaned_count %></span>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
 
 	<p>To be released...</p>
 
 </section>
-
-
-
-
-

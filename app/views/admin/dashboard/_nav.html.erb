@@ -1,31 +1,21 @@
-<h1>NextGen Dashboard</h1>
+<!-- Start Admin Nav -->
 
-<p class="mb-0"><small>Welcome: <span class="text-secondary"><%= @user.email %></span></p>
+<ul class="nav justify-content-start flex-column flex-md-row nav-pills nav-admin">
+  <li class="nav-item">
+	<%= link_to t('admin.dashboard.index.title'), admin_path() ,  class: current_page?(action: 'index') ? "nav-link active" : "nav-link" %>
+  </li>
+  <li class="nav-item">
+	<%= link_to t('admin.dashboard.profile_management.title'), admin_profile_management_path() , class: current_page?(action: 'profile_management') ? "nav-link active" : "nav-link" %>
+  </li>
+  <li class="nav-item">
+	<%= link_to t('admin.dashboard.user_management.title'), admin_user_management_path() ,class: current_page?(action: 'user_management') ? "nav-link active " : "nav-link" %>
+  </li>
+  <li class="nav-item">
+	<%= link_to t('admin.dashboard.profile_requests.title'), admin_profile_requests_path() , class: current_page?(action: 'profile_requests') ? "nav-link active" : "nav-link"  %>
+  </li>
+  <li class="nav-item">
+  <%= link_to t('admin.dashboard.vocabulary_management.title'), admin_vocabulary_management_path() , class: current_page?(action: 'vocabulary_management') ? "nav-link active " : "nav-link" %>
+  </li>
+</ul>
 
-<div class="admin_nav">
-
-	<nav>
-
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-				<%= link_to t('admin.dashboard.index.title'), admin_path() ,  class: current_page?(action: 'index') ? "active nav-link" : "nav-link" %>
-			</li>
-			<li class="nav-item">
-				<%= link_to t('admin.dashboard.profile_requests.title'), admin_profile_requests_path() , class: current_page?(action: 'profile_requests') ? "active nav-link" : "nav-link"  %>
-			</li>
-			<li class="nav-item">
-				<%= link_to t('admin.dashboard.profile_management.title'), admin_profile_management_path() , class: current_page?(action: 'profile_management') ? "active nav-link" : "nav-link" %>
-			</li>
-			<li class="nav-item">
-				<%= link_to t('admin.dashboard.user_management.title'), admin_user_management_path() ,class: current_page?(action: 'user_management') ? "active nav-link" : "nav-link" %>
-			</li>
-			<li class="nav-item">
-				<%= link_to t('admin.dashboard.vocabulary_management.title'), admin_vocabulary_management_path() , class: current_page?(action: 'vocabulary_management') ? "active nav-link" : "nav-link" %>
-			</li>
-		</ul>
-
-	</nav>
-
-</div>
-
-
+<!-- End Admin Nav -->

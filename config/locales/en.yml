@@ -274,15 +274,23 @@ en:
   admin:
     dashboard:
       index:
-        title: "Admin Dashboard"
+        title: "Dashboard"
+        headings:
+          page: "Dashboard"
+          sections:
+            statistics: "Application Statistics"
       profile_requests:
         title: "Profile Requests"
+        heading: "Profile Requests"
       profile_management:
         title: "Profile Management"
+        heading: "Profile Management"
       user_management:
         title: "User Management"
+        heading: "User Management"
       vocabulary_management:
-        title: "Controlled Vocabulary"
+        title: "Vocabulary"
+        heading: "Vocabulary"
 
   profile:
     details:
