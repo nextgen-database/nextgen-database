@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_130324) do
+ActiveRecord::Schema.define(version: 2019_08_28_174738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,19 @@ ActiveRecord::Schema.define(version: 2019_08_06_130324) do
   create_table "research_methods", force: :cascade do |t|
     t.string "english", null: false
     t.string "french", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "search_profile_terms", force: :cascade do |t|
+    t.string "term"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["term"], name: "index_search_profile_terms_on_term", unique: true
+  end
+
+  create_table "search_profiles", force: :cascade do |t|
+    t.integer "search_profile_term_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

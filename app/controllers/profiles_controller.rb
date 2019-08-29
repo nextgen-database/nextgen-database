@@ -35,6 +35,9 @@ class ProfilesController < ApplicationController
 		@is_advanced_filters_on = true unless @search_parameters['organisation_type_ids'].blank?
 		@is_advanced_filters_on = true unless @search_parameters['province_ids'].blank?
 
+		# Save the search data
+		save_search_terms()
+
 	end
 
 	# New action for creating a new profile
@@ -406,6 +409,8 @@ class ProfilesController < ApplicationController
 			@search_parameters = Hash.new
 
 			# Set the Query Value
+			# TODO: Remove duplicate queries because the system isn't smart enough yet
+			# 		use the 'uniq' function
 			@search_parameters['query'] = params[:q].split unless params[:q].blank?
 
 			# Set the First SDG Filter Value
@@ -443,6 +448,27 @@ class ProfilesController < ApplicationController
 
 			# Set the Advanced Search Flag
 			@search_parameters['advanced_search_flag'] = params[:z] unless params[:z].blank?
+
+		end
+
+
+		# Set the search parameters to exposed values
+		# so that the view can access them
+		def save_search_terms
+
+			# Make a local copy of the search queries
+			queries = @search_parameters['query']
+
+			# Create a new Search Profile object
+			sp = SearchProfile.new
+
+			queries.blank? ? term = nil : term = queries.join(' ')
+
+			# Add each search term to the current SearchProfile object
+			sp.search_profile_term = SearchProfileTerm.find_or_create_by( term: term)
+
+			# Save the current SearchProfile object
+			sp.save
 
 		end
 
