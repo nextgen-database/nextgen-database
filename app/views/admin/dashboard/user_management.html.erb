@@ -15,6 +15,7 @@
 					<!--<th scope="col">Name</th>-->
 					<th scope="col">Account Email</th>
 					<th scope="col">Connected Profile</th>
+					<th scope="col">Last Login Date</th>
 					<th scope="col">Admin</th>
 					<!--<th scope="col">Affiliations</th>-->
 					<!--<th scope="col">Actions</th>-->
@@ -48,6 +49,14 @@
 								<% end %>
 							<% else %>
 								No Profile
+							<% end %>
+						</td>
+
+						<td>
+							<% if user.last_sign_in_at.present? %>
+								<%= user.last_sign_in_at.to_formatted_s(:long)  %>
+							<% else %>
+								Not signed in yet
 							<% end %>
 						</td>
 
