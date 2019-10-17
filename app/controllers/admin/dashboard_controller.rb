@@ -41,6 +41,8 @@ class Admin::DashboardController < AdminController
 
 	def user_management
 
+		@users = User.order(:email).all.includes(:profile)
+
 	end
 
 	def vocabulary_management

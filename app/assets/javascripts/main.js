@@ -121,6 +121,7 @@ document.addEventListener("turbolinks:load", function() {
 	// Setup the datatable
 	$('#admin-dashboard-profile-management').DataTable();
 
+	$('#admin-dashboard-user-management').DataTable();
 
 
 });
