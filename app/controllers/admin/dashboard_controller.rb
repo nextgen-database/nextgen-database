@@ -16,6 +16,10 @@ class Admin::DashboardController < AdminController
 		# Expose the number of profiles that belong to a user
 		@profile_linked_count = @profile_count - @profile_orphaned_count
 
+		# Expose the number of search results that occured in the last seven days
+		@search_profile_stats_for_days = get_search_profile_data_for_days
+
+
 
 	end
 
@@ -49,6 +53,24 @@ class Admin::DashboardController < AdminController
 
 			# Expose the current user to the view
 			@user = current_user
+
+		end
+
+		def get_search_profile_data_for_days
+
+			search_profile_statistics = Hash.new
+
+			# Hashes keep the order in which they are stored
+			# Since we present the data from oldest to newest I'm putting them in oldest to newest
+			search_profile_statistics[6.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 6.days.ago).count
+			search_profile_statistics[5.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 5.days.ago).count
+			search_profile_statistics[4.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 4.days.ago).count
+			search_profile_statistics[3.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 3.days.ago).count
+			search_profile_statistics[2.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 2.days.ago).count
+			search_profile_statistics[1.day.ago.strftime("%A")] = SearchProfile.where("DATE(created_at) = ?", 1.days.ago).count
+			search_profile_statistics["Today"] = SearchProfile.where("DATE(created_at) = ?", 0.days.ago).count
+
+			search_profile_statistics
 
 		end
 
