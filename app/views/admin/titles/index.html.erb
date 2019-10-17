@@ -1,10 +1,10 @@
-<h1>Admin::Position Titles#index</h1>
+<h1>Manage Position Titles</h1>
 
 <%#
     Link to create a new Position Title
 #%>
 
-<%= link_to 'New', new_admin_title_path(), { :class=>"btn btn-primary" } %>
+<%= link_to 'New', new_admin_title_path(), { :class=>"btn btn-primary my-3" } %>
 
 
 <%#
@@ -12,7 +12,7 @@
 
 	TO DO: Sort the data
 #%>
-<table class="table">
+<table class="table" id="admin-dashboard-vocab-position-titles-management">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>
@@ -27,13 +27,12 @@
 				<td><%= title.english %></td>
 				<td><%= title.french %></td>
 				<td>
-					Actions To Do
 
 					<%#= link_to 'edit', edit_resource_path(sector) %>
 
 					<%= link_to 'Edit', edit_admin_organisation_path(title) %>
 
-					<%= link_to 'Delete', admin_organisation_path(title), method: :delete, data: {confirm: "Are you sure?"} %></td>
+					<%#= link_to 'Delete', admin_organisation_path(title), method: :delete, data: {confirm: "Are you sure?"} %></td>
 				</td>
 			</tr>
 		<% end %>

@@ -51,6 +51,7 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('#admin-dashboard-vocab-organisation-management').DataTable().destroy();
 
+	$('#admin-dashboard-vocab-position-titles-management').DataTable().destroy();
 
 
 
@@ -151,6 +152,8 @@ document.addEventListener("turbolinks:load", function() {
 	$('#admin-dashboard-vocab-research-method-management').DataTable();
 
 	$('#admin-dashboard-vocab-organisation-management').DataTable();
+
+	$('#admin-dashboard-vocab-position-titles-management').DataTable();
 
 
 });
