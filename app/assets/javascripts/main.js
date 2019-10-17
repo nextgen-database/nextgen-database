@@ -36,6 +36,15 @@ $(document).on("turbolinks:before-cache", function() {
 	mobileMenu.destroy();
 
 
+	// Deactivate the tables
+	$('#admin-dashboard-profile-management').DataTable().destroy();
+
+	$('#admin-dashboard-user-management').DataTable().destroy();
+
+	$('#admin-dashboard-vocab-sector-management').DataTable().destroy();
+
+
+
 });
 
 // Normally run this when JQuery is ready, however to make
