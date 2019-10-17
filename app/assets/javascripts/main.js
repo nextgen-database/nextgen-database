@@ -43,7 +43,9 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('#admin-dashboard-vocab-sector-management').DataTable().destroy();
 
+	$('#admin-dashboard-vocab-demographic-management').DataTable().destroy();
 
+	$('#admin-dashboard-vocab-development-actor-management').DataTable().destroy();
 
 });
 
@@ -133,5 +135,9 @@ document.addEventListener("turbolinks:load", function() {
 	$('#admin-dashboard-user-management').DataTable();
 
 	$('#admin-dashboard-vocab-sector-management').DataTable();
+
+	$('#admin-dashboard-vocab-demographic-management').DataTable();
+
+	$('#admin-dashboard-vocab-development-actor-management').DataTable();
 
 });
