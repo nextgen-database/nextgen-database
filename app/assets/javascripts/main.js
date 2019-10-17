@@ -123,5 +123,6 @@ document.addEventListener("turbolinks:load", function() {
 
 	$('#admin-dashboard-user-management').DataTable();
 
+	$('#admin-dashboard-vocab-sector-management').DataTable();
 
 });

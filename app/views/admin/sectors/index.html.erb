@@ -1,12 +1,12 @@
-<h1>Admin::Sectors#index</h1>
+<h1>Manage Sectors</h1>
 
 <%#
     Loop through all of the sectors
 #%>
 
-<%= link_to 'New', new_admin_sector_path(), { :class=>"btn btn-primary" } %>
+<%= link_to 'New Sector', new_admin_sector_path(), { :class=>"btn btn-primary my-3" } %>
 
-<table class="table">
+<table class="table" id="admin-dashboard-vocab-sector-management">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>
@@ -21,13 +21,12 @@
 				<td><%= sector.english %></td>
 				<td><%= sector.french %></td>
 				<td>
-					Actions To Do
 
 					<%#= link_to 'edit', edit_resource_path(sector) %>
 
 					<%= link_to 'Edit', edit_admin_sector_path(sector) %>
 
-					<%= link_to 'Delete', admin_sector_path(sector), method: :delete, data: {confirm: "Are you sure?"} %></td>
+					<%#= link_to 'Delete', admin_sector_path(sector), method: :delete, data: {confirm: "Are you sure?"} %>
 				</td>
 			</tr>
 		<% end %>

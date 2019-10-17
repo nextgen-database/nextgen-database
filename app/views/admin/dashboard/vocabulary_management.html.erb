@@ -2,47 +2,74 @@
 
 <h1 id="cont" name="cont">Vocabulary Management</h1>
 
-	<ul class="admin-list-group">
-		<li>
+	<ul class="list-group">
+		<li class="list-group-item">
 			<%= link_to admin_sectors_path() do %>
-				<div class="list-group-title">Sectors</div>
-				<span class="badge badge-primary badge-pill"><%= Sector.count %></span>
+				<div class="list-group-title">
+					Sectors <span class="badge badge-primary badge-pill"><%= Sector.count %></span>
+				</div>
 			<% end %>
 		</li>
-		<li>
+		<li class="list-group-item">
 			<%= link_to admin_demographics_path() do %>
-				<div class="list-group-title">Demographic Factors</div>
-				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+
+				<div class="list-group-title">Demographic Factors
+					<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+				</div>
+
 			<% end %>
 		</li>
-		<li>
+		<li class="list-group-item">
+
 			<%= link_to admin_development_actors_path() do %>
-				<div class="list-group-title">Development Actors</div>
-				<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+				<div class="list-group-title">Development Actors
+					<span class="badge badge-primary badge-pill"><%= Demographic.count %></span>
+				</div>
+
 			<% end %>
+
 		</li>
-		<li>
+		<li class="list-group-item">
+
 			<%= link_to admin_research_methods_path() do %>
-				<div class="list-group-title">Research Methods</div>
-				<span class="badge badge-primary badge-pill"><%= ResearchMethod.count %></span>
+				<div class="list-group-title">Research Methods
+					<span class="badge badge-primary badge-pill"><%= ResearchMethod.count %></span>
+				</div>
+
 			<% end %>
+
 		</li>
-		<li>
+		<li class="list-group-item">
+
 			<%= link_to admin_organisations_path() do %>
-				<div class="list-group-title">Organisations</div>
-				<span class="badge badge-primary badge-pill"><%= Organisation.count %></span>
+
+				<div class="list-group-title">Organisations
+					<span class="badge badge-primary badge-pill"><%= Organisation.count %></span>
+				</div>
+
 			<% end %>
+
 		</li>
-		<li>
+		<li class="list-group-item">
+
 			<%= link_to admin_titles_path() do %>
-				<div class="list-group-title">Position Titles</div>
-				<span class="badge badge-primary badge-pill"><%= Title.count %></span>
+
+				<div class="list-group-title">Position Titles
+					<span class="badge badge-primary badge-pill"><%= Title.count %></span>
+				</div>
+
 			<% end %>
+
 		</li>
-		<li>
+		<li class="list-group-item">
+
 			<%= link_to admin_sustainable_development_goals_path() do %>
-				<div class="list-group-title">Sustainable Development Goals</div>
-				<span class="badge badge-primary badge-pill"><%= SustainableDevelopmentGoal.count %></span>
+
+				<div class="list-group-title">Sustainable Development Goals
+					<span class="badge badge-primary badge-pill"><%= SustainableDevelopmentGoal.count %></span>
+				</div>
+
 			<% end %>
+
 		</li>
 	</ul>
