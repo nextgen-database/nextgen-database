@@ -1,10 +1,10 @@
-<h1>Admin::Research Methods#index</h1>
+<h1>Manage Research Methods</h1>
 
 <%#
     Link to create a new Development Actor
 #%>
 
-<%= link_to 'New', new_admin_research_method_path(), { :class=>"btn btn-primary" } %>
+<%= link_to 'New', new_admin_research_method_path(), { :class=>"btn btn-primary my-3" } %>
 
 
 <%#
@@ -12,7 +12,7 @@
 
 	TO DO: Sort the data
 #%>
-<table class="table">
+<table class="table" id="admin-dashboard-vocab-research-method-management">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>
@@ -27,13 +27,12 @@
 				<td><%= research_method.english %></td>
 				<td><%= research_method.french %></td>
 				<td>
-					Actions To Do
 
 					<%#= link_to 'edit', edit_resource_path(sector) %>
 
 					<%= link_to 'Edit', edit_admin_research_method_path(research_method) %>
 
-					<%= link_to 'Delete', admin_research_method_path(research_method), method: :delete, data: {confirm: "Are you sure?"} %></td>
+					<%#= link_to 'Delete', admin_research_method_path(research_method), method: :delete, data: {confirm: "Are you sure?"} %></td>
 				</td>
 			</tr>
 		<% end %>

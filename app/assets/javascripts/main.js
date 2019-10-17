@@ -47,6 +47,9 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('#admin-dashboard-vocab-development-actor-management').DataTable().destroy();
 
+	$('#admin-dashboard-vocab-research-method-management').DataTable().destroy();
+
+
 });
 
 // Normally run this when JQuery is ready, however to make
@@ -139,5 +142,8 @@ document.addEventListener("turbolinks:load", function() {
 	$('#admin-dashboard-vocab-demographic-management').DataTable();
 
 	$('#admin-dashboard-vocab-development-actor-management').DataTable();
+
+	$('#admin-dashboard-vocab-research-method-management').DataTable();
+
 
 });
