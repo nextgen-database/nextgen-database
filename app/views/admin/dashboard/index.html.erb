@@ -98,5 +98,52 @@
 
 	</div>
 
+	<div class="row">
+		
+		<div class="col">
+			
+			<h2 class="mt-5">Search Terms</h2>
+
+			
+			<% if @search_profile_terms_data.blank? %>
+
+				<p>No search terms currently in the system</p>
+
+			<% else %>
+
+			<table class="table" id="admin-dashboard-user-management">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Term</th>
+						<th scope="col">Count</th>
+				<thead>
+				<tbody>
+
+					<% @search_profile_terms_data.each_with_index do |term,index| %>
+
+						<tr>
+							<td>
+								<%= index+1 %>
+							</td>
+							<td>
+								<%= term["term"] %>
+							</td>
+							<td>
+								<%= term["count"] %>
+							</td>
+						</tr>
+					
+					<% end %>
+			
+				</tbody>
+			
+			</table>
+
+			<% end %>
+
+		</div>
+
+	</div>
 
 </section>

@@ -19,6 +19,7 @@ class Admin::DashboardController < AdminController
 		# Expose the number of search results that occured in the last seven days
 		@search_profile_stats_for_days = get_search_profile_data_for_days
 
+		@search_profile_terms_data = get_search_profile_term_data
 
 
 	end
@@ -73,6 +74,27 @@ class Admin::DashboardController < AdminController
 			search_profile_statistics["Today"] = SearchProfile.where("DATE(created_at) = ?", 0.days.ago).count
 
 			search_profile_statistics
+
+		end
+
+		def get_search_profile_term_data
+
+			search_profile_term_statistics = Array.new
+
+			# Hashes keep the order in which they are stored
+			# Since we present the data from oldest to newest I'm putting them in oldest to newest
+
+			search_profile_term_statistics = SearchProfileTerm.connection.select_all(
+				"SELECT
+					search_profile_terms.term, count(*)
+				FROM
+				   	search_profile_terms  
+				LEFT OUTER JOIN
+				   	search_profiles ON search_profiles.search_profile_term_id = search_profile_terms.id
+				GROUP BY search_profile_terms.term
+				ORDER BY count desc").to_a
+
+			search_profile_term_statistics
 
 		end
 
