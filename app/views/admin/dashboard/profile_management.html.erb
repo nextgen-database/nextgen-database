@@ -15,6 +15,7 @@
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
 					<th scope="col">Affiliations</th>
+					<th scope="col">Claimed</th>
 					<th scope="col">Actions</th>
 					<!--<th scope="col">French</th>
 					<th scope="col">Type</th>
@@ -57,11 +58,22 @@
 							<% end %>
 
 						</td>
+						
+						<td>
+							<% if profile.user.present? %>
+								<%= profile.user.email %>
+							<% else %>
+								Not Claimed
+							<% end %>
+							
+						</td>
+						
 						<td>
 							<%= link_to 'Edit', edit_profile_path(profile) %>
 
 							<%= link_to 'View', profile_path(profile) %>
 						</td>
+
 					</tr>
 
 				<% end %>
