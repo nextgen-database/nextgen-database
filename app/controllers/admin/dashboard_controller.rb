@@ -57,6 +57,17 @@ class Admin::DashboardController < AdminController
 
 	end
 
+	def user_output 
+
+		@users = User.order(:email).all.includes(:profile)
+
+		respond_to do |format|
+			format.html
+			format.csv { send_data @users.to_csv }
+		end
+
+	end 
+
 	def vocabulary_management
 
 	end
