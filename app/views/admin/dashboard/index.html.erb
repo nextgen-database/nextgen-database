@@ -111,34 +111,38 @@
 
 			<% else %>
 
-			<table class="table" id="admin-dashboard-user-management">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">Term</th>
-						<th scope="col">Count</th>
-				<thead>
-				<tbody>
+				<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-					<% @search_profile_terms_data.each_with_index do |term,index| %>
+					<table class="table" id="admin-dashboard-user-management">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">Term</th>
+								<th scope="col">Count</th>
+						<thead>
+						<tbody>
 
-						<tr>
-							<td>
-								<%= index+1 %>
-							</td>
-							<td>
-								<%= term["term"] %>
-							</td>
-							<td>
-								<%= term["count"] %>
-							</td>
-						</tr>
+							<% @search_profile_terms_data.each_with_index do |term,index| %>
+
+								<tr>
+									<td>
+										<%= index+1 %>
+									</td>
+									<td>
+										<%= term["term"] %>
+									</td>
+									<td>
+										<%= term["count"] %>
+									</td>
+								</tr>
+							
+							<% end %>
 					
-					<% end %>
-			
-				</tbody>
-			
-			</table>
+						</tbody>
+					
+					</table>
+
+				</div>
 
 			<% end %>
 

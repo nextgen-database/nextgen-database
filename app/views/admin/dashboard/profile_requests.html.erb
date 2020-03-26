@@ -69,45 +69,50 @@
 
 		<section>
 
-			<h3>Past Requests</h3>
+			<h3 class="mt-5">Past Requests</h3>
 
-			<table class="table">
+			<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-				<table class="table table-hover table-responsive-sm table-bordered">
-					<thead>
+				<table class="table">
+
+					<table class="table table-hover table-responsive-sm table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">User Account</th>
+								<th scope="col">Profile Name</th>
+								<th scope="col">Status</th>
+								<th scope="col">Last Updated</th>
+							</tr>
+						</thead>
+						<tbody>
+				<% @profile_requests_not_active.each_with_index do |pr, index| %>
+
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">User Account</th>
-							<th scope="col">Profile Name</th>
-							<th scope="col">Status</th>
-							<th scope="col">Last Updated</th>
+							<td><%= index+1 %>
+							<td><%= User.find_by(id: pr.user_id).email %></td>
+							<td>
+								<%= link_to Profile.find_by(id: pr.profile_id).full_name, profile_path(pr.profile_id) %>
+							</td>
+							<td>
+
+								<% case pr.status
+								when "not_set" %><%= t('profile_requests.status.not_set') %>
+								<% when "approved" %><%= t('profile_requests.status.approved') %> by <%= User.find_by(id: pr.approver_id ).email %>
+								<% when "denied" %><%= t('profile_requests.status.denied') %> by <%= User.find_by(id: pr.approver_id ).email %>
+								<% when "user_cancelled" %><%= t('profile_requests.status.user_cancelled') %>
+								<% end %>
+
+							</td>
+							<td><%= pr.updated_at %></td>
 						</tr>
-					</thead>
-					<tbody>
-			<% @profile_requests_not_active.each_with_index do |pr, index| %>
 
-					<tr>
-						<td><%= index+1 %>
-						<td><%= User.find_by(id: pr.user_id).email %></td>
-						<td>
-							<%= link_to Profile.find_by(id: pr.profile_id).full_name, profile_path(pr.profile_id) %>
-						</td>
-						<td>
+				<% end %>
+						</tbody>
+					</table>
 
-							<% case pr.status
-							   when "not_set" %><%= t('profile_requests.status.not_set') %>
-							<% when "approved" %><%= t('profile_requests.status.approved') %> by <%= User.find_by(id: pr.approver_id ).email %>
-							<% when "denied" %><%= t('profile_requests.status.denied') %> by <%= User.find_by(id: pr.approver_id ).email %>
-							<% when "user_cancelled" %><%= t('profile_requests.status.user_cancelled') %>
-							<% end %>
+				</div>
 
-						</td>
-						<td><%= pr.updated_at %></td>
-					</tr>
-
-			<% end %>
-					</tbody>
-				</table>
 		</section>
 
 
