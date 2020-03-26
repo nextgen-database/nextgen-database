@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 			get '/user_management', to: 'dashboard#user_management', as: '/user_management'
 			get '/vocabulary_management', to: 'dashboard#vocabulary_management', as: '/vocabulary_management'
 
+			get '/profile_output', to: 'dashboard#profile_output', as: '/profile_output'
+
+
 			# Controlled Vocabulary Pages
 			resources :sectors
 			resources :demographics

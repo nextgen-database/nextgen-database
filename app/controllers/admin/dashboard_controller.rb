@@ -40,6 +40,17 @@ class Admin::DashboardController < AdminController
 
 	end
 
+	def profile_output 
+
+		@profiles = Profile.order(:lastname).all.includes( affiliations: [ :organisation]).includes(:prefix)
+
+		respond_to do |format|
+			format.html
+			format.csv { send_data @profiles.to_csv }
+		end
+
+	end 
+
 	def user_management
 
 		@users = User.order(:email).all.includes(:profile)
