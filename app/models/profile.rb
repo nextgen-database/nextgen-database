@@ -459,12 +459,64 @@ class Profile < ApplicationRecord
 	end
 
 	def self.to_csv
+
+		desired_columns = [
+			"ID", 
+			"First Name", 
+			"Middle Name", 
+			"Last Name",
+			"Created On",
+			"Last Updated",
+			"Email",
+			"Phone Number",
+			"Phone Extention",
+			"Website",
+			"User ID",
+			"Prefix",
+			"Twitter",
+			"Linked In",
+			"Academia Edu",
+			"Sectors",
+			"Sustainable Development Goals (Code)"
+		]
 		
 		CSV.generate do |csv|
-			csv << column_names
-			all.each do |result|
-			  csv << result.attributes.values_at(*column_names)
-			end
+			csv << desired_columns
+			#all.each do |result|
+			#  csv << result.attributes.values_at(*column_names)
+			#end
+			all.each do |profile|
+				
+				sectors = ""
+				profile.sectors.each do |sector|
+				  	sectors << sector.english + ";"
+				end
+
+				sustainable_development_goals = ""				
+				profile.sustainable_development_goals.each do |sustainable_development_goal|
+					sustainable_development_goals << sustainable_development_goal.code.to_s + ";"
+				end
+
+				csv << [
+					profile.id,
+					profile.firstname, 
+					profile.middlename,
+					profile.lastname,
+					profile.created_at,
+					profile.updated_at,
+					profile.email,
+					profile.phone_number,
+					profile.phone_ext,
+					profile.website,
+					profile.user_id,
+					profile.prefix_id,
+					profile.twitter,
+					profile.linkedin,
+					profile.academia_edu,
+					sectors,
+					sustainable_development_goals
+				]
+			  end
 		end
 	
 	end
