@@ -8,82 +8,86 @@
 
 	<% else %>
 
-		<div class="">
-			<a href="profile_output.csv"><button class="btn btn-success">export all</button></a>
+		<div class="d-flex flex-row-reverse">
+			<a href="profile_output.csv"><button class="btn btn-success mt-2">Export Profile Data</button></a>
 		</div>
 
-		<table class="table" id="admin-dashboard-profile-management">
-			<thead>
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Email</th>
-					<th scope="col">Affiliations</th>
-					<th scope="col">Claimed</th>
-					<th scope="col">Actions</th>
-					<!--<th scope="col">French</th>
-					<th scope="col">Type</th>
-					<th scope="col">Province</th>
-					<th scope="col">Actions</th>-->
-			<thead>
-			<tbody>
+		<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-				<% @profiles.each_with_index do |profile,index| %>
-
+			<table class="table" id="admin-dashboard-profile-management">
+				<thead>
 					<tr>
-						<td>
-							<%= index+1 %>
-						</td>
-						<td>
-							<% if profile.prefix.present? %>
-								<%= profile.prefix.english %>
-							<% end %>
-							<%= profile.full_name %>
-						</td>
-						<td>
-							<%= profile.email unless profile.email.blank? %>
-						</td>
-						<td>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Email</th>
+						<th scope="col">Affiliations</th>
+						<th scope="col">Claimed</th>
+						<th scope="col">Actions</th>
+						<!--<th scope="col">French</th>
+						<th scope="col">Type</th>
+						<th scope="col">Province</th>
+						<th scope="col">Actions</th>-->
+				<thead>
+				<tbody>
 
-							<% if profile.affiliations.present? %>
+					<% @profiles.each_with_index do |profile,index| %>
 
-								<% profile.affiliations.each do |affiliation| %>
-									<% if I18n.locale == :en %>
-										<%= affiliation.organisation.english %>
-									<% elsif I18n.locale == :fr %>
-										<%= affiliation.organisation.french %>
+						<tr>
+							<td>
+								<%= index+1 %>
+							</td>
+							<td>
+								<% if profile.prefix.present? %>
+									<%= profile.prefix.english %>
+								<% end %>
+								<%= profile.full_name %>
+							</td>
+							<td>
+								<%= profile.email unless profile.email.blank? %>
+							</td>
+							<td>
+
+								<% if profile.affiliations.present? %>
+
+									<% profile.affiliations.each do |affiliation| %>
+										<% if I18n.locale == :en %>
+											<%= affiliation.organisation.english %>
+										<% elsif I18n.locale == :fr %>
+											<%= affiliation.organisation.french %>
+										<% end %>
 									<% end %>
+
+								<% else %>
+
+									<p class="text-danger">No Affiliation Found</p>
+
 								<% end %>
 
-							<% else %>
-
-								<p class="text-danger">No Affiliation Found</p>
-
-							<% end %>
-
-						</td>
-						
-						<td>
-							<% if profile.user.present? %>
-								<%= profile.user.email %>
-							<% else %>
-								Not Claimed
-							<% end %>
+							</td>
 							
-						</td>
-						
-						<td>
-							<%= link_to 'Edit', edit_profile_path(profile) %>
+							<td>
+								<% if profile.user.present? %>
+									<%= profile.user.email %>
+								<% else %>
+									Not Claimed
+								<% end %>
+								
+							</td>
+							
+							<td>
+								<%= link_to 'Edit', edit_profile_path(profile) %>
 
-							<%= link_to 'View', profile_path(profile) %>
-						</td>
+								<%= link_to 'View', profile_path(profile) %>
+							</td>
 
-					</tr>
+						</tr>
 
-				<% end %>
+					<% end %>
 
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		
+		</div>
 
 	<% end %>
 
