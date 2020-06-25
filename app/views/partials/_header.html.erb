@@ -74,6 +74,15 @@
 								<%= link_to( t('navigation.links.register') , new_user_registration_path ) %>
 							</li>
 						<% end %>
+
+							<li class="ml-lg-2">
+								<h4 class="sr-only"><%= t('footer.lang-selection') %></h4>
+								<% if I18n.locale == I18n.default_locale %>
+									<span lang="fr"><%= link_to "Français", { :locale=>'fr' }  %></span>
+								<% else %>
+									<%= link_to "English", { :locale=>'en'} %>
+								<%end%>
+							</li>
 					</ul>
 
 				</div>
