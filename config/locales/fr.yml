@@ -366,6 +366,8 @@ fr:
         affiliations: "Affiliation"
         research: "Intérêts de recherche"
         location: "Lieux des intérêts"
+    notice:
+      affiliation_html: "Si votre organisation, basée au Canada, ne figure pas dans la liste, veuillez contacter <a href=\"nextgen@ccic.ca\">nextgen@ccic.ca</a> pour qu'elle soit ajoutée à la base de données. Une fois ajoutée, et confirmée comme telle, vous pourrez vous inscrire. Merci!"
 
   profile_requests:
     status:
