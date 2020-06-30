@@ -230,7 +230,7 @@ fr:
 </p>
                                       <p>Un courriel a été envoyé à votre compte courriel. Veuillez cliquer sur le lien pour confirmer votre adresse courriel.</p>
                                       <p>Veuillez vérifier votre boîte de courrier indésirable puisque le message pourrait s'y trouver.</p>
-                                      <p>Dès que votre adresse courriel est confirmé, veuillez vous reconnecter et vous aurez l'option de créer un nouveau profile ou de réclamer un profil existant.</p>"
+                                      <p>Dès que votre adresse courriel est confirmé, veuillez vous reconnecter et vous aurez l'option de créer un nouveau profil ou de réclamer un profil existant.</p>"
         create-new-profile:
           message: "Vous n’avez pas encore de profil public. Suivez les instructions ici-bas pour ajouter votre profil."
           step-1:
@@ -410,6 +410,12 @@ fr:
         title: "Inscrivez-vous"
         submit: "Inscrivez-vous"
         message: "Créer un nouveau profil dans la base de données NextGen"
+        info_add:
+          heading: "Ajouter votre nom"
+          text: "Aidez les médias, étudiants, chercheurs, organisations de la société civile et décideurs politiques à en apprendre davantage sur vos recherches et se connecter."
+        info_claim:
+          heading: "Claim your profile"
+          text: "Lorem ipsum dollar blah blah blah"
       login:
         title: "Connexion"
         remember_me: "Garder ma session ouverte"

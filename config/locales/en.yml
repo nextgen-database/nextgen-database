@@ -428,6 +428,12 @@ en:
       title: "Register"
       submit: "Register"
       message: "Create your NextGen Database account to add a new profile or edit an existing profile within the database"
+      info_add:
+        heading: "Add your name"
+        text: "Help media, students, researchers, civil society organizations, and policy-makers find out about your work and connect."
+      info_claim:
+        heading: "Update your profile"
+        text: "Lorem ipsum dollar blah blah blah"
     login:
       title: "Login"
       remember_me: "Remember me"
