@@ -432,7 +432,10 @@ en:
         heading: "Add your name"
         text: "Help media, students, researchers, civil society organizations, and policy-makers find out about your work and connect."
       info_claim:
-        heading: "Update your profile"
+        heading: "Claim your profile"
+        text: "Lorem ipsum dollar blah blah blah"
+      info_update:
+        heading: "Update your information"
         text: "Lorem ipsum dollar blah blah blah"
     login:
       title: "Login"
