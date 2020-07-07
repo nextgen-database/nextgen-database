@@ -528,12 +528,38 @@ class ProfilesController < ApplicationController
 			# Create a new Search Profile object
 			sp = SearchProfile.new
 
+			# Harmonse the query string by making it lowercase and joining the terms together seperated by a space
 			queries.blank? ? term = nil : term = queries.join(' ').downcase
 
 			# Add each search term to the current SearchProfile object
+			sp.search_profile_term = SearchProfileTerm.find_or_create_by( term: term) 
 			
-				sp.search_profile_term = SearchProfileTerm.find_or_create_by( term: term) 
-			
+			# Add the SDG filter information if used
+			# nil = some sort of error or no data
+			# 0 = all SDGs applied (DEFAULT)
+			# 1-17 = one of the SDGs
+			sdg_param = 0
+
+			if !@search_parameters['primary_sdg'].blank?
+				
+				if !(@search_parameters['primary_sdg'].include?("0"))
+
+					if SustainableDevelopmentGoal.exists?(@search_parameters['primary_sdg'][0].to_i)
+					
+						sdg_param = @search_parameters['primary_sdg'][0].to_i
+					
+					else
+
+						sdg_param = nil
+
+					end 
+
+				end
+
+			end
+
+			sp.search_profile_sdg_param = sdg_param
+
 			# Save the current SearchProfile object
 			sp.save
 

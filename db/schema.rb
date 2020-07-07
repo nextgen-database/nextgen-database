@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_135413) do
+ActiveRecord::Schema.define(version: 2020_07_07_212445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_135413) do
     t.integer "search_profile_term_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "search_profile_sdg_param", default: 0
   end
 
   create_table "sectors", force: :cascade do |t|
