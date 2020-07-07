@@ -425,9 +425,9 @@ en:
       title: "Password"
       confirm: "Confirm Password"
     register:
-      title: "Register"
+      title: "Register here!"
       submit: "Register"
-      message: "Create your NextGen Database account to add a new profile or edit an existing profile within the database"
+      message: "Create your NextGen Database account to add a new profile or edit an existing profile within the database."
       info_add:
         heading: "Add your name"
         text: "A unique searchable database of researchers from Canadian universities, colleges, research institutes, and civil society organizations – all working on issues related to sustainable development. The NextGen Database maps areas of research to the SDGs and identifies how researchers in Canada contribute to the implementation of the 2030 Agenda for Sustainable Development. Your path to finding researchers or practitioner-researchers to collaborate with starts here!"
