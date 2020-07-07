@@ -558,6 +558,7 @@ class ProfilesController < ApplicationController
 
 			end
 
+			# Save the sdg param filter
 			sp.search_profile_sdg_param = sdg_param
 
 			# Save the current SearchProfile object
