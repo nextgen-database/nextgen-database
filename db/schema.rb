@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_174738) do
+ActiveRecord::Schema.define(version: 2020_07_07_135413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_174738) do
     t.string "linkedin"
     t.string "academia_edu"
     t.string "phone_ext"
+    t.boolean "visible", default: true
     t.index ["prefix_id"], name: "index_profiles_on_prefix_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

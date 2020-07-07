@@ -1,6 +1,6 @@
 class SearchProfileTerm < ApplicationRecord
 
-	validates_uniqueness_of :term
+	# validates_uniqueness_of :term
 
 	has_many :search_profiles
 

@@ -108,7 +108,7 @@ class ProfilesController < ApplicationController
 	# Show function to display a single profile from the DB
 	def show
 
-		if Profile.exists?(params[:id])
+		if Profile.where(visible:true).exists?(params[:id])
 			@profile = Profile.find(params[:id])
 		end
 
@@ -284,6 +284,72 @@ class ProfilesController < ApplicationController
 
 	end
 
+	# Update_Visibility action only allows an admin to update the visibility of a profile
+	def update_visibility
+	
+		# Set the current user
+		@user = current_user
+
+		# As long as the user exists then we can move forward
+		if @user
+
+			# Expose whether the user is an admin or not
+			@user_is_admin = @user.admin?
+
+			# If you are an admin you have permission to edit any profile
+			if @user_is_admin
+
+				logger.debug "params[:profile][:visible]: #{params[:profile][:visible]}"
+
+				# Check if a profile exists - if not send them back to account screen - unless they are admins
+				if Profile.exists?(params[:id])
+
+					logger.debug "I AM HERE"
+
+					if params[:profile][:visible] == 'true' || params[:profile][:visible] == 'false'
+					
+						logger.debug "NOW I AM HERE"
+
+						@profile = Profile.find(params[:id])
+
+						@profile.visible = params[:profile][:visible]
+
+						if @profile.save
+							flash[:notice] = "Successfully updateed visibility!"
+							redirect_to admin_profile_management_path
+						else
+							flash[:alert] = "Error updating visibility!"
+							redirect_to edit_profile_path
+						end
+
+					else
+						
+						redirect_to edit_profile_path
+
+					end 
+				
+				else 
+
+					redirect_to admin_profile_management_path
+
+				end
+			
+			else
+				
+				redirect_to root_path
+
+			end
+		
+		else
+
+			redirect_to root_path
+
+		end
+
+		
+
+	end 
+
 	# Update action updates the post with the new information
 	def update
 
@@ -351,8 +417,8 @@ class ProfilesController < ApplicationController
 
 			results = Array.new()
 
-			# Get all of the profiles
-			profile_ids = Profile.pluck(:id)
+			# Get all of the visible profiles
+			profile_ids = Profile.where(visible: true).pluck(:id)
 
 			# Filter the full array by Search Query
 			profile_ids = Profile.filter_by_search_query(@search_parameters['query'], profile_ids) unless @search_parameters['query'].blank?
@@ -462,11 +528,12 @@ class ProfilesController < ApplicationController
 			# Create a new Search Profile object
 			sp = SearchProfile.new
 
-			queries.blank? ? term = nil : term = queries.join(' ')
+			queries.blank? ? term = nil : term = queries.join(' ').downcase
 
 			# Add each search term to the current SearchProfile object
-			sp.search_profile_term = SearchProfileTerm.find_or_create_by( term: term)
-
+			
+				sp.search_profile_term = SearchProfileTerm.find_or_create_by( term: term) 
+			
 			# Save the current SearchProfile object
 			sp.save
 

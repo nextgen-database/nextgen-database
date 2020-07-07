@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 		get '/account', to: 'account#index', as: 'account'
 
 		# Everything to do with profiles
-		resources :profiles
+		resources :profiles do 
+			patch :update_visibility, on: :member
+		end
 
 		# SETUP THE ADMIN SECTION
 		# https://everydayrails.com/2012/07/31/rails-admin-panel-from-scratch.html

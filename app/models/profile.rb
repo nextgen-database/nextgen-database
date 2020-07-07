@@ -78,7 +78,7 @@ class Profile < ApplicationRecord
 	scope :where_id, -> (id) do
 		where("id ILIKE ANY (array[?])", id.map {|val| "%#{val}%" }) unless id.blank?
 	end
-
+	
 	scope :where_firstname, -> (query) do
 		where("firstname ILIKE ANY (array[?])", query.map {|val| "%#{val}%" }) unless query.blank?
 	end
@@ -477,7 +477,8 @@ class Profile < ApplicationRecord
 			"Linked In",
 			"Academia Edu",
 			"Sectors",
-			"Sustainable Development Goals (Code)"
+			"Sustainable Development Goals (Code)",
+			"Visible"
 		]
 		
 		CSV.generate do |csv|
@@ -514,7 +515,8 @@ class Profile < ApplicationRecord
 					profile.linkedin,
 					profile.academia_edu,
 					sectors,
-					sustainable_development_goals
+					sustainable_development_goals,
+					profile.visible
 				]
 			  end
 		end
