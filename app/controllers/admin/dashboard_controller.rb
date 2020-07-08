@@ -19,7 +19,11 @@ class Admin::DashboardController < AdminController
 		# Expose the number of search results that occured in the last seven days
 		@search_profile_stats_for_days = get_search_profile_data_for_days
 
+		# Expose the search terms and stats for searches
 		@search_profile_terms_data = get_search_profile_term_data
+
+		# Expose the search terms and stats for searches
+		@search_profile_sdg_data = get_search_profile_sdg_data
 
 
 	end
@@ -117,6 +121,46 @@ class Admin::DashboardController < AdminController
 				ORDER BY count desc").to_a
 
 			search_profile_term_statistics
+
+		end
+
+		def get_search_profile_sdg_data
+
+			search_profile_sdg_statistics = Array.new
+			
+			# Hashes keep the order in which they are stored
+			# Since we present the data from oldest to newest I'm putting them in oldest to newest
+
+			# We want the data to be: 
+			# Null [Null]: AAA
+			# ALL [0]: XXX
+			# SDG 1 [1]: YYY
+			# SDG 2 [2]: ZZZ
+
+			search_profile_sdg_statistics = SearchProfile.connection.select_all(
+				"SELECT search_profiles.search_profile_sdg_param, sustainable_development_goals.banner_en , count(*)
+				FROM  search_profiles
+					left join sustainable_development_goals
+					on search_profiles.search_profile_sdg_param = sustainable_development_goals.id 
+				GROUP by search_profiles.search_profile_sdg_param, sustainable_development_goals.banner_en 
+				ORDER by count desc").to_a
+			
+			# Clean up the array by adding in "friendly" labels for error and all sdgs
+			search_profile_sdg_statistics.each_with_index do |sdg,index|
+				
+				if sdg["search_profile_sdg_param"] == 0
+					
+					sdg["banner_en"] = "All SDGs"
+
+				elsif sdg["search_profile_sdg_param"] == nil
+
+					sdg["banner_en"] = "Search Error"
+
+				end
+
+			end 
+ 			
+			search_profile_sdg_statistics
 
 		end
 

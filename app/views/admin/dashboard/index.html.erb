@@ -54,97 +54,164 @@
 
 	</div>
 
-	<div class="row">
+	
 
-		<div class="col">
+	<div class="card-style-1">
 
-			<div class="card-style-1">
+		<div class="ct-chart ct-perfect-fourth" id="ct-chart-1"></div>
 
-				<div class="ct-chart ct-perfect-fourth"></div>
+		<script>
+
+			var data = {
+				// A labels array that can contain any sort of values
+				labels: [
+
+					<% @search_profile_stats_for_days.each do |property, value| %>
+						'<%= property %>',
+					<% end %>
+
+				],
+				// Our series array that contains series objects or in this case series data arrays
+				series: [
+					[
+						<% @search_profile_stats_for_days.each do |property, value| %>
+
+							<%= value %>,
+
+						<% end %>
+					]
+				]
+			};
+
+			// Create a new line chart object where as first parameter we pass in a selector
+			// that is resolving to our chart container element. The Second parameter
+			// is the actual data object.
+			new Chartist.Line('#ct-chart-1', data);
+
+		</script>
+
+	</div>
+
+		
+
+	<h2 class="mt-5">Search Terms</h2>
+
+		
+	<% if @search_profile_terms_data.blank? %>
+
+		<p>No search terms currently in the system</p>
+
+	<% else %>
+
+		<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
+
+			<table class="table" id="admin-dashboard-search-terms">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Term</th>
+						<th scope="col">Count</th>
+				<thead>
+				<tbody>
+
+					<% @search_profile_terms_data.each_with_index do |term,index| %>
+
+						<tr>
+							<td>
+								<%= index+1 %>
+							</td>
+							<td>
+								<%= term["term"] %>
+							</td>
+							<td>
+								<%= term["count"] %>
+							</td>
+						</tr>
+					
+					<% end %>
+			
+				</tbody>
+			
+			</table>
+
+		</div>
+
+	<% end %>
+
+
+	
+			
+	<h2 class="mt-5">SDF Filters</h2>
+
+	<div class="card-style-1 ">
+
+		<div class="row  align-items-center">
+
+			<div class="col-md-6">
+
+				<div class="ct-chart ct-perfect-fourth" id="ct-chart-2"></div>
 
 				<script>
 
-					var data = {
-						// A labels array that can contain any sort of values
-						labels: [
-
-							<% @search_profile_stats_for_days.each do |property, value| %>
-								'<%= property %>',
-							<% end %>
-
-						],
-						// Our series array that contains series objects or in this case series data arrays
-						series: [
-							[
-								<% @search_profile_stats_for_days.each do |property, value| %>
-
-									<%= value %>,
-
-								<% end %>
-							]
-						]
+				var data = {
+					labels: [
+						
+						<% @search_profile_sdg_data.each_with_index do |sdg, index| %>
+							'<%= sdg["banner_en"] %>',
+						<% end %>
+						
+					],
+					series: [
+						<% @search_profile_sdg_data.each_with_index do |sdg, index| %>
+							'<%= sdg["count"] %>',
+						<% end %>
+					]
 					};
 
-					// Create a new line chart object where as first parameter we pass in a selector
-					// that is resolving to our chart container element. The Second parameter
-					// is the actual data object.
-					new Chartist.Line('.ct-chart', data);
+					var options = {
+						distributeSeries: true
+					};
+
+					new Chartist.Bar('#ct-chart-2', data, options);
 
 				</script>
 
 			</div>
-
-		</div>
-
-	</div>
-
-	<div class="row">
-		
-		<div class="col">
 			
-			<h2 class="mt-5">Search Terms</h2>
+			<div class="col-md-6">
 
-			
-			<% if @search_profile_terms_data.blank? %>
+				<table class="table" id="admin-dashboard-user-management">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">SDG</th>
+							<th scope="col">Count</th>
+					<thead>
+					<tbody>
 
-				<p>No search terms currently in the system</p>
+						<% @search_profile_sdg_data.each_with_index do |sdg,index| %>
 
-			<% else %>
-
-				<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
-
-					<table class="table" id="admin-dashboard-user-management">
-						<thead>
 							<tr>
-								<th scope="col">ID</th>
-								<th scope="col">Term</th>
-								<th scope="col">Count</th>
-						<thead>
-						<tbody>
+								<td>
+									<%= index+1 %>
+								</td>
+								<td>
 
-							<% @search_profile_terms_data.each_with_index do |term,index| %>
+									<%= sdg["banner_en"] %>
 
-								<tr>
-									<td>
-										<%= index+1 %>
-									</td>
-									<td>
-										<%= term["term"] %>
-									</td>
-									<td>
-										<%= term["count"] %>
-									</td>
-								</tr>
-							
-							<% end %>
-					
-						</tbody>
-					
-					</table>
+								</td>
+								<td>
+									<%= sdg["count"] %>
+								</td>
+							</tr>
+						
+						<% end %>
+				
+					</tbody>
+				
+				</table>
 
-				</div>
-
-			<% end %>
+			</div>
 
 		</div>
 

@@ -37,6 +37,8 @@ $(document).on("turbolinks:before-cache", function() {
 
 
 	// Deactivate the tables
+	$('#admin-dashboard-search-terms').DataTable().destroy();
+
 	$('#admin-dashboard-profile-management').DataTable().destroy();
 
 	$('#admin-dashboard-user-management').DataTable().destroy();
@@ -139,6 +141,8 @@ document.addEventListener("turbolinks:load", function() {
 
 
 	// Setup the datatable
+	$('#admin-dashboard-search-terms').DataTable();
+
 	$('#admin-dashboard-profile-management').DataTable();
 
 	$('#admin-dashboard-user-management').DataTable();
