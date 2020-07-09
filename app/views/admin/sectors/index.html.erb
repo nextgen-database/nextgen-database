@@ -1,34 +1,40 @@
-<h1>Manage Sectors</h1>
+<h1 id="cont" name="cont">Manage Sectors</h1>
 
 <%#
     Loop through all of the sectors
 #%>
 
-<%= link_to 'New Sector', new_admin_sector_path(), { :class=>"btn btn-primary my-3" } %>
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New Sector', new_admin_sector_path(), { :class=>"btn btn-primary my-3" } %>
+</div>
 
-<table class="table" id="admin-dashboard-vocab-sector-management">
-	<thead>
-		<tr>
-			<th scope="col">ID</th>
-			<th scope="col">English</th>
-			<th scope="col">French</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @sectors.each_with_index do |sector,index| %>
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
+
+	<table class="table" id="admin-dashboard-vocab-sector-management">
+		<thead>
 			<tr>
-				<td><%= index + 1 %></td>
-				<td><%= sector.english %></td>
-				<td><%= sector.french %></td>
-				<td>
+				<th scope="col">ID</th>
+				<th scope="col">English</th>
+				<th scope="col">French</th>
+				<th scope="col">Actions</th>
+		<thead>
+		<tbody>
+			<% @sectors.each_with_index do |sector,index| %>
+				<tr>
+					<td><%= index + 1 %></td>
+					<td><%= sector.english %></td>
+					<td><%= sector.french %></td>
+					<td>
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+						<%#= link_to 'edit', edit_resource_path(sector) %>
 
-					<%= link_to 'Edit', edit_admin_sector_path(sector) %>
+						<%= link_to 'Edit', edit_admin_sector_path(sector) %>
 
-					<%#= link_to 'Delete', admin_sector_path(sector), method: :delete, data: {confirm: "Are you sure?"} %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+						<%#= link_to 'Delete', admin_sector_path(sector), method: :delete, data: {confirm: "Are you sure?"} %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
