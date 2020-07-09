@@ -73,7 +73,7 @@
 
 			<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-				<table class="table">
+				<div class="table-responsive">
 
 					<table class="table table-hover table-responsive-sm table-bordered">
 						<thead>
@@ -86,35 +86,35 @@
 							</tr>
 						</thead>
 						<tbody>
-				<% @profile_requests_not_active.each_with_index do |pr, index| %>
+						<% @profile_requests_not_active.each_with_index do |pr, index| %>
 
-						<tr>
-							<td><%= index+1 %>
-							<td><%= User.find_by(id: pr.user_id).email %></td>
-							<td>
-								<%= link_to Profile.find_by(id: pr.profile_id).full_name, profile_path(pr.profile_id) %>
-							</td>
-							<td>
+								<tr>
+									<td><%= index+1 %>
+									<td><%= User.find_by(id: pr.user_id).email %></td>
+									<td>
+										<%= link_to Profile.find_by(id: pr.profile_id).full_name, profile_path(pr.profile_id) %>
+									</td>
+									<td>
 
-								<% case pr.status
-								when "not_set" %><%= t('profile_requests.status.not_set') %>
-								<% when "approved" %><%= t('profile_requests.status.approved') %> by <%= User.find_by(id: pr.approver_id ).email %>
-								<% when "denied" %><%= t('profile_requests.status.denied') %> by <%= User.find_by(id: pr.approver_id ).email %>
-								<% when "user_cancelled" %><%= t('profile_requests.status.user_cancelled') %>
-								<% end %>
+										<% case pr.status
+										when "not_set" %><%= t('profile_requests.status.not_set') %>
+										<% when "approved" %><%= t('profile_requests.status.approved') %> by <%= User.find_by(id: pr.approver_id ).email %>
+										<% when "denied" %><%= t('profile_requests.status.denied') %> by <%= User.find_by(id: pr.approver_id ).email %>
+										<% when "user_cancelled" %><%= t('profile_requests.status.user_cancelled') %>
+										<% end %>
 
-							</td>
-							<td><%= pr.updated_at %></td>
-						</tr>
+									</td>
+									<td><%= pr.updated_at %></td>
+								</tr>
 
-				<% end %>
+						<% end %>
 						</tbody>
 					</table>
 
 				</div>
 
+			</div>
+
 		</section>
-
-
 
 	<% end %>

@@ -55,6 +55,8 @@ $(document).on("turbolinks:before-cache", function() {
 
 	$('#admin-dashboard-vocab-position-titles-management').DataTable().destroy();
 
+	$('#admin-dashboard-vocab-sdg-management').DataTable().destroy();
+
 
 
 
@@ -158,6 +160,8 @@ document.addEventListener("turbolinks:load", function() {
 	$('#admin-dashboard-vocab-organisation-management').DataTable();
 
 	$('#admin-dashboard-vocab-position-titles-management').DataTable();
+
+	$('#admin-dashboard-vocab-sdg-management').DataTable();
 
 
 });

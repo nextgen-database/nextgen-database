@@ -1,10 +1,11 @@
-<h1>Admin::Sustainable Development Goals#index</h1>
+<h1>Manage Sustainable Development Goals</h1>
 
 <%#
     Link to create a new Position Title
 #%>
-
-<%= link_to 'New', new_admin_sustainable_development_goal_path(), { :class=>"btn btn-primary" } %>
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New SDG', new_admin_sustainable_development_goal_path(), { :class=>"btn btn-primary" } %>
+</div>
 
 
 <%#
@@ -12,35 +13,43 @@
 
 	TO DO: Sort the data
 #%>
-<table class="table">
-	<thead>
-		<tr>
-			<th scope="col">Code</th>
-			<th scope="col">Title (English)</th>
-			<th scope="col">Description (English)</th>
-			<th scope="col">Title (French)</th>
-			<th scope="col">Description (French)</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @sustainable_development_goals.each_with_index do |sdg,index| %>
-			<tr>
-				<td><%= sdg.code %></td>
-				<td><%= sdg.title_en %></td>
-				<td><%= sdg.title_fr %></td>
-				<td><%= sdg.description_en %></td>
-				<td><%= sdg.description_fr %></td>
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-				<td>
-					Actions To Do
+	<div class="table-responsive">
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+		<table class="table" id="admin-dashboard-vocab-sdg-management">
+			<thead>
+				<tr>
+					<th scope="col">Code</th>
+					<th scope="col">Title (English)</th>
+					<th scope="col">Description (English)</th>
+					<th scope="col">Title (French)</th>
+					<th scope="col">Description (French)</th>
+					<th scope="col">Actions</th>
+			<thead>
+			<tbody>
+				<% @sustainable_development_goals.each_with_index do |sdg,index| %>
+					<tr>
+						<td><%= sdg.code %></td>
+						<td><%= sdg.title_en %></td>
+						<td><%= sdg.title_fr %></td>
+						<td><%= sdg.description_en %></td>
+						<td><%= sdg.description_fr %></td>
 
-					<%= link_to 'Edit', edit_admin_sustainable_development_goal_path(sdg) %>
+						<td>
+							Actions To Do
 
-					<%= link_to 'Delete', admin_sustainable_development_goal_path(sdg), method: :delete, data: {confirm: "Are you sure?"} %></td>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+							<%#= link_to 'edit', edit_resource_path(sector) %>
+
+							<%= link_to 'Edit', edit_admin_sustainable_development_goal_path(sdg) %>
+
+							<%= link_to 'Delete', admin_sustainable_development_goal_path(sdg), method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

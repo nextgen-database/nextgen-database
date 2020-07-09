@@ -4,32 +4,42 @@
     Loop through all of the Demographics
 #%>
 
-<%= link_to 'New', new_admin_demographic_path(), { :class=>"btn btn-primary my-3" } %>
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New Demographic Factor', new_admin_demographic_path(), { :class=>"btn btn-primary my-3" } %>
+</div>
 
-<table class="table" id="admin-dashboard-vocab-demographic-management">
-	<thead>
-		<tr>
-			<th scope="col">ID</th>
-			<th scope="col">English</th>
-			<th scope="col">French</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @demographics.each_with_index do |demographic,index| %>
-			<tr>
-				<td><%= index + 1 %></td>
-				<td><%= demographic.english %></td>
-				<td><%= demographic.french %></td>
-				<td>
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+	<div class="table-responsive">
 
-					<%= link_to 'Edit', edit_admin_demographic_path(demographic) %>
+		<table class="table" id="admin-dashboard-vocab-demographic-management">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">English</th>
+					<th scope="col">French</th>
+					<th scope="col">Actions</th>
+			<thead>
+			<tbody>
+				<% @demographics.each_with_index do |demographic,index| %>
+					<tr>
+						<td><%= index + 1 %></td>
+						<td><%= demographic.english %></td>
+						<td><%= demographic.french %></td>
+						<td>
 
-					<%#= link_to 'Delete', admin_demographic_path(demographic), method: :delete, data: {confirm: "Are you sure?"} %>
+							<%#= link_to 'edit', edit_resource_path(sector) %>
 
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+							<%= link_to 'Edit', edit_admin_demographic_path(demographic) %>
+
+							<%#= link_to 'Delete', admin_demographic_path(demographic), method: :delete, data: {confirm: "Are you sure?"} %>
+
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

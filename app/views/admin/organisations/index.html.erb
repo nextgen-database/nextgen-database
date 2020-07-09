@@ -4,48 +4,52 @@
     Link to create a new Organisation
 #%>
 
-<%= link_to 'New', new_admin_organisation_path(), { :class=>"btn btn-primary my-3" } %>
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New Organisation', new_admin_organisation_path(), { :class=>"btn btn-primary my-3" } %>
+</div>
 
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-<%#
-    Loop through all of the Development Actors
+	<div class="table-responsive">
 
-	TO DO: Sort the data
-#%>
-<table class="table" id="admin-dashboard-vocab-organisation-management">
-	<thead>
-		<tr>
-			<th scope="col">ID</th>
-			<th scope="col">English</th>
-			<th scope="col">French</th>
-			<th scope="col">Type</th>
-			<th scope="col">Province</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @organisations.each_with_index do |organisation,index| %>
-			<tr>
-				<td><%= index + 1 %></td>
-				<td><%= organisation.english %></td>
-				<td><%= organisation.french %></td>
-				<td>
-					<% unless organisation.organisation_type.blank? %>
-						<%= organisation.organisation_type.english %></td>
-					<% end %>
-				<td>
-					<% unless organisation.province.blank? %>
-						<%= organisation.province.english %></td>
-					<% end %>
-				</td>
-				<td>
+		<table class="table" id="admin-dashboard-vocab-organisation-management">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">English</th>
+					<th scope="col">French</th>
+					<th scope="col">Type</th>
+					<th scope="col">Province</th>
+					<th scope="col">Actions</th>
+			<thead>
+			<tbody>
+				<% @organisations.each_with_index do |organisation,index| %>
+					<tr>
+						<td><%= index + 1 %></td>
+						<td><%= organisation.english %></td>
+						<td><%= organisation.french %></td>
+						<td>
+							<% unless organisation.organisation_type.blank? %>
+								<%= organisation.organisation_type.english %></td>
+							<% end %>
+						<td>
+							<% unless organisation.province.blank? %>
+								<%= organisation.province.english %></td>
+							<% end %>
+						</td>
+						<td>
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+							<%#= link_to 'edit', edit_resource_path(sector) %>
 
-					<%= link_to 'Edit', edit_admin_organisation_path(organisation) %>
+							<%= link_to 'Edit', edit_admin_organisation_path(organisation) %>
 
-					<%#= link_to 'Delete', admin_organisation_path(organisation), method: :delete, data: {confirm: "Are you sure?"} %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+							<%#= link_to 'Delete', admin_organisation_path(organisation), method: :delete, data: {confirm: "Are you sure?"} %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

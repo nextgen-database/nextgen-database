@@ -4,37 +4,43 @@
     Link to create a new Development Actor
 #%>
 
-<%= link_to 'New', new_admin_research_method_path(), { :class=>"btn btn-primary my-3" } %>
+
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New Research Method', new_admin_research_method_path(), { :class=>"btn btn-primary my-3" } %>
+</div>
 
 
-<%#
-    Loop through all of the Development Actors
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-	TO DO: Sort the data
-#%>
-<table class="table" id="admin-dashboard-vocab-research-method-management">
-	<thead>
-		<tr>
-			<th scope="col">ID</th>
-			<th scope="col">English</th>
-			<th scope="col">French</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @research_methods.each_with_index do |research_method,index| %>
-			<tr>
-				<td><%= index + 1 %></td>
-				<td><%= research_method.english %></td>
-				<td><%= research_method.french %></td>
-				<td>
+	<div class="table-responsive">
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+		<table class="table" id="admin-dashboard-vocab-research-method-management">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">English</th>
+					<th scope="col">French</th>
+					<th scope="col">Actions</th>
+			<thead>
+			<tbody>
+				<% @research_methods.each_with_index do |research_method,index| %>
+					<tr>
+						<td><%= index + 1 %></td>
+						<td><%= research_method.english %></td>
+						<td><%= research_method.french %></td>
+						<td>
 
-					<%= link_to 'Edit', edit_admin_research_method_path(research_method) %>
+							<%#= link_to 'edit', edit_resource_path(sector) %>
 
-					<%#= link_to 'Delete', admin_research_method_path(research_method), method: :delete, data: {confirm: "Are you sure?"} %></td>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+							<%= link_to 'Edit', edit_admin_research_method_path(research_method) %>
+
+							<%#= link_to 'Delete', admin_research_method_path(research_method), method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

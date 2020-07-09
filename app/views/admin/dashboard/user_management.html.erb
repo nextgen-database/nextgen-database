@@ -14,79 +14,82 @@
 
 		<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-			<table class="table" id="admin-dashboard-user-management">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<!--<th scope="col">Name</th>-->
-						<th scope="col">Account Email</th>
-						<th scope="col">Connected Profile</th>
-						<th scope="col">Last Login Date</th>
-						<th scope="col">Admin</th>
-						<!--<th scope="col">Affiliations</th>-->
-						<!--<th scope="col">Actions</th>-->
-						<!--<th scope="col">French</th>
-						<th scope="col">Type</th>
-						<th scope="col">Province</th>
-						<th scope="col">Actions</th>-->
-				<thead>
-				<tbody>
+			<div class="table-responsive">
 
-					<% @users.each_with_index do |user,index| %>
-
+				<table class="table" id="admin-dashboard-user-management">
+					<thead>
 						<tr>
-							<td>
-								<%= index+1 %>
-							</td>
+							<th scope="col">ID</th>
+							<!--<th scope="col">Name</th>-->
+							<th scope="col">Account Email</th>
+							<th scope="col">Connected Profile</th>
+							<th scope="col">Last Login Date</th>
+							<th scope="col">Admin</th>
+							<!--<th scope="col">Affiliations</th>-->
+							<!--<th scope="col">Actions</th>-->
+							<!--<th scope="col">French</th>
+							<th scope="col">Type</th>
+							<th scope="col">Province</th>
+							<th scope="col">Actions</th>-->
+					<thead>
+					<tbody>
 
-							<td>
-								<%= user.email unless user.email.blank? %>
-							</td>
+						<% @users.each_with_index do |user,index| %>
 
-							<td>
-								<% if user.profile.present? %>
-									<%= link_to profile_path(user.profile) do %>
+							<tr>
+								<td>
+									<%= index+1 %>
+								</td>
 
-										<% if user.profile.prefix.present? %>
-											<%= user.profile.prefix.english %>
+								<td>
+									<%= user.email unless user.email.blank? %>
+								</td>
+
+								<td>
+									<% if user.profile.present? %>
+										<%= link_to profile_path(user.profile) do %>
+
+											<% if user.profile.prefix.present? %>
+												<%= user.profile.prefix.english %>
+											<% end %>
+											<%= user.profile.full_name %>
+
 										<% end %>
-										<%= user.profile.full_name %>
-
+									<% else %>
+										No Profile
 									<% end %>
-								<% else %>
-									No Profile
-								<% end %>
-							</td>
+								</td>
 
-							<td>
-								<% if user.last_sign_in_at.present? %>
-									<%= user.last_sign_in_at.to_formatted_s(:long)  %>
-								<% else %>
-									Not signed in yet
-								<% end %>
-							</td>
+								<td>
+									<% if user.last_sign_in_at.present? %>
+										<%= user.last_sign_in_at.to_formatted_s(:long)  %>
+									<% else %>
+										Not signed in yet
+									<% end %>
+								</td>
 
-							<td>
-								<% if user.admin? %>
-									True
-								<% else %>
-									False
-								<% end %>
-							</td>
-							<!--
-							<td>
-								<%#= link_to 'Edit', edit_profile_path(profile) %>
+								<td>
+									<% if user.admin? %>
+										True
+									<% else %>
+										False
+									<% end %>
+								</td>
+								<!--
+								<td>
+									<%#= link_to 'Edit', edit_profile_path(profile) %>
 
-								<%#= link_to 'View', profile_path(profile) %>
-							</td>
-							-->
-						</tr>
+									<%#= link_to 'View', profile_path(profile) %>
+								</td>
+								-->
+							</tr>
 
-					<% end %>
+						<% end %>
 
-				</tbody>
-			</table>
-		
+					</tbody>
+				</table>
+			</div>
+			
 		</div>
 
 	<% end %>

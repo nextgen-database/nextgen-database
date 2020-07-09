@@ -3,38 +3,41 @@
 <%#
     Link to create a new Development Actor
 #%>
+<div class="d-flex flex-row-reverse">
+	<%= link_to 'New Development Actor', new_admin_development_actor_path(), { :class=>"btn btn-primary my-3" } %>
+</div>
 
-<%= link_to 'New', new_admin_development_actor_path(), { :class=>"btn btn-primary my-3" } %>
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
+	<div class="table-responsive">
 
-<%#
-    Loop through all of the Development Actors
+		<table class="table" id="admin-dashboard-vocab-development-actor-management">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">English</th>
+					<th scope="col">French</th>
+					<th scope="col">Actions</th>
+			<thead>
+			<tbody>
+				<% @development_actors.each_with_index do |development_actor,index| %>
+					<tr>
+						<td><%= index + 1 %></td>
+						<td><%= development_actor.english %></td>
+						<td><%= development_actor.french %></td>
+						<td>
 
-	TO DO: Sort the data
-#%>
-<table class="table" id="admin-dashboard-vocab-development-actor-management">
-	<thead>
-		<tr>
-			<th scope="col">ID</th>
-			<th scope="col">English</th>
-			<th scope="col">French</th>
-			<th scope="col">Actions</th>
-	<thead>
-	<tbody>
-		<% @development_actors.each_with_index do |development_actor,index| %>
-			<tr>
-				<td><%= index + 1 %></td>
-				<td><%= development_actor.english %></td>
-				<td><%= development_actor.french %></td>
-				<td>
+							<%#= link_to 'edit', edit_resource_path(sector) %>
 
-					<%#= link_to 'edit', edit_resource_path(sector) %>
+							<%= link_to 'Edit', edit_admin_development_actor_path(development_actor) %>
 
-					<%= link_to 'Edit', edit_admin_development_actor_path(development_actor) %>
+							<%#= link_to 'Delete', admin_development_actor_path(development_actor), method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
 
-					<%#= link_to 'Delete', admin_development_actor_path(development_actor), method: :delete, data: {confirm: "Are you sure?"} %></td>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+	</div>
+
+</div>
