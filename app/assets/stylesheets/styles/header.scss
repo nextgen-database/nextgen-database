@@ -119,13 +119,15 @@
 					background-color: #fff;
 
 					.ng-navbar-links-list {
-
+						text-align: center;
 						flex-direction: column;
 						align-items: right;
 						margin: 50px 0px 50px 0px;
+						font-size: 1.5em;
 
 						li.link-hide {
 							display: block;
+							
 						}
 
 
