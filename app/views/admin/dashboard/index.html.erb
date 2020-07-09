@@ -141,7 +141,7 @@
 
 	
 			
-	<h2 class="mt-5">SDF Filters</h2>
+	<h2 class="mt-5"><abbr>SDG</abbr> Filters</h2>
 
 	<div class="card-style-1 ">
 
@@ -157,7 +157,21 @@
 					labels: [
 						
 						<% @search_profile_sdg_data.each_with_index do |sdg, index| %>
-							'<%= sdg["banner_en"] %>',
+
+							<% if sdg["search_profile_sdg_param"] == 0 %>
+
+								'All SDGs',
+
+							<% elsif sdg["search_profile_sdg_param"] == nil %>
+
+								'Err',
+
+							<% else %>
+
+								'(<%= sdg["search_profile_sdg_param"] %>)',
+
+							<% end %>
+
 						<% end %>
 						
 					],
