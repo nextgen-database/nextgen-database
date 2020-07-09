@@ -1,12 +1,7 @@
-<h2>Create New Post</h2>
+<h1 name="cont" id="cont">Create New Sector</h1>
 
-<%#= render "admin/sectors/form" #%>
+<div class="bg-white p-4 mt-3 mb-5" style="border-radius: 15px">
 
-<%= form_for [:admin, @sector] do |f| %>
-  <%#= render 'shared/error_messages', object: f.object #%>
-  <div class="field">
-    <%= f.text_area :english, placeholder: "English" %>
-	<%= f.text_area :french, placeholder: "French" %>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+  <%= render "admin/sectors/form" %>
+
+</div>

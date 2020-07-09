@@ -1,9 +1,23 @@
-
 <%= form_for [:admin, @research_method] do |f| %>
+
   <%#= render 'shared/error_messages', object: f.object #%>
-  <div class="field">
-    <%= f.text_area :english, placeholder: "English" %>
-	<%= f.text_area :french, placeholder: "French" %>
+    
+  <%# English %>
+  <div class="form-group">
+    <%= label_tag(:english, "Research Method (English Term):") %>
+    <%= f.text_field :english, placeholder: "English", class: "form-control" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  
+  <%# French %>
+  <div class="form-group">
+    <%= label_tag(:english, "Research Method (French Term):") %>
+    <%= f.text_field :french, placeholder: "French", class: "form-control" %>
+  </div>
+  
+  <%# Submit and cancel buttons %>
+  <div class="form-group pt-2">
+    <%= link_to "Cancel", admin_research_methods_path() , class: "btn btn-secondary" %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+
 <% end %>

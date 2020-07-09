@@ -1,9 +1,22 @@
-
 <%= form_for [:admin, @demographic] do |f| %>
-  <%#= render 'shared/error_messages', object: f.object #%>
-  <div class="field">
-    <%= f.text_area :english, placeholder: "English" %>
-	<%= f.text_area :french, placeholder: "French" %>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+    <%#= render 'shared/error_messages', object: f.object #%>
+    
+    <%# English %>
+    <div class="form-group">
+      <%= label_tag(:english, "Demographic (English Term):") %>
+      <%= f.text_field :english, placeholder: "English", class: "form-control" %>
+    </div>
+    
+    <%# French %>
+    <div class="form-group">
+      <%= label_tag(:english, "Demographic (French Term):") %>
+      <%= f.text_field :french, placeholder: "French", class: "form-control" %>
+    </div>
+    
+    <%# Submit and cancel buttons %>
+    <div class="form-group pt-2">
+      <%= link_to "Cancel", admin_demographics_path() , class: "btn btn-secondary" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>

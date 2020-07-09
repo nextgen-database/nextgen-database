@@ -1,11 +1,50 @@
 <%= form_for [:admin, @sustainable_development_goal] do |f| %>
   <%#= render 'shared/error_messages', object: f.object #%>
   <div class="field">
-    <%= f.text_area :code, placeholder: "Code" %>
+   
 	<%= f.text_area :title_en, placeholder: "English Title" %>
 	<%= f.text_area :description_en, placeholder: "English Description" %>
 	<%= f.text_area :title_fr, placeholder: "French Title" %>
 	<%= f.text_area :description_fr, placeholder: "French Description" %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
+
+   <%#= render 'shared/error_messages', object: f.object #%>
+  
+  <%# Code %>
+  <div class="form-group">
+    <%= label_tag(:code, "Code:") %>
+    <%= f.text_field :code, placeholder: "18", class: "form-control" %>
+  </div>
+  
+  <%# English Title %>
+  <div class="form-group">
+    <%= label_tag(:title_en, "English Title:") %>
+    <%= f.text_field :title_en, placeholder: "English Title", class: "form-control" %>
+  </div>
+  
+  <%# French Title %>
+  <div class="form-group">
+    <%= label_tag(:title_fr, "French Title:") %>
+    <%= f.text_field :title_fr, placeholder: "French Title", class: "form-control" %>
+  </div>
+  
+  <%# English Description %>
+  <div class="form-group">
+    <%= label_tag(:description_en, "English Description:") %>
+    <%= f.text_field :description_en, placeholder: "English Description", class: "form-control" %>
+  </div>
+  	
+  <%# French Description %>
+  <div class="form-group">
+    <%= label_tag(:description_fr, "French Description:") %>
+    <%= f.text_field :description_en, placeholder: "French Description", class: "form-control" %>
+  </div>
+  
+  <%# Submit and cancel buttons %>
+  <div class="form-group pt-2">
+    <%= link_to "Cancel", admin_sustainable_development_goals_path() , class: "btn btn-secondary" %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+
 <% end %>
