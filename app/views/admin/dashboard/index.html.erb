@@ -158,15 +158,7 @@
 						
 						<% @search_profile_sdg_data.each_with_index do |sdg, index| %>
 
-							<% if sdg["search_profile_sdg_param"] == 0 %>
-
-								'All SDGs',
-
-							<% elsif sdg["search_profile_sdg_param"] == nil %>
-
-								'Err',
-
-							<% else %>
+							<% unless sdg["search_profile_sdg_param"] == 0 || sdg["search_profile_sdg_param"] == nil %>
 
 								'(<%= sdg["search_profile_sdg_param"] %>)',
 
@@ -177,7 +169,13 @@
 					],
 					series: [
 						<% @search_profile_sdg_data.each_with_index do |sdg, index| %>
-							'<%= sdg["count"] %>',
+
+							<% unless sdg["search_profile_sdg_param"] == 0 || sdg["search_profile_sdg_param"] == nil %>
+								
+								'<%= sdg["count"] %>',
+
+							<% end %>
+
 						<% end %>
 					]
 					};
@@ -197,7 +195,6 @@
 				<table class="table" id="admin-dashboard-user-management">
 					<thead>
 						<tr>
-							<th scope="col">ID</th>
 							<th scope="col">SDG</th>
 							<th scope="col">Count</th>
 					<thead>
@@ -205,19 +202,20 @@
 
 						<% @search_profile_sdg_data.each_with_index do |sdg,index| %>
 
+							<% unless sdg["search_profile_sdg_param"] == 0 || sdg["search_profile_sdg_param"] == nil %>
+
 							<tr>
 								<td>
-									<%= index+1 %>
-								</td>
-								<td>
 
-									<%= sdg["banner_en"] %>
+									<%= sdg["banner_en"] %>	(<%= sdg["search_profile_sdg_param"] %>)
 
 								</td>
 								<td>
 									<%= sdg["count"] %>
 								</td>
 							</tr>
+
+							<% end %>
 						
 						<% end %>
 				
