@@ -4,6 +4,21 @@
 
 		<% if I18n.locale == :en %>
 
+			<div>
+				<%= markdown(@about_content.english) %>
+			</div>
+
+		<% elsif I18n.locale == :fr %>
+
+			<div>
+				<%= markdown(@about_content.french) %>
+			</div>
+
+		<% end %>
+
+
+		<%# if I18n.locale == :en %>
+		<%# 
 		<h1 class="h2">About<br /> <span class="h1">The NextGen Database</span></h1>
 
 		<p>We have built an online, searchable database to help identify potential new collaborators (and collaborations) for Next Generation. The database also allows the media, students, policy-makers, and the general public to identify Canadian experts. The Nextgen database is part of the Next Generation – Collaboration for Development program, a partnership between the Canadian Council for International Co-operation (CCIC) and the Canadian Association for the Study of International Development (CASID) (<a data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">Learn more about the program</a>).</p>
@@ -46,7 +61,11 @@
 
 		<p><a href="https://ccic.ca/wp-content/uploads/2019/01/GAC-List-of-Thematic-and-Sector-Specialists-January-2019.pdf" rel="external" target="_blank">Global Affairs Canada - List of Thematic and Sector Specialists (January 2019)</a></p>
 
-		<% elsif I18n.locale == :fr %>
+		#%>
+
+		<%# elsif I18n.locale == :fr %>
+		
+		<%#
 
 		<h1 class="h2">À propos<br /> <span class="h1">La base de données Nextgen</span></h1>
 
@@ -91,8 +110,9 @@
 		<p>Nous ne nous attendons pas à ce que la base de données soit exhaustive. Mais, la possibilité offerte aux individus de créer et d'actualiser leur profil par l'entremise d'une fonctionnalité d'éditeur du profil unique fera de cette base de données un outil complet, actuel et durable.</p>
 
 		<p><a href="https://ccic.ca/wp-content/uploads/2019/01/GAC-List-of-Thematic-and-Sector-Specialists-January-2019.pdf" rel="external" target="_blank">Affaires Mondiales Canada – Listes des spécialistes thématiques et sectoriels (Octobre 2017)</a></p>
+		
+		#%>
 
-		<% end %>
-
+		<%# end %>
 
 </div>

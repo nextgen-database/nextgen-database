@@ -39,10 +39,17 @@ Rails.application.routes.draw do
 			get '/profile_management', to: 'dashboard#profile_management', as: '/profile_management'
 			get '/user_management', to: 'dashboard#user_management', as: '/user_management'
 			get '/vocabulary_management', to: 'dashboard#vocabulary_management', as: '/vocabulary_management'
+			get '/content_management', to: 'dashboard#content_management', as: '/content_management'
 
 			get '/profile_output', to: 'dashboard#profile_output', as: '/profile_output'
 			get '/user_output', to: 'dashboard#user_output', as: '/user_output'
 
+
+			
+			# Content Management Pages
+			# get '/content_about/index', to: 'content_about#index', as: '/content_about'
+
+			resources :content_about, :only => [:index, :update]
 
 			# Controlled Vocabulary Pages
 			resources :sectors

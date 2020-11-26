@@ -1,0 +1,43 @@
+<div>
+    <p>
+        <%= link_to t('admin.dashboard.content_management.title'), admin_content_management_path() , class: "btn btn-secondary" %>
+    </p>
+</div>
+
+<h1 id="cont" name="cont">About Page - Manage Content</h1>
+
+<%= form_for [:admin, @about_content] do |f| %>
+    <%#= render 'shared/error_messages', object: f.object #%>
+    
+    <%# English %>
+    <div class="form-group">
+      <%= label_tag(:english, "English Content:") %>
+      <%= f.text_area :english, placeholder: "English", class: "form-control", id: 'content_about_english'  %>
+    </div>
+    
+    <%# French %>
+    <div class="form-group">
+      <%= label_tag(:english, "French Content:") %>
+      <%= f.text_area :french, placeholder: "French", class: "form-control", id: 'content_about_french' %>
+    </div>
+    
+    <%# Submit and cancel buttons %>
+    <div class="form-group pt-2">
+      <%= link_to "Cancel", admin_content_management_path() , class: "btn btn-secondary" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    </div>
+
+<% end %>
+
+<script>
+
+
+
+    var simplemdeEN = new SimpleMDE({ 
+        element: $("#content_about_english")[0],
+        autosave: {
+		    enabled: false
+	    },
+    });
+    var simplemdeFR = new SimpleMDE({ element: $("#content_about_french")[0] });
+</script>

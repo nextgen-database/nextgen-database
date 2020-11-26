@@ -16,6 +16,9 @@
   <li class="nav-item">
   <%= link_to t('admin.dashboard.vocabulary_management.title'), admin_vocabulary_management_path() , class: current_page?(action: 'vocabulary_management') ? "nav-link active " : "nav-link" %>
   </li>
+  <li class="nav-item">
+  <%= link_to t('admin.dashboard.content_management.title'), admin_content_management_path() , class: current_page?(action: 'content_management') ? "nav-link active " : "nav-link" %>
+  </li>
 </ul>
 
 <!-- End Admin Nav -->

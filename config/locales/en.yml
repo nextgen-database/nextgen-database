@@ -291,6 +291,9 @@ en:
       vocabulary_management:
         title: "Vocabulary"
         heading: "Vocabulary"
+      content_management:
+        title: "Content Management"
+        heading: "Content Management"
 
   profile:
     details:

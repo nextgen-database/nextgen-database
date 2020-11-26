@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Use pagy to do pagination for search results https://github.com/ddnexus/pagy
 gem 'pagy'
 
+# Use redcarpet for markdown stuff
+gem 'redcarpet'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

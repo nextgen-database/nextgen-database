@@ -279,6 +279,9 @@ fr:
         title: "User Management"
       vocabulary_management:
         title: "Controlled Vocabulary"
+      content_management:
+        title: "Content Management"
+        heading: "Content Management"
 
   profile:
     details:

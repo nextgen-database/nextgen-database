@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
 	end
 
 	def about
+
+		@about_content = ContentAbout.first
+
 	end
 
 end

@@ -76,6 +76,15 @@ class Admin::DashboardController < AdminController
 
 	end
 
+	def content_management
+
+		# The content about table only has 
+		# one entry so that's why we 
+		# grab the first one
+		@content_about = ContentAbout.first
+
+	end
+
 	private
 
 		def set_user
